@@ -56,7 +56,7 @@ What's a website made of?
 %
 What's a website made of?
 -------------------------
-[bg perlmonger/http://farm1.static.flickr.com/85/263206934_b97220f1ce.jpg]
+[bg perlmonger/263206934_b97220f1ce.jpg]
 - HTML, Images, CSS, Javascript
    - [class="light"] Served off a server farm
    - [class="light"] Database backend
@@ -64,7 +64,7 @@ What's a website made of?
 %
 What's a website made of?
 -------------------------
-[bg perlmonger/http://farm1.static.flickr.com/85/263206934_b97220f1ce.jpg]
+[bg perlmonger/263206934_b97220f1ce.jpg]
 - HTML, Images, CSS, Javascript
    - Served off a server farm
    - [class="light"] Database backend
@@ -72,7 +72,7 @@ What's a website made of?
 %
 What's a website made of?
 -------------------------
-[bg perlmonger/http://farm1.static.flickr.com/85/263206934_b97220f1ce.jpg]
+[bg perlmonger/263206934_b97220f1ce.jpg]
 - HTML, Images, CSS, Javascript
    - Served off a server farm
    - Database backend
@@ -80,7 +80,7 @@ What's a website made of?
 %
 What's a website made of?
 -------------------------
-[bg perlmonger/http://farm1.static.flickr.com/85/263206934_b97220f1ce.jpg]
+[bg perlmonger/263206934_b97220f1ce.jpg]
 - HTML, Images, CSS, Javascript
    - Served off a server farm
    - Database backend
