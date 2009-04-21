@@ -108,7 +108,7 @@ sub parse_slides($$$$)
 				\[bg\s([\@\w]+)/(\w+)_(\w+)\.(jpg|png)\]
 			!<p class="bgimage"><a href="http://flickr.com/photos/$1/$2/" style="background-image: url('${prefix}images/$2_$3.$4');">flickr:$1/$2</a></p>!xig;
 		}
-		s!\[bg ([\@\w]+)/(http://farm\d\.[^/]+/\d+/)(\w+)_(\w+)\.(jpg|png)\]!<p class="bgimage"><a href="http://flickr.com/photos/$1/$3/" style="background-image: url('$2$3_$4.$5');">flickr:$1/$3</a></p>!ig;
+		s!\[bg ([\@\w]+)/(http://farm\d\.[^/]+/\d+/)(\w+?)_(\w+)\.(jpg|png)\]!<p class="bgimage"><a href="http://flickr.com/photos/$1/$3/" style="background-image: url('$2$3_$4.$5');">flickr:$1/$3</a></p>!ig;
  
 		my $slidebody = `/usr/bin/markdown <<EOF\n$_\nEOF`;
 		$slidebody =~ s/<(li|p|div)> *\[([^\]]+)\]/<$1 $2>/g;

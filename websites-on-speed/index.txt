@@ -14,4 +14,175 @@ CONFERENCE: <a href="http://conferences.percona.com/">Percona Performance is Eve
 - <a href="http://twitter.com/bluesmoon">@bluesmoon</a>
 - <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
 %
+What's a website made of?
+-------------------------
+[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
+- [class="light"] Content (HTML)
+- [class="light"] Images/Flash
+- [class="light"] Style (CSS)
+- [class="light"] Interaction (Javascript)
+%
+What's a website made of?
+-------------------------
+[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
+- Content (HTML)
+- [class="light"] Images/Flash
+- [class="light"] Style (CSS)
+- [class="light"] Interaction (Javascript)
+%
+What's a website made of?
+-------------------------
+[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
+- Content (HTML)
+- Images/Flash
+- [class="light"] Style (CSS)
+- [class="light"] Interaction (Javascript)
+%
+What's a website made of?
+-------------------------
+[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
+- Content (HTML)
+- Images/Flash
+- Style (CSS)
+- [class="light"] Interaction (Javascript)
+%
+What's a website made of?
+-------------------------
+[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
+- Content (HTML)
+- Images/Flash
+- Style (CSS)
+- Interaction (Javascript)
+%
+What's a website made of?
+-------------------------
+[bg perlmonger/http://farm1.static.flickr.com/85/263206934_b97220f1ce.jpg]
+- HTML, Images, CSS, Javascript
+   - [class="light"] Served off a server farm
+   - [class="light"] Database backend
+   - [class="light"] Content Delivery Network
+%
+What's a website made of?
+-------------------------
+[bg perlmonger/http://farm1.static.flickr.com/85/263206934_b97220f1ce.jpg]
+- HTML, Images, CSS, Javascript
+   - Served off a server farm
+   - [class="light"] Database backend
+   - [class="light"] Content Delivery Network
+%
+What's a website made of?
+-------------------------
+[bg perlmonger/http://farm1.static.flickr.com/85/263206934_b97220f1ce.jpg]
+- HTML, Images, CSS, Javascript
+   - Served off a server farm
+   - Database backend
+   - [class="light"] Content Delivery Network
+%
+What's a website made of?
+-------------------------
+[bg perlmonger/http://farm1.static.flickr.com/85/263206934_b97220f1ce.jpg]
+- HTML, Images, CSS, Javascript
+   - Served off a server farm
+   - Database backend
+   - Content Delivery Network
+%
+Where does the time go?
+-----------------------
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
+- [class="light"] User requests web page
+   - [class="light"] Web page references CSS, Javascript and Images
+   - [class="light"] Browser does DNS lookup and opens connections
+   - [class="light"] CSS affects rendering - causes a reflow when it loads
+   - [class="light"] Javascript may modify the page source - blocks other downloads
+   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
+- [class="light"] OnLoad fires
+%
+Where does the time go?
+-----------------------
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
+- User requests web page
+   - [class="light"] Web page references CSS, Javascript and Images
+   - [class="light"] Browser does DNS lookup and opens connections
+   - [class="light"] CSS affects rendering - causes a reflow when it loads
+   - [class="light"] Javascript may modify the page source - blocks other downloads
+   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
+- [class="light"] OnLoad fires
+%
+Where does the time go?
+-----------------------
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
+- User requests web page
+   - Web page references CSS, Javascript and Images
+   - [class="light"] Browser does DNS lookup and opens connections
+   - [class="light"] CSS affects rendering - causes a reflow when it loads
+   - [class="light"] Javascript may modify the page source - blocks other downloads
+   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
+- [class="light"] OnLoad fires
+%
+Where does the time go?
+-----------------------
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
+- User requests web page
+   - Web page references CSS, Javascript and Images
+   - Browser does DNS lookup and opens connections
+   - [class="light"] CSS affects rendering - causes a reflow when it loads
+   - [class="light"] Javascript may modify the page source - blocks other downloads
+   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
+- [class="light"] OnLoad fires
+%
+Where does the time go?
+-----------------------
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
+- User requests web page
+   - Web page references CSS, Javascript and Images
+   - Browser does DNS lookup and opens connections
+   - CSS affects rendering - causes a reflow when it loads
+   - [class="light"] Javascript may modify the page source - blocks other downloads
+   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
+- [class="light"] OnLoad fires
+%
+Where does the time go?
+-----------------------
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
+- User requests web page
+   - Web page references CSS, Javascript and Images
+   - Browser does DNS lookup and opens connections
+   - CSS affects rendering - causes a reflow when it loads
+   - Javascript may modify the page source - blocks other downloads
+   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
+- [class="light"] OnLoad fires
+%
+Where does the time go?
+-----------------------
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
+- User requests web page
+   - Web page references CSS, Javascript and Images
+   - Browser does DNS lookup and opens connections
+   - CSS affects rendering - causes a reflow when it loads
+   - Javascript may modify the page source - blocks other downloads
+   - Limit of 2 parallel persistent HTTP requests to the same server
+- [class="light"] OnLoad fires
+%
+Where does the time go?
+-----------------------
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
+- User requests web page
+   - Web page references CSS, Javascript and Images
+   - Browser does DNS lookup and opens connections
+   - CSS affects rendering - causes a reflow when it loads
+   - Javascript may modify the page source - blocks other downloads
+   - Limit of 2 parallel persistent HTTP requests to the same server
+- OnLoad fires
+%
+Example - conferences.percona.com
+---------------------------------
+[bg bluesmoon/firebug_netpanel.png]
+%
+What to do about it?
+--------------------
+- Reduce HTTP requests
+   - This reduces DNS lookups
+   - Reduces TCP connections
+- Reduce content size
+- Put CSS at the top and Javascript near the bottom
 
