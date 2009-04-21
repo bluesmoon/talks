@@ -1,0 +1,17 @@
+TITLE: Websites on Speed
+SUBTITLE: Percona Performance is Everything &bull; April 22-23, 2009 &bull; Santa Clara, CA
+AUTHOR: Philip S Tellis
+DATE: 2009-04-23
+COMPANY: Yahoo! Inc
+CONFERENCE: <a href="http://conferences.percona.com/">Percona Performance is Everything</a>
+%
+<code>$ whoami</code>
+-------------------------------
+[bg code_martial/1543735477_f302fdc3a3.jpg]
+- Philip Tellis
+- geek
+- yahoo
+- <a href="http://twitter.com/bluesmoon">@bluesmoon</a>
+- <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
+%
+
