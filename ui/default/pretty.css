@@ -1,0 +1,99 @@
+/* Following are the presentation styles -- edit away! */
+
+body {background: #fff; color: #000; font-size: 20pt; font-family: Tahoma, Verdana, sans-serif;}
+:link, :visited {text-decoration: none; color: #35a;}
+#controls :active {color: #a0a0a0 !important;}
+#controls :focus {outline: 1px dotted #227;}
+h1, h2, h3, h4 {font-size: 100%; margin: 0; padding: 0; font-weight: inherit;}
+pre {margin: 0; line-height: 1.2em;}
+ul {margin: 0; line-height: 32pt;}
+html, body {margin: 0; padding: 0;}
+
+blockquote, q {font-style: italic;}
+blockquote {padding: 2em 2em 0.5em; margin: 3em 1.5em 0.5em; text-align: center; font-size: 1em; font-style: normal; background-color: white; opacity: 0.8; -moz-border-radius: 30px; min-height: 300px;}
+blockquote p {margin: 0;}
+blockquote i {font-style: normal;}
+blockquote b {display: block; margin-top: 0.5em; font-weight: normal; font-size: smaller; font-style: normal;}
+blockquote b i {font-style: italic;}
+
+kbd {font-weight: bold; font-size: 1em;}
+sup {font-size: smaller; line-height: 1px;}
+
+.slide code {padding: 2px 0.25em; font-weight: bold; color: #53a; white-space: pre}
+.slide h1 code {font-weight: bold; color: #ff8b25; text-transform: none; font-size: 28pt;}
+.slide h1 .index { color: #333; margin: 8px 0 0 -0.5em; font-size: 5em; position: absolute; font-family: Century Schoolbook L, serif; z-index: -1; font-style: italic;}
+.slide code.bad, code del {color: red;}
+.slide code.old {color: silver;}
+.slide pre {padding: 0; margin: 0.25em 0 0.5em 0.5em; color: #53a; font-size: 100%;}
+.slide pre code {display: block; font-size: 1em}
+.slide ul {margin-left: 1%; margin-right: 2%; margin-top: 1.5em; padding: 1px 0; list-style: disc; background-color: white; z-index: 3; opacity: 0.85; -moz-border-radius: 30px;}
+.slide li {margin: 0.9em 0 0.9em 1.5em; font-size: 1em;}
+.slide ul ul {line-height: 1.2em; margin: 0 0 0 3%; opacity: 1;}
+.slide ul ul li {margin: 0.5em 0.2em; font-size: 85%; list-style: square;}
+.slide img.leader {display: block; margin: 0 auto;}
+
+div#header, div#footer {background: #000 0px 0px; font-family: Verdana, Helvetica, sans-serif;}
+div#header {background: #000 url(bodybg.png) 15px 8px no-repeat; line-height: 1px;color: #888;}
+div#footer {font-size: 0.3em; font-weight: bold; padding: 1em 0;color: #ccc; border-top: solid 2px #ff8b25;}
+#footer h1, #footer h2 {display: block; padding: 0 1em;}
+#footer h2 {font-style: italic;}
+#footer a { color: #fff; }
+
+div.long {font-size: 0.75em;}
+.slide h1 {position: absolute; top: 0.5em; left: 4em; z-index: 1;
+  margin: 0; padding: 0.5em 0 0 50px; white-space: nowrap;
+  font: bold 110%/1em Verdana, Helvetica, sans-serif; 
+  color: #ff8b25; background: transparent;}
+.slide h3 {font-size: 130%;}
+h1 abbr {font-variant: small-caps;}
+
+div#controls {position: absolute; left: 50%; bottom: 0;
+  width: 50%;
+  text-align: right; font: bold 0.9em Verdana, Helvetica, sans-serif;} /**/
+html>body div#controls {position: fixed; padding: 1em 0;
+  top: auto; height: auto;}
+div#controls form {position: absolute; bottom: 0; right: 0; width: 100%;
+  margin: 0; padding: 0;}
+#controls #navLinks a {font-size: 2em;padding: 0; margin: 0 0.5em; 
+  background: transparent; border: none; color: #e0e0e0; 
+  cursor: pointer;}
+#controls #navList {height: 1em;}
+#controls #navList #jumplist {position: absolute; bottom: 0; right: 0; background: #DDD; color: #227;}
+
+#currentSlide {text-align: center; font-size: 0.3em; color: #ff8b25; font-family: verdana, sans-serif;}
+
+#slide0 {padding-top: 3.5em; font-size: 80%;}
+#slide0 h1 {position: static; margin: 1em 0 1.33em; padding: 0;
+   font: bold 1.2em Verdana, Helvetica, sans-serif; white-space: normal;
+   color: #000; background: transparent;}
+#slide0 h2 {font: bold italic 1.25em Helvetica, sans-serif; margin: 0.25em; color: #ff8b25;}
+#slide0 h3 {margin-top: 1.5em; font-size: 1.25em;}
+#slide0 h4 {margin-top: 0; font-size: 1em;}
+
+ul.urls {list-style: none; display: inline; margin: 0;}
+.urls li {display: inline; margin: 0;}
+.note {display: none;}
+.external {border-bottom: 1px dotted gray;}
+html>body .external {border-bottom: none;}
+.external:after {content: " \274F"; font-size: smaller; color: #77B;}
+
+.incremental, .incremental *, .incremental *:after {color: #DDE; visibility: visible;}
+img.incremental {visibility: hidden;}
+.slide .current {color: #B02;}
+
+
+/* diagnostics
+
+li:after {content: " [" attr(class) "]"; color: #F88;}
+ */
+.light, .light code, .light a, .light em { color: #ddd; }
+.lighter, .lighter code, .lighter a, .lighter em { color: #eee; }
+.alert {font-size: 1.8em; margin-top: 1em; padding-top: 2em; text-align: center; background-color: white; opacity: 0.8; -moz-border-radius: 30px; min-height: 300px;}
+em { color: #28d; }
+p.bgimage a, div.bgimage { position: absolute; right: 0; font-size: 0.8em; text-align: center; z-index: -1; }
+p.bgimage a { width: 99%; height: 0; padding-top: 768px; margin: 0; background-repeat: no-repeat; background-position: top right; border-top: solid 1px #ff8b25; }
+p.bgimage { margin: 6px 0 0 0; padding: 0; }
+div.bgimage img { border: none; border-top: solid 1px #ff8b25; margin-top: 6px; }
+pre.dark { background-color:black; margin-top: 1em; margin-right: 3%; padding: 1em 0.5em; -moz-border-radius: 30px; opacity: 0.88; min-height: 500px; color: #edf; }
+pre.small {min-height: 200px; }
+li.small { font-size: 0.6em; }
