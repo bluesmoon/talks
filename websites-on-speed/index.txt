@@ -17,172 +17,124 @@ CONFERENCE: <a href="http://conferences.percona.com/">Percona Performance is Eve
 What's a website made of?
 -------------------------
 [bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
-- [class="light"] Content (HTML)
-- [class="light"] Images/Flash
-- [class="light"] Style (CSS)
-- [class="light"] Interaction (Javascript)
-%
-What's a website made of?
--------------------------
-[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
-- Content (HTML)
-- [class="light"] Images/Flash
-- [class="light"] Style (CSS)
-- [class="light"] Interaction (Javascript)
-%
-What's a website made of?
--------------------------
-[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
-- Content (HTML)
-- Images/Flash
-- [class="light"] Style (CSS)
-- [class="light"] Interaction (Javascript)
-%
-What's a website made of?
--------------------------
-[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
-- Content (HTML)
-- Images/Flash
-- Style (CSS)
-- [class="light"] Interaction (Javascript)
-%
-What's a website made of?
--------------------------
-[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
 - Content (HTML)
 - Images/Flash
 - Style (CSS)
 - Interaction (Javascript)
+- A server farm below this
+- Maybe a database, Web services & CDN
 %
-What's a website made of?
+Where does the time go?
+-----------------------
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
+- DNS lookups & HTTP requests
+- Building pages
+- Downloading stuff
+- Rendering stuff
+- User Interaction
+%
+How do we fix it?
+-----------------
+[bg assbach/http://farm1.static.flickr.com/92/249609877_a086312dd3_b.jpg]
+- Reduce lookups and connections
+- Return content as fast as possible
+- Reduce the size of content
+- Structure pages for performance
+- Cheat the DOM
+%
+1. Fix it - reduce lookups
+------------------------------------
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
+- Reduce the number of domains
+- Avoid redirects
+- Combine CSS and Javascript files into a single file for each type
+- Combine decorative images into sprites
+- Cache aggressively
+%
+2. Fix it - be quick on the return
+----------------------------------
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
+- Get the first chunk of bytes out as soon as possible
+- Flush often
+- Don't bother your server with static content
+- Cache expensive back end calls
+- Reduce MaxClients in apache
+%
+3. Fix it - slim down
+---------------------
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
+- gzip content over the wire
+- Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
+- Avoid duplicate CSS and Javascript files
+- Reduce cookie size
+- Use a CDN
+- Post-load components
+%
+4. Fix it - restructure pages
+-----------------------------
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
+- Put CSS at the top to avoid having to redraw the page later
+- Put Javascript at the bottom so that it doesn't block rendering
+- Avoid tables for layout
+- Delay loading of invisible content
+- Reduce the number of HTML elements
+%
+5. Fix it - cheat the DOM
 -------------------------
-[bg perlmonger/263206934_b97220f1ce.jpg]
-- HTML, Images, CSS, Javascript
-   - [class="light"] Served off a server farm
-   - [class="light"] Database backend
-   - [class="light"] Content Delivery Network
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
+- Attach events on a container rather than on each element
+- Delay event attachment
+- Cache DOM elements and work on invisible elements
+- Reduce iterations on DOM elements
+- Use more specific, semantically correct HTML tags
+- Use local copies of global variables
+- Profile your Javascript (use <a href="http://developer.yahoo.com/yui/profiler/">YUI Profiler</a>)
 %
-What's a website made of?
--------------------------
-[bg perlmonger/263206934_b97220f1ce.jpg]
-- HTML, Images, CSS, Javascript
-   - Served off a server farm
-   - [class="light"] Database backend
-   - [class="light"] Content Delivery Network
+6. More tips
+------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
+- Preload expected content
+- Progressively enhance your pages
+- Try to send empty POST requests
+- Use &lt;link&gt; instead of @import and avoid CSS expressions
+- Avoid 404s and reduce IFRAMEs
 %
-What's a website made of?
--------------------------
-[bg perlmonger/263206934_b97220f1ce.jpg]
-- HTML, Images, CSS, Javascript
-   - Served off a server farm
-   - Database backend
-   - [class="light"] Content Delivery Network
+YSlow
+-----
+- Firebug plugin to analyse pages for performance gotchas
+- <a href="http://developer.yahoo.com/yslow">http://developer.yahoo.com/yslow/</a>
+- Follow YSlow's advice to improve page performance
 %
-What's a website made of?
--------------------------
-[bg perlmonger/263206934_b97220f1ce.jpg]
-- HTML, Images, CSS, Javascript
-   - Served off a server farm
-   - Database backend
-   - Content Delivery Network
+Closing notes
+-------------
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
+- Don't optimise prematurely.  Profile first.
+- Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
+- Performance is not the same as scalability, you probably need both.
+- KISS
 %
-Where does the time go?
------------------------
-[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
-- [class="light"] User requests web page
-   - [class="light"] Web page references CSS, Javascript and Images
-   - [class="light"] Browser does DNS lookup and opens connections
-   - [class="light"] CSS affects rendering - causes a reflow when it loads
-   - [class="light"] Javascript may modify the page source - blocks other downloads
-   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
-- [class="light"] OnLoad fires
+Credits
+-------
+[bg jackhynes/http://farm1.static.flickr.com/192/519904699_ba1a70c094_b.jpg]
+- The following people were directly or indirectly involved in research leading to this content:
+   - Stoyan Stefanov, Nicole Sullivan, Tenni Theurer, Wayne Shea,
+   - Julien Lecompte, Iain Lamb, Philip Tellis, Subramanyan Murali,
+   - Nicholas Zakas, Jimmy Byrum
+- <a href="http://developer.yahoo.net/performance">http://developer.yahoo.net/performance</a>
 %
-Where does the time go?
------------------------
-[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
-- User requests web page
-   - [class="light"] Web page references CSS, Javascript and Images
-   - [class="light"] Browser does DNS lookup and opens connections
-   - [class="light"] CSS affects rendering - causes a reflow when it loads
-   - [class="light"] Javascript may modify the page source - blocks other downloads
-   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
-- [class="light"] OnLoad fires
-%
-Where does the time go?
------------------------
-[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
-- User requests web page
-   - Web page references CSS, Javascript and Images
-   - [class="light"] Browser does DNS lookup and opens connections
-   - [class="light"] CSS affects rendering - causes a reflow when it loads
-   - [class="light"] Javascript may modify the page source - blocks other downloads
-   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
-- [class="light"] OnLoad fires
-%
-Where does the time go?
------------------------
-[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
-- User requests web page
-   - Web page references CSS, Javascript and Images
-   - Browser does DNS lookup and opens connections
-   - [class="light"] CSS affects rendering - causes a reflow when it loads
-   - [class="light"] Javascript may modify the page source - blocks other downloads
-   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
-- [class="light"] OnLoad fires
-%
-Where does the time go?
------------------------
-[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
-- User requests web page
-   - Web page references CSS, Javascript and Images
-   - Browser does DNS lookup and opens connections
-   - CSS affects rendering - causes a reflow when it loads
-   - [class="light"] Javascript may modify the page source - blocks other downloads
-   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
-- [class="light"] OnLoad fires
-%
-Where does the time go?
------------------------
-[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
-- User requests web page
-   - Web page references CSS, Javascript and Images
-   - Browser does DNS lookup and opens connections
-   - CSS affects rendering - causes a reflow when it loads
-   - Javascript may modify the page source - blocks other downloads
-   - [class="light"] Limit of 2 parallel persistent HTTP requests to the same server
-- [class="light"] OnLoad fires
-%
-Where does the time go?
------------------------
-[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
-- User requests web page
-   - Web page references CSS, Javascript and Images
-   - Browser does DNS lookup and opens connections
-   - CSS affects rendering - causes a reflow when it loads
-   - Javascript may modify the page source - blocks other downloads
-   - Limit of 2 parallel persistent HTTP requests to the same server
-- [class="light"] OnLoad fires
-%
-Where does the time go?
------------------------
-[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
-- User requests web page
-   - Web page references CSS, Javascript and Images
-   - Browser does DNS lookup and opens connections
-   - CSS affects rendering - causes a reflow when it loads
-   - Javascript may modify the page source - blocks other downloads
-   - Limit of 2 parallel persistent HTTP requests to the same server
-- OnLoad fires
-%
-Example - conferences.percona.com
----------------------------------
-[bg bluesmoon/firebug_netpanel.png]
-%
-What to do about it?
---------------------
-- Reduce HTTP requests
-   - This reduces DNS lookups
-   - Reduces TCP connections
-- Reduce content size
-- Put CSS at the top and Javascript near the bottom
-
+Photo Credits
+-------------
+[bg 25602112@N07/http://farm4.static.flickr.com/3244/2539754489_a20454a273_o_d.jpg]
+- [class="small-children"] Shouts to each photographer for these most excellent CC licensed photos:
+   - <a href="http://flickr.com/photos/code_martial/1543735477/">http://flickr.com/photos/code\_martial/1543735477/</a>
+   - <a href="http://flickr.com/photos/bounder/244867196/">http://flickr.com/photos/bounder/244867196/</a>
+   - <a href="http://flickr.com/photos/fabiolarebello/206950948/">http://flickr.com/photos/fabiolarebello/206950948/</a>
+   - <a href="http://flickr.com/photos/assbach/249609877/">http://flickr.com/photos/assbach/249609877/</a>
+   - <a href="http://flickr.com/photos/swanksalot/2453794337/">http://flickr.com/photos/swanksalot/2453794337/</a>
+   - <a href="http://flickr.com/photos/revdancatt/197037896/">http://flickr.com/photos/revdancatt/197037896/</a>
+   - <a href="http://flickr.com/photos/frosted_peppercorn/481102393/">http://flickr.com/photos/frosted\_peppercorn/481102393/</a>
+   - <a href="http://flickr.com/photos/matthewblack/2140930591/">http://flickr.com/photos/matthewblack/2140930591/</a>
+   - <a href="http://flickr.com/photos/eagereyes/2624337393/">http://flickr.com/photos/eagereyes/2624337393/</a>
+   - <a href="http://flickr.com/photos/thetaleoflight/3362048052/">http://flickr.com/photos/thetaleoflight/3362048052/</a>
+   - <a href="http://flickr.com/photos/jackhynes/519904699/">http://flickr.com/photos/jackhynes/519904699/</a>
+   - <a href="http://flickr.com/photos/25602112@N07/2539754489/">http://flickr.com/photos/25602112@N07/2539754489/</a>
