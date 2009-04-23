@@ -21,7 +21,7 @@ sup {font-size: smaller; line-height: 1px;}
 
 .slide code {padding: 2px 0.25em; font-weight: bold; color: #53a; white-space: pre}
 .slide h1 code {font-weight: bold; color: #ff8b25; text-transform: none; font-size: 28pt;}
-.slide h1 .index { color: #333; margin: 8px 0 0 -0.5em; font-size: 5em; position: absolute; font-family: Century Schoolbook L, serif; z-index: -1; font-style: italic;}
+.slide h1 .index { color: #333; margin: 8px 0 0 -0.4em; font-size: 4em; position: absolute; font-family: Century Schoolbook L, serif; z-index: -1; font-style: italic;}
 .slide code.bad, code del {color: red;}
 .slide code.old {color: silver;}
 .slide pre {padding: 0; margin: 0.25em 0 0.5em 0.5em; color: #53a; font-size: 100%;}
@@ -41,8 +41,8 @@ div#footer {font-size: 0.3em; font-weight: bold; padding: 1em 0;color: #ccc; bor
 
 div.long {font-size: 0.75em;}
 .slide h1 {position: absolute; top: 0.5em; left: 4em; z-index: 1;
-  margin: 0; padding: 0.5em 0 0 50px; white-space: nowrap;
-  font: bold 110%/1em Verdana, Helvetica, sans-serif; 
+  margin: 0; padding: 0.5em 0 0 10px; white-space: nowrap;
+  font: italic 120%/1em Century Schoolbook L, Verdana, Helvetica, sans-serif; 
   color: #ff8b25; background: transparent;}
 .slide h3 {font-size: 130%;}
 h1 abbr {font-variant: small-caps;}
