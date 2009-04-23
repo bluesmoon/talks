@@ -9,10 +9,80 @@ CONFERENCE: <a href="http://conferences.percona.com/">Percona Performance is Eve
 -------------------------------
 [bg code_martial/1543735477_f302fdc3a3.jpg]
 - Philip Tellis
-- geek
+- geek / opensource developer
 - yahoo
 - <a href="http://twitter.com/bluesmoon">@bluesmoon</a>
 - <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
+%
+What's this talk all about?
+---------------------------
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
+- [class="light"] Find out what makes a website slow
+- [class="light"] Find out what to do to make it faster
+- [class="light"] List some tools
+- [class="light"] Show off pretty pictures from flickr
+%
+What's this talk all about?
+---------------------------
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
+- Find out what makes a website slow
+- [class="light"] Find out what to do to make it faster
+- [class="light"] List some tools
+- [class="light"] Show off pretty pictures from flickr
+%
+What's this talk all about?
+---------------------------
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
+- Find out what makes a website slow
+- Find out what to do to make it faster
+- [class="light"] List some tools
+- [class="light"] Show off pretty pictures from flickr
+%
+What's this talk all about?
+---------------------------
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
+- Find out what makes a website slow
+- Find out what to do to make it faster
+- List some tools
+- [class="light"] Show off pretty pictures from flickr
+%
+What's this talk all about?
+---------------------------
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
+- Find out what makes a website slow
+- Find out what to do to make it faster
+- List some tools
+- Show off pretty pictures from flickr
+%
+What's a website made of?
+-------------------------
+[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
+- [class="light"] Content (HTML)
+- [class="light"] Images/Flash
+- [class="light"] Style (CSS)
+- [class="light"] Interaction (Javascript)
+- [class="light"] A server farm below this
+- [class="light"] Maybe a database, Web services & CDN
+%
+What's a website made of?
+-------------------------
+[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
+- Content (HTML)
+- Images/Flash
+- [class="light"] Style (CSS)
+- [class="light"] Interaction (Javascript)
+- [class="light"] A server farm below this
+- [class="light"] Maybe a database, Web services & CDN
+%
+What's a website made of?
+-------------------------
+[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
+- Content (HTML)
+- Images/Flash
+- Style (CSS)
+- Interaction (Javascript)
+- [class="light"] A server farm below this
+- [class="light"] Maybe a database, Web services & CDN
 %
 What's a website made of?
 -------------------------
@@ -40,7 +110,52 @@ How do we fix it?
 - Return content as fast as possible
 - Reduce the size of content
 - Structure pages for performance
-- Cheat the DOM
+- Cheat
+%
+1. Fix it - reduce lookups
+------------------------------------
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
+- [class="light"] Reduce the number of domains
+- [class="light"] Avoid redirects
+- [class="light"] Combine CSS and Javascript files into a single file for each type
+- [class="light"] Combine decorative images into sprites
+- [class="light"] Cache aggressively
+%
+1. Fix it - reduce lookups
+------------------------------------
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
+- Reduce the number of domains
+- [class="light"] Avoid redirects
+- [class="light"] Combine CSS and Javascript files into a single file for each type
+- [class="light"] Combine decorative images into sprites
+- [class="light"] Cache aggressively
+%
+1. Fix it - reduce lookups
+------------------------------------
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
+- Reduce the number of domains
+- Avoid redirects
+- [class="light"] Combine CSS and Javascript files into a single file for each type
+- [class="light"] Combine decorative images into sprites
+- [class="light"] Cache aggressively
+%
+1. Fix it - reduce lookups
+------------------------------------
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
+- Reduce the number of domains
+- Avoid redirects
+- Combine CSS and Javascript files into a single file for each type
+- [class="light"] Combine decorative images into sprites
+- [class="light"] Cache aggressively
+%
+1. Fix it - reduce lookups
+------------------------------------
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
+- Reduce the number of domains
+- Avoid redirects
+- Combine CSS and Javascript files into a single file for each type
+- Combine decorative images into sprites
+- [class="light"] Cache aggressively
 %
 1. Fix it - reduce lookups
 ------------------------------------
@@ -54,11 +169,116 @@ How do we fix it?
 2. Fix it - be quick on the return
 ----------------------------------
 [bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
+- [class="light"] Get the first chunk of bytes out as soon as possible
+- [class="light"] Flush often
+- [class="light"] Don't bother your server with static content
+- [class="light"] Cache expensive back end calls, and use a front-end cache
+- [class="light"] Reduce MaxClients in apache
+%
+2. Fix it - be quick on the return
+----------------------------------
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
+- Get the first chunk of bytes out as soon as possible
+- [class="light"] Flush often
+- [class="light"] Don't bother your server with static content
+- [class="light"] Cache expensive back end calls, and use a front-end cache
+- [class="light"] Reduce MaxClients in apache
+%
+2. Fix it - be quick on the return
+----------------------------------
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
+- Get the first chunk of bytes out as soon as possible
+- Flush often
+- [class="light"] Don't bother your server with static content
+- [class="light"] Cache expensive back end calls, and use a front-end cache
+- [class="light"] Reduce MaxClients in apache
+%
+2. Fix it - be quick on the return
+----------------------------------
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
 - Get the first chunk of bytes out as soon as possible
 - Flush often
 - Don't bother your server with static content
-- Cache expensive back end calls
+- [class="light"] Cache expensive back end calls, and use a front-end cache
+- [class="light"] Reduce MaxClients in apache
+%
+2. Fix it - be quick on the return
+----------------------------------
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
+- Get the first chunk of bytes out as soon as possible
+- Flush often
+- Don't bother your server with static content
+- Cache expensive back end calls, and use a front-end cache
+- [class="light"] Reduce MaxClients in apache
+%
+2. Fix it - be quick on the return
+----------------------------------
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
+- Get the first chunk of bytes out as soon as possible
+- Flush often
+- Don't bother your server with static content
+- Cache expensive back end calls, and use a front-end cache
 - Reduce MaxClients in apache
+%
+3. Fix it - slim down
+---------------------
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
+- [class="light"] gzip content over the wire
+- [class="light"] Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
+- [class="light"] Avoid duplicate CSS and Javascript files
+- [class="light"] Reduce cookie size
+- [class="light"] Use a CDN
+- [class="light"] Post-load components
+%
+3. Fix it - slim down
+---------------------
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
+- gzip content over the wire
+- [class="light"] Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
+- [class="light"] Avoid duplicate CSS and Javascript files
+- [class="light"] Reduce cookie size
+- [class="light"] Use a CDN
+- [class="light"] Post-load components
+%
+3. Fix it - slim down
+---------------------
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
+- gzip content over the wire
+- Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
+- [class="light"] Avoid duplicate CSS and Javascript files
+- [class="light"] Reduce cookie size
+- [class="light"] Use a CDN
+- [class="light"] Post-load components
+%
+3. Fix it - slim down
+---------------------
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
+- gzip content over the wire
+- Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
+- Avoid duplicate CSS and Javascript files
+- [class="light"] Reduce cookie size
+- [class="light"] Use a CDN
+- [class="light"] Post-load components
+%
+3. Fix it - slim down
+---------------------
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
+- gzip content over the wire
+- Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
+- Avoid duplicate CSS and Javascript files
+- Reduce cookie size
+- [class="light"] Use a CDN
+- [class="light"] Post-load components
+%
+3. Fix it - slim down
+---------------------
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
+- gzip content over the wire
+- Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
+- Avoid duplicate CSS and Javascript files
+- Reduce cookie size
+- Use a CDN
+- [class="light"] Post-load components
 %
 3. Fix it - slim down
 ---------------------
@@ -73,11 +293,133 @@ How do we fix it?
 4. Fix it - restructure pages
 -----------------------------
 [bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
+- [class="light"] Put CSS at the top to avoid having to redraw the page later
+- [class="light"] Put Javascript at the bottom so that it doesn't block rendering
+- [class="light"] Avoid tables for layout
+- [class="light"] Delay loading of invisible content
+- [class="light"] Reduce the number of HTML elements
+%
+4. Fix it - restructure pages
+-----------------------------
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
+- Put CSS at the top to avoid having to redraw the page later
+- [class="light"] Put Javascript at the bottom so that it doesn't block rendering
+- [class="light"] Avoid tables for layout
+- [class="light"] Delay loading of invisible content
+- [class="light"] Reduce the number of HTML elements
+%
+4. Fix it - restructure pages
+-----------------------------
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
+- Put CSS at the top to avoid having to redraw the page later
+- Put Javascript at the bottom so that it doesn't block rendering
+- [class="light"] Avoid tables for layout
+- [class="light"] Delay loading of invisible content
+- [class="light"] Reduce the number of HTML elements
+%
+4. Fix it - restructure pages
+-----------------------------
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
+- Put CSS at the top to avoid having to redraw the page later
+- Put Javascript at the bottom so that it doesn't block rendering
+- Avoid tables for layout
+- [class="light"] Delay loading of invisible content
+- [class="light"] Reduce the number of HTML elements
+%
+4. Fix it - restructure pages
+-----------------------------
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
+- Put CSS at the top to avoid having to redraw the page later
+- Put Javascript at the bottom so that it doesn't block rendering
+- Avoid tables for layout
+- Delay loading of invisible content
+- [class="light"] Reduce the number of HTML elements
+%
+4. Fix it - restructure pages
+-----------------------------
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
 - Put CSS at the top to avoid having to redraw the page later
 - Put Javascript at the bottom so that it doesn't block rendering
 - Avoid tables for layout
 - Delay loading of invisible content
 - Reduce the number of HTML elements
+%
+5. Fix it - cheat the DOM
+-------------------------
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
+- [class="light"] Attach events on a container rather than on each element
+- [class="light"] Delay event attachment
+- [class="light"] Cache DOM elements and work on invisible elements
+- [class="light"] Reduce iterations on DOM elements
+- [class="light"] Use more specific, semantically correct HTML tags
+- [class="light"] Use local copies of global variables
+- [class="light"] Profile your Javascript (use <a href="http://developer.yahoo.com/yui/profiler/">YUI Profiler</a>)
+%
+5. Fix it - cheat the DOM
+-------------------------
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
+- Attach events on a container rather than on each element
+- [class="light"] Delay event attachment
+- [class="light"] Cache DOM elements and work on invisible elements
+- [class="light"] Reduce iterations on DOM elements
+- [class="light"] Use more specific, semantically correct HTML tags
+- [class="light"] Use local copies of global variables
+- [class="light"] Profile your Javascript (use <a href="http://developer.yahoo.com/yui/profiler/">YUI Profiler</a>)
+%
+5. Fix it - cheat the DOM
+-------------------------
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
+- Attach events on a container rather than on each element
+- Delay event attachment
+- [class="light"] Cache DOM elements and work on invisible elements
+- [class="light"] Reduce iterations on DOM elements
+- [class="light"] Use more specific, semantically correct HTML tags
+- [class="light"] Use local copies of global variables
+- [class="light"] Profile your Javascript (use <a href="http://developer.yahoo.com/yui/profiler/">YUI Profiler</a>)
+%
+5. Fix it - cheat the DOM
+-------------------------
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
+- Attach events on a container rather than on each element
+- Delay event attachment
+- Cache DOM elements and work on invisible elements
+- [class="light"] Reduce iterations on DOM elements
+- [class="light"] Use more specific, semantically correct HTML tags
+- [class="light"] Use local copies of global variables
+- [class="light"] Profile your Javascript (use <a href="http://developer.yahoo.com/yui/profiler/">YUI Profiler</a>)
+%
+5. Fix it - cheat the DOM
+-------------------------
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
+- Attach events on a container rather than on each element
+- Delay event attachment
+- Cache DOM elements and work on invisible elements
+- Reduce iterations on DOM elements
+- [class="light"] Use more specific, semantically correct HTML tags
+- [class="light"] Use local copies of global variables
+- [class="light"] Profile your Javascript (use <a href="http://developer.yahoo.com/yui/profiler/">YUI Profiler</a>)
+%
+5. Fix it - cheat the DOM
+-------------------------
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
+- Attach events on a container rather than on each element
+- Delay event attachment
+- Cache DOM elements and work on invisible elements
+- Reduce iterations on DOM elements
+- Use more specific, semantically correct HTML tags
+- [class="light"] Use local copies of global variables
+- [class="light"] Profile your Javascript (use <a href="http://developer.yahoo.com/yui/profiler/">YUI Profiler</a>)
+%
+5. Fix it - cheat the DOM
+-------------------------
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
+- Attach events on a container rather than on each element
+- Delay event attachment
+- Cache DOM elements and work on invisible elements
+- Reduce iterations on DOM elements
+- Use more specific, semantically correct HTML tags
+- Use local copies of global variables
+- [class="light"] Profile your Javascript (use <a href="http://developer.yahoo.com/yui/profiler/">YUI Profiler</a>)
 %
 5. Fix it - cheat the DOM
 -------------------------
@@ -93,6 +435,51 @@ How do we fix it?
 6. More tips
 ------------
 [bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
+- [class="light"] Preload expected content
+- [class="light"] Progressively enhance your pages
+- [class="light"] Try to send empty POST requests
+- [class="light"] Use &lt;link&gt; instead of @import and avoid CSS expressions
+- [class="light"] Avoid 404s and reduce IFRAMEs
+%
+6. More tips
+------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
+- Preload expected content
+- [class="light"] Progressively enhance your pages
+- [class="light"] Try to send empty POST requests
+- [class="light"] Use &lt;link&gt; instead of @import and avoid CSS expressions
+- [class="light"] Avoid 404s and reduce IFRAMEs
+%
+6. More tips
+------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
+- Preload expected content
+- Progressively enhance your pages
+- [class="light"] Try to send empty POST requests
+- [class="light"] Use &lt;link&gt; instead of @import and avoid CSS expressions
+- [class="light"] Avoid 404s and reduce IFRAMEs
+%
+6. More tips
+------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
+- Preload expected content
+- Progressively enhance your pages
+- Try to send empty POST requests
+- [class="light"] Use &lt;link&gt; instead of @import and avoid CSS expressions
+- [class="light"] Avoid 404s and reduce IFRAMEs
+%
+6. More tips
+------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
+- Preload expected content
+- Progressively enhance your pages
+- Try to send empty POST requests
+- Use &lt;link&gt; instead of @import and avoid CSS expressions
+- [class="light"] Avoid 404s and reduce IFRAMEs
+%
+6. More tips
+------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - Progressively enhance your pages
 - Try to send empty POST requests
@@ -104,6 +491,38 @@ YSlow
 - Firebug plugin to analyse pages for performance gotchas
 - <a href="http://developer.yahoo.com/yslow">http://developer.yahoo.com/yslow/</a>
 - Follow YSlow's advice to improve page performance
+%
+Closing notes
+-------------
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
+- [class="light"] Don't optimise prematurely.  Profile first.
+- [class="light"] Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
+- [class="light"] Performance is not the same as scalability, you probably need both.
+- [class="light"] KISS
+%
+Closing notes
+-------------
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
+- Don't optimise prematurely.  Profile first.
+- [class="light"] Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
+- [class="light"] Performance is not the same as scalability, you probably need both.
+- [class="light"] KISS
+%
+Closing notes
+-------------
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
+- Don't optimise prematurely.  Profile first.
+- Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
+- [class="light"] Performance is not the same as scalability, you probably need both.
+- [class="light"] KISS
+%
+Closing notes
+-------------
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
+- Don't optimise prematurely.  Profile first.
+- Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
+- Performance is not the same as scalability, you probably need both.
+- [class="light"] KISS
 %
 Closing notes
 -------------
@@ -127,6 +546,7 @@ Photo Credits
 [bg 25602112@N07/http://farm4.static.flickr.com/3244/2539754489_a20454a273_o_d.jpg]
 - [class="small-children"] Shouts to each photographer for these most excellent CC licensed photos:
    - <a href="http://flickr.com/photos/code_martial/1543735477/">http://flickr.com/photos/code\_martial/1543735477/</a>
+   - <a href="http://www.flickr.com/photos/justbecause/291874981/">http://www.flickr.com/photos/justbecause/291874981/</a>
    - <a href="http://flickr.com/photos/bounder/244867196/">http://flickr.com/photos/bounder/244867196/</a>
    - <a href="http://flickr.com/photos/fabiolarebello/206950948/">http://flickr.com/photos/fabiolarebello/206950948/</a>
    - <a href="http://flickr.com/photos/assbach/249609877/">http://flickr.com/photos/assbach/249609877/</a>
