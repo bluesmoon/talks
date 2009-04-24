@@ -99,13 +99,13 @@ sub parse_slides($$$$)
 		$slidetitle =~ s/^(\d+)([a-z]?)\. /<span class="index">$1<span class="subindex">$2<\/span><\/span>/;
 		(my $cleantitle = $slidetitle) =~ s/<[^>]+>//g;
 			 
-		if(m!\[bg ([\@\w]+)/(\w+)_(\w+)\.(jpg|png)\]!) {
+		if(m!\[bg ([\@\w]+)/(\w+?)_(\w+)\.(jpg|png)\]!) {
 			my $prefix = '';
 			if(($ROOT && -e "$ROOT/images/$2_$3.$4") || (!$ROOT && -e "images/$2_$3.$4")) {
 				$prefix = "../";
 			}
 			s!
-				\[bg\s([\@\w]+)/(\w+)_(\w+)\.(jpg|png)\]
+				\[bg\s([\@\w]+)/(\w+?)_(\w+)\.(jpg|png)\]
 			!<p class="bgimage"><a href="http://flickr.com/photos/$1/$2/" style="background-image: url('${prefix}images/$2_$3.$4');">flickr:$1/$2</a></p>!xig;
 		}
 		s!\[bg ([\@\w]+)/(http://farm\d\.[^/]+/\d+/)(\w+?)_(\w+)\.(jpg|png)\]!<p class="bgimage"><a href="http://flickr.com/photos/$1/$3/" style="background-image: url('$2$3_$4.$5');">flickr:$1/$3</a></p>!ig;
