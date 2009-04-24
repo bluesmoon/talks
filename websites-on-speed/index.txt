@@ -7,7 +7,7 @@ CONFERENCE: <a href="http://conferences.percona.com/">Percona Performance is Eve
 %
 <code>$ whoami</code>
 -------------------------------
-[bg code_martial/1543735477_f302fdc3a3.jpg]
+[bg code_martial/http://farm3.static.flickr.com/2323/1543735477_f302fdc3a3_b.jpg]
 - Philip Tellis
 - geek / opensource developer
 - yahoo
@@ -16,7 +16,7 @@ CONFERENCE: <a href="http://conferences.percona.com/">Percona Performance is Eve
 %
 What's this talk all about?
 ---------------------------
-[bg justbecause/291874981_c07e31288e_o.jpg]
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
 - [class="light"] Find out what makes a website slow
 - [class="light"] Find out what to do to make it faster
 - [class="light"] List some tools
@@ -24,7 +24,7 @@ What's this talk all about?
 %
 What's this talk all about?
 ---------------------------
-[bg justbecause/291874981_c07e31288e_o.jpg]
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
 - Find out what makes a website slow
 - [class="light"] Find out what to do to make it faster
 - [class="light"] List some tools
@@ -32,7 +32,7 @@ What's this talk all about?
 %
 What's this talk all about?
 ---------------------------
-[bg justbecause/291874981_c07e31288e_o.jpg]
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
 - Find out what makes a website slow
 - Find out what to do to make it faster
 - [class="light"] List some tools
@@ -40,7 +40,7 @@ What's this talk all about?
 %
 What's this talk all about?
 ---------------------------
-[bg justbecause/291874981_c07e31288e_o.jpg]
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
 - Find out what makes a website slow
 - Find out what to do to make it faster
 - List some tools
@@ -48,7 +48,7 @@ What's this talk all about?
 %
 What's this talk all about?
 ---------------------------
-[bg justbecause/291874981_c07e31288e_o.jpg]
+[bg justbecause/http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg]
 - Find out what makes a website slow
 - Find out what to do to make it faster
 - List some tools
@@ -56,7 +56,7 @@ What's this talk all about?
 %
 What's a website made of?
 -------------------------
-[bg bounder/244867196_7fcc862bbf_b.jpg]
+[bg bounder/http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg]
 - Content (HTML)
 - Images/Flash
 - Style (CSS)
@@ -66,7 +66,7 @@ What's a website made of?
 %
 Where does the time go?
 -----------------------
-[bg fabiolarebello/206950948_6c822f621f_b.jpg]
+[bg fabiolarebello/http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg]
 - DNS lookups & HTTP requests
 - Building pages
 - Downloading stuff
@@ -75,7 +75,7 @@ Where does the time go?
 %
 How do we fix it?
 -----------------
-[bg joe_gray/3292909762_587a1b1088_b.jpg]
+[bg joe_gray/http://farm4.static.flickr.com/3514/3292909762_587a1b1088_b.jpg]
 - Reduce lookups and connections
 - Return content as fast as possible
 - Reduce the size of content
@@ -84,7 +84,7 @@ How do we fix it?
 %
 1. Fix it - reduce lookups
 ------------------------------------
-[bg swanksalot/2453794337_4ddf3a984d_b.jpg]
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - [class="light"] Reduce the number of domains
 - [class="light"] Avoid redirects
    - <code>301, 302, location.href=...</code>
@@ -94,7 +94,7 @@ How do we fix it?
 %
 1. Fix it - reduce lookups
 ------------------------------------
-[bg swanksalot/2453794337_4ddf3a984d_b.jpg]
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - Reduce the number of domains
 - [class="light"] Avoid redirects
    - <code>301, 302, location.href=...</code>
@@ -104,7 +104,7 @@ How do we fix it?
 %
 1. Fix it - reduce lookups
 ------------------------------------
-[bg swanksalot/2453794337_4ddf3a984d_b.jpg]
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - Reduce the number of domains
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
@@ -114,7 +114,7 @@ How do we fix it?
 %
 1. Fix it - reduce lookups
 ------------------------------------
-[bg swanksalot/2453794337_4ddf3a984d_b.jpg]
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - Reduce the number of domains
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
@@ -124,7 +124,7 @@ How do we fix it?
 %
 1. Fix it - reduce lookups
 --------------------------
-[bg swanksalot/2453794337_4ddf3a984d_b.jpg]
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 Sample combo handler:
 <pre class="dark" style="padding:1em 0 0 1em;">
    <span style="color:#a52a2a;font-weight:bold;">$</span><span style="color:#008b8b;">combo</span> <span style="color:#a52a2a;font-weight:bold;">=</b></span> <span style="color:#008b8b;">preg_replace</span><span style="color:#6a5acd;">(</span>'<span style="color:#ff00ff;">/^.*\?/</span>', '', <span style="color:#a52a2a;font-weight:bold;">$</b></span><span style="color:#008b8b;">_SERVER</span><span style="color:#6a5acd;">[</span>'<span style="color:#ff00ff;">REQUEST_URI</span>'<span style="color:#6a5acd;">])</span>;
@@ -141,7 +141,7 @@ Sample combo handler:
 %
 1. Fix it - reduce lookups
 ------------------------------------
-[bg swanksalot/2453794337_4ddf3a984d_b.jpg]
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - Reduce the number of domains
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
@@ -151,7 +151,7 @@ Sample combo handler:
 %
 1. Fix it - reduce lookups
 ------------------------------------
-[bg swanksalot/2453794337_4ddf3a984d_b.jpg]
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - Reduce the number of domains
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
@@ -161,7 +161,7 @@ Sample combo handler:
 %
 1. Fix it - reduce lookups
 ------------------------------------
-[bg swanksalot/2453794337_4ddf3a984d_b.jpg]
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - Reduce the number of domains
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
@@ -171,7 +171,7 @@ Sample combo handler:
 %
 1. Fix it - reduce lookups
 ------------------------------------
-[bg swanksalot/2453794337_4ddf3a984d_b.jpg]
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 <pre class="dark">
    &lt;Location /static&gt;
       ExpiresActive	On
@@ -181,7 +181,7 @@ Sample combo handler:
 %
 2. Fix it - be quick on the return
 ----------------------------------
-[bg revdancatt/197037896_2551adb0dc_b.jpg]
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
 - [class="light"] Get the first chunk of bytes out as soon as possible
 - [class="light"] Flush often
 - [class="light"] Don't bother your server with static content
@@ -190,7 +190,7 @@ Sample combo handler:
 %
 2. Fix it - be quick on the return
 ----------------------------------
-[bg revdancatt/197037896_2551adb0dc_b.jpg]
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
 - Get the first chunk of bytes out as soon as possible
 - [class="light"] Flush often
 - [class="light"] Don't bother your server with static content
@@ -199,7 +199,7 @@ Sample combo handler:
 %
 2. Fix it - be quick on the return
 ----------------------------------
-[bg revdancatt/197037896_2551adb0dc_b.jpg]
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
 - Get the first chunk of bytes out as soon as possible
 - Flush often
 - [class="light"] Don't bother your server with static content
@@ -208,7 +208,7 @@ Sample combo handler:
 %
 2. Fix it - be quick on the return
 ----------------------------------
-[bg revdancatt/197037896_2551adb0dc_b.jpg]
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
 - Get the first chunk of bytes out as soon as possible
 - Flush often
 - Don't bother your server with static content
@@ -217,7 +217,7 @@ Sample combo handler:
 %
 2. Fix it - be quick on the return
 ----------------------------------
-[bg revdancatt/197037896_2551adb0dc_b.jpg]
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
 - Get the first chunk of bytes out as soon as possible
 - Flush often
 - Don't bother your server with static content
@@ -226,7 +226,7 @@ Sample combo handler:
 %
 2. Fix it - be quick on the return
 ----------------------------------
-[bg revdancatt/197037896_2551adb0dc_b.jpg]
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
 - Get the first chunk of bytes out as soon as possible
 - Flush often
 - Don't bother your server with static content
@@ -235,7 +235,7 @@ Sample combo handler:
 %
 3. Fix it - slim down
 ---------------------
-[bg frosted_peppercorn/481102393_ee5dd35c52_b.jpg]
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
 - [class="light"] gzip content over the wire
 - [class="light"] Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
 - [class="light"] Avoid duplicate CSS and Javascript files
@@ -245,7 +245,7 @@ Sample combo handler:
 %
 3. Fix it - slim down
 ---------------------
-[bg frosted_peppercorn/481102393_ee5dd35c52_b.jpg]
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
 - gzip content over the wire
 - [class="light"] Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
 - [class="light"] Avoid duplicate CSS and Javascript files
@@ -255,7 +255,7 @@ Sample combo handler:
 %
 3. Fix it - slim down
 ---------------------
-[bg frosted_peppercorn/481102393_ee5dd35c52_b.jpg]
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
 - gzip content over the wire
 - Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
 - [class="light"] Avoid duplicate CSS and Javascript files
@@ -265,7 +265,7 @@ Sample combo handler:
 %
 3. Fix it - slim down
 ---------------------
-[bg frosted_peppercorn/481102393_ee5dd35c52_b.jpg]
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
 - gzip content over the wire
 - Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
 - Avoid duplicate CSS and Javascript files
@@ -275,7 +275,7 @@ Sample combo handler:
 %
 3. Fix it - slim down
 ---------------------
-[bg frosted_peppercorn/481102393_ee5dd35c52_b.jpg]
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
 - gzip content over the wire
 - Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
 - Avoid duplicate CSS and Javascript files
@@ -285,7 +285,7 @@ Sample combo handler:
 %
 3. Fix it - slim down
 ---------------------
-[bg frosted_peppercorn/481102393_ee5dd35c52_b.jpg]
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
 - gzip content over the wire
 - Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
 - Avoid duplicate CSS and Javascript files
@@ -295,7 +295,7 @@ Sample combo handler:
 %
 3. Fix it - slim down
 ---------------------
-[bg frosted_peppercorn/481102393_ee5dd35c52_b.jpg]
+[bg frosted_peppercorn/http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg]
 - gzip content over the wire
 - Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) & Optimise images (use <a href="http://smush.it/">smush.it</a>)
 - Avoid duplicate CSS and Javascript files
@@ -305,7 +305,7 @@ Sample combo handler:
 %
 4. Fix it - restructure pages
 -----------------------------
-[bg bluesmoon/867742899_dd59f2373c_b.jpg]
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
 - [class="light"] Put CSS at the top to avoid having to redraw the page later
 - [class="light"] Put Javascript at the bottom so that it doesn't block rendering
 - [class="light"] Avoid tables for layout
@@ -314,7 +314,7 @@ Sample combo handler:
 %
 4. Fix it - restructure pages
 -----------------------------
-[bg bluesmoon/867742899_dd59f2373c_b.jpg]
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
 - Put CSS at the top to avoid having to redraw the page later
 - [class="light"] Put Javascript at the bottom so that it doesn't block rendering
 - [class="light"] Avoid tables for layout
@@ -323,7 +323,7 @@ Sample combo handler:
 %
 4. Fix it - restructure pages
 -----------------------------
-[bg bluesmoon/867742899_dd59f2373c_b.jpg]
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
 - Put CSS at the top to avoid having to redraw the page later
 - Put Javascript at the bottom so that it doesn't block rendering
 - [class="light"] Avoid tables for layout
@@ -332,7 +332,7 @@ Sample combo handler:
 %
 4. Fix it - restructure pages
 -----------------------------
-[bg bluesmoon/867742899_dd59f2373c_b.jpg]
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
 - Put CSS at the top to avoid having to redraw the page later
 - Put Javascript at the bottom so that it doesn't block rendering
 - Avoid tables for layout
@@ -341,7 +341,7 @@ Sample combo handler:
 %
 4. Fix it - restructure pages
 -----------------------------
-[bg bluesmoon/867742899_dd59f2373c_b.jpg]
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
 - Put CSS at the top to avoid having to redraw the page later
 - Put Javascript at the bottom so that it doesn't block rendering
 - Avoid tables for layout
@@ -350,7 +350,7 @@ Sample combo handler:
 %
 4. Fix it - restructure pages
 -----------------------------
-[bg bluesmoon/867742899_dd59f2373c_b.jpg]
+[bg bluesmoon/http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg]
 - Put CSS at the top to avoid having to redraw the page later
 - Put Javascript at the bottom so that it doesn't block rendering
 - Avoid tables for layout
@@ -359,7 +359,7 @@ Sample combo handler:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 - [class="light"] Attach events on a container rather than on each element
 - [class="light"] Delay event attachment
 - [class="light"] Cache DOM elements and work on invisible elements
@@ -370,7 +370,7 @@ Sample combo handler:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 - Attach events on a container rather than on each element
 - [class="light"] Delay event attachment
 - [class="light"] Cache DOM elements and work on invisible elements
@@ -381,7 +381,7 @@ Sample combo handler:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 - Attach events on a container rather than on each element
 - Delay event attachment
 - [class="light"] Cache DOM elements and work on invisible elements
@@ -392,7 +392,7 @@ Sample combo handler:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 - Attach events on a container rather than on each element
 - Delay event attachment
 - Cache DOM elements and work on invisible elements
@@ -403,7 +403,7 @@ Sample combo handler:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 - Attach events on a container rather than on each element
 - Delay event attachment
 - Cache DOM elements and work on invisible elements
@@ -414,7 +414,7 @@ Sample combo handler:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 - Attach events on a container rather than on each element
 - Delay event attachment
 - Cache DOM elements and work on invisible elements
@@ -425,7 +425,7 @@ Sample combo handler:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 Old code:
 <pre class="dark">
     <font color="#008b8b">&lt;</font><font color="#a52a2a"><b>div</b></font><font color="#008b8b">&gt;</font>
@@ -441,7 +441,7 @@ Old code:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 New code:
 <pre class="dark">
     <font color="#008b8b">&lt;</font><font color="#a52a2a"><b>ul</b></font><font color="#008b8b">&gt;</font>
@@ -457,7 +457,7 @@ New code:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 - Attach events on a container rather than on each element
 - Delay event attachment
 - Cache DOM elements and work on invisible elements
@@ -468,7 +468,7 @@ New code:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 - Attach events on a container rather than on each element
 - Delay event attachment
 - Cache DOM elements and work on invisible elements
@@ -479,7 +479,7 @@ New code:
 %
 5. Fix it - cheat the DOM
 -------------------------
-[bg matthewblack/2140930591_d53214c530_b.jpg]
+[bg matthewblack/http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg]
 - Attach events on a container rather than on each element
 - Delay event attachment
 - Cache DOM elements and work on invisible elements
@@ -490,7 +490,7 @@ New code:
 %
 6. More tips
 ------------
-[bg eagereyes/2624337393_0b43250b72_b.jpg]
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - [class="light"] Preload expected content
 - [class="light"] Progressively enhance your pages
 - [class="light"] Try to send empty POST requests
@@ -499,7 +499,7 @@ New code:
 %
 6. More tips
 ------------
-[bg eagereyes/2624337393_0b43250b72_b.jpg]
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - [class="light"] Progressively enhance your pages
 - [class="light"] Try to send empty POST requests
@@ -508,7 +508,7 @@ New code:
 %
 6. More tips
 ------------
-[bg eagereyes/2624337393_0b43250b72_b.jpg]
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - Progressively enhance your pages
 - [class="light"] Try to send empty POST requests
@@ -517,7 +517,7 @@ New code:
 %
 6. More tips
 ------------
-[bg eagereyes/2624337393_0b43250b72_b.jpg]
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - Progressively enhance your pages
 - Try to send empty POST requests
@@ -526,7 +526,7 @@ New code:
 %
 6. More tips
 ------------
-[bg eagereyes/2624337393_0b43250b72_b.jpg]
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - Progressively enhance your pages
 - Try to send empty POST requests
@@ -535,7 +535,7 @@ New code:
 %
 6. More tips
 ------------
-[bg eagereyes/2624337393_0b43250b72_b.jpg]
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - Progressively enhance your pages
 - Try to send empty POST requests
@@ -551,7 +551,7 @@ YSlow
 %
 Closing notes
 -------------
-[bg thetaleoflight/3362048052_f0e5b37444_b.jpg]
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
 - [class="light"] Don't optimise prematurely.  Profile first.
 - [class="light"] Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
 - [class="light"] Performance is not the same as scalability, you probably need both.
@@ -559,7 +559,7 @@ Closing notes
 %
 Closing notes
 -------------
-[bg thetaleoflight/3362048052_f0e5b37444_b.jpg]
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
 - Don't optimise prematurely.  Profile first.
 - [class="light"] Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
 - [class="light"] Performance is not the same as scalability, you probably need both.
@@ -567,7 +567,7 @@ Closing notes
 %
 Closing notes
 -------------
-[bg thetaleoflight/3362048052_f0e5b37444_b.jpg]
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
 - Don't optimise prematurely.  Profile first.
 - Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
 - [class="light"] Performance is not the same as scalability, you probably need both.
@@ -575,7 +575,7 @@ Closing notes
 %
 Closing notes
 -------------
-[bg thetaleoflight/3362048052_f0e5b37444_b.jpg]
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
 - Don't optimise prematurely.  Profile first.
 - Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
 - Performance is not the same as scalability, you probably need both.
@@ -583,7 +583,7 @@ Closing notes
 %
 Closing notes
 -------------
-[bg thetaleoflight/3362048052_f0e5b37444_b.jpg]
+[bg thetaleoflight/http://farm4.static.flickr.com/3608/3362048052_f0e5b37444_b.jpg]
 - Don't optimise prematurely.  Profile first.
 - Go for the low hanging fruit.  Configuration is cheaper than redevelopment.
 - Performance is not the same as scalability, you probably need both.
@@ -591,7 +591,7 @@ Closing notes
 %
 Credits
 -------
-[bg jackhynes/519904699_ba1a70c094_b.jpg]
+[bg jackhynes/http://farm1.static.flickr.com/192/519904699_ba1a70c094_b.jpg]
 - The following people were directly or indirectly involved in research leading to this content:
    - Stoyan Stefanov, Nicole Sullivan, Tenni Theurer, Wayne Shea,
    - Julien Lecompte, Iain Lamb, Philip Tellis, Subramanyan Murali,
@@ -600,7 +600,7 @@ Credits
 %
 Photo Credits
 -------------
-[bg 25602112@N07/2539754489_a20454a273_o_d.jpg]
+[bg 25602112@N07/http://farm4.static.flickr.com/3244/2539754489_a20454a273_o.jpg]
 - [class="small-children"] Shouts to each photographer for these most excellent CC licensed photos:
    - <a href="http://flickr.com/photos/code_martial/1543735477/">http://flickr.com/photos/code\_martial/1543735477/</a>
    - <a href="http://www.flickr.com/photos/justbecause/291874981/">http://www.flickr.com/photos/justbecause/291874981/</a>
