@@ -1,0 +1,223 @@
+TITLE: Developing with Yahoo! Pipes
+SUBTITLE: WebDU
+AUTHOR: Philip S Tellis
+DATE: 2009-05-21
+COMPANY: Yahoo! Inc
+CONFERENCE: <a href="http://www.webdu.com.au/">WebDU</a>
+%
+<code>$ whoami</code>
+-------------------------------
+[bg code_martial/1543735477_f302fdc3a3.jpg]
+- Philip Tellis
+- geek
+- yahoo
+- <a href="http://twitter.com/bluesmoon">@bluesmoon</a>
+- <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
+%
+[class="alert"] Do you like Unix Pipes?
+%
+[class="alert"] Do you deal with web services?
+%
+[class="alert"] Have you ever wished that you could pass the output of multiple web services through a unix pipe?
+%
+[class="alert"] Voilà: <a href="http://pipes.yahoo.com/">pipes.yahoo.com</a>
+%
+[class="alert"] Voilà: <a href="http://pipes.yahoo.com/">pipes.yahoo.com</a><br><small>(You need a Yahoo! Id)</small>
+%
+Nomenclature
+------------
+- <code>source</code>: your data source, similar to <code>cat</code> or <code>echo</code>.
+- <code>operator</code>: anything that operates on data.
+- <code>pipe</code>: a pipe of data from an operator or source to an operator or destination, same as <code>|</code>.
+- <code>output</code>: the last element in your pipe, this returns data to the user.
+%
+[bg jurvetson/855530042_262bb5c1fc.jpg]
+[class="alert"] Part I: Creating Pipes using the UI
+%
+1. A simple feed aggregator
+---------------------------
+- Create a fetch feed source
+- Give it a couple of feeds (eg: http://rss.slashdot.org/Slashdot/slashdot, http://digg.com/rss/index.xml)
+- Read the output as RSS
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] Let Pipes figure out the feed URL
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] Let Pipes figure out the feed URL<br>(use the Fetch Site Feed source)
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] limit it to 5 items only
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] limit it to 5 items only<br>(use Truncate)
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] Limit it to only 2 items per feed
+%
+2. Fetch photos from flickr
+---------------------------
+- Create a flickr source
+- Enter a tag
+- Read the output as RSS, or on a map, or as an image list
+%
+2. Fetch photos from flickr - configurable
+---------------------------
+- Make the tag user configurable
+- Add a string input
+- Connect it to the tag entry
+- Run the pipe
+%
+2. Fetch photos from flickr - url configurable
+----------------------------------------------
+- Get the feed URL for the pipe
+- Customise it
+%
+3. Loops
+--------
+[class="alert"] For each item in a feed, do something
+%
+3. Loops
+--------
+[class="alert"] Translate an English feed to French
+%
+3. Loops
+--------
+- Add a loop operator
+- Add a translation operator inside the loop
+- Select item.title for the input and output of the loop
+%
+5. BBC news in flickr
+---------------------
+- Fetch a news feed from news.bbc.co.uk
+- Use the term extractor to get tags from the feed
+- Pass these terms to the flickr input
+%
+5. BBC news in flickr
+---------------------
+[bg xiffy/3144579667_63ff470102_b.jpg]
+[class="alert"] Can we do this with a subpipe?
+%
+Pipes in the wild
+-----------------
+- <a href="http://www.readwriteweb.com/archives/the_ultimate_yahoo_pipes_list.php">Read Write Web's best</a>
+- <a href="http://pipes.yahoo.com/amoroso/quakescope">Quakescope</a>
+- <a href="http://www.xefer.com/2008/05/twitter">Twitter stats on a Google Chart</a>
+- <a href="http://www.iowaflood.com/">Iowa Flood</a>
+%
+[bg moriza/96724309_985b8acd3f.jpg]
+[class="alert"] Part II: Reading pipes in PHP
+%
+1. How do you read in a URL in PHP?
+-----------------------------------
+- I use curl
+%
+1. How do you read in a URL in PHP?
+-----------------------------------
+<pre class="dark">
+   \$url = 'http://pipes.yahoo.com/pipes/pipe.run?'
+		. '_id=vI7LxsJe3BGRHaLP6UjTQA&_render=php';
+
+   function fetchURL(\$url)
+   {
+   	\$ch = curl_init();
+   	curl_setopt(\$ch, CURLOPT_URL, \$url );
+   	curl_setopt(\$ch, CURLOPT_POST, 0 );
+   	curl_setopt(\$ch, CURLOPT_RETURNTRANSFER, 1);
+   	return curl_exec(\$ch);
+   }
+</pre>
+%
+1. How do you read in a URL in PHP?
+-----------------------------------
+<pre class="dark">
+   \$url = 'http://pipes.yahoo.com/pipes/pipe.run?'
+		. '_id=vI7LxsJe3BGRHaLP6UjTQA<em style="background-color:#ddd;">&_render=php</em>';
+
+   function fetchURL(\$url)
+   {
+   	\$ch = curl_init();
+   	curl_setopt(\$ch, CURLOPT_URL, \$url );
+   	curl_setopt(\$ch, CURLOPT_POST, 0 );
+   	curl_setopt(\$ch, CURLOPT_RETURNTRANSFER, 1);
+   	return curl_exec(\$ch);
+   }
+</pre>
+%
+1. How do you read in a URL in PHP?
+-----------------------------------
+<pre class="dark">
+   \$url = 'http://pipes.yahoo.com/pipes/pipe.run?'
+		. '_id=vI7LxsJe3BGRHaLP6UjTQA&_render=php';
+
+   function fetchURL(\$url)
+   {
+   	\$ch = curl_init();
+   	curl_setopt(\$ch, CURLOPT_URL, \$url );
+   	curl_setopt(\$ch, CURLOPT_POST, 0 );
+   	curl_setopt(\$ch, CURLOPT_RETURNTRANSFER, 1);
+   	return curl_exec(\$ch);
+   }
+
+   \$data = unserialize(fetchURL(\$url));
+</pre>
+%
+[class="alert"] Part III: YQL
+%
+What is YQL?
+------------
+- [class="lighter"]Yahoo! Query Language
+- [class="lighter"]SQL like interface to the web
+- [class="lighter"]<a href="http://developer.yahoo.com/yql/">http://developer.yahoo.com/yql/</a>
+%
+What is YQL?
+------------
+- Yahoo! Query Language
+- [class="lighter"]SQL like interface to the web
+- [class="lighter"]<a href="http://developer.yahoo.com/yql/">http://developer.yahoo.com/yql/</a>
+%
+What is YQL?
+------------
+- Yahoo! Query Language
+- SQL like interface to the web
+- [class="lighter"]<a href="http://developer.yahoo.com/yql/">http://developer.yahoo.com/yql/</a>
+%
+What is YQL?
+------------
+- Yahoo! Query Language
+- SQL like interface to the web
+- <a href="http://developer.yahoo.com/yql/">http://developer.yahoo.com/yql/</a>
+%
+YQL
+---
+- Combine all APIs on the Web into a single API!
+- Docs: <a href="http://developer.yahoo.com/yql">http://developer.yahoo.com/yql</a>
+- Public URL: <a href="http://query.yahooapis.com/v1/public/yql">http://query.yahooapis.com/v1/public/yql</a>
+- OAuth'ed URL: <a href="http://query.yahooapis.com/v1/yql">http://query.yahooapis.com/v1/yql</a>
+- Cool Console: <a href="http://developer.yahoo.com/yql/console/">http://developer.yahoo.com/yql/console/</a>
+%
+Fetch flickr photos using YQL
+-----------------------------
+<pre><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />\$url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"http://query.yahooapis.com/v1/public/yql?q="</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">\$q&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;flickr.photos.search(100)&nbsp;where&nbsp;text='webdu'"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">\$fmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"xml"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">\$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">simplexml_load_file</span><span style="color: #007700">(</span><span style="color: #0000BB">\$url</span><span style="color: #007700">.</span><span style="color: #0000BB">urlencode</span><span style="color: #007700">(</span><span style="color: #0000BB">\$q</span><span style="color: #007700">).</span><span style="color: #DD0000">"&amp;format=\$fmt"</span><span style="color: #007700">);<br /><br />foreach(</span><span style="color: #0000BB">\$x</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attributes</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.yahooapis.com/v1/base.rng'</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">\$k</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">\$v</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;\$</span><span style="color: #0000BB">\$k</span><span style="color: #007700">=(string)</span><span style="color: #0000BB">\$v</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;&lt;&lt;&lt;EOB<br /></span><span style="color: #0000BB">&nbsp;\$count&nbsp;photos&nbsp;fetched&nbsp;from<br />&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">\$x</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">diagnostics</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">url</span><span style="color: #007700">}</span><span style="color: #0000BB">&nbsp;in&nbsp;<br />&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">\$x</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">diagnostics</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">url</span><span style="color: #007700">[</span><span style="color: #DD0000">'execution-time'</span><span style="color: #007700">]}</span><span style="color: #0000BB">&nbsp;seconds&lt;br&gt;<br /></span><span style="color: #007700">EOB;<br /><br /></span><span style="color: #0000BB">\$flickr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"http://static.flickr.com/"</span><span style="color: #007700">;<br />foreach(</span><span style="color: #0000BB">\$x</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">results</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">photo&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">\$p</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;img&nbsp;src=\"\$flickr{\$p['server']}/{\$p['id']}_{\$p['secret']}_s.jpg\"/&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;<br /></span>
+</span>
+</pre>
+<a href="flickr-yql.php">Flickr photos with YQL</a>
+%
+Non-Yahoo! web services
+-----------------------
+<pre><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />\$yql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"http://query.yahooapis.com/v1/public/yql?q="</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">\$q&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"use&nbsp;'http://airports.pidgets.com/v1/tables.xml'&nbsp;as&nbsp;airports;"</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;airports(5)&nbsp;where&nbsp;near='Sydney'&nbsp;and&nbsp;direct_flights_min=20"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">\$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">simplexml_load_file</span><span style="color: #007700">(</span><span style="color: #0000BB">\$yql</span><span style="color: #007700">.</span><span style="color: #0000BB">urlencode</span><span style="color: #007700">(</span><span style="color: #0000BB">\$q</span><span style="color: #007700">).</span><span style="color: #DD0000">'&amp;format=xml'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;URLs&nbsp;accessed:&lt;/b&gt;&lt;br&gt;\n"</span><span style="color: #007700">;<br />foreach(</span><span style="color: #0000BB">\$x</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">diagnostics</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">url&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">\$u</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;a&nbsp;href=\"\$u\"&gt;\$u&lt;/a&gt;&lt;br&gt;\n"</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #DD0000">"&lt;br&gt;"</span><span style="color: #007700">;<br />foreach(</span><span style="color: #0000BB">\$x</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">results</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">airport&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">\$a</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;&lt;&lt;&lt;EOB<br /></span><span style="color: #0000BB">&nbsp;&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">\$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">code</span><span style="color: #007700">}</span><span style="color: #0000BB">&nbsp;&lt;a&nbsp;href="</span><span style="color: #007700">{</span><span style="color: #0000BB">\$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">url</span><span style="color: #007700">}</span><span style="color: #0000BB">"&gt;</span><span style="color: #007700">{</span><span style="color: #0000BB">\$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">}</span><span style="color: #0000BB">&lt;/a&gt;&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">\$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dist</span><span style="color: #007700">}</span><span style="color: #0000BB">km&lt;br&gt;<br /></span><span style="color: #007700">EOB;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>&nbsp;<br /></span>
+</pre>
+<a href="airports-yql.php">Airports near Sydney</a>
+%
+Thank you
+-----
+- <a href="http://pipes.yahoo.com/">pipes.yahoo.com</a>
+- <a href="http://developer.yahoo.com/yql/">http://developer.yahoo.com/yql/</a>
+%
