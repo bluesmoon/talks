@@ -8,7 +8,7 @@
 
 <meta name="generator" content="S5">
 <meta name="version" content="S5 1.1">
-<meta name="presdate" content="2009-04-23">
+<meta name="presdate" content="2009-05-25">
 <meta name="author" content="Philip S Tellis">
 <meta name="company" content="Yahoo! Inc"><!-- configuration parameters -->
 
@@ -32,7 +32,7 @@
 <div id="currentSlide"><!-- DO NOT EDIT --></div>
 <div id="header"></div>
 <div id="footer">
-<h1><a href="http://conferences.percona.com/">Percona Performance is Everything</a> - 2009-04-23</h1>
+<h1><a href="http://upcoming.yahoo.com/event/2570945/">Yahoo!7 Open Session</a> - 2009-05-25</h1>
 <h2>Websites on Speed</h2>
 </div>
 
@@ -45,7 +45,7 @@
 <h1>Websites on Speed</h1>
 <h3>Philip S Tellis</h3>
 <h4>Yahoo! Inc</h4>
-<h2>Percona Performance is Everything &bull; April 22-23, 2009 &bull; Santa Clara, CA</h2>
+<h2>Yahoo!7 &bull; May 25, 2009 &bull; Sydney, NSW, Australia</h2>
 </div>
 
 
@@ -68,41 +68,6 @@
 <h1>What's this talk all about?</h1>
 <p class="bgimage"><a href="http://flickr.com/photos/justbecause/291874981/" style="background-image: url('http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg');">flickr:justbecause/291874981</a></p>
 
-<ul>
-<li class="light"> Find out what makes a website slow</li>
-<li class="light"> Find out what to do to make it faster</li>
-<li class="light"> List some tools</li>
-<li class="light"> Show off pretty pictures from flickr</li>
-</ul>
-
-</div>
-
-
-<div class="slide">
-<h1>What's this talk all about?</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/justbecause/291874981/" style="background-image: url('http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg');">flickr:justbecause/291874981</a></p>
-
-<ul>
-<li>Find out what makes a website slow</li>
-<li class="light"> Find out what to do to make it faster</li>
-<li class="light"> List some tools</li>
-<li class="light"> Show off pretty pictures from flickr</li>
-</ul>
-
-</div>
-
-
-<div class="slide">
-<h1>What's this talk all about?</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/justbecause/291874981/" style="background-image: url('http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg');">flickr:justbecause/291874981</a></p>
-
-<ul>
-<li>Find out what makes a website slow</li>
-<li>Find out what to do to make it faster</li>
-<li class="light"> List some tools</li>
-<li class="light"> Show off pretty pictures from flickr</li>
-</ul>
-
 </div>
 
 
@@ -114,21 +79,6 @@
 <li>Find out what makes a website slow</li>
 <li>Find out what to do to make it faster</li>
 <li>List some tools</li>
-<li class="light"> Show off pretty pictures from flickr</li>
-</ul>
-
-</div>
-
-
-<div class="slide">
-<h1>What's this talk all about?</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/justbecause/291874981/" style="background-image: url('http://farm1.static.flickr.com/102/291874981_c07e31288e_o.jpg');">flickr:justbecause/291874981</a></p>
-
-<ul>
-<li>Find out what makes a website slow</li>
-<li>Find out what to do to make it faster</li>
-<li>List some tools</li>
-<li>Show off pretty pictures from flickr</li>
 </ul>
 
 </div>
@@ -136,8 +86,13 @@
 
 <div class="slide">
 <h1>What's a website made of?</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/bounder/244867196/" style="background-image: url('http://farm1.static.flickr.com/82/244867196_7fcc862bbf_b.jpg');">flickr:bounder/244867196</a></p>
+<p class="alert"> ...</p>
 
+</div>
+
+
+<div class="slide">
+<h1>What's a website made of?</h1>
 <ul>
 <li>Content (HTML)</li>
 <li>Images/Flash</li>
@@ -152,8 +107,6 @@
 
 <div class="slide">
 <h1>Where does the time go?</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/fabiolarebello/206950948/" style="background-image: url('http://farm1.static.flickr.com/79/206950948_6c822f621f_b.jpg');">flickr:fabiolarebello/206950948</a></p>
-
 <ul>
 <li>DNS lookups &amp; HTTP requests</li>
 <li>Building pages</li>
@@ -166,9 +119,85 @@
 
 
 <div class="slide">
-<h1>How do we fix it?</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/joe_gray/3292909762/" style="background-image: url('http://farm4.static.flickr.com/3514/3292909762_587a1b1088_b.jpg');">flickr:joe_gray/3292909762</a></p>
+<h1>How do we speed it up?</h1>
+<ul>
+<li>DNS lookups &amp; HTTP requests &raquo; <span class="light">Reduce lookups and connections</span></li>
+<li>Building pages &raquo; <span class="light">Return content as fast as possible</span></li>
+<li>Downloading stuff &raquo; <span class="light">Reduce the size of content</span></li>
+<li>Rendering stuff &raquo; <span class="light">Structure pages for performance</span></li>
+<li>User Interaction &raquo; <span class="light">Cheat</span></li>
+</ul>
 
+</div>
+
+
+<div class="slide">
+<h1>How do we speed it up?</h1>
+<ul>
+<li>DNS lookups &amp; HTTP requests &raquo; Reduce lookups and connections</li>
+<li>Building pages &raquo; <span class="light">Return content as fast as possible</span></li>
+<li>Downloading stuff &raquo; <span class="light">Reduce the size of content</span></li>
+<li>Rendering stuff &raquo; <span class="light">Structure pages for performance</span></li>
+<li>User Interaction &raquo; <span class="light">Cheat</span></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>How do we speed it up?</h1>
+<ul>
+<li>Reduce lookups and connections</li>
+<li>Building pages &raquo; Return content as fast as possible</li>
+<li>Downloading stuff &raquo; <span class="light">Reduce the size of content</span></li>
+<li>Rendering stuff &raquo; <span class="light">Structure pages for performance</span></li>
+<li>User Interaction &raquo; <span class="light">Cheat</span></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>How do we speed it up?</h1>
+<ul>
+<li>Reduce lookups and connections</li>
+<li>Return content as fast as possible</li>
+<li>Downloading stuff &raquo; Reduce the size of content</li>
+<li>Rendering stuff &raquo; <span class="light">Structure pages for performance</span></li>
+<li>User Interaction &raquo; <span class="light">Cheat</span></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>How do we speed it up?</h1>
+<ul>
+<li>Reduce lookups and connections</li>
+<li>Return content as fast as possible</li>
+<li>Reduce the size of content</li>
+<li>Rendering stuff &raquo; Structure pages for performance</li>
+<li>User Interaction &raquo; <span class="light">Cheat</span></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>How do we speed it up?</h1>
+<ul>
+<li>Reduce lookups and connections</li>
+<li>Return content as fast as possible</li>
+<li>Reduce the size of content</li>
+<li>Structure pages for performance</li>
+<li>User Interaction &raquo; Cheat</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>How do we speed it up?</h1>
 <ul>
 <li>Reduce lookups and connections</li>
 <li>Return content as fast as possible</li>
@@ -183,17 +212,6 @@
 <div class="slide">
 <h1><span class="index">1<span class="subindex"></span></span>Fix it - reduce lookups</h1>
 <p class="bgimage"><a href="http://flickr.com/photos/swanksalot/2453794337/" style="background-image: url('http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg');">flickr:swanksalot/2453794337</a></p>
-
-<ul>
-<li class="light"> Reduce the number of domains</li>
-<li class="light"> Avoid redirects
-<ul>
-<li><code>301, 302, location.href=...</code></li>
-</ul></li>
-<li class="light"> Combine CSS and Javascript files into a single file for each type</li>
-<li class="light"> Combine decorative images into sprites</li>
-<li class="light"> Cache aggressively</li>
-</ul>
 
 </div>
 
@@ -236,8 +254,6 @@
 
 <div class="slide">
 <h1><span class="index">1<span class="subindex"></span></span>Fix it - reduce lookups</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/swanksalot/2453794337/" style="background-image: url('http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg');">flickr:swanksalot/2453794337</a></p>
-
 <ul>
 <li>Reduce the number of domains</li>
 <li>Avoid redirects
@@ -254,8 +270,6 @@
 
 <div class="slide">
 <h1><span class="index">1<span class="subindex"></span></span>Fix it - reduce lookups</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/swanksalot/2453794337/" style="background-image: url('http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg');">flickr:swanksalot/2453794337</a></p>
-
 <p>Sample combo handler:</p>
 
 <pre class="dark" style="padding:1em 0 0 1em;">
@@ -276,8 +290,6 @@
 
 <div class="slide">
 <h1><span class="index">1<span class="subindex"></span></span>Fix it - reduce lookups</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/swanksalot/2453794337/" style="background-image: url('http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg');">flickr:swanksalot/2453794337</a></p>
-
 <ul>
 <li>Reduce the number of domains</li>
 <li>Avoid redirects
@@ -294,8 +306,6 @@
 
 <div class="slide">
 <h1><span class="index">1<span class="subindex"></span></span>Fix it - reduce lookups</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/swanksalot/2453794337/" style="background-image: url('http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg');">flickr:swanksalot/2453794337</a></p>
-
 <ul>
 <li>Reduce the number of domains</li>
 <li>Avoid redirects
@@ -303,7 +313,7 @@
 <li><code>301, 302, location.href=...</code></li>
 </ul></li>
 <li>Combine CSS and Javascript files into a single file for each type</li>
-<li>Combine decorative images into sprites</li>
+<li>Combine decorative images into <a href="http://www.csssprites.com/">sprites</a></li>
 <li class="light"> Cache aggressively</li>
 </ul>
 
@@ -312,8 +322,6 @@
 
 <div class="slide">
 <h1><span class="index">1<span class="subindex"></span></span>Fix it - reduce lookups</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/swanksalot/2453794337/" style="background-image: url('http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg');">flickr:swanksalot/2453794337</a></p>
-
 <ul>
 <li>Reduce the number of domains</li>
 <li>Avoid redirects
@@ -321,7 +329,7 @@
 <li><code>301, 302, location.href=...</code></li>
 </ul></li>
 <li>Combine CSS and Javascript files into a single file for each type</li>
-<li>Combine decorative images into sprites</li>
+<li>Combine decorative images into <a href="http://www.csssprites.com/">sprites</a></li>
 <li>Cache aggressively</li>
 </ul>
 
@@ -330,8 +338,6 @@
 
 <div class="slide">
 <h1><span class="index">1<span class="subindex"></span></span>Fix it - reduce lookups</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/swanksalot/2453794337/" style="background-image: url('http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg');">flickr:swanksalot/2453794337</a></p>
-
 <pre class="dark">
    &lt;Location /static&gt;
       ExpiresActive On
@@ -346,14 +352,6 @@
 <h1><span class="index">2<span class="subindex"></span></span>Fix it - be quick on the return</h1>
 <p class="bgimage"><a href="http://flickr.com/photos/revdancatt/197037896/" style="background-image: url('http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg');">flickr:revdancatt/197037896</a></p>
 
-<ul>
-<li class="light"> Get the first chunk of bytes out as soon as possible</li>
-<li class="light"> Flush often</li>
-<li class="light"> Don't bother your server with static content</li>
-<li class="light"> Cache expensive back end calls, and use a front-end cache</li>
-<li class="light"> Reduce MaxClients in apache</li>
-</ul>
-
 </div>
 
 
@@ -389,8 +387,6 @@
 
 <div class="slide">
 <h1><span class="index">2<span class="subindex"></span></span>Fix it - be quick on the return</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/revdancatt/197037896/" style="background-image: url('http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg');">flickr:revdancatt/197037896</a></p>
-
 <ul>
 <li>Get the first chunk of bytes out as soon as possible</li>
 <li>Flush often</li>
@@ -404,8 +400,6 @@
 
 <div class="slide">
 <h1><span class="index">2<span class="subindex"></span></span>Fix it - be quick on the return</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/revdancatt/197037896/" style="background-image: url('http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg');">flickr:revdancatt/197037896</a></p>
-
 <ul>
 <li>Get the first chunk of bytes out as soon as possible</li>
 <li>Flush often</li>
@@ -419,8 +413,30 @@
 
 <div class="slide">
 <h1><span class="index">2<span class="subindex"></span></span>Fix it - be quick on the return</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/revdancatt/197037896/" style="background-image: url('http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg');">flickr:revdancatt/197037896</a></p>
+<p><img src="images/caching.png" alt="Caching architecture"></p>
 
+<ul>
+<li>Cache expensive back end calls, and use a front-end cache</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Fix it - be quick on the return</h1>
+<ul>
+<li>Get the first chunk of bytes out as soon as possible</li>
+<li>Flush often</li>
+<li>Don't bother your server with static content</li>
+<li>Cache expensive back end calls, and use a front-end cache</li>
+<li class="light"> Reduce MaxClients in apache</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Fix it - be quick on the return</h1>
 <ul>
 <li>Get the first chunk of bytes out as soon as possible</li>
 <li>Flush often</li>
@@ -436,15 +452,6 @@
 <h1><span class="index">3<span class="subindex"></span></span>Fix it - slim down</h1>
 <p class="bgimage"><a href="http://flickr.com/photos/frosted_peppercorn/481102393/" style="background-image: url('http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg');">flickr:frosted_peppercorn/481102393</a></p>
 
-<ul>
-<li class="light"> gzip content over the wire</li>
-<li class="light"> Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) &amp; Optimise images (use <a href="http://smush.it/">smush.it</a>)</li>
-<li class="light"> Avoid duplicate CSS and Javascript files</li>
-<li class="light"> Reduce cookie size</li>
-<li class="light"> Use a CDN</li>
-<li class="light"> Post-load components</li>
-</ul>
-
 </div>
 
 
@@ -482,8 +489,6 @@
 
 <div class="slide">
 <h1><span class="index">3<span class="subindex"></span></span>Fix it - slim down</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/frosted_peppercorn/481102393/" style="background-image: url('http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg');">flickr:frosted_peppercorn/481102393</a></p>
-
 <ul>
 <li>gzip content over the wire</li>
 <li>Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) &amp; Optimise images (use <a href="http://smush.it/">smush.it</a>)</li>
@@ -498,8 +503,6 @@
 
 <div class="slide">
 <h1><span class="index">3<span class="subindex"></span></span>Fix it - slim down</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/frosted_peppercorn/481102393/" style="background-image: url('http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg');">flickr:frosted_peppercorn/481102393</a></p>
-
 <ul>
 <li>gzip content over the wire</li>
 <li>Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) &amp; Optimise images (use <a href="http://smush.it/">smush.it</a>)</li>
@@ -514,8 +517,6 @@
 
 <div class="slide">
 <h1><span class="index">3<span class="subindex"></span></span>Fix it - slim down</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/frosted_peppercorn/481102393/" style="background-image: url('http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg');">flickr:frosted_peppercorn/481102393</a></p>
-
 <ul>
 <li>gzip content over the wire</li>
 <li>Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) &amp; Optimise images (use <a href="http://smush.it/">smush.it</a>)</li>
@@ -530,8 +531,6 @@
 
 <div class="slide">
 <h1><span class="index">3<span class="subindex"></span></span>Fix it - slim down</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/frosted_peppercorn/481102393/" style="background-image: url('http://farm1.static.flickr.com/173/481102393_ee5dd35c52_b.jpg');">flickr:frosted_peppercorn/481102393</a></p>
-
 <ul>
 <li>gzip content over the wire</li>
 <li>Minify CSS and Javascript (use <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a>) &amp; Optimise images (use <a href="http://smush.it/">smush.it</a>)</li>
@@ -548,14 +547,6 @@
 <h1><span class="index">4<span class="subindex"></span></span>Fix it - restructure pages</h1>
 <p class="bgimage"><a href="http://flickr.com/photos/bluesmoon/867742899/" style="background-image: url('http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg');">flickr:bluesmoon/867742899</a></p>
 
-<ul>
-<li class="light"> Put CSS at the top to avoid having to redraw the page later</li>
-<li class="light"> Put Javascript at the bottom so that it doesn't block rendering</li>
-<li class="light"> Avoid tables for layout</li>
-<li class="light"> Delay loading of invisible content</li>
-<li class="light"> Reduce the number of HTML elements</li>
-</ul>
-
 </div>
 
 
@@ -591,8 +582,6 @@
 
 <div class="slide">
 <h1><span class="index">4<span class="subindex"></span></span>Fix it - restructure pages</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/bluesmoon/867742899/" style="background-image: url('http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg');">flickr:bluesmoon/867742899</a></p>
-
 <ul>
 <li>Put CSS at the top to avoid having to redraw the page later</li>
 <li>Put Javascript at the bottom so that it doesn't block rendering</li>
@@ -606,8 +595,6 @@
 
 <div class="slide">
 <h1><span class="index">4<span class="subindex"></span></span>Fix it - restructure pages</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/bluesmoon/867742899/" style="background-image: url('http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg');">flickr:bluesmoon/867742899</a></p>
-
 <ul>
 <li>Put CSS at the top to avoid having to redraw the page later</li>
 <li>Put Javascript at the bottom so that it doesn't block rendering</li>
@@ -621,8 +608,6 @@
 
 <div class="slide">
 <h1><span class="index">4<span class="subindex"></span></span>Fix it - restructure pages</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/bluesmoon/867742899/" style="background-image: url('http://farm2.static.flickr.com/1382/867742899_dd59f2373c_b.jpg');">flickr:bluesmoon/867742899</a></p>
-
 <ul>
 <li>Put CSS at the top to avoid having to redraw the page later</li>
 <li>Put Javascript at the bottom so that it doesn't block rendering</li>
@@ -638,16 +623,6 @@
 <h1><span class="index">5<span class="subindex"></span></span>Fix it - cheat the DOM</h1>
 <p class="bgimage"><a href="http://flickr.com/photos/matthewblack/2140930591/" style="background-image: url('http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg');">flickr:matthewblack/2140930591</a></p>
 
-<ul>
-<li class="light"> Attach events on a container rather than on each element</li>
-<li class="light"> Delay event attachment</li>
-<li class="light"> Cache DOM elements and work on invisible elements</li>
-<li class="light"> Reduce iterations on DOM elements</li>
-<li class="light"> Use more specific, semantically correct HTML tags</li>
-<li class="light"> Use local copies of global variables</li>
-<li class="light"> Profile your Javascript (use <a href="http://developer.yahoo.com/yui/profiler/">YUI Profiler</a>)</li>
-</ul>
-
 </div>
 
 
@@ -687,8 +662,6 @@
 
 <div class="slide">
 <h1><span class="index">5<span class="subindex"></span></span>Fix it - cheat the DOM</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/matthewblack/2140930591/" style="background-image: url('http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg');">flickr:matthewblack/2140930591</a></p>
-
 <ul>
 <li>Attach events on a container rather than on each element</li>
 <li>Delay event attachment</li>
@@ -704,8 +677,6 @@
 
 <div class="slide">
 <h1><span class="index">5<span class="subindex"></span></span>Fix it - cheat the DOM</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/matthewblack/2140930591/" style="background-image: url('http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg');">flickr:matthewblack/2140930591</a></p>
-
 <ul>
 <li>Attach events on a container rather than on each element</li>
 <li>Delay event attachment</li>
@@ -721,8 +692,6 @@
 
 <div class="slide">
 <h1><span class="index">5<span class="subindex"></span></span>Fix it - cheat the DOM</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/matthewblack/2140930591/" style="background-image: url('http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg');">flickr:matthewblack/2140930591</a></p>
-
 <ul>
 <li>Attach events on a container rather than on each element</li>
 <li>Delay event attachment</li>
@@ -738,8 +707,6 @@
 
 <div class="slide">
 <h1><span class="index">5<span class="subindex"></span></span>Fix it - cheat the DOM</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/matthewblack/2140930591/" style="background-image: url('http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg');">flickr:matthewblack/2140930591</a></p>
-
 <p>Old code:</p>
 
 <pre class="dark">
@@ -759,8 +726,6 @@
 
 <div class="slide">
 <h1><span class="index">5<span class="subindex"></span></span>Fix it - cheat the DOM</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/matthewblack/2140930591/" style="background-image: url('http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg');">flickr:matthewblack/2140930591</a></p>
-
 <p>New code:</p>
 
 <pre class="dark">
@@ -780,8 +745,6 @@
 
 <div class="slide">
 <h1><span class="index">5<span class="subindex"></span></span>Fix it - cheat the DOM</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/matthewblack/2140930591/" style="background-image: url('http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg');">flickr:matthewblack/2140930591</a></p>
-
 <ul>
 <li>Attach events on a container rather than on each element</li>
 <li>Delay event attachment</li>
@@ -797,8 +760,6 @@
 
 <div class="slide">
 <h1><span class="index">5<span class="subindex"></span></span>Fix it - cheat the DOM</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/matthewblack/2140930591/" style="background-image: url('http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg');">flickr:matthewblack/2140930591</a></p>
-
 <ul>
 <li>Attach events on a container rather than on each element</li>
 <li>Delay event attachment</li>
@@ -814,8 +775,6 @@
 
 <div class="slide">
 <h1><span class="index">5<span class="subindex"></span></span>Fix it - cheat the DOM</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/matthewblack/2140930591/" style="background-image: url('http://farm3.static.flickr.com/2122/2140930591_d53214c530_b.jpg');">flickr:matthewblack/2140930591</a></p>
-
 <ul>
 <li>Attach events on a container rather than on each element</li>
 <li>Delay event attachment</li>
@@ -833,14 +792,6 @@
 <h1><span class="index">6<span class="subindex"></span></span>More tips</h1>
 <p class="bgimage"><a href="http://flickr.com/photos/eagereyes/2624337393/" style="background-image: url('http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg');">flickr:eagereyes/2624337393</a></p>
 
-<ul>
-<li class="light"> Preload expected content</li>
-<li class="light"> Progressively enhance your pages</li>
-<li class="light"> Try to send empty POST requests</li>
-<li class="light"> Use &lt;link&gt; instead of @import and avoid CSS expressions</li>
-<li class="light"> Avoid 404s and reduce IFRAMEs</li>
-</ul>
-
 </div>
 
 
@@ -876,8 +827,6 @@
 
 <div class="slide">
 <h1><span class="index">6<span class="subindex"></span></span>More tips</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/eagereyes/2624337393/" style="background-image: url('http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg');">flickr:eagereyes/2624337393</a></p>
-
 <ul>
 <li>Preload expected content</li>
 <li>Progressively enhance your pages</li>
@@ -891,8 +840,6 @@
 
 <div class="slide">
 <h1><span class="index">6<span class="subindex"></span></span>More tips</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/eagereyes/2624337393/" style="background-image: url('http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg');">flickr:eagereyes/2624337393</a></p>
-
 <ul>
 <li>Preload expected content</li>
 <li>Progressively enhance your pages</li>
@@ -906,8 +853,6 @@
 
 <div class="slide">
 <h1><span class="index">6<span class="subindex"></span></span>More tips</h1>
-<p class="bgimage"><a href="http://flickr.com/photos/eagereyes/2624337393/" style="background-image: url('http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg');">flickr:eagereyes/2624337393</a></p>
-
 <ul>
 <li>Preload expected content</li>
 <li>Progressively enhance your pages</li>
@@ -925,7 +870,6 @@
 <li>Firebug plugin to analyse pages for performance gotchas</li>
 <li><a href="http://developer.yahoo.com/yslow">http://developer.yahoo.com/yslow/</a></li>
 <li>Follow YSlow's advice to improve page performance</li>
-<li>v2.0 coming soon</li>
 </ul>
 
 </div>
@@ -1010,7 +954,7 @@
 <ul>
 <li>Stoyan Stefanov, Nicole Sullivan, Tenni Theurer, Wayne Shea,</li>
 <li>Julien Lecompte, Iain Lamb, Philip Tellis, Subramanyan Murali,</li>
-<li>Nicholas Zakas, Jimmy Byrum</li>
+<li>Nicholas Zakas, Jimmy Byrum, Steve Souders</li>
 </ul></li>
 <li><a href="http://developer.yahoo.net/performance">http://developer.yahoo.net/performance</a></li>
 </ul>
@@ -1027,9 +971,6 @@
 <ul>
 <li><a href="http://flickr.com/photos/code_martial/1543735477/">http://flickr.com/photos/code_martial/1543735477/</a></li>
 <li><a href="http://www.flickr.com/photos/justbecause/291874981/">http://www.flickr.com/photos/justbecause/291874981/</a></li>
-<li><a href="http://flickr.com/photos/bounder/244867196/">http://flickr.com/photos/bounder/244867196/</a></li>
-<li><a href="http://flickr.com/photos/fabiolarebello/206950948/">http://flickr.com/photos/fabiolarebello/206950948/</a></li>
-<li><a href="http://www.flickr.com/photos/joe_gray/3292909762/">http://www.flickr.com/photos/joe_gray/3292909762/</a></li>
 <li><a href="http://flickr.com/photos/swanksalot/2453794337/">http://flickr.com/photos/swanksalot/2453794337/</a></li>
 <li><a href="http://flickr.com/photos/revdancatt/197037896/">http://flickr.com/photos/revdancatt/197037896/</a></li>
 <li><a href="http://flickr.com/photos/frosted_peppercorn/481102393/">http://flickr.com/photos/frosted_peppercorn/481102393/</a></li>
@@ -1040,6 +981,13 @@
 <li><a href="http://flickr.com/photos/25602112@N07/2539754489/">http://flickr.com/photos/25602112@N07/2539754489/</a></li>
 </ul></li>
 </ul>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Thank you</p>
 
 </div>
 
