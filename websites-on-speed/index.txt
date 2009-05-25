@@ -109,7 +109,7 @@ How do we speed it up?
 1. Fix it - reduce lookups
 ------------------------------------
 [bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
-- Reduce the number of domains
+- Reduce the number of domains (2-4)
 - [class="light"] Avoid redirects
    - <code>301, 302, location.href=...</code>
 - [class="light"] Combine CSS and Javascript files into a single file for each type
@@ -119,7 +119,7 @@ How do we speed it up?
 1. Fix it - reduce lookups
 ------------------------------------
 [bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
-- Reduce the number of domains
+- Reduce the number of domains (2-4)
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
 - [class="light"] Combine CSS and Javascript files into a single file for each type
@@ -128,7 +128,7 @@ How do we speed it up?
 %
 1. Fix it - reduce lookups
 ------------------------------------
-- Reduce the number of domains
+- Reduce the number of domains (2-4)
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
 - Combine CSS and Javascript files into a single file for each type
@@ -153,7 +153,7 @@ Sample combo handler:
 %
 1. Fix it - reduce lookups
 ------------------------------------
-- Reduce the number of domains
+- Reduce the number of domains (2-4)
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
 - Combine CSS and Javascript files into a single file for each type
@@ -162,7 +162,7 @@ Sample combo handler:
 %
 1. Fix it - reduce lookups
 ------------------------------------
-- Reduce the number of domains
+- Reduce the number of domains (2-4)
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
 - Combine CSS and Javascript files into a single file for each type
@@ -171,7 +171,7 @@ Sample combo handler:
 %
 1. Fix it - reduce lookups
 ------------------------------------
-- Reduce the number of domains
+- Reduce the number of domains (2-4)
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
 - Combine CSS and Javascript files into a single file for each type
@@ -186,6 +186,15 @@ Sample combo handler:
       ExpiresDefault	"access plus 1 year"
    &lt;/Location&gt;
 </pre>
+%
+1. Fix it - reduce lookups
+------------------------------------
+- Reduce the number of domains (2-4)
+- Avoid redirects
+   - <code>301, 302, location.href=...</code>
+- Combine CSS and Javascript files into a single file for each type
+- Combine decorative images into <a href="http://www.csssprites.com/">sprites</a>
+- Cache aggressively
 %
 2. Fix it - be quick on the return
 ----------------------------------
@@ -481,6 +490,7 @@ New code:
 - [class="light"] Try to send empty POST requests
 - [class="light"] Use &lt;link&gt; instead of @import and avoid CSS expressions
 - [class="light"] Avoid 404s and reduce IFRAMEs
+- [class="light"] Turn off <code>.htaccess</code>
 %
 6. More tips
 ------------
@@ -490,6 +500,7 @@ New code:
 - [class="light"] Try to send empty POST requests
 - [class="light"] Use &lt;link&gt; instead of @import and avoid CSS expressions
 - [class="light"] Avoid 404s and reduce IFRAMEs
+- [class="light"] Turn off <code>.htaccess</code>
 %
 6. More tips
 ------------
@@ -498,6 +509,7 @@ New code:
 - Try to send empty POST requests
 - [class="light"] Use &lt;link&gt; instead of @import and avoid CSS expressions
 - [class="light"] Avoid 404s and reduce IFRAMEs
+- [class="light"] Turn off <code>.htaccess</code>
 %
 6. More tips
 ------------
@@ -506,6 +518,7 @@ New code:
 - Try to send empty POST requests
 - Use &lt;link&gt; instead of @import and avoid CSS expressions
 - [class="light"] Avoid 404s and reduce IFRAMEs
+- [class="light"] Turn off <code>.htaccess</code>
 %
 6. More tips
 ------------
@@ -514,12 +527,33 @@ New code:
 - Try to send empty POST requests
 - Use &lt;link&gt; instead of @import and avoid CSS expressions
 - Avoid 404s and reduce IFRAMEs
+- [class="light"] Turn off <code>.htaccess</code>
+%
+6. More tips
+------------
+- Preload expected content
+- Progressively enhance your pages
+- Try to send empty POST requests
+- Use &lt;link&gt; instead of @import and avoid CSS expressions
+- Avoid 404s and reduce IFRAMEs
+- Turn off <code>.htaccess</code>
 %
 YSlow
 -----
 - Firebug plugin to analyse pages for performance gotchas
 - <a href="http://developer.yahoo.com/yslow">http://developer.yahoo.com/yslow/</a>
 - Follow YSlow's advice to improve page performance
+- Try Sergey Chernyshev's <a href="http://www.showslow.com/">ShowSlow</a> to automate YSlow usage
+%
+Tools
+-----
+[bg jeffwerner/http://farm1.static.flickr.com/123/329401643_b07aaed4de_b.jpg]
+- YSlow: <a href="http://developer.yahoo.com/yslow/">developer.yahoo.com/yslow/</a>
+- SmushIt: <a href="http://smushit.com/">smushit.com</a>
+- CSS Sprites: <a href="http://www.csssprites.com/">csssprites.com</a>
+- YUI Profiler: <a href="http://developer.yahoo.com/yui/profiler/">developer.yahoo.com/yui/profiler/</a>
+- ShowSlow: <a href="http://www.showslow.com/">showslow.com</a>
+- Webpage Test: <a href="http://webpagetest.org/">webpagetest.org</a>
 %
 Closing notes
 -------------
@@ -581,6 +615,7 @@ Photo Credits
    - <a href="http://flickr.com/photos/frosted_peppercorn/481102393/">http://flickr.com/photos/frosted\_peppercorn/481102393/</a>
    - <a href="http://flickr.com/photos/matthewblack/2140930591/">http://flickr.com/photos/matthewblack/2140930591/</a>
    - <a href="http://flickr.com/photos/eagereyes/2624337393/">http://flickr.com/photos/eagereyes/2624337393/</a>
+   - <a href="http://flickr.com/photos/jeffwerner/329401643/">http://flickr.com/photos/jeffwerner/329401643/</a>
    - <a href="http://flickr.com/photos/thetaleoflight/3362048052/">http://flickr.com/photos/thetaleoflight/3362048052/</a>
    - <a href="http://flickr.com/photos/jackhynes/519904699/">http://flickr.com/photos/jackhynes/519904699/</a>
    - <a href="http://flickr.com/photos/25602112@N07/2539754489/">http://flickr.com/photos/25602112@N07/2539754489/</a>
