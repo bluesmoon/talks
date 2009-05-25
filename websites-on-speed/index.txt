@@ -102,11 +102,11 @@ How do we speed it up?
 - Structure pages for performance
 - Cheat
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 ------------------------------------
 [bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 ------------------------------------
 [bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - Reduce the number of domains (2-4)
@@ -116,7 +116,7 @@ How do we speed it up?
 - [class="light"] Combine decorative images into sprites
 - [class="light"] Cache aggressively
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 ------------------------------------
 [bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - Reduce the number of domains (2-4)
@@ -126,8 +126,9 @@ How do we speed it up?
 - [class="light"] Combine decorative images into sprites
 - [class="light"] Cache aggressively
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 ------------------------------------
+[bg swanksalot/http://farm3.static.flickr.com/2417/2453794337_4ddf3a984d_b.jpg]
 - Reduce the number of domains (2-4)
 - Avoid redirects
    - <code>301, 302, location.href=...</code>
@@ -135,7 +136,7 @@ How do we speed it up?
 - [class="light"] Combine decorative images into sprites
 - [class="light"] Cache aggressively
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 --------------------------
 Sample combo handler:
 <pre class="dark" style="padding:1em 0 0 1em;">
@@ -151,7 +152,7 @@ Sample combo handler:
    <span style="color:#6a5acd;">}</span>
 </pre>
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 ------------------------------------
 - Reduce the number of domains (2-4)
 - Avoid redirects
@@ -160,7 +161,7 @@ Sample combo handler:
 - [class="light"] Combine decorative images into sprites
 - [class="light"] Cache aggressively
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 ------------------------------------
 - Reduce the number of domains (2-4)
 - Avoid redirects
@@ -169,7 +170,7 @@ Sample combo handler:
 - Combine decorative images into <a href="http://www.csssprites.com/">sprites</a>
 - [class="light"] Cache aggressively
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 ------------------------------------
 - Reduce the number of domains (2-4)
 - Avoid redirects
@@ -178,7 +179,7 @@ Sample combo handler:
 - Combine decorative images into <a href="http://www.csssprites.com/">sprites</a>
 - Cache aggressively
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 ------------------------------------
 <pre class="dark">
    &lt;Location /static&gt;
@@ -187,7 +188,7 @@ Sample combo handler:
    &lt;/Location&gt;
 </pre>
 %
-1. Fix it - reduce lookups
+1. Fix it - reduce lookups & connections
 ------------------------------------
 - Reduce the number of domains (2-4)
 - Avoid redirects
@@ -220,6 +221,7 @@ Sample combo handler:
 %
 2. Fix it - be quick on the return
 ----------------------------------
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
 - Get the first chunk of bytes out as soon as possible
 - Flush often
 - Don't bother your server with static content
@@ -228,6 +230,7 @@ Sample combo handler:
 %
 2. Fix it - be quick on the return
 ----------------------------------
+[bg revdancatt/http://farm1.static.flickr.com/67/197037896_2551adb0dc_b.jpg]
 - Get the first chunk of bytes out as soon as possible
 - Flush often
 - Don't bother your server with static content
@@ -504,6 +507,7 @@ New code:
 %
 6. More tips
 ------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - Progressively enhance your pages
 - Try to send empty POST requests
@@ -513,6 +517,7 @@ New code:
 %
 6. More tips
 ------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - Progressively enhance your pages
 - Try to send empty POST requests
@@ -522,6 +527,7 @@ New code:
 %
 6. More tips
 ------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - Progressively enhance your pages
 - Try to send empty POST requests
@@ -531,6 +537,7 @@ New code:
 %
 6. More tips
 ------------
+[bg eagereyes/http://farm4.static.flickr.com/3221/2624337393_0b43250b72_b.jpg]
 - Preload expected content
 - Progressively enhance your pages
 - Try to send empty POST requests
