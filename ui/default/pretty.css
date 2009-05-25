@@ -88,7 +88,7 @@ li:after {content: " [" attr(class) "]"; color: #F88;}
  */
 .light, .light code, .light a, .light em { color: #ddd; }
 .lighter, .lighter code, .lighter a, .lighter em { color: #eee; }
-.alert {font-size: 1.8em; margin-top: 1em; padding-top: 2em; text-align: center; background-color: white; opacity: 0.8; -moz-border-radius: 30px; min-height: 300px;}
+.alert {font-family: Century Schoolbook L; font-size: 1.8em; margin-top: 1em; padding-top: 2em; text-align: center; background-color: white; opacity: 0.8; -moz-border-radius: 30px; min-height: 300px;}
 em { color: #28d; }
 p.bgimage a, div.bgimage { position: absolute; right: 0; font-size: 0.8em; text-align: center; z-index: -1; }
 p.bgimage a { width: 99%; height: 0; padding-top: 768px; margin: 0; background-repeat: no-repeat; background-position: top right; border-top: solid 1px #ff8b25; }
