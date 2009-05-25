@@ -37,7 +37,7 @@ Nomenclature
 1. A simple feed aggregator
 ---------------------------
 - Create a fetch feed source
-- Give it a couple of feeds (eg: http://rss.slashdot.org/Slashdot/slashdot, http://digg.com/rss/index.xml)
+- Give it a couple of feeds (eg: <a href="http://rss.slashdot.org/Slashdot/slashdot">http://rss.slashdot.org/Slashdot/slashdot</a>, <a href="http://digg.com/rss/index.xml">http://digg.com/rss/index.xml</a>)
 - Read the output as RSS
 %
 1. A simple feed aggregator
@@ -113,11 +113,11 @@ Pipes in the wild
 [bg moriza/96724309_985b8acd3f.jpg]
 [class="alert"] Part II: Reading pipes in PHP
 %
-1. How do you read in a URL in PHP?
+How do you read in a URL in PHP?
 -----------------------------------
 - I use curl
 %
-1. How do you read in a URL in PHP?
+How do you read in a URL in PHP?
 -----------------------------------
 <pre class="dark">
    \$url = 'http://pipes.yahoo.com/pipes/pipe.run?'
@@ -133,7 +133,7 @@ Pipes in the wild
    }
 </pre>
 %
-1. How do you read in a URL in PHP?
+How do you read in a URL in PHP?
 -----------------------------------
 <pre class="dark">
    \$url = 'http://pipes.yahoo.com/pipes/pipe.run?'
@@ -149,7 +149,7 @@ Pipes in the wild
    }
 </pre>
 %
-1. How do you read in a URL in PHP?
+How do you read in a URL in PHP?
 -----------------------------------
 <pre class="dark">
    \$url = 'http://pipes.yahoo.com/pipes/pipe.run?'
@@ -219,5 +219,5 @@ Non-Yahoo! web services
 Thank you
 -----
 - <a href="http://pipes.yahoo.com/">pipes.yahoo.com</a>
-- <a href="http://developer.yahoo.com/yql/">http://developer.yahoo.com/yql/</a>
+- <a href="http://developer.yahoo.com/yql/">developer.yahoo.com/yql/</a>
 %
