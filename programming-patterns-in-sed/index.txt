@@ -187,7 +187,7 @@ A useful structured programming language
    this is line #5
 </pre>
 %
-2. Selection - Sample input
+2. Selection - Sample output
 ------------
 [bg kt/1118569929_d84e822d94_b.jpg]
 <pre class="dark">
@@ -329,7 +329,7 @@ xxxxxxxxxx
 3c. Iteration - fixed counter
 -----------------
 [bg bluesmoon/241327100_fbd21e8cef_b.jpg]
-[class="alert"] Avoid fixed counter for loops in sed.  They can most often be replaced with an entry controlled loop over real data
+[class="alert"] Avoid fixed counter for loops in sed.  They can most often be replaced with an entry controlled loop over real data or a more general purpose programming language
 %
 4. Variable<strike>s</strike>
 ------------
@@ -401,14 +401,12 @@ xxxxxxxxxx
 4. Variable<strike>s</strike> - key/value pairs
 ------------
 <pre class="dark">
-  1 {
-	x
-	s/$/\nname:/
-	G
-	s/name:\n/name:/
-	s/$/\n/
-	x
-  }
+   x
+   s/$/\nname:/
+   G
+   s/name:\n/name:/
+   s/$/\n/
+   x
 
   <a href="variables1.sed">variables1.sed</a>
 </pre>
@@ -416,7 +414,7 @@ xxxxxxxxxx
 5. Debugging
 ------------
 - Two commands to make debugging possible
-- <code>l</code>: print out current hold space in a visually unambiguous way
+- <code>l</code>: (lowercase L) print out current hold space in a visually unambiguous way
 - <code>=</code>: print out the current input line number
 - Use the <code>x</code> command to swap the pattern and hold space to examine the hold space
 %
@@ -448,7 +446,7 @@ xxxxxxxxxx
 %
 Gaming
 ------
-- No language is considered complete until you can write games with it
+- No language is complete until you can write games with it
 - <a href="http://uuner.doslash.org/forfun/sedtris.sed">sedtris</a>
 %
 Photo Credits
@@ -463,7 +461,7 @@ Photo Credits
 %
 Links
 ----
-- Slides: <a href="http://bluesmoon.github.com/talks/programming-patterns-in-sed/">bluesmoon.github.com/talks/programming-patterns-in-sed</a>
-- Detailed writeup: <a href="http://tech.bluesmoon.info/2008/09/programming-patterns-in-sed.html">tech.bluesmoon.info/2008/09/programming-patterns-in-sed.html</a>
+- <a href="http://bluesmoon.github.com/talks/programming-patterns-in-sed/">bluesmoon.github.com/talks/programming-patterns-in-sed</a>
+- <a href="http://tech.bluesmoon.info/2008/09/programming-patterns-in-sed.html">tech.bluesmoon.info/2008/09/programming-patterns-in-sed.html</a>
 %
 [class="alert"] Thank you
