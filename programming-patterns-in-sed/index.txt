@@ -70,6 +70,11 @@ Stream EDiting
 %
 [class="alert"] Enough history, where be dem Patterns???
 %
+Prerequisites
+-------------
+- You should already know a little sed
+- You should know how to RTFM when in doubt
+%
 Is it an editor or a programming language?
 -------------------
 [bg mamk/2377536817_4d0cd7d48a_b.jpg]
@@ -455,5 +460,10 @@ Photo Credits
    - <a href="http://www.flickr.com/photos/adobemac/2895835834/">http://www.flickr.com/photos/adobemac/2895835834/</a>
    - <a href="http://www.flickr.com/photos/kt/1118569929/">http://www.flickr.com/photos/kt/1118569929/</a>
    - <a href="http://flickr.com/photos/25602112@N07/2539754489/">http://flickr.com/photos/25602112@N07/2539754489/</a>
+%
+Links
+----
+- Slides: <a href="http://bluesmoon.github.com/talks/programming-patterns-in-sed/">bluesmoon.github.com/talks/programming-patterns-in-sed</a>
+- Detailed writeup: <a href="http://tech.bluesmoon.info/2008/09/programming-patterns-in-sed.html">tech.bluesmoon.info/2008/09/programming-patterns-in-sed.html</a>
 %
 [class="alert"] Thank you
