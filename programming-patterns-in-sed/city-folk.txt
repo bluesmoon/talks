@@ -1,0 +1,17 @@
+City: Portland
+Harry
+Tom
+Johnny
+Bob
+City: San Francisco
+Rasmus
+Philip
+Dustin
+Tara
+City: New York
+Chris
+Jenny
+Rhea
+City: Denver
+Nathan
+Diane

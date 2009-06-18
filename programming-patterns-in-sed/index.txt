@@ -292,10 +292,164 @@ A useful structured programming language
    T loopstart
 </pre>
 %
+3c. Iteration - fixed counter
+----------------------------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+- <code>for(counter) {...}</code> - loop executed exactly <code>counter</code> times
+- No math in sed
+- This is harder and ugly
+- We need to use the Hold space
+%
+3c. Iteration -fixed counter
+---------------------------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+<pre class="dark">
+   # Print the current line 10 times:
+
+   # 1. Grab the current line into the hold space
+   h
+   # 2. Replace the pattern space with x based on what we want to count to
+   c \
+xxxxxxxxxx
+   # 3. Print the line as long as there are x left:
+   :loopstart
+      s/^x//
+      T loopend
+      x
+      p
+      x
+   b loopstart
+</pre>
+%
+3c. Iteration - fixed counter
+-----------------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+[class="alert"] Avoid fixed counter for loops in sed.  They can most often be replaced with an entry controlled loop over real data
+%
+4. Variable<strike>s</strike>
+------------
+- An area in memory that can store variable data while the program executes
+- [class="light"] The Hold space
+- [class="light"] Only one exists
+- [class="light"] Theoretically no size limit
+- [class="light"] Simulate multiple variables using delimiters, key-value pairs perhaps
+- [class="light"] Anyone want to try JSON?
+%
+4. Variable<strike>s</strike>
+------------
+- An area in memory that can store variable data while the program executes
+- The Hold space
+- [class="light"] Only one exists
+- [class="light"] Theoretically no size limit
+- [class="light"] Simulate multiple variables using delimiters, key-value pairs perhaps
+- [class="light"] Anyone want to try JSON?
+%
+4. Variable<strike>s</strike>
+------------
+- An area in memory that can store variable data while the program executes
+- The Hold space
+- Only one exists
+- [class="light"] Theoretically no size limit
+- [class="light"] Simulate multiple variables using delimiters, key-value pairs perhaps
+- [class="light"] Anyone want to try JSON?
+%
+4. Variable<strike>s</strike>
+------------
+- An area in memory that can store variable data while the program executes
+- The Hold space
+- Only one exists
+- Theoretically no size limit
+- [class="light"] Simulate multiple variables using delimiters, key-value pairs perhaps
+- [class="light"] Anyone want to try JSON?
+%
+4. Variable<strike>s</strike>
+------------
+- An area in memory that can store variable data while the program executes
+- The Hold space
+- Only one exists
+- Theoretically no size limit
+- Simulate multiple variables using delimiters, key-value pairs perhaps
+- [class="light"] Anyone want to try JSON?
+%
+4. Variable<strike>s</strike>
+------------
+- An area in memory that can store variable data while the program executes
+- The Hold space
+- Only one exists
+- Theoretically no size limit
+- Simulate multiple variables using delimiters, key-value pairs perhaps
+- Anyone want to try JSON?
+%
+4. Variable<strike>s</strike>
+------------
+<pre class="dark">
+   # 1. Swap the hold and pattern space
+   x
+   # 2. Set the pattern space to the value of your variable
+   #    using the s, c, i, a, g or G commands:
+   s/$/\nfoo\n/
+   G
+   # 3. Swap the hold and pattern space again
+   x
+</pre>
+%
+4. Variable<strike>s</strike> - key/value pairs
+------------
+<pre class="dark">
+  1 {
+	x
+	s/$/\nname:/
+	G
+	s/name:\n/name:/
+	s/$/\n/
+	x
+  }
+
+  <a href="variables1.sed">variables1.sed</a>
+</pre>
+%
+5. Debugging
+------------
+- Two commands to make debugging possible
+- <code>l</code>: print out current hold space in a visually unambiguous way
+- <code>=</code>: print out the current input line number
+- Use the <code>x</code> command to swap the pattern and hold space to examine the hold space
+%
+5. Debugging
+------------
+- At any point of execution, add this to dump everything:
+<pre class="dark">
+   =
+   l
+   x
+   l
+   x
+
+   <a href="variables2.sed">variables2.sed</a>
+</pre>
+%
+6. File handling
+----------------
+- Sed can read and write files a line at a time or in slurp mode
+- <code>r/R</code> append the entire file or next line of the file to the pattern space
+- <code>w/W</code> append the current pattern space/first line of the pattern space to the file
+- Files are overwritten when the program starts, but appended during execution
+%
+6. File handling - example
+-------------------------
+- Input consists of name of city followed by people from there
+- Split into three files for PDX, SFO and others
+- <a href="file-split.sed">file-split.sed</a>
+%
+Gaming
+------
+- No language is considered complete until you can write games with it
+- <a href="http://uuner.doslash.org/forfun/sedtris.sed">sedtris</a>
+%
 Photo Credits
 -------------
 [bg 25602112@N07/2539754489_a20454a273_o.jpg]
-- [class="small-children"] Shouts to each photographer for these most excellent CC licensed photos:
+- Shouts to each photographer for these most excellent CC licensed photos:
    - <a href="http://flickr.com/photos/code_martial/1543735477/">http://flickr.com/photos/code\_martial/1543735477/</a>
    - <a href="http://www.flickr.com/photos/mamk/2377536817/">http://www.flickr.com/photos/mamk/2377536817/</a>
    - <a href="http://www.flickr.com/photos/adobemac/2895835834/">http://www.flickr.com/photos/adobemac/2895835834/</a>
