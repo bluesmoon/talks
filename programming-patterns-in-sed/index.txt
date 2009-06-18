@@ -182,19 +182,115 @@ A useful structured programming language
    this is line #5
 </pre>
 %
+2. Selection - Sample input
+------------
+[bg kt/1118569929_d84e822d94_b.jpg]
+<pre class="dark">
+   hello world
+   my name is sed
+   print this line out twice
+   print this line out twice
+   this is line #5
+   next line first
+</pre>
+%
+2. Selection
+-----------
+[bg kt/1118569929_d84e822d94_b.jpg]
+<pre class="dark">
+   /^hello/ s/^hello/hello world/
+
+   3 p
+
+   /^next\>/ {
+      N
+      s/\(.*\)\n\(.*\)/\2\n\1/
+   }
+</pre>
+%
 2. Selection
 ------------
-[class="alert"] To be structured and easy to read, use a condition followed by a code block:
-<pre>
+[class="alert"] For readability, use a condition followed by a code block:<br><code style="font-size: 0.7em; line-height:1em;">/condition/ {<br>   command1<br>   command2<br>   command3<br>}          </code>
+%
+3. Iteration/Loops
+-----------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+- Entry controlled loops
+- Exit controlled loops
+- Fixed counter iterations
+- The <code>b</code>, <code>t</code> and <code>T</code> commands are used here
+- We also use labels as branch targets
+%
+3a. Iteration - Entry controlled
+---------------------------------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+- <code>while(condition) {...}</code> - loop executed 0 or more times
+<pre class="dark">
+   :loopstart
    /condition/ {
       command1
       command2
       command3
+      b loopstart
    }
 </pre>
 %
-3. Iteration
------------
+3a. Iteration - Entry controlled
+---------------------------------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+- <code>while(condition) {...}</code> - loop executed 0 or more times
+<pre class="dark">
+   :loopstart
+   /==/ {
+      s/==//
+      r equals.txt
+      b loopstart
+   }
+</pre>
+%
+3b. Iteration - Exit controlled
+---------------------------------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+- <code>do {...} while(condition)</code> / <code>repeat {...} until(condition)</code> - loop executed 1 or more times
+<pre class="dark">
+   :loopstart
+      command1
+      command2
+      command3
+   /condition/ b loopstart
+</pre>
+%
+3b. Iteration - Exit controlled
+---------------------------------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+- <code>do {...} while(/==/)</code>
+<pre class="dark">
+   :loopstart
+      r equals.txt
+   /==/ b loopstart
+</pre>
+%
+3b. Iteration - Exit controlled
+---------------------------------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+- <code>do {...} while(/==/)</code>
+<pre class="dark">
+   :loopstart
+      r equals.txt
+      s/==//
+   t loopstart
+</pre>
+%
+3b. Iteration - Exit controlled
+---------------------------------
+[bg bluesmoon/241327100_fbd21e8cef_b.jpg]
+- <code>repeat {...} until(/==/)</code>
+<pre class="dark">
+   :loopstart
+      r equals.txt
+      s/==//
+   T loopstart
+</pre>
 %
 Photo Credits
 -------------
