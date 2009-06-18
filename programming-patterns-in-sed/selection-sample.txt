@@ -1,0 +1,5 @@
+hello
+my name is sed
+print this line out twice
+next line first
+this is line #5

@@ -1,0 +1,209 @@
+TITLE: Programming patterns in sed
+SUBTITLE: Opensource Bridge 2009
+AUTHOR: Philip S Tellis
+DATE: 2009-06-18
+COMPANY: Yahoo! Inc
+CONFERENCE: <a href="http://opensourcebridge.org/events/2009/">Opensource Bridge 2009</a> osb2009-0121
+%
+<code>$ whoami</code>
+-------------------------------
+[bg code_martial/1543735477_f302fdc3a3.jpg]
+- Philip Tellis
+- geek / opensource developer
+- yahoo
+- <a href="http://twitter.com/bluesmoon">@bluesmoon</a>
+- <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
+%
+Stream EDiting
+--------------
+- First there was <code>ed</code>
+%
+Stream EDiting
+--------------
+- First there was <code>ed</code> - <q>interactive</q>
+%
+Stream EDiting
+--------------
+- First there was <code>ed</code> - <q>interactive</q>
+<pre class="dark">
+?
+</pre>
+%
+Stream EDiting
+--------------
+- First there was <code>ed</code> - <q>interactive</q>
+- <code>ed</code> begat <code>g/re/p</code>
+%
+Stream EDiting
+--------------
+- First there was <code>ed</code> - <q>interactive</q>
+- <code>ed</code> begat <code>g/re/p</code> - which was <em>Awesome!!!!</em>
+%
+Stream EDiting
+--------------
+- First there was <code>ed</code> - <q>interactive</q>
+- <code>ed</code> begat <code>g/re/p</code> - which was <em>Awesome!!!!</em>
+- but you couldn't really do <code>g/re/d</code>, <code>g/re/s</code> or <code>g/re/foobar</code>
+%
+Stream EDiting
+--------------
+- First there was <code>ed</code> - <q>interactive</q>
+- <code>ed</code> begat <code>g/re/p</code> - which was <em>Awesome!!!!</em>
+- but you couldn't really do <code>g/re/d</code>, <code>g/re/s</code> or <code>g/re/foobar</code>
+- So <code>ed</code> begat <code>sed</code> as well - <q>non-interactive</q>
+%
+Stream EDiting
+--------------
+- First there was <code>ed</code> - <q>interactive</q>
+- <code>ed</code> begat <code>g/re/p</code> - which was <em>Awesome!!!!</em>
+- but you couldn't really do <code>g/re/d</code>, <code>g/re/s</code> or <code>g/re/foobar</code>
+- So <code>ed</code> begat <code>sed</code> as well - <q>non-interactive</q>
+- And the world was good...
+%
+Stream EDiting
+--------------
+- First there was <code>ed</code> - <q>interactive</q>
+- <code>ed</code> begat <code>g/re/p</code> - which was <em>Awesome!!!!</em>
+- but you couldn't really do <code>g/re/d</code>, <code>g/re/s</code> or <code>g/re/foobar</code>
+- So <code>ed</code> begat <code>sed</code> as well - <q>non-interactive</q>
+- And the world was good... even at 2400 baud
+%
+[class="alert"] Enough history, where be dem Patterns???
+%
+Is it an editor or a programming language?
+-------------------
+[bg mamk/2377536817_4d0cd7d48a_b.jpg]
+- Language to edit data (text) streams based on ed's command set
+- [class="light"] No variables
+- [class="light"] Primitive branching
+- [class="light"] But it _is_ turing-complete
+%
+Is it an editor or a programming language?
+-------------------
+[bg mamk/2377536817_4d0cd7d48a_b.jpg]
+- Language to edit data (text) streams based on ed's command set
+- No variables
+- [class="light"] Primitive branching
+- [class="light"] But it _is_ turing-complete
+%
+Is it an editor or a programming language?
+-------------------
+[bg mamk/2377536817_4d0cd7d48a_b.jpg]
+- Language to edit data (text) streams based on ed's command set
+- No variables
+- Primitive branching
+- [class="light"] But it _is_ turing-complete
+%
+Is it an editor or a programming language?
+-------------------
+[bg mamk/2377536817_4d0cd7d48a_b.jpg]
+- Language to edit data (text) streams based on ed's command set
+- No variables
+- Primitive branching
+- But it _is_ turing-complete
+%
+[class="alert"] To write complex programs, all you need is <code>if</code> and <code>goto</code>
+%
+A structured programming language
+-------------
+[bg adobemac/2895835834_ed3930a823_b.jpg]
+- Sequence
+- Selection
+- Iteration
+- [class="light"] Variables
+- [class="light"] File handling
+- [class="light"] Debugging
+%
+A useful structured programming language
+-------------
+[bg adobemac/2895835834_ed3930a823_b.jpg]
+- Sequence
+- Selection
+- Iteration
+- Variables
+- File handling
+- Debugging
+%
+1. Sequence
+-----------
+[class="light alert"] sed scripts flow sequentially from top to bottom unless a branch is involved
+%
+1. Sequence
+-----------
+[class="alert"] sed scripts flow sequentially from top to bottom unless a branch is involved
+%
+2. Selection
+------------
+[bg kt/1118569929_d84e822d94_b.jpg]
+- if some condition, do some thing
+%
+2. Selection - if some condition, do some thing
+------------
+[bg kt/1118569929_d84e822d94_b.jpg]
+<pre class="dark">
+   /pattern/ command
+</pre>
+%
+2. Selection - if some condition, do some thing
+------------
+[bg kt/1118569929_d84e822d94_b.jpg]
+<pre class="dark">
+   /pattern/ command
+
+   s/pattern/replace/
+   t label
+
+   s/pattern/replace/
+   T label
+</pre>
+%
+2. Selection
+-----------
+[bg kt/1118569929_d84e822d94_b.jpg]
+<pre class="dark">
+   /^hello/ s/^hello/hello world/
+
+   3 p
+
+   /^next\>/ {
+      N
+      s/\(.*\)\n\(.*\)/\2\n\1/
+   }
+</pre>
+%
+2. Selection - Sample input
+------------
+[bg kt/1118569929_d84e822d94_b.jpg]
+<pre class="dark">
+   hello
+   my name is sed
+   print this line out twice
+   next line first
+   this is line #5
+</pre>
+%
+2. Selection
+------------
+[class="alert"] To be structured and easy to read, use a condition followed by a code block:
+<pre>
+   /condition/ {
+      command1
+      command2
+      command3
+   }
+</pre>
+%
+3. Iteration
+-----------
+%
+Photo Credits
+-------------
+[bg 25602112@N07/2539754489_a20454a273_o.jpg]
+- [class="small-children"] Shouts to each photographer for these most excellent CC licensed photos:
+   - <a href="http://flickr.com/photos/code_martial/1543735477/">http://flickr.com/photos/code\_martial/1543735477/</a>
+   - <a href="http://www.flickr.com/photos/mamk/2377536817/">http://www.flickr.com/photos/mamk/2377536817/</a>
+   - <a href="http://www.flickr.com/photos/adobemac/2895835834/">http://www.flickr.com/photos/adobemac/2895835834/</a>
+   - <a href="http://www.flickr.com/photos/kt/1118569929/">http://www.flickr.com/photos/kt/1118569929/</a>
+   - <a href="http://flickr.com/photos/25602112@N07/2539754489/">http://flickr.com/photos/25602112@N07/2539754489/</a>
+%
+[class="alert"] Thank you
