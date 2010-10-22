@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<title>Fetching data</title>
+</head>
+<body>
+<a href="data1.txt" id="data-link">Fetch data</a>
+<p id="data-container">
+</p>
+<script type="text/javascript" charset="utf-8" src="http://yui.yahooapis.com/3.2.0/build/yui/yui-min.js"></script>
+<script type="text/javascript">
+YUI({filter: 'raw'}).use("io-base", "node", function(Y) {
+    var i = 1;
+    var l = Y.one("#data-link");
+ 
+    function complete(id, o, args) {
+        var data = o.responseText;
+	Y.one("#data-container").set("innerHTML", data);
+
+	i++;
+	if(i <= 6) {
+		l.set("href", "data" + i + ".txt");
+		l.set("innerHTML", args[i-1]);
+	}
+	else {
+		l.remove();
+	}
+    };
+
+    function getdata(e) {
+	var uri = this.get("href");
+	var request = Y.io(uri);    
+	e.preventDefault();
+    };
+ 
+    Y.on('io:complete', complete, Y, ["Fetch data", "Try again", "Seek", "Seek again", "Retry", "Please?"]);
+ 
+    Y.on("click", getdata, "#data-link");
+});
+</script>
+</body>
+</html>
