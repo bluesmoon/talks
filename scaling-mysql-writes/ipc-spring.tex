@@ -1,0 +1,495 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{Scaling MySQL writes through partitioning}
+
+\date{\href{http://it-republik.de/konferenzen/ipc2010se/cfp/}{IPC Spring} -- 2010-06-01 -- Berlin}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ finger philip}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item geek
+  \item yahoo
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\section{The Problem}
+\subsection{Our data}
+\begin{frame}{Web requests}
+  \begin{itemize}
+  \item Millions of beacons from a web page
+  \item No response required
+  \item Can be batch processed
+  \item Very small amounts of data loss is acceptable
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Large volume}
+  \begin{itemize}
+  \item 2000 requests/second on most days
+  \item up to 8000 requests/second on some days
+  \item 200MM requests/day
+  \item Some data is fake or abusive
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Access patterns}
+  \begin{itemize}
+  \item Lots of writes throughout the day
+  \item One huge read at the end of the day
+  \item Summarise data and throw out the details
+  \item Many reads of summary data over several months
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{warehouse}
+  }
+}
+\setbeamertemplate{blocks}[shadow=false]
+\begin{frame}{}
+  \begin{block}{}
+  \begin{center}
+  Why not use a data warehouse?
+  \end{center}
+  \end{block}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{hardware}
+  }
+}
+\begin{frame}{}
+  \begin{block}{}
+  \begin{center}
+  I like to get the most out of my hardware
+  \end{center}
+  \end{block}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\subsection{DB infrastructure}
+\begin{frame}{Hardware setup}
+  \begin{itemize}
+  \item MySQL 5.1
+  \item Multi-master replication in two colos, 1 remote slave per master
+  \item Only one master writable at any point of time
+  \item 4GB RAM (later 16GB), Big disk with RAID 10
+  \item RAID 10 7200rpm 6x1TB
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{DB config}
+  \begin{itemize}
+  \item $ innodb\_buffer\_pool\_size=2078M $
+  \item $ innodb\_flush\_log\_at\_trx\_commit=1 $
+  \item $ innodb\_log\_buffer\_size=8M $
+  \item $ innodb\_max\_dirty\_pages\_pct=90 $
+  \item $ innodb\_doublewrite=1, innodb\_support\_xa=1 $
+  \item $ sync\_binlog=0 $
+  \item $ key\_buffer\_size=32M, myisam\_sort\_buffer\_size=512k $
+  \item $ transaction\_isolation=\text{REPEATABLE-READ} $
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Data setup}
+  \begin{itemize}
+  \item Each row ~120bytes
+  \item + InnoDB overhead
+  \item innodb\_file\_per\_table so we can see how the table grows
+  \item No Autoincrement fields
+  \item PRIMARY KEY derived from data + one other index
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Schema}
+  \begin{itemize}
+  \item page identifier - INT
+  \item timestamp - INT
+  \item one-way hash of IP - CHAR(32)
+  \item page performance information
+  \item request country
+  \item useragent
+  \end{itemize}
+\end{frame}
+
+\subsection{Performance}
+\begin{frame}{Test requirements}
+  \begin{itemize}
+  \item Insert records until the system breaks down
+  \item<2-> Find out why it broke down
+  \item<3-> Find out how to make it not break down
+  \item<4-> Find out how fast we can insert records (must be >2000 i/s)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{How I tested}
+  \begin{itemize}
+  \item Insertion script measured insertion speed v/s number of records
+  \item Number of records roughly translates to table size
+  \item On DB box we measure disk performance and table size
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test1} \hfill
+  }
+}
+\begin{frame}{Test 1}
+\end{frame}
+
+
+\section{The Tests}
+\subsection{Basic tests}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test2} \hfill
+  }
+}
+\begin{frame}{Test 2 - Drop the secondary index}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test3} \hfill
+  }
+}
+\begin{frame}{Test 3 - innodb\_buffer\_pool\_size=1000}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Realisation}
+  \begin{itemize}
+  \item Max table size directly proportional to \texttt{innodb\_buffer\_pool\_size}
+  \item Extra index reduces insertion rate
+  \item Extra index reduces max table size
+  \item<2-> Possible solution: increase RAM and \texttt{innodb\_buffer\_pool\_size}
+  \item<2-> But this only postpones the problem
+  \end{itemize}
+\end{frame}
+
+\subsection{Going crazy}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test4} \hfill
+  }
+}
+\begin{frame}{Test 4 - \texttt{innodb\_flush\_log\_at\_trx\_commit=2}}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test5} \hfill
+  }
+}
+\begin{frame}{Test 5 - \texttt{innodb\_max\_dirty\_pages\_pct=60}}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test6} \hfill
+  }
+}
+\begin{frame}{Test 6 - Let's try MyISAM}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test7} \hfill
+  }
+}
+\begin{frame}{Test 7 - Inserts in a transaction}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Other stuff we tried}
+  \begin{itemize}
+  \item innodb\_doublewrite=0 -- no effect
+  \item Server side prepared statements -- no effect
+  \item transaction\_isolation=READ-COMMITTED -- no effect
+  \item innodb\_support\_xa=0 -- 12\% increase in insertion rate
+  \item Combination of the best options -- negligible effect
+  \end{itemize}
+\end{frame}
+
+\subsection{Insights}
+\begin{frame}{What we knew at this point}
+  \begin{itemize}
+  \item Sticking with InnoDB
+  \item We need a large buffer pool
+  \item We need to drop extra indices
+  \item $ flush\_log\_at\_trx\_commit=2 $ is good enough
+  \item Transactions are good
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{breakdown} \hfill
+  }
+}
+\begin{frame}{Our big problem}
+  \begin{block}{}
+    \begin{itemize}
+    \item Insert rate was barely reaching the rate of incoming data!
+    \item Still breaks down before getting a day's worth of data
+    \end{itemize}
+  \end{block}
+  \parbox[c][0.4\paperheight]{\paperwidth}{ }
+\end{frame}
+
+\section{Breakthroughs}
+\subsection{Bulk inserts}
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test8} \hfill
+  }
+}
+\begin{frame}{Test 8 - Single bulk insert}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Bulk insert specifications}
+  \begin{itemize}
+  \item 40,000 records in one insert statement
+  \item Use INSERT IGNORE
+  \item 4-6 seconds per statement
+  \item PRIMARY KEY drops duplicates
+  \item We still have a breakdown when we cross the buffer pool
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Handling insert failures}
+  \begin{itemize}
+  \item Typically if one record is bad, the entire insert fails
+  \item INSERT IGNORE solves this problem
+  \item Bonus is easy recovery from hardware/network failures
+  \end{itemize}
+\end{frame}
+
+\subsection{Partitioning}
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test9} \hfill
+  }
+}
+\begin{frame}{Test 9 - bulk inserts + partitioning}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{What happened?}
+  \begin{itemize}
+  \item Split the table into partitions
+  \item Each partition $ < 0.5 \times innodb\_buffer\_pool\_size $
+  \item current and next partition fit in memory at any time
+  \item Partition key is based on incoming data and not on SELECTs
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Schema}
+\begin{verbatim}
+CREATE TABLE (
+    ...
+) PARTITION BY RANGE( ( time DIV 3600 ) MOD 24 ) (
+    Partition p0 values less than (2),
+    Partition p1 values less than (4),
+    ...
+    Partition p10 values less than (22),
+    Partition p11 values less than (24)
+); 
+\end{verbatim}
+\end{frame}
+
+\subsection{Long running test}
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{test10} \hfill
+  }
+}
+\begin{frame}{Test 10 - Ran for 7 days}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{million} \hfill
+  }
+}
+\begin{frame}{Still running}
+  \begin{block}{}
+  \begin{itemize}
+  \item Terabytes of data
+  \item around 8500 inserts per second
+  \item Potentially 700+ MM inserts per day
+  \end{itemize}
+  \end{block}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{A Note on read performance}
+  \begin{itemize}
+  \item Data volume before and after is very different
+  \item Current read rate is approx 8000 records per second
+  \end{itemize}
+\end{frame}
+
+\section{}
+\subsection{}
+
+\begin{frame}{What about a key-value store?}
+  \begin{itemize}
+  \item Some summarisation queries are complex but not impossible with a k/v store
+  \item Summary data is still relational in nature
+  \item Avoid sharing resources (RAM/CPU) between two separate data stores
+  \item We have not yet discarded this idea
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Lots of critics}
+  \small{
+  \begin{columns}[t]
+    \column{.7\textwidth}
+    \begin{block}{}
+    The title should be "how to get poor performance by using a completely inappropriate tool"
+    \end{block}
+    \column{.3\textwidth}
+  \end{columns}
+
+  \vfill
+
+  \begin{columns}[t]
+    \column{.2\textwidth}
+    \column{.8\textwidth}
+    Dude, that's a really impressive bit of engineering. However, you failed the interview.
+  \end{columns}
+
+  \vfill
+
+  \begin{columns}[t]
+    \column{.7\textwidth}
+    \begin{block}{}
+    it's just another case of RDBMS blinding people for all other possible solutions
+    \end{block}
+    \column{.3\textwidth}
+  \end{columns}
+  }
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{summary} \hfill
+  }
+}
+\begin{frame}{Summary}
+  \begin{block}{}
+  \begin{itemize}
+  \item Bulk inserts push up your insert rate
+  \item Partitioning lets you insert more records
+  \item Partition based on incoming data key for fast inserts
+  \item \href{http://tech.bluesmoon.info/2009/09/scaling-writes-in-mysql.html}{\small{http://tech.bluesmoon.info/2009/09/scaling-writes-in-mysql.html}}
+  \end{itemize}
+  \end{block}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Photo credits}
+  \small{
+  \begin{itemize}
+  \item Disused warehouse on Huddersfield Broad Canal / by TDR1 \\ \href{http://www.flickr.com/photos/tdr1/3578203727/}{http://www.flickr.com/photos/tdr1/3578203727/}
+  \item Hardware store dog / by sstrudeau \\ \href{http://www.flickr.com/photos/sstrudeau/330379020/}{http://www.flickr.com/photos/sstrudeau/330379020/}
+  \item North Dakota, Broken Down Van / by mattdente \\ \href{http://www.flickr.com/photos/mattdente/46944898/}{http://www.flickr.com/photos/mattdente/46944898/}
+  \item One red tree / by EssjayNZ \\ \href{http://www.flickr.com/photos/essjay/155223631/}{http://www.flickr.com/photos/essjay/155223631/}
+  \item The Leaning Tree / by stage88 \\ \href{http://www.flickr.com/photos/stage88/3179612722/}{http://www.flickr.com/photos/stage88/3179612722/}
+  \end{itemize}
+  }
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{contact me}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item yahoo
+  \item geek
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\end{document}
+
+
