@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Project Management with Bugzilla, CVS and Mailing lists</title><!-- metadata -->
+
+
+
+
+
+
+<meta name="generator" content="S5">
+<meta name="version" content="S5 1.1">
+<meta name="presdate" content="2008-07-29">
+<meta name="author" content="Philip S Tellis">
+<meta name="company" content="philip@bluesmoon.info"><!-- configuration parameters -->
+
+<meta name="defaultView" content="slideshow">
+<meta name="controlVis" content="hidden"><!-- style sheet links -->
+
+<link rel="stylesheet" href="../ui/default/slides.css" type="text/css" media="projection" id="slideProj">
+<link rel="stylesheet" href="../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle">
+<link rel="stylesheet" href="../ui/default/print.css" type="text/css" media="print" id="slidePrint">
+<link rel="stylesheet" href="../ui/default/opera.css" type="text/css" media="projection" id="operaFix"><!-- S5 JS -->
+
+<script src="../ui/default/slides.js" type="text/javascript"></script></head><body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1><a href="http://talks.bluesmoon.info/">talks.bluesmoon.info</a> - 2008-07-29</h1>
+<h2>Project Management with Bugzilla, CVS and Mailing lists</h2>
+</div>
+
+</div>
+
+
+<div class="presentation">
+
+<div class="slide">
+<h1>Project Management with Bugzilla, CVS and Mailing lists</h1>
+<h3>Philip S Tellis</h3>
+<h4>philip@bluesmoon.info</h4>
+<h2>Linux Bangalore &bull; Freed.in &bull; GNUnify &bull; Ubuntulive &bull; Linux Symposium</h2>
+</div>
+</div></body></html>
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Do you manage a distributed project?</p>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Is communication between your developers efficient?</p>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> What's needed?</p>
+
+</div>
+
+
+<div class="slide">
+<h1>Project management requirements</h1>
+<ul>
+<li>Source control including reviews
+</li>
+<li>Issue tracking linked to code changes
+</li>
+<li>Dependency and progress tracking
+</li>
+<li>Group communication
+</li>
+<li>Generate ChangeLog and Release Notes
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Code reviews</h1>
+<ul>
+<li>When? Before checkin or after checkin?
+</li>
+<li>How? Via email or using an issue tracker?
+</li>
+<li>How do reviewer comments get recorded?
+</li>
+<li>How to track changes in a patch before commit?
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Issue tracking</h1>
+<ul>
+<li>Traditionally one would use email to report issues
+</li>
+<li>Records are not easily locatable
+</li>
+<li>Need responsibilities, targets, severity and priorities for issues
+</li>
+<li>Need fields to report components and versions where issues occur
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Tracking bug fixes</h1>
+<ul>
+<li>Submit patches as attachments to an issue
+</li>
+<li>Newer patches obsolete an older patch
+</li>
+<li>CVS logs should reference a bug in bugzilla
+</li>
+<li>CVS log messages update bug comments and time spent
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Communication</h1>
+<ul>
+<li>Face to face meetings - seriously... does anything happen?
+</li>
+<li>Teleconferences - often chaotic
+</li>
+<li>email, IRC, message boards
+</li>
+<li>Can we use bugzilla?
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> We'll get back to that in a bit</p>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> for now, let's manage code</p>
+
+</div>
+
+
+<div class="slide">
+<h1>Install <code>cvsd</code></h1>
+<p class="alert"> <code>apt-get install cvsd</code></p>
+
+</div>
+
+
+<div class="slide">
+<h1>The <code>CVSROOT</code> directory</h1>
+<ul>
+<li><code>rcsinfo</code> - template for log messages
+</li>
+<li><code>verifymsg</code> - script to verify log message
+</li>
+<li><code>loginfo</code> - script to run after commit
+</li>
+<li><code>checkoutlist</code> - additional admin files
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Let's try something</p>
+
+</div>
+
+
+<div class="slide">
+<h1>All commits must be against a bug</h1>
+<ol>
+<li>Prompt the user for a bug id at commit time
+</li>
+<li class="light"> Don't commit if a bug id isn't passed
+</li>
+</ol>
+
+</div>
+
+
+<div class="slide">
+<h1>All commits must be against a bug</h1>
+<ol>
+<li>Prompt the user for a bug id at commit time
+</li>
+<li>Don't commit if a bug id isn't passed
+</li>
+</ol>
+
+</div>
+
+
+<div class="slide">
+<h1>Create a file <code>tc.template</code></h1>
+<p>BugId:</p>
+
+</div>
+
+
+<div class="slide">
+<h1>Create a file <code>tc.template</code></h1>
+<p>BugId:</p>
+
+<p class="alert">Seriously, that's all there is to it!</p>
+
+</div>
+
+
+<div class="slide">
+<h1>Create a file <code>bugid.verify</code></h1>
+<pre>
+<font color="#2080d0">#!/bin/sh</font>
+<font color="#00008b"><b>if</b></font> head <font color="#802020">-1</font> <font color="#00008b"><b>&lt;</b></font> <font color="#8b008b">$1</font> <font color="#00008b"><b>|</b></font> egrep <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*[0-9]+$</font><font color="#00008b"><b>"</b></font> \
+         <font color="#00008b"><b>&gt;</b></font> /dev/null<font color="#00008b"><b>;</b></font> <font color="#00008b"><b>then</b></font>
+   <font color="#00008b"><b>exit</b></font> <font color="#802020">0</font>
+<font color="#00008b"><b>else</b></font>
+   <font color="#00008b"><b>echo</b></font><font color="#802020"> </font><font color="#00008b"><b>&quot;</b></font><font color="#802020">No BugId found.</font><font color="#00008b"><b>&quot;</b></font>
+   <font color="#00008b"><b>exit</b></font> <font color="#802020">1</font>
+<font color="#00008b"><b>fi</b></font>
+
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1>Add references to <code>verifymsg</code> and <code>rcsinfo</code></h1>
+<p>Tell <code>verifymsg</code> how to check commits:</p>
+
+<pre><code>^src     /usr/cvssupport/bugid.verify %l
+</code></pre>
+
+<p>Tell <code>rcsinfo</code> what to prompt devs for:</p>
+
+<pre><code>^src     /usr/cvssupport/tc.template
+</code></pre>
+
+</div>
+
+
+<div class="slide">
+<h1>Add references to <code>verifymsg</code> and <code>rcsinfo</code></h1>
+<p>Tell <code>verifymsg</code> how to check commits:</p>
+
+<pre><code>^src     /usr/cvssupport/bugid.verify %l
+</code></pre>
+
+<p>Tell <code>rcsinfo</code> what to prompt devs for:</p>
+
+<pre><code>^src     /usr/cvssupport/tc.template
+</code></pre>
+
+<p>Don't forget to make bugid.verify executable</p>
+
+<pre><code>chmod +x bugid.verify
+</code></pre>
+
+</div>
+
+
+<div class="slide">
+<h1>You could allow something like <code>BugId: none</code></h1>
+<p>Add this before the <code>else</code>:</p>
+
+<pre>
+<font color="#00008b"><b>elif</b></font> head <font color="#802020">-1</font> <font color="#00008b"><b>&lt;</b></font> <font color="#8b008b">$1</font> <font color="#00008b"><b>|</b></font> egrep <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*none$</font><font color="#00008b"><b>"</b></font> \
+         <font color="#00008b"><b>&gt;</b></font> /dev/null<font color="#00008b"><b>;</b></font> <font color="#00008b"><b>then</b></font>
+   <font color="#2080d0"># It is okay to allow commits with
+   # "BugId: none", but do not put that
+   # text into the real log message.</font>
+   egrep <font color="#00008b"><b>-v</b></font> <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*none$</font><font color="#00008b"><b>"</b></font> <font color="#8b008b">$1</font> <font color="#00008b"><b>&gt;</b></font> <font color="#8b008b">$1</font>.rewrite
+   mv <font color="#8b008b">$1</font>.rewrite <font color="#8b008b">$1</font>
+   <font color="#00008b"><b>exit</b></font> <font color="#802020">0</font>
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1>Email all devs when someone commits foocide</h1>
+<p>Add to <code>loginfo</code>:</p>
+
+<pre><code>DEFAULT  $CVSROOT/CVSROOT/syncmail -u %{sVv} \
+     devs@foo.com
+</code></pre>
+
+<p>Use the <code>syncmail</code> script provided in the CVS Book</p>
+
+</div>
+
+
+<div class="slide">
+<h1>WT%F are <code>%s</code>, <code>%V</code>, <code>%v</code> and <code>%{sVv}</code>?</h1>
+<ul>
+<li><code>%s</code> is the filename
+</li>
+<li><code>%V</code> is the old revision number
+</li>
+<li><code>%v</code> is the new revision number
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert">Make way for Bugzilla</p>
+
+</div>
+
+
+<div class="slide">
+<h1>CVS talking to bugzilla &mdash; needs a script</h1>
+<ul>
+<li>Callable from <code>bugzilla.procmailrc</code> for some alias, eg: <code>cvsbugz@foo.com</code>
+</li>
+<li>Processes message body for bug numbers, and commands (eg: Fix, Close, etc.)
+</li>
+<li>Use CVS <code>loginfo</code> file to mail log messages to this alias
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Example commit messages</h1>
+<pre><code>Added log messages to get more data
+[bug 31337 time:1 left:3]
+</code></pre>
+
+<p>...</p>
+
+<pre><code>Added defenestration logic
+Removed redundant log messages
+[fix bug 31337 time:3 left:0]
+</code></pre>
+
+</div>
+
+
+<div class="slide">
+<h1><code>bugzilla.procmailrc</code></h1>
+<ul>
+<li><code>.procmailrc</code> file calls <code>cvsbugz.pl</code> for matching mails
+</li>
+</ul>
+
+<pre>
+    <font color="#2080d0"># Check message body for <em>[bug XXXXXX</em> syntax</font>
+    <font color="#00008b"><b>:0 Bc</b></font>
+    * \[(fix +)?bug +[0-9]+\]
+    <font color="#8b008b">|$HOME/cvsbugz.pl</font>
+</pre>
+
+<ul>
+<li><code>cvsbugz.pl</code> parses the email for the <code>[bug XXXXX]</code> syntax
+</li>
+<li>update bugzilla using the <code>Bugzilla::Bug</code> perl module
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert">Now, we'll talk</p>
+
+</div>
+
+
+<div class="slide">
+<h1>Communication 2.0 &mdash; Blogging on Bugzilla</h1>
+<ul>
+<li>Announcements and high level communication to dev list
+</li>
+<li>CVS log comments to dev list
+</li>
+<li>Bug comments to dev list (use default QA field)
+</li>
+<li>Tasks and TODO comments on Bugzilla
+</li>
+<li>IRC conversations archived as a bug attachment
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Where do we stand now?</h1>
+<ul>
+<li>CVS updates bugzilla, freeing up the developer
+</li>
+<li>Bugzilla links back to cvs patches
+</li>
+<li><code>cvsweb</code> has links to bugzilla entries
+</li>
+<li>Everything is mailed to your dev list
+</li>
+<li>Devs review code mailed to the dev list and comment on bugzilla
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Release time</h1>
+<ul>
+<li>Use <code>cvs2cl</code> (search for it)
+</li>
+<li>Generate ChangeLogs from CVS logs
+</li>
+<li>ChangeLogs get links to bugzilla
+</li>
+<li>Encourages developers to write meaningful log messages
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Release time</h1>
+<ul>
+<li>Use <code>cvs2cl</code> (search for it)
+</li>
+<li>Generate ChangeLogs from CVS logs
+</li>
+<li>ChangeLogs get links to bugzilla
+</li>
+<li>Encourages developers to write meaningful log messages<br>
+(Yeah, right!)
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Pointers or References?</h1>
+<ul>
+<li><a href="http://www.bugzilla.org/">Bugzilla</a>
+</li>
+<li><a href="http://www.caida.org/~jabrown/cvs_info/cvs_18.html">CVS Administrative files</a>
+</li>
+<li><a href="http://cvsbook.red-bean.com/cvsbook.html#The%20CVSROOT%2f%20Administrative%20Directory">CVS Book: The CVSROOT Administrative Directory</a>
+</li>
+<li><a href="http://alexandria.wiki.sourceforge.net/Subversion+-+Version+Control+for+Source+Code#tocSubversion%20-%20Version%20Control%20for%20Source%20Code15">Sourceforge: Hook Scripts for SVN</a>
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Greetz</h1>
+<blockquote>
+  <p>Philip S Tellis</p>
+  
+  <p><a href="mailto:philip@bluesmoon.info?subject=bugzilla+CVS">philip@bluesmoon.info</a></p>
+  
+  <p><a href="http://bluesmoon.info/">http://bluesmoon.info/</a></p>
+</blockquote>
+
+</div>
+
+</div>
+
+<p>Made with Eric A Meyer's S5</p>
+
+</body>
+</html>
