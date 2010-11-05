@@ -1,0 +1,194 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{shut up and hack}
+
+\date{\href{http://foss.in/}{FOSS.IN/2009} / 2009-12-04}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ finger philip}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item @bluesmoon
+  \item yahoo
+  \item geek
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\section{Toys}
+
+\subsection{Magic}
+
+\begin{frame}{}
+\small{Any sufficiently advanced technology is indistinguishable from magic.}
+
+\hfill \tiny{-- Arthur C. Clarke, "Profiles of the Future", 1961 (Clarke's third law)}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+Have itch, will scratch
+\end{center}
+\end{frame}
+
+\subsection{Mountains}
+
+\begin{frame}{}
+\begin{center}Because it's not there\end{center}
+
+\hfill \tiny{-- James Morris}
+\end{frame}
+
+
+\subsection{Fun}
+
+\begin{frame}{}
+\begin{center}Because it's fun\end{center}
+
+\hfill \tiny{-- Various hackers}
+\end{frame}
+
+
+\section{Hacks}
+
+\begin{frame}{Dragging along}
+\begin{center}
+\href{http://tech.bluesmoon.info/search/label/dragdrop}{http://tech.bluesmoon.info/search/label/dragdrop}
+\end{center}
+\end{frame}
+
+\begin{frame}{Openstreetmap}
+\begin{center}
+\href{http://hacks.bluesmoon.info/geo/geo-osm.html}{http://hacks.bluesmoon.info/geo/geo-osm.html}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{More hacks}
+\begin{itemize}
+\item BBC headlines in photos \\ \href{http://tech.bluesmoon.info/2009/12/bbc-headlines-as-flickr-photos-with-yql.html}{\tiny{http://tech.bluesmoon.info/2009/12/bbc-headlines-as-flickr-photos-with-yql.html}}
+\item<2-> Using awk to analyse web server logs \\ \href{http://tech.bluesmoon.info/2009/12/where-do-your-sites-visitors-come-from.html}{\tiny{http://tech.bluesmoon.info/2009/12/where-do-your-sites-visitors-come-from.html}}
+\item<3-> Getting favicons onto a planet \\ \href{http://tech.bluesmoon.info/2009/11/favicons-on-my-planets-blogroll.html}{\tiny{http://tech.bluesmoon.info/2009/11/favicons-on-my-planets-blogroll.html}}
+\end{itemize}
+\end{frame}
+
+\section{Mindset}
+
+\subsection{Failure}
+
+\begin{frame}{}
+\begin{center}Fail fast, recover easily\end{center}
+
+\hfill \tiny{-- Vinayak Hegde}
+\end{frame}
+
+
+\begin{frame}{}
+\begin{center}If you can't perform, fake it\end{center}
+
+\hfill \tiny{-- Gopal V}
+\end{frame}
+
+
+\subsection{Knowing}
+
+\begin{frame}{}
+\small{What are you waiting for? You're faster than this. Don't think you are, know you are. Come on. Stop trying to hit me and hit me.}
+
+\hfill \tiny{-- Morpheus, "The Matrix", 1999}
+\end{frame}
+
+\subsection{Build and Throw}
+
+\begin{frame}{}
+\begin{center}
+\texttt{httptype} \\ \href{http://httptype.sourceforge.net/}{\tiny{http://httptype.sourceforge.net/}}
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+\href{http://packetstormsecurity.org/web/httptype/}{http://packetstormsecurity.org/web/httptype/}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{}
+Prepare to throw one away
+
+\hfill \tiny{-- Fred Brooks Jr. "The Mythical Man Month", 1975}
+\end{frame}
+
+
+\section{}
+
+\begin{frame}{}
+\begin{center}
+Shut up and hack
+\end{center}
+\end{frame}
+
+\end{document}
+
+

@@ -1,0 +1,401 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{Measuring the web with boomerang}
+
+\date{\href{http://www.meetup.com/SF-Web-Performance-Group/calendar/14252574/}{SF Performance Meetup} / 2010-08-11}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ finger philip}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item yahoo
+  \item geek
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\section{Why measure?}
+\subsection{The slow web}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \vfill \pgfimage[height=.8\paperheight]{waterfall}
+  }
+}
+\begin{frame}{Where does all the time go?}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Who controls it?}
+  \begin{center}
+  Some of this we control and some of it we don't
+  \end{center}
+\end{frame}
+
+\begin{frame}{Back end}
+  \begin{center}
+  Measuring and improving back end performance can be done during development
+  \end{center}
+\end{frame}
+
+\begin{frame}{80-20}
+  \begin{center}
+  Turns out that less than 20\% of the time is spent on the back end
+  \end{center}
+\end{frame}
+
+\begin{frame}{Front end}
+  \begin{center}
+  It's what we can't control that bites us
+  \end{center}
+\end{frame}
+
+\begin{frame}{Too many variations}
+  \begin{center}
+  \LARGE{
+  \only<1>{browsers}
+  \only<2>{plugins}
+  \only<3>{OSes}
+  \only<4>{viruses}
+  \only<5>{antiviruses}
+  \only<6>{microwaves}
+  \only<7>{baby monitors}
+  \only<8>{naughty neighbours}
+  \only<9>{file shares}
+  \only<10>{governments}
+  \only<11>{rodents}}
+  \only<12>{Try simulating all that in the lab!}
+  \end{center}
+\end{frame}
+
+\subsection{Measurements}
+
+\begin{frame}{}
+  \begin{center}
+  We need to measure real end-user performance
+  \end{center}
+\end{frame}
+
+\begin{frame}{}
+  \begin{center}
+  We need to measure it from the real end-user's box
+  \end{center}
+\end{frame}
+
+% http://www.flickr.com/photos/21233184@N02/4389412851/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{.8\paperwidth}{
+    \vfill \hfill \pgfimage[height=.9\paperheight]{ask-the-user}
+  }
+}
+\begin{frame}{Ask the user?}
+  \begin{center}
+  \end{center}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Bias}
+  \begin{center}
+  While this might work, it isn't necessarily representative
+  \end{center}
+\end{frame}
+
+\begin{frame}{A/B testing}
+  \begin{center}
+  You also want to be able to dynamically tune which users get which tests
+  \end{center}
+\end{frame}
+
+\begin{frame}{Phone home}
+  \begin{center}
+  It's most useful if you can send these measurements back to your server for analysis
+  \end{center}
+\end{frame}
+
+\subsection{Measuring with javascript}
+
+\begin{frame}{Mostly ubiquitous}
+  \begin{center}
+  We know that javascript is available on almost every browser
+  \end{center}
+\end{frame}
+
+\begin{frame}{Rich pages}
+  \begin{center}
+  We really want to measure the performance of rich pages which depend on javascript already
+  \end{center}
+\end{frame}
+
+\begin{frame}{Limited}
+  \begin{center}
+  But javascript can't measure everything... we get as close as we can
+  \end{center}
+\end{frame}
+
+\section{boomerang}
+
+\subsection{What?}
+
+\begin{frame}
+  \begin{block}{}
+A piece of javascript that you add to your web page where it measures and beacons back to you the end user's perceived performance of your page
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{How?}
+  \begin{verbatim}
+<script src="boomerang.js" type="text/javascript"></script>
+<script type="text/javascript">
+BOOMR.init({
+		user_ip: "<user's ip address>",
+		beacon_url: "http://yoursite.com/path/to/beacon.php"
+	});
+</script>
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}{What does it do?}
+  \begin{itemize}
+  \item About once a week, measures user's bandwidth and latency to your server
+  \item On (almost) every request, measures the time it took to load the current page
+  \item Beacons these results back to your server
+  \item Other stuff based on plugins
+  \end{itemize}
+\end{frame}
+
+\subsection{How does it work?}
+
+\begin{frame}{How does it do it?}
+  \begin{center}
+  Let's take that one at a time
+  \end{center}
+\end{frame}
+
+\begin{frame}{How do we measure latency?}
+  \begin{itemize}
+  \item Download a 32 byte gif 10 times in sequence
+  \item Measure the time to download each
+  \item Discard the first measurement because it's overpriced
+  \item Calculate the arithmetic mean, standard deviation and margin of error of the remaining
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{How do we measure bandwidth?}
+  \begin{itemize}
+  \item After the latency test is done, we download progressively larger images
+  \item Stop at the first image that times out
+  \item Redownload that image a few more times
+  \item Calculate the median, standard deviation and margin of error of the largest images
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{How do we measure page load time?}
+  \begin{itemize}
+  \item In the \texttt{onbeforeunload} event, measure the time and store it in a cookie
+  \item In the \texttt{onload} event, check the cookie, and measure the difference with the current time
+  \item We also make sure that the page that set the cookie is the referrer of the current page
+  \end{itemize}
+\end{frame}
+
+\subsection{Accuracy}
+
+\begin{frame}{What? Two pages?}
+  \begin{center}
+  Yes, this needs two pages and cookies.  If those aren't supported, we try to use the WebTiming API.
+  \end{center}
+\end{frame}
+
+\begin{frame}{How accurate is it?}
+  \begin{itemize}
+  \item Latency measurements are very accurate (\(\pm 1\%\))
+  \item Bandwidth is to an order of magnitude. For bad connections can be \(\pm 30\%\)
+  \item Page load time sometimes has outliers, you need post-filtering
+  \item The margin of error tells you how good your data is
+  \end{itemize}
+\end{frame}
+
+\section{data data data}
+
+\subsection{Filtering}
+
+\begin{frame}{What do we do with the data?}
+  \begin{itemize}
+  \item Sanity checking to:
+    \begin{itemize}
+    \item Remove fake data
+    \item Remove abusive data
+    \item Maybe just rate limiting
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What do we do with the data?}
+  \begin{itemize}
+  \item Statistical analysis to:
+    \begin{itemize}
+    \item Remove outliers
+    \item Aggregate based on bandwidth blocks
+    \item Measure trends over time and correlate them with code changes
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Grouping}
+
+\begin{frame}{Bandwidth slabs}
+  \begin{itemize}
+  \item 0-100 kbps
+  \item 100-300 kbps
+  \item 300-2000 kbps
+  \item 2-6 Mbps
+  \item 6+ Mbps
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Bandwidth slabs}
+  \begin{center}
+  Group page load times based on bandwidth slab
+  \end{center}
+\end{frame}
+
+\begin{frame}{Bandwidth slabs}
+  \begin{center}
+  Data points from some countries may require smaller slabs
+  \end{center}
+\end{frame}
+
+\begin{frame}{Geographic data}
+  \begin{center}
+  Looking at latency from different geographic locations can tell you where to put your next CDN
+  \end{center}
+\end{frame}
+
+\begin{frame}{ISPs}
+  \begin{center}
+  Grouping data by ISP can tell you who's behaving badly
+  \end{center}
+\end{frame}
+
+\subsection{More...}
+
+\begin{frame}{More data}
+  \begin{itemize}
+  \item Write plugins to get more performance data
+  \item We already have a DNS plugin
+  \item I'm thinking of an IPv6 v/s IPv4 plugin
+  \item What about a full WebTiming plugin?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{You decide}
+  \begin{center}
+  Once you have the data, you can do anything with it
+  \end{center}
+\end{frame}
+
+\begin{frame}{}
+  \begin{center}
+  Thank you
+  \end{center}
+\end{frame}
+
+\begin{frame}{Photo credits}
+  \begin{itemize}
+  \item \href{http://www.flickr.com/photos/21233184@N02/4389412851/}{flickr.com/photos/21233184@N02/4389412851}
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{Contact me}
+  \begin{itemize}
+  \item Philip Tellis
+  \item yahoo
+  \item geek
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{References}
+  \begin{itemize}
+  \item \href{http://github.com/yahoo/boomerang/}{\textcolor{blue}{\underline{github.com/yahoo/boomerang}}}
+  \item \href{http://www.belshe.com/2010/05/24/more-bandwidth-doesnt-matter-much/}{\textcolor{blue}{\underline{More bandwidth doesn't matter (much)}} -- Mike Belshe}
+  \item \href{http://www.yuiblog.com/blog/2010/04/08/analyzing-bandwidth-and-latency/}{\textcolor{blue}{\underline{Analysing Bandwidth \& Latency}}} -- YUI Blog
+  \item \href{http://www.stuartcheshire.org/rants/Latency.html}{\textcolor{blue}{\underline{It's the latency, stupid}}} -- Stuart Cheshire
+  \item \href{http://www.slideshare.net/bluesmoon/index-3441823}{\textcolor{blue}{\underline{The statistics of web performance}}}
+  \end{itemize}
+\end{frame}
+
+\end{document}
+
+
