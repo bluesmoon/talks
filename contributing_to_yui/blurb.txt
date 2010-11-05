@@ -1,0 +1,3 @@
+A couple of years ago, Yahoo! released its javascript interaction libraries under the BSD licence for anyone to use, modify and redistribute. Earlier this year, the terms were extended to allow third party contributors to get their code back into the YUI code base and call themselves YUI contributors.
+
+This talk will go over what it takes to become a YUI contributor, and throw in some ideas of what kind of code you may want to add.

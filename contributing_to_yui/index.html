@@ -1,0 +1,1062 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Contributing to YUI</title><!-- metadata -->
+
+
+
+
+
+
+<meta name="generator" content="S5">
+<meta name="version" content="S5 1.1">
+<meta name="presdate" content="2008-12-04">
+<meta name="author" content="Philip S Tellis">
+<meta name="company" content="Yahoo! Inc"><!-- configuration parameters -->
+
+<meta name="defaultView" content="slideshow">
+<meta name="controlVis" content="hidden"><!-- style sheet links -->
+
+<link rel="stylesheet" href="../ui/default/slides.css" type="text/css" media="projection" id="slideProj">
+<link rel="stylesheet" href="../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle">
+<link rel="stylesheet" href="../ui/default/print.css" type="text/css" media="print" id="slidePrint">
+<link rel="stylesheet" href="../ui/default/opera.css" type="text/css" media="projection" id="operaFix">
+
+<script src="../ui/default/slides.js" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1><a href="http://foss.in/">FOSS.IN/2008</a> - 2008-12-04</h1>
+<h2>Contributing to YUI</h2>
+</div>
+
+</div>
+
+
+<div class="presentation">
+
+<div class="slide">
+<h1>Contributing to YUI</h1>
+<h3>Philip S Tellis</h3>
+<h4>Yahoo! Inc</h4>
+<h2></h2>
+</div>
+
+
+<div class="slide">
+<h1>Whoami?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/code_martial/1543735477/" style="background-image: url('images/1543735477_f302fdc3a3.jpg');">flickr:code_martial/1543735477</a></p>
+
+<ul>
+<li>Philip Tellis</li>
+<li>geek</li>
+<li>yahoo</li>
+<li>bluesmoon</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>A Brief History</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/xcaballe/365044685/" style="background-image: url('images/365044685_48c181f5b9.jpg');">flickr:xcaballe/365044685</a></p>
+
+<ul>
+<li>Javascript development was largely black magic</li>
+<li>Those who could, did</li>
+<li>Those who couldn't, copied</li>
+<li>Mostly from those who thought they could but really couldn't</li>
+<li>Lots of browser specific nonsense</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Looking around, it looks like that's still the case</p>
+
+</div>
+
+
+<div class="slide">
+<h1>Javascript libraries</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/guspim/2911102867/" style="background-image: url('images/2911102867_7f144432c5.png');">flickr:guspim/2911102867</a></p>
+
+<ul>
+<li>Javascript design patterns born out of browser stability</li>
+<li>Patterns accumulated into libraries</li>
+<li>Libraries built communities</li>
+<li>An ecological subsystem evolved</li>
+<li>Only the fittest survived</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Javascript libraries</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/artolog/2258975829/" style="background-image: url('images/2258975829_87db8f0e42.jpg');">flickr:artolog/2258975829</a></p>
+
+<ul>
+<li>Dojo</li>
+<li>Prototype</li>
+<li>Scriptaculous</li>
+<li>jQuery</li>
+<li>YUI</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>YUI - Yahoo! User Interface</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bluesmoon/IMG/" style="background-image: url('images/IMG_9641.jpg');">flickr:bluesmoon/IMG</a></p>
+
+<ul>
+<li>Conceived in 2005</li>
+<li>Released to the world in February 2006</li>
+<li>BSD Licenced</li>
+<li>Companion design pattern library released under a CC-BY license</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>Getting involved - Become a user</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/ntr23/730371240_d98a583b0f_b/" style="background-image: url('http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg');">flickr:ntr23/730371240_d98a583b0f_b</a></p>
+
+<ul>
+<li>First become a user
+<ul>
+<li class="light"> Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a></li>
+<li class="light"> Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a></li>
+<li class="light"> Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a></li>
+<li class="light"> Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a></li>
+<li class="light"> Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>Getting involved - Become a user</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/ntr23/730371240_d98a583b0f_b/" style="background-image: url('http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg');">flickr:ntr23/730371240_d98a583b0f_b</a></p>
+
+<ul>
+<li>First become a user
+<ul>
+<li>Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a></li>
+<li class="light"> Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a></li>
+<li class="light"> Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a></li>
+<li class="light"> Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a></li>
+<li class="light"> Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>Getting involved - Become a user</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/ntr23/730371240_d98a583b0f_b/" style="background-image: url('http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg');">flickr:ntr23/730371240_d98a583b0f_b</a></p>
+
+<ul>
+<li>First become a user
+<ul>
+<li>Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a></li>
+<li>Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a></li>
+<li class="light"> Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a></li>
+<li class="light"> Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a></li>
+<li class="light"> Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>Getting involved - Become a user</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/ntr23/730371240_d98a583b0f_b/" style="background-image: url('http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg');">flickr:ntr23/730371240_d98a583b0f_b</a></p>
+
+<ul>
+<li>First become a user
+<ul>
+<li>Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a></li>
+<li>Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a></li>
+<li>Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a></li>
+<li class="light"> Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a></li>
+<li class="light"> Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>Getting involved - Become a user</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/ntr23/730371240_d98a583b0f_b/" style="background-image: url('http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg');">flickr:ntr23/730371240_d98a583b0f_b</a></p>
+
+<ul>
+<li>First become a user
+<ul>
+<li>Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a></li>
+<li>Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a></li>
+<li>Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a></li>
+<li>Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a></li>
+<li class="light"> Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>Getting involved - Become a user</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/ntr23/730371240_d98a583b0f_b/" style="background-image: url('http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg');">flickr:ntr23/730371240_d98a583b0f_b</a></p>
+
+<ul>
+<li>First become a user
+<ul>
+<li>Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a></li>
+<li>Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a></li>
+<li>Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a></li>
+<li>Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a></li>
+<li>Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Getting involved - Learn Javascript</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/charliebrewer/2897862701_6bd9db6ea0_b/" style="background-image: url('http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg');">flickr:charliebrewer/2897862701_6bd9db6ea0_b</a></p>
+
+<ul>
+<li>Learn Javascript the right way
+<ul>
+<li class="light"> Read Crockford's <em>Javascript the good parts</em></li>
+<li class="light"> Run <em>jslint</em> on all your code</li>
+<li class="light"> Really understand prototypal inheritance</li>
+<li class="light"> Read Stefanov's <em>Object Oriented Javascript</em></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Getting involved - Learn Javascript</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/charliebrewer/2897862701_6bd9db6ea0_b/" style="background-image: url('http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg');">flickr:charliebrewer/2897862701_6bd9db6ea0_b</a></p>
+
+<ul>
+<li>Learn Javascript the right way
+<ul>
+<li>Read Crockford's <em>Javascript the good parts</em></li>
+<li class="light"> Run <em>jslint</em> on all your code</li>
+<li class="light"> Really understand prototypal inheritance</li>
+<li class="light"> Read Stefanov's <em>Object Oriented Javascript</em></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Getting involved - Learn Javascript</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/charliebrewer/2897862701_6bd9db6ea0_b/" style="background-image: url('http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg');">flickr:charliebrewer/2897862701_6bd9db6ea0_b</a></p>
+
+<ul>
+<li>Learn Javascript the right way
+<ul>
+<li>Read Crockford's <em>Javascript the good parts</em></li>
+<li>Run <em>jslint</em> on all your code</li>
+<li class="light"> Really understand prototypal inheritance</li>
+<li class="light"> Read Stefanov's <em>Object Oriented Javascript</em></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Getting involved - Learn Javascript</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/charliebrewer/2897862701_6bd9db6ea0_b/" style="background-image: url('http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg');">flickr:charliebrewer/2897862701_6bd9db6ea0_b</a></p>
+
+<ul>
+<li>Learn Javascript the right way
+<ul>
+<li>Read Crockford's <em>Javascript the good parts</em></li>
+<li>Run <em>jslint</em> on all your code</li>
+<li>Really understand prototypal inheritance</li>
+<li class="light"> Read Stefanov's <em>Object Oriented Javascript</em></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Getting involved - Learn Javascript</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/charliebrewer/2897862701_6bd9db6ea0_b/" style="background-image: url('http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg');">flickr:charliebrewer/2897862701_6bd9db6ea0_b</a></p>
+
+<ul>
+<li>Learn Javascript the right way
+<ul>
+<li>Read Crockford's <em>Javascript the good parts</em></li>
+<li>Run <em>jslint</em> on all your code</li>
+<li>Really understand prototypal inheritance</li>
+<li>Read Stefanov's <em>Object Oriented Javascript</em></li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Getting involved - Small contributions</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/lievensoete/2903489237/" style="background-image: url('images/2903489237_d28a51e43f.jpg');">flickr:lievensoete/2903489237</a></p>
+
+<ul>
+<li>Build credibility with small contributions
+<ul>
+<li class="light"> Answer questions on the mailing lists</li>
+<li class="light"> File bugs on the <a href="http://sourceforge.net/tracker/?atid=836476&amp;group_id=165715&amp;func=browse">tracker</a></li>
+<li class="light"> Submit patches via the <a href="http://sourceforge.net/tracker/?atid=836478&amp;group_id=165715&amp;func=browse">sourceforge patch submission</a> system.</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Getting involved - Small contributions</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/lievensoete/2903489237/" style="background-image: url('images/2903489237_d28a51e43f.jpg');">flickr:lievensoete/2903489237</a></p>
+
+<ul>
+<li>Build credibility with small contributions
+<ul>
+<li>Answer questions on the mailing lists</li>
+<li class="light"> File bugs on the <a href="http://sourceforge.net/tracker/?atid=836476&amp;group_id=165715&amp;func=browse">tracker</a></li>
+<li class="light"> Submit patches via the <a href="http://sourceforge.net/tracker/?atid=836478&amp;group_id=165715&amp;func=browse">sourceforge patch submission</a> system.</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Getting involved - Small contributions</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/lievensoete/2903489237/" style="background-image: url('images/2903489237_d28a51e43f.jpg');">flickr:lievensoete/2903489237</a></p>
+
+<ul>
+<li>Build credibility with small contributions
+<ul>
+<li>Answer questions on the mailing lists</li>
+<li>File bugs on the <a href="http://sourceforge.net/tracker/?atid=836476&amp;group_id=165715&amp;func=browse">tracker</a></li>
+<li class="light"> Submit patches via the <a href="http://sourceforge.net/tracker/?atid=836478&amp;group_id=165715&amp;func=browse">sourceforge patch submission</a> system.</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Getting involved - Small contributions</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/lievensoete/2903489237/" style="background-image: url('images/2903489237_d28a51e43f.jpg');">flickr:lievensoete/2903489237</a></p>
+
+<ul>
+<li>Build credibility with small contributions
+<ul>
+<li>Answer questions on the mailing lists</li>
+<li>File bugs on the <a href="http://sourceforge.net/tracker/?atid=836476&amp;group_id=165715&amp;func=browse">tracker</a></li>
+<li>Submit patches via the <a href="http://sourceforge.net/tracker/?atid=836478&amp;group_id=165715&amp;func=browse">sourceforge patch submission</a> system.</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">4<span class="subindex"></span></span>Graduating to a full time contributor</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bredgur/2925876954_694f28b765_b/" style="background-image: url('http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg');">flickr:bredgur/2925876954_694f28b765_b</a></p>
+
+<ul>
+<li>YUI Contributors
+<ul>
+<li class="light"> Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a></li>
+<li class="light"> Agree to the BSD licence</li>
+<li class="light"> Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> </li>
+<li class="light"> Find a sponsor from the YUI team to commit your changes</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">4<span class="subindex"></span></span>Graduating to a full time contributor</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bredgur/2925876954_694f28b765_b/" style="background-image: url('http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg');">flickr:bredgur/2925876954_694f28b765_b</a></p>
+
+<ul>
+<li>YUI Contributors
+<ul>
+<li>Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a></li>
+<li class="light"> Agree to the BSD licence</li>
+<li class="light"> Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> </li>
+<li class="light"> Find a sponsor from the YUI team to commit your changes</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">4<span class="subindex"></span></span>Graduating to a full time contributor</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bredgur/2925876954_694f28b765_b/" style="background-image: url('http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg');">flickr:bredgur/2925876954_694f28b765_b</a></p>
+
+<ul>
+<li>YUI Contributors
+<ul>
+<li>Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a></li>
+<li>Agree to the BSD licence</li>
+<li class="light"> Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> </li>
+<li class="light"> Find a sponsor from the YUI team to commit your changes</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">4<span class="subindex"></span></span>Graduating to a full time contributor</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bredgur/2925876954_694f28b765_b/" style="background-image: url('http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg');">flickr:bredgur/2925876954_694f28b765_b</a></p>
+
+<ul>
+<li>YUI Contributors
+<ul>
+<li>Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a></li>
+<li>Agree to the BSD licence</li>
+<li>Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> </li>
+<li class="light"> Find a sponsor from the YUI team to commit your changes</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">4<span class="subindex"></span></span>Graduating to a full time contributor</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bredgur/2925876954_694f28b765_b/" style="background-image: url('http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg');">flickr:bredgur/2925876954_694f28b765_b</a></p>
+
+<ul>
+<li>YUI Contributors
+<ul>
+<li>Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a></li>
+<li>Agree to the BSD licence</li>
+<li>Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> </li>
+<li>Find a sponsor from the YUI team to commit your changes</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>What is this CLA?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/coolmel/502576648_ddcd3936ec_o/" style="background-image: url('http://farm1.static.flickr.com/231/502576648_ddcd3936ec_o_d.jpg');">flickr:coolmel/502576648_ddcd3936ec_o</a></p>
+
+<ul>
+<li>YUI's Contributor License Agreement
+<ul>
+<li class="light"> Ensures that you have the authority to contribute the code that you do</li>
+<li class="light"> Protect users from dirty code</li>
+<li class="light"> Does not transfer copyright</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>What is this CLA?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/coolmel/502576648_ddcd3936ec_o/" style="background-image: url('http://farm1.static.flickr.com/231/502576648_ddcd3936ec_o_d.jpg');">flickr:coolmel/502576648_ddcd3936ec_o</a></p>
+
+<ul>
+<li>YUI's Contributor License Agreement
+<ul>
+<li>Ensures that you have the authority to contribute the code that you do</li>
+<li class="light"> Protect users from dirty code</li>
+<li class="light"> Does not transfer copyright</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>What is this CLA?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/coolmel/502576648_ddcd3936ec_o/" style="background-image: url('http://farm1.static.flickr.com/231/502576648_ddcd3936ec_o_d.jpg');">flickr:coolmel/502576648_ddcd3936ec_o</a></p>
+
+<ul>
+<li>YUI's Contributor License Agreement
+<ul>
+<li>Ensures that you have the authority to contribute the code that you do</li>
+<li>Protect users from dirty code</li>
+<li class="light"> Does not transfer copyright</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>What is this CLA?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/coolmel/502576648_ddcd3936ec_o/" style="background-image: url('http://farm1.static.flickr.com/231/502576648_ddcd3936ec_o_d.jpg');">flickr:coolmel/502576648_ddcd3936ec_o</a></p>
+
+<ul>
+<li>YUI's Contributor License Agreement
+<ul>
+<li>Ensures that you have the authority to contribute the code that you do</li>
+<li>Protect users from dirty code</li>
+<li>Does not transfer copyright</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>When should you sign the CLA?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/artolog/2519646167/" style="background-image: url('images/2519646167_1b96c5b87b.jpg');">flickr:artolog/2519646167</a></p>
+
+<ul>
+<li>Any intellectual property requires a signed CLA, eg:
+<ul>
+<li class="light"> Code, including any significant patch or feature addition</li>
+<li class="light"> Documentation, including any writing 500 words or longer</li>
+<li class="light"> Examples/demo code that becomes part of the YUI distribution</li>
+<li class="light"> Graphics or other visual creative work that becomes part of the YUI distribution</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>When should you sign the CLA?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/artolog/2519646167/" style="background-image: url('images/2519646167_1b96c5b87b.jpg');">flickr:artolog/2519646167</a></p>
+
+<ul>
+<li>Any intellectual property requires a signed CLA, eg:
+<ul>
+<li>Code, including any significant patch or feature addition</li>
+<li class="light"> Documentation, including any writing 500 words or longer</li>
+<li class="light"> Examples/demo code that becomes part of the YUI distribution</li>
+<li class="light"> Graphics or other visual creative work that becomes part of the YUI distribution</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>When should you sign the CLA?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/artolog/2519646167/" style="background-image: url('images/2519646167_1b96c5b87b.jpg');">flickr:artolog/2519646167</a></p>
+
+<ul>
+<li>Any intellectual property requires a signed CLA, eg:
+<ul>
+<li>Code, including any significant patch or feature addition</li>
+<li>Documentation, including any writing 500 words or longer</li>
+<li class="light"> Examples/demo code that becomes part of the YUI distribution</li>
+<li class="light"> Graphics or other visual creative work that becomes part of the YUI distribution</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>When should you sign the CLA?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/artolog/2519646167/" style="background-image: url('images/2519646167_1b96c5b87b.jpg');">flickr:artolog/2519646167</a></p>
+
+<ul>
+<li>Any intellectual property requires a signed CLA, eg:
+<ul>
+<li>Code, including any significant patch or feature addition</li>
+<li>Documentation, including any writing 500 words or longer</li>
+<li>Examples/demo code that becomes part of the YUI distribution</li>
+<li class="light"> Graphics or other visual creative work that becomes part of the YUI distribution</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>When should you sign the CLA?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/artolog/2519646167/" style="background-image: url('images/2519646167_1b96c5b87b.jpg');">flickr:artolog/2519646167</a></p>
+
+<ul>
+<li>Any intellectual property requires a signed CLA, eg:
+<ul>
+<li>Code, including any significant patch or feature addition</li>
+<li>Documentation, including any writing 500 words or longer</li>
+<li>Examples/demo code that becomes part of the YUI distribution</li>
+<li>Graphics or other visual creative work that becomes part of the YUI distribution</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Who is a sponsor?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/knowprose/131893050_2d5b16bd78_b/" style="background-image: url('http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg');">flickr:knowprose/131893050_2d5b16bd78_b</a></p>
+
+<ul>
+<li>An authorized committer
+<ul>
+<li class="light"> Already has commit access</li>
+<li class="light"> Will review your code</li>
+<li class="light"> Your primary point of contact</li>
+<li class="light"> Help with documentation</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Who is a sponsor?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/knowprose/131893050_2d5b16bd78_b/" style="background-image: url('http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg');">flickr:knowprose/131893050_2d5b16bd78_b</a></p>
+
+<ul>
+<li>An authorized committer
+<ul>
+<li>Already has commit access</li>
+<li class="light"> Will review your code</li>
+<li class="light"> Your primary point of contact</li>
+<li class="light"> Help with documentation</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Who is a sponsor?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/knowprose/131893050_2d5b16bd78_b/" style="background-image: url('http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg');">flickr:knowprose/131893050_2d5b16bd78_b</a></p>
+
+<ul>
+<li>An authorized committer
+<ul>
+<li>Already has commit access</li>
+<li>Will review your code</li>
+<li class="light"> Your primary point of contact</li>
+<li class="light"> Help with documentation</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Who is a sponsor?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/knowprose/131893050_2d5b16bd78_b/" style="background-image: url('http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg');">flickr:knowprose/131893050_2d5b16bd78_b</a></p>
+
+<ul>
+<li>An authorized committer
+<ul>
+<li>Already has commit access</li>
+<li>Will review your code</li>
+<li>Your primary point of contact</li>
+<li class="light"> Help with documentation</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Who is a sponsor?</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/knowprose/131893050_2d5b16bd78_b/" style="background-image: url('http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg');">flickr:knowprose/131893050_2d5b16bd78_b</a></p>
+
+<ul>
+<li>An authorized committer
+<ul>
+<li>Already has commit access</li>
+<li>Will review your code</li>
+<li>Your primary point of contact</li>
+<li>Help with documentation</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Public version control system</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/malias/261406666/" style="background-image: url('images/261406666_12fb5db7be.jpg');">flickr:malias/261406666</a></p>
+
+<ul>
+<li>Any day now
+<ul>
+<li class="light"> Final touches on a public Git repository</li>
+<li class="light"> No longer require a sponsor</li>
+<li class="light"> All commits can be viewed by anyone</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Public version control system</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/malias/261406666/" style="background-image: url('images/261406666_12fb5db7be.jpg');">flickr:malias/261406666</a></p>
+
+<ul>
+<li>Any day now
+<ul>
+<li>Final touches on a public Git repository</li>
+<li class="light"> No longer require a sponsor</li>
+<li class="light"> All commits can be viewed by anyone</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Public version control system</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/malias/261406666/" style="background-image: url('images/261406666_12fb5db7be.jpg');">flickr:malias/261406666</a></p>
+
+<ul>
+<li>Any day now
+<ul>
+<li>Final touches on a public Git repository</li>
+<li>No longer require a sponsor</li>
+<li class="light"> All commits can be viewed by anyone</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Public version control system</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/malias/261406666/" style="background-image: url('images/261406666_12fb5db7be.jpg');">flickr:malias/261406666</a></p>
+
+<ul>
+<li>Any day now
+<ul>
+<li>Final touches on a public Git repository</li>
+<li>No longer require a sponsor</li>
+<li>All commits can be viewed by anyone</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Code Patterns</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bluesmoon/IMG/" style="background-image: url('images/IMG_4314.jpg');">flickr:bluesmoon/IMG</a></p>
+
+<ul>
+<li>Get familiar with YUI's code patterns
+<ul>
+<li class="light"> Encapsulate and hide private data</li>
+<li class="light"> Private methods</li>
+<li class="light"> Extending v/s Augmenting</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Code Patterns</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bluesmoon/IMG/" style="background-image: url('images/IMG_4314.jpg');">flickr:bluesmoon/IMG</a></p>
+
+<ul>
+<li>Get familiar with YUI's code patterns
+<ul>
+<li>Encapsulate and hide private data</li>
+<li class="light"> Private methods</li>
+<li class="light"> Extending v/s Augmenting</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Code Patterns</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bluesmoon/IMG/" style="background-image: url('images/IMG_4314.jpg');">flickr:bluesmoon/IMG</a></p>
+
+<ul>
+<li>Get familiar with YUI's code patterns
+<ul>
+<li>Encapsulate and hide private data</li>
+<li>Private methods</li>
+<li class="light"> Extending v/s Augmenting</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Code Patterns</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/bluesmoon/IMG/" style="background-image: url('images/IMG_4314.jpg');">flickr:bluesmoon/IMG</a></p>
+
+<ul>
+<li>Get familiar with YUI's code patterns
+<ul>
+<li>Encapsulate and hide private data</li>
+<li>Private methods</li>
+<li>Extending v/s Augmenting</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex">a</span></span>Code Patterns: Private variables visible</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/krisgriffon/26220260_7ae6f36f4c_b/" style="background-image: url('http://farm1.static.flickr.com/21/26220260_7ae6f36f4c_b_d.jpg');">flickr:krisgriffon/26220260_7ae6f36f4c_b</a></p>
+
+<pre class="dark">
+   YAHOO.util.Foo = <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+        <span style="color:#fa8072;">this</span>._foo = 10;
+        <span style="color:#fa8072;">this</span>._bar = <span style="color:#87ceeb;">&quot;Hello, World&quot;</span>;
+
+        <span style="color:#6495ed;font-weight:bolder;">return</span> <span style="color:#fa8072;">this</span>;
+   <span style="color:#ffdead;">}</span>;
+
+   <span style="color:#fa8072">var</span> foo = <span style="color:#ffdead;font-weight:bolder;">new</span> YAHOO.util.Foo();
+
+   foo._foo = 20;
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex">b</span></span>Code Patterns: Private variables hidden</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/krisgriffon/26220260_7ae6f36f4c_b/" style="background-image: url('http://farm1.static.flickr.com/21/26220260_7ae6f36f4c_b_d.jpg');">flickr:krisgriffon/26220260_7ae6f36f4c_b</a></p>
+
+<pre class="dark">
+   (<span style="color:#ffdead">function</span>() <span style="color:#ffdead">{</span>
+        <span style="color:#fa8072">var</span> U=YAHOO.util, E=YAHOO.util.Event;
+        <span style="color:#fa8072">var</span> l_foo, l_bar;
+
+        U.Foo = <span style="color:#ffdead">function</span>() <span style="color:#ffdead">{</span>
+                l_foo = 10;
+                l_bar = <span style="color:#87ceeb">&quot;Hello, World&quot;</span>;
+
+                <span style="color:#6495ed;font-weight:bolder;">return</span> <span style="color:#fa8072">this</span>;
+        <span style="color:#ffdead">}</span>;
+   <span style="color:#ffdead">}</span>());
+
+   <span style="color:#fa8072">var</span> foo = <span style="color:#ffdead;font-weight:bolder;">new</span> YAHOO.util.Foo();
+
+   <span style="color:#888;">// No access to l_foo</span>
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex">a</span></span>Code Patterns: Private methods exposed</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/sovietuk/154340012_0445caa0bd_b/" style="background-image: url('http://farm1.static.flickr.com/61/154340012_0445caa0bd_b_d.jpg');">flickr:sovietuk/154340012_0445caa0bd_b</a></p>
+
+<pre class="dark">
+   YAHOO.util.Foo = <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+        <span style="color:#fa8072;">this</span>._init();
+
+        <span style="color:#6495ed;font-weight:bolder;">return</span> <span style="color:#fa8072;">this</span>;
+   <span style="color:#ffdead;">}</span>;
+
+   YAHOO.util.Foo.prototype = <span style="color:#ffdead;">{</span>
+        _init: <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+             <span style="color:#888;">// private method</span>
+        <span style="color:#ffdead;">}</span>
+   <span style="color:#ffdead;">}</span>;
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex">b</span></span>Code Patterns: Private methods hidden</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/sovietuk/154340012_0445caa0bd_b/" style="background-image: url('http://farm1.static.flickr.com/61/154340012_0445caa0bd_b_d.jpg');">flickr:sovietuk/154340012_0445caa0bd_b</a></p>
+
+<pre class="dark">
+   (<span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+        <span style="color:#fa8072;">var</span> _init = <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+                <span style="color:#888;">// private method</span>
+        <span style="color:#ffdead;">}</span>;
+
+        YAHOO.util.Foo = <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+                _init.call(<span style="color:#fa8072;">this</span>);
+
+                <span style="color:#6495ed;font-weight:bolder;">return</span> <span style="color:#fa8072;">this</span>;
+        <span style="color:#ffdead;">}</span>;
+   <span style="color:#ffdead;">}</span>());
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Code Patterns: Extending v/s Augmenting</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/thevince/2557418141_8145b77c15_b/" style="background-image: url('http://farm4.static.flickr.com/3031/2557418141_8145b77c15_b_d.jpg');">flickr:thevince/2557418141_8145b77c15_b</a></p>
+
+<pre class="dark small">
+   YAHOO.lang.extend(derived, base, overrides);
+
+   YAHOO.lang.augment(object, mixin, overrides);
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Code Patterns: Extending v/s Augmenting</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/thevince/2557418141_8145b77c15_b/" style="background-image: url('http://farm4.static.flickr.com/3031/2557418141_8145b77c15_b_d.jpg');">flickr:thevince/2557418141_8145b77c15_b</a></p>
+
+<pre class="dark small">
+   YAHOO.lang.extend(derived, base, overrides);
+
+   YAHOO.lang.augment(object, mixin, overrides);
+</pre>
+
+<ul>
+<li>Use extend for inheritance</li>
+<li class="light"> Use augment to add properties to an existing object</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Code Patterns: Extending v/s Augmenting</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/thevince/2557418141_8145b77c15_b/" style="background-image: url('http://farm4.static.flickr.com/3031/2557418141_8145b77c15_b_d.jpg');">flickr:thevince/2557418141_8145b77c15_b</a></p>
+
+<pre class="dark small">
+   YAHOO.lang.extend(derived, base, overrides);
+
+   YAHOO.lang.augment(object, mixin, overrides);
+</pre>
+
+<ul>
+<li>Use extend for inheritance</li>
+<li>Use augment to add properties to an existing object</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>YUI is brought to you by</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/equanimity/2126487011_773f18494e_b/" style="background-image: url('http://farm3.static.flickr.com/2178/2126487011_773f18494e_b_d.jpg');">flickr:equanimity/2126487011_773f18494e_b</a></p>
+
+<ul>
+<li>The YUI team:
+<ul>
+<li>Thomas Sha, Eric Miraglia, Nate Koechley, Satyen Desai</li>
+<li>Jenny Donneley, Adam Moore, Tod Kloots, Luke Smith</li>
+<li>Matt Sweeney, Dav Glass, Doug Crockford</li>
+</ul></li>
+<li class="light"> Contributors:
+<ul>
+<li class="light"> Gopal Venkatesan, Caridy Patiño, Satyam, Philip Tellis</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>YUI is brought to you by</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/equanimity/2126487011_773f18494e_b/" style="background-image: url('http://farm3.static.flickr.com/2178/2126487011_773f18494e_b_d.jpg');">flickr:equanimity/2126487011_773f18494e_b</a></p>
+
+<ul>
+<li>The YUI team:
+<ul>
+<li>Thomas Sha, Eric Miraglia, Nate Koechley, Satyen Desai</li>
+<li>Jenny Donneley, Adam Moore, Tod Kloots, Luke Smith</li>
+<li>Matt Sweeney, Dav Glass, Doug Crockford</li>
+</ul></li>
+<li>Contributors:
+<ul>
+<li>Gopal Venkatesan, Caridy Patiño, Satyam, Philip Tellis</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1>Greetz</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/encouragement/291094770/" style="background-image: url('images/291094770_dbd53e68b6.jpg');">flickr:encouragement/291094770</a></p>
+
+<blockquote>
+  <p>Philip S Tellis</p>
+
+<p><a href="mailto:philip@bluesmoon.info?subject=FOSS.IN/2008">philip@bluesmoon.info</a></p>
+
+<p><a href="http://bluesmoon.info/">http://bluesmoon.info/</a></p>
+</blockquote>
+
+</div>
+
+
+<div class="slide">
+<h1>Photo Credits</h1>
+<p class="bgimage"><a href="http://flickr.com/photos/25602112@N07/2539754489_a20454a273_o/" style="background-image: url('http://farm4.static.flickr.com/3244/2539754489_a20454a273_o_d.jpg');">flickr:25602112@N07/2539754489_a20454a273_o</a></p>
+
+<ul>
+<li class="small"> All photos are under a CC-BY, CC-BY-NC, CC-BY-SA or CC-BY-NC-SA license
+<ul>
+<li>http://flickr.com/photos/code_martial/1543735477/</li>
+<li>http://flickr.com/photos/xcaballe/365044685/</li>
+<li>http://flickr.com/photos/guspim/2911102867/</li>
+<li>http://flickr.com/photos/artolog/2258975829/</li>
+<li>http://flickr.com/photos/ntr23/730371240/</li>
+<li>http://flickr.com/photos/charliebrewer/2897862701/</li>
+<li>http://flickr.com/photos/lievensoete/2903489237/</li>
+<li>http://flickr.com/photos/bredgur/2925876954/</li>
+<li>http://flickr.com/photos/coolmel/502576648/</li>
+<li>http://flickr.com/photos/artolog/2519646167/</li>
+<li>http://flickr.com/photos/knowprose/131893050/</li>
+<li>http://flickr.com/photos/malias/261406666/</li>
+<li>http://flickr.com/photos/krisgriffon/26220260/</li>
+<li>http://flickr.com/photos/sovietuk/154340012/</li>
+<li>http://flickr.com/photos/thevince/2557418141/</li>
+<li>http://flickr.com/photos/equanimity/2126487011/</li>
+<li>http://flickr.com/photos/25602112@N07/2539754489/</li>
+<li>http://flickr.com/photos/encouragement/291094770/</li>
+</ul></li>
+</ul>
+
+</div>
+
+</div>
+
+<p>Made with Eric A Meyer's S5</p>
+
+</body>
+</html>

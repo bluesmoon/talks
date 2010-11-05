@@ -1,0 +1,571 @@
+TITLE: Contributing to YUI
+AUTHOR: Philip S Tellis
+COMPANY: Yahoo! Inc
+CONFERENCE: <a href="http://foss.in/">FOSS.IN/2008</a>
+%
+Whoami?
+-------
+[bg code_martial/1543735477_f302fdc3a3.jpg]
+- Philip Tellis
+- geek
+- yahoo
+- bluesmoon
+%
+A Brief History
+---------------
+[bg xcaballe/365044685_48c181f5b9.jpg]
+- Javascript development was largely black magic
+- Those who could, did
+- Those who couldn't, copied
+- Mostly from those who thought they could but really couldn't
+- Lots of browser specific nonsense
+%
+[class="alert"] Looking around, it looks like that's still the case
+%
+Javascript libraries
+--------------------
+[bg guspim/2911102867_7f144432c5.png]
+- Javascript design patterns born out of browser stability
+- Patterns accumulated into libraries
+- Libraries built communities
+- An ecological subsystem evolved
+- Only the fittest survived
+%
+Javascript libraries
+--------------------
+[bg artolog/2258975829_87db8f0e42.jpg]
+- Dojo
+- Prototype
+- Scriptaculous
+- jQuery
+- YUI
+%
+YUI - Yahoo! User Interface
+---------------------------
+[bg bluesmoon/IMG_9641.jpg]
+- Conceived in 2005
+- Released to the world in February 2006
+- BSD Licenced
+- Companion design pattern library released under a CC-BY license
+%
+1. Getting involved - Become a user
+-------------------
+[bg ntr23/http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg]
+- First become a user
+   - [class="light"] Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a>
+   - [class="light"] Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a>
+   - [class="light"] Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a>
+   - [class="light"] Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a>
+   - [class="light"] Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a>
+%
+1. Getting involved - Become a user
+-------------------
+[bg ntr23/http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg]
+- First become a user
+   - Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a>
+   - [class="light"] Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a>
+   - [class="light"] Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a>
+   - [class="light"] Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a>
+   - [class="light"] Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a>
+%
+1. Getting involved - Become a user
+-------------------
+[bg ntr23/http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg]
+- First become a user
+   - Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a>
+   - Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a>
+   - [class="light"] Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a>
+   - [class="light"] Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a>
+   - [class="light"] Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a>
+%
+1. Getting involved - Become a user
+-------------------
+[bg ntr23/http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg]
+- First become a user
+   - Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a>
+   - Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a>
+   - Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a>
+   - [class="light"] Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a>
+   - [class="light"] Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a>
+%
+1. Getting involved - Become a user
+-------------------
+[bg ntr23/http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg]
+- First become a user
+   - Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a>
+   - Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a>
+   - Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a>
+   - Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a>
+   - [class="light"] Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a>
+%
+1. Getting involved - Become a user
+-------------------
+[bg ntr23/http://farm2.static.flickr.com/1415/730371240_d98a583b0f_b_d.jpg]
+- First become a user
+   - Download the code: <a href="http://developer.yahoo.com/yui/download">developer.yahoo.com/yui/download</a>
+   - Read the docs: <a href="http://developer.yahoo.com/yui/docs/">developer.yahoo.com/yui/docs</a>
+   - Join the mailing list: <a href="http://groups.yahoo.com/group/ydn-javascript">yahoogroups/ydn-javascript</a>
+   - Read other user stories on the yuiblog: <a href="http://yuiblog.com/">yuiblog.com</a>
+   - Watch videos on YUI theatre: <a href="http://developer.yahoo.com/yui/theater/">developer.yahoo.com/yui/theater</a>
+%
+2. Getting involved - Learn Javascript
+-------------------
+[bg charliebrewer/http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg]
+- Learn Javascript the right way
+   - [class="light"] Read Crockford's _Javascript the good parts_
+   - [class="light"] Run _jslint_ on all your code
+   - [class="light"] Really understand prototypal inheritance
+   - [class="light"] Read Stefanov's _Object Oriented Javascript_
+%
+2. Getting involved - Learn Javascript
+-------------------
+[bg charliebrewer/http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg]
+- Learn Javascript the right way
+   - Read Crockford's _Javascript the good parts_
+   - [class="light"] Run _jslint_ on all your code
+   - [class="light"] Really understand prototypal inheritance
+   - [class="light"] Read Stefanov's _Object Oriented Javascript_
+%
+2. Getting involved - Learn Javascript
+-------------------
+[bg charliebrewer/http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg]
+- Learn Javascript the right way
+   - Read Crockford's _Javascript the good parts_
+   - Run _jslint_ on all your code
+   - [class="light"] Really understand prototypal inheritance
+   - [class="light"] Read Stefanov's _Object Oriented Javascript_
+%
+2. Getting involved - Learn Javascript
+-------------------
+[bg charliebrewer/http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg]
+- Learn Javascript the right way
+   - Read Crockford's _Javascript the good parts_
+   - Run _jslint_ on all your code
+   - Really understand prototypal inheritance
+   - [class="light"] Read Stefanov's _Object Oriented Javascript_
+%
+2. Getting involved - Learn Javascript
+-------------------
+[bg charliebrewer/http://farm4.static.flickr.com/3163/2897862701_6bd9db6ea0_b_d.jpg]
+- Learn Javascript the right way
+   - Read Crockford's _Javascript the good parts_
+   - Run _jslint_ on all your code
+   - Really understand prototypal inheritance
+   - Read Stefanov's _Object Oriented Javascript_
+%
+3. Getting involved - Small contributions
+-----------------------------------------
+[bg lievensoete/2903489237_d28a51e43f.jpg]
+- Build credibility with small contributions
+   - [class="light"] Answer questions on the mailing lists
+   - [class="light"] File bugs on the <a href="http://sourceforge.net/tracker/?atid=836476&group_id=165715&func=browse">tracker</a>
+   - [class="light"] Submit patches via the <a href="http://sourceforge.net/tracker/?atid=836478&group_id=165715&func=browse">sourceforge patch submission</a> system.
+%
+3. Getting involved - Small contributions
+-----------------------------------------
+[bg lievensoete/2903489237_d28a51e43f.jpg]
+- Build credibility with small contributions
+   - Answer questions on the mailing lists
+   - [class="light"] File bugs on the <a href="http://sourceforge.net/tracker/?atid=836476&group_id=165715&func=browse">tracker</a>
+   - [class="light"] Submit patches via the <a href="http://sourceforge.net/tracker/?atid=836478&group_id=165715&func=browse">sourceforge patch submission</a> system.
+%
+3. Getting involved - Small contributions
+-----------------------------------------
+[bg lievensoete/2903489237_d28a51e43f.jpg]
+- Build credibility with small contributions
+   - Answer questions on the mailing lists
+   - File bugs on the <a href="http://sourceforge.net/tracker/?atid=836476&group_id=165715&func=browse">tracker</a>
+   - [class="light"] Submit patches via the <a href="http://sourceforge.net/tracker/?atid=836478&group_id=165715&func=browse">sourceforge patch submission</a> system.
+%
+3. Getting involved - Small contributions
+-----------------------------------------
+[bg lievensoete/2903489237_d28a51e43f.jpg]
+- Build credibility with small contributions
+   - Answer questions on the mailing lists
+   - File bugs on the <a href="http://sourceforge.net/tracker/?atid=836476&group_id=165715&func=browse">tracker</a>
+   - Submit patches via the <a href="http://sourceforge.net/tracker/?atid=836478&group_id=165715&func=browse">sourceforge patch submission</a> system.
+%
+4. Graduating to a full time contributor
+----------------------------------------
+[bg bredgur/http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg]
+- YUI Contributors
+   - [class="light"] Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a>
+   - [class="light"] Agree to the BSD licence
+   - [class="light"] Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> 
+   - [class="light"] Find a sponsor from the YUI team to commit your changes
+%
+4. Graduating to a full time contributor
+----------------------------------------
+[bg bredgur/http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg]
+- YUI Contributors
+   - Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a>
+   - [class="light"] Agree to the BSD licence
+   - [class="light"] Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> 
+   - [class="light"] Find a sponsor from the YUI team to commit your changes
+%
+4. Graduating to a full time contributor
+----------------------------------------
+[bg bredgur/http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg]
+- YUI Contributors
+   - Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a>
+   - Agree to the BSD licence
+   - [class="light"] Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> 
+   - [class="light"] Find a sponsor from the YUI team to commit your changes
+%
+4. Graduating to a full time contributor
+----------------------------------------
+[bg bredgur/http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg]
+- YUI Contributors
+   - Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a>
+   - Agree to the BSD licence
+   - Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> 
+   - [class="light"] Find a sponsor from the YUI team to commit your changes
+%
+4. Graduating to a full time contributor
+----------------------------------------
+[bg bredgur/http://farm4.static.flickr.com/3034/2925876954_694f28b765_b_d.jpg]
+- YUI Contributors
+   - Join the yui-contributors mailing list: <a href="http://tech.groups.yahoo.com/group/yui-contributors/">yahoogroups/yui-contributors</a>
+   - Agree to the BSD licence
+   - Sign and submit the <a href="http://developer.yahoo.com/yui/community/contribute.html">CLA</a> 
+   - Find a sponsor from the YUI team to commit your changes
+%
+What is this CLA?
+----------------
+[bg coolmel/http://farm1.static.flickr.com/231/502576648_ddcd3936ec_o_d.jpg]
+- YUI's Contributor License Agreement
+   - [class="light"] Ensures that you have the authority to contribute the code that you do
+   - [class="light"] Protect users from dirty code
+   - [class="light"] Does not transfer copyright
+%
+What is this CLA?
+----------------
+[bg coolmel/http://farm1.static.flickr.com/231/502576648_ddcd3936ec_o_d.jpg]
+- YUI's Contributor License Agreement
+   - Ensures that you have the authority to contribute the code that you do
+   - [class="light"] Protect users from dirty code
+   - [class="light"] Does not transfer copyright
+%
+What is this CLA?
+----------------
+[bg coolmel/http://farm1.static.flickr.com/231/502576648_ddcd3936ec_o_d.jpg]
+- YUI's Contributor License Agreement
+   - Ensures that you have the authority to contribute the code that you do
+   - Protect users from dirty code
+   - [class="light"] Does not transfer copyright
+%
+What is this CLA?
+----------------
+[bg coolmel/http://farm1.static.flickr.com/231/502576648_ddcd3936ec_o_d.jpg]
+- YUI's Contributor License Agreement
+   - Ensures that you have the authority to contribute the code that you do
+   - Protect users from dirty code
+   - Does not transfer copyright
+%
+When should you sign the CLA?
+----------------
+[bg artolog/2519646167_1b96c5b87b.jpg]
+- Any intellectual property requires a signed CLA, eg:
+   - [class="light"] Code, including any significant patch or feature addition
+   - [class="light"] Documentation, including any writing 500 words or longer
+   - [class="light"] Examples/demo code that becomes part of the YUI distribution
+   - [class="light"] Graphics or other visual creative work that becomes part of the YUI distribution
+%
+When should you sign the CLA?
+----------------
+[bg artolog/2519646167_1b96c5b87b.jpg]
+- Any intellectual property requires a signed CLA, eg:
+   - Code, including any significant patch or feature addition
+   - [class="light"] Documentation, including any writing 500 words or longer
+   - [class="light"] Examples/demo code that becomes part of the YUI distribution
+   - [class="light"] Graphics or other visual creative work that becomes part of the YUI distribution
+%
+When should you sign the CLA?
+----------------
+[bg artolog/2519646167_1b96c5b87b.jpg]
+- Any intellectual property requires a signed CLA, eg:
+   - Code, including any significant patch or feature addition
+   - Documentation, including any writing 500 words or longer
+   - [class="light"] Examples/demo code that becomes part of the YUI distribution
+   - [class="light"] Graphics or other visual creative work that becomes part of the YUI distribution
+%
+When should you sign the CLA?
+----------------
+[bg artolog/2519646167_1b96c5b87b.jpg]
+- Any intellectual property requires a signed CLA, eg:
+   - Code, including any significant patch or feature addition
+   - Documentation, including any writing 500 words or longer
+   - Examples/demo code that becomes part of the YUI distribution
+   - [class="light"] Graphics or other visual creative work that becomes part of the YUI distribution
+%
+When should you sign the CLA?
+----------------
+[bg artolog/2519646167_1b96c5b87b.jpg]
+- Any intellectual property requires a signed CLA, eg:
+   - Code, including any significant patch or feature addition
+   - Documentation, including any writing 500 words or longer
+   - Examples/demo code that becomes part of the YUI distribution
+   - Graphics or other visual creative work that becomes part of the YUI distribution
+%
+Who is a sponsor?
+-----------------
+[bg knowprose/http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg]
+- An authorized committer
+   - [class="light"] Already has commit access
+   - [class="light"] Will review your code
+   - [class="light"] Your primary point of contact
+   - [class="light"] Help with documentation
+%
+Who is a sponsor?
+-----------------
+[bg knowprose/http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg]
+- An authorized committer
+   - Already has commit access
+   - [class="light"] Will review your code
+   - [class="light"] Your primary point of contact
+   - [class="light"] Help with documentation
+%
+Who is a sponsor?
+-----------------
+[bg knowprose/http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg]
+- An authorized committer
+   - Already has commit access
+   - Will review your code
+   - [class="light"] Your primary point of contact
+   - [class="light"] Help with documentation
+%
+Who is a sponsor?
+-----------------
+[bg knowprose/http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg]
+- An authorized committer
+   - Already has commit access
+   - Will review your code
+   - Your primary point of contact
+   - [class="light"] Help with documentation
+%
+Who is a sponsor?
+-----------------
+[bg knowprose/http://farm1.static.flickr.com/49/131893050_2d5b16bd78_b_d.jpg]
+- An authorized committer
+   - Already has commit access
+   - Will review your code
+   - Your primary point of contact
+   - Help with documentation
+%
+Public version control system
+-----------------
+[bg malias/261406666_12fb5db7be.jpg]
+- Any day now
+   - [class="light"] Final touches on a public Git repository
+   - [class="light"] No longer require a sponsor
+   - [class="light"] All commits can be viewed by anyone
+%
+Public version control system
+-----------------
+[bg malias/261406666_12fb5db7be.jpg]
+- Any day now
+   - Final touches on a public Git repository
+   - [class="light"] No longer require a sponsor
+   - [class="light"] All commits can be viewed by anyone
+%
+Public version control system
+-----------------
+[bg malias/261406666_12fb5db7be.jpg]
+- Any day now
+   - Final touches on a public Git repository
+   - No longer require a sponsor
+   - [class="light"] All commits can be viewed by anyone
+%
+Public version control system
+-----------------
+[bg malias/261406666_12fb5db7be.jpg]
+- Any day now
+   - Final touches on a public Git repository
+   - No longer require a sponsor
+   - All commits can be viewed by anyone
+%
+Code Patterns
+-------------
+[bg bluesmoon/IMG_4314.jpg]
+- Get familiar with YUI's code patterns
+   - [class="light"] Encapsulate and hide private data
+   - [class="light"] Private methods
+   - [class="light"] Extending v/s Augmenting
+%
+Code Patterns
+-------------
+[bg bluesmoon/IMG_4314.jpg]
+- Get familiar with YUI's code patterns
+   - Encapsulate and hide private data
+   - [class="light"] Private methods
+   - [class="light"] Extending v/s Augmenting
+%
+Code Patterns
+-------------
+[bg bluesmoon/IMG_4314.jpg]
+- Get familiar with YUI's code patterns
+   - Encapsulate and hide private data
+   - Private methods
+   - [class="light"] Extending v/s Augmenting
+%
+Code Patterns
+-------------
+[bg bluesmoon/IMG_4314.jpg]
+- Get familiar with YUI's code patterns
+   - Encapsulate and hide private data
+   - Private methods
+   - Extending v/s Augmenting
+%
+1a. Code Patterns: Private variables visible
+----------------
+[bg krisgriffon/http://farm1.static.flickr.com/21/26220260_7ae6f36f4c_b_d.jpg]
+<pre class="dark">
+   YAHOO.util.Foo = <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+        <span style="color:#fa8072;">this</span>._foo = 10;
+        <span style="color:#fa8072;">this</span>._bar = <span style="color:#87ceeb;">&quot;Hello, World&quot;</span>;
+
+        <span style="color:#6495ed;font-weight:bolder;">return</span> <span style="color:#fa8072;">this</span>;
+   <span style="color:#ffdead;">}</span>;
+
+   <span style="color:#fa8072">var</span> foo = <span style="color:#ffdead;font-weight:bolder;">new</span> YAHOO.util.Foo();
+
+   foo._foo = 20;
+</pre>
+%
+1b. Code Patterns: Private variables hidden
+----------------
+[bg krisgriffon/http://farm1.static.flickr.com/21/26220260_7ae6f36f4c_b_d.jpg]
+<pre class="dark">
+   (<span style="color:#ffdead">function</span>() <span style="color:#ffdead">{</span>
+        <span style="color:#fa8072">var</span> U=YAHOO.util, E=YAHOO.util.Event;
+        <span style="color:#fa8072">var</span> l_foo, l_bar;
+
+        U.Foo = <span style="color:#ffdead">function</span>() <span style="color:#ffdead">{</span>
+                l_foo = 10;
+                l_bar = <span style="color:#87ceeb">&quot;Hello, World&quot;</span>;
+
+                <span style="color:#6495ed;font-weight:bolder;">return</span> <span style="color:#fa8072">this</span>;
+        <span style="color:#ffdead">}</span>;
+   <span style="color:#ffdead">}</span>());
+
+   <span style="color:#fa8072">var</span> foo = <span style="color:#ffdead;font-weight:bolder;">new</span> YAHOO.util.Foo();
+
+   <span style="color:#888;">// No access to l_foo</span>
+</pre>
+%
+2a. Code Patterns: Private methods exposed
+------------------------------------------
+[bg sovietuk/http://farm1.static.flickr.com/61/154340012_0445caa0bd_b_d.jpg]
+<pre class="dark">
+   YAHOO.util.Foo = <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+        <span style="color:#fa8072;">this</span>._init();
+
+        <span style="color:#6495ed;font-weight:bolder;">return</span> <span style="color:#fa8072;">this</span>;
+   <span style="color:#ffdead;">}</span>;
+
+   YAHOO.util.Foo.prototype = <span style="color:#ffdead;">{</span>
+        _init: <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+             <span style="color:#888;">// private method</span>
+        <span style="color:#ffdead;">}</span>
+   <span style="color:#ffdead;">}</span>;
+</pre>
+%
+2b. Code Patterns: Private methods hidden
+-----------------------------------------
+[bg sovietuk/http://farm1.static.flickr.com/61/154340012_0445caa0bd_b_d.jpg]
+<pre class="dark">
+   (<span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+        <span style="color:#fa8072;">var</span> _init = <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+                <span style="color:#888;">// private method</span>
+        <span style="color:#ffdead;">}</span>;
+
+        YAHOO.util.Foo = <span style="color:#ffdead;">function</span>() <span style="color:#ffdead;">{</span>
+                _init.call(<span style="color:#fa8072;">this</span>);
+
+                <span style="color:#6495ed;font-weight:bolder;">return</span> <span style="color:#fa8072;">this</span>;
+        <span style="color:#ffdead;">}</span>;
+   <span style="color:#ffdead;">}</span>());
+</pre>
+%
+3. Code Patterns: Extending v/s Augmenting
+-------------------------------------------
+[bg thevince/http://farm4.static.flickr.com/3031/2557418141_8145b77c15_b_d.jpg]
+<pre class="dark small">
+   YAHOO.lang.extend(derived, base, overrides);
+
+   YAHOO.lang.augment(object, mixin, overrides);
+</pre>
+%
+3. Code Patterns: Extending v/s Augmenting
+-------------------------------------------
+[bg thevince/http://farm4.static.flickr.com/3031/2557418141_8145b77c15_b_d.jpg]
+<pre class="dark small">
+   YAHOO.lang.extend(derived, base, overrides);
+
+   YAHOO.lang.augment(object, mixin, overrides);
+</pre>
+- Use extend for inheritance
+- [class="light"] Use augment to add properties to an existing object
+%
+3. Code Patterns: Extending v/s Augmenting
+-------------------------------------------
+[bg thevince/http://farm4.static.flickr.com/3031/2557418141_8145b77c15_b_d.jpg]
+<pre class="dark small">
+   YAHOO.lang.extend(derived, base, overrides);
+
+   YAHOO.lang.augment(object, mixin, overrides);
+</pre>
+- Use extend for inheritance
+- Use augment to add properties to an existing object
+%
+YUI is brought to you by
+------------
+[bg equanimity/http://farm3.static.flickr.com/2178/2126487011_773f18494e_b_d.jpg]
+- The YUI team:
+   - Thomas Sha, Eric Miraglia, Nate Koechley, Satyen Desai
+   - Jenny Donneley, Adam Moore, Tod Kloots, Luke Smith
+   - Matt Sweeney, Dav Glass, Doug Crockford
+- [class="light"] Contributors:
+   - [class="light"] Gopal Venkatesan, Caridy Patiño, Satyam, Philip Tellis
+%
+YUI is brought to you by
+------------
+[bg equanimity/http://farm3.static.flickr.com/2178/2126487011_773f18494e_b_d.jpg]
+- The YUI team:
+   - Thomas Sha, Eric Miraglia, Nate Koechley, Satyen Desai
+   - Jenny Donneley, Adam Moore, Tod Kloots, Luke Smith
+   - Matt Sweeney, Dav Glass, Doug Crockford
+- Contributors:
+   - Gopal Venkatesan, Caridy Patiño, Satyam, Philip Tellis
+%
+Greetz
+------
+[bg encouragement/291094770_dbd53e68b6.jpg]
+   > Philip S Tellis
+
+   > <a href="mailto:philip@bluesmoon.info?subject=FOSS.IN/2008">philip@bluesmoon.info</a>
+
+   > <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
+%
+Photo Credits
+-------------
+[bg 25602112@N07/http://farm4.static.flickr.com/3244/2539754489_a20454a273_o_d.jpg]
+- [class="small"] All photos are under a CC-BY, CC-BY-NC, CC-BY-SA or CC-BY-NC-SA license
+   - http://flickr.com/photos/code_martial/1543735477/
+   - http://flickr.com/photos/xcaballe/365044685/
+   - http://flickr.com/photos/guspim/2911102867/
+   - http://flickr.com/photos/artolog/2258975829/
+   - http://flickr.com/photos/ntr23/730371240/
+   - http://flickr.com/photos/charliebrewer/2897862701/
+   - http://flickr.com/photos/lievensoete/2903489237/
+   - http://flickr.com/photos/bredgur/2925876954/
+   - http://flickr.com/photos/coolmel/502576648/
+   - http://flickr.com/photos/artolog/2519646167/
+   - http://flickr.com/photos/knowprose/131893050/
+   - http://flickr.com/photos/malias/261406666/
+   - http://flickr.com/photos/krisgriffon/26220260/
+   - http://flickr.com/photos/sovietuk/154340012/
+   - http://flickr.com/photos/thevince/2557418141/
+   - http://flickr.com/photos/equanimity/2126487011/
+   - http://flickr.com/photos/25602112@N07/2539754489/
+   - http://flickr.com/photos/encouragement/291094770/
