@@ -1,0 +1,97 @@
+TITLE: Being a geek
+SUBTITLE: Linux Bangalore &bull; Freedel
+AUTHOR: Philip S Tellis
+COMPANY: philip@bluesmoon.info
+CONFERENCE: <a href="http://talks.bluesmoon.info/">talks.bluesmoon.info</a>
+%
+How does one define a geek?
+---------------------------
+- An obsession with books, studies, gadgets?
+- Wearing thick glasses?
+- Having no [social] life?
+- Speaking in large incomprehensible terms and not caring about sport?
+%
+<blockquote>
+2200 years ago, knowing only that at a particular place in Egypt, on a 
+particular day of the year, at noon, the sun cast no shadow, Eratosthenes
+accurately calculated the circumference of the Earth.
+</blockquote>
+%
+It's about being curious
+------------------------
+- Why doesn't it work?
+%
+It's about being curious about everything
+-----------------------------------------
+- Why doesn't it work?
+- Why does it work?
+- How does it work?
+- How do I break it?
+- How do I fix it again?
+%
+It's about being an explorer
+----
+- Seek out unsolved problems
+- To boldly go where no one has gone before
+- Do something just because you can
+- Do something because someone said it can't be done
+%
+And about Experimenting
+----
+- Change small parts and observe differences in the whole
+- Tinkering can get really addictive
+- You learn more by doing than by reading
+%
+Not being afraid to break things
+----
+- Geeks are like children
+- The thought of breaking a system doesn't arise
+- Fear limits possibilities, geeks hate limits
+- This could be dangerous - <a href="http://www.unix-girl.com/blog/archives/001599.html">Curiosity killed the geek</a>
+%
+Geekdom isn't limited to a domain
+----
+- Physics, Math, Hi Tech, Comp Sci
+- Biology, Gaming
+- DIY
+%
+<blockquote>
+During the Atom bomb testing, Enrico Fermi accurately calculated the intensity
+of the blast by throwing a few small pieces of paper up into the air as the
+explosion took place and measuring how far they fell.
+</blockquote>
+%
+Software Geeks
+----
+- Need to be involved in every part of the system
+- Some geeks are <a href="http://www.catb.org/jargon/html/H/hacker.html">hackers</a>
+- Boredom and Drudgery are evil - unless it's personal
+%
+So what about linux and FOSS?
+----
+- That's like the big prize you get for being geeky
+- Software geeks love to <b>use</b> FOSS
+- They can fix bugs that annoy them
+- The transition from user to developer comes naturally
+%
+Dispelling the myths
+----
+- Geeks like to study
+- Not all geeks wear glasses.  Some use lenses.
+- Geeks have great social lives, and very large social networks
+- Geeks are active in sport like UT, Warcraft and Everquest
+%
+Why be a geek?
+----
+- It's exciting
+- Something's always happening
+- What do you do when you get to 42?
+%
+Greetz
+------
+   > Philip S Tellis
+
+   > <a href="mailto:philip@bluesmoon.info?subject=bugzilla+CVS">philip@bluesmoon.info</a>
+
+   > <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
+%
