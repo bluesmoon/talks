@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Developing with Yahoo! Pipes</title><!-- metadata -->
+
+
+
+
+
+
+<meta name="generator" content="S5">
+<meta name="version" content="S5 1.1">
+<meta name="presdate" content="2008-07-29">
+<meta name="author" content="Philip S Tellis">
+<meta name="company" content="Yahoo! Inc"><!-- configuration parameters -->
+
+<meta name="defaultView" content="slideshow">
+<meta name="controlVis" content="hidden"><!-- style sheet links -->
+
+<link rel="stylesheet" href="../ui/default/slides.css" type="text/css" media="projection" id="slideProj">
+<link rel="stylesheet" href="../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle">
+<link rel="stylesheet" href="../ui/default/print.css" type="text/css" media="print" id="slidePrint">
+<link rel="stylesheet" href="../ui/default/opera.css" type="text/css" media="projection" id="operaFix"><!-- S5 JS -->
+
+<script src="../ui/default/slides.js" type="text/javascript"></script></head><body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1><a href="http://talks.bluesmoon.info/">talks.bluesmoon.info</a> - 2008-07-29</h1>
+<h2>Developing with Yahoo! Pipes</h2>
+</div>
+
+</div>
+
+
+<div class="presentation">
+
+<div class="slide">
+<h1>Developing with Yahoo! Pipes</h1>
+<h3>Philip S Tellis</h3>
+<h4>Yahoo! Inc</h4>
+<h2>Linux Symposium 2008</h2>
+</div>
+</div></body></html>
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Do you like Unix Pipes?</p>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Do you deal with web services?</p>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Have you ever wished that you could pass the output of multiple web services through a unix pipe?</p>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Voilà: <a href="http://pipes.yahoo.com/">pipes.yahoo.com</a></p>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Voilà: <a href="http://pipes.yahoo.com/">pipes.yahoo.com</a><br><small>(You need a Yahoo! Id)</small></p>
+
+</div>
+
+
+<div class="slide">
+<h1>Nomenclature</h1>
+<ul>
+<li><code>source</code>: your data source, similar to <code>cat</code> or <code>echo</code>.
+</li>
+<li><code>operator</code>: anything that operates on data.
+</li>
+<li><code>pipe</code>: a pipe of data from an operator or source to an operator or destination, same as <code>|</code>.
+</li>
+<li><code>output</code>: the last element in your pipe, this returns data to the user.
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Part I: Creating Pipes using the UI</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>A simple feed aggregator</h1>
+<ul>
+<li>Create a fetch feed source
+</li>
+<li>Give it a couple of feeds (eg: http://rss.slashdot.org/Slashdot/slashdot, http://digg.com/rss/index.xml)
+</li>
+<li>Read the output as RSS
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>A simple feed aggregator</h1>
+<p class="alert"> Let Pipes figure out the feed URL</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>A simple feed aggregator</h1>
+<p class="alert"> Let Pipes figure out the feed URL<br>(use the Fetch Site Feed source)</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>A simple feed aggregator</h1>
+<p class="alert"> limit it to 5 items only</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>A simple feed aggregator</h1>
+<p class="alert"> limit it to 5 items only<br>(use Truncate)</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>A simple feed aggregator</h1>
+<p class="alert"> Limit it to only 2 items per feed</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>A (not so) simple feed aggregator</h1>
+<p class="alert"> Limit it to items that do not contain FreeBSD</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>A (not so) simple feed aggregator</h1>
+<p class="alert"> Replace all occurences of Opensource with "One True Source"</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Fetch photos from flickr</h1>
+<ul>
+<li>Create a flickr source
+</li>
+<li>Enter a tag
+</li>
+<li>Read the output as RSS, or on a map, or as an image list
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Fetch photos from flickr - configurable</h1>
+<ul>
+<li>Make the tag user configurable
+</li>
+<li>Add a string input
+</li>
+<li>Connect it to the tag entry
+</li>
+<li>Run the pipe
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">2<span class="subindex"></span></span>Fetch photos from flickr - url configurable</h1>
+<ul>
+<li>Get the feed URL for the pipe
+</li>
+<li>Customise it
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Loops</h1>
+<p class="alert"> For each item in a feed, do something</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Loops</h1>
+<p class="alert"> Translate an English feed to French</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Loops</h1>
+<ul>
+<li>Add a loop operator
+</li>
+<li>Add a translation operator inside the loop
+</li>
+<li>Select item.title for the input and output of the loop
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Loops</h1>
+<p class="alert"> How about doing it for title <i>and</i> description?</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">3<span class="subindex"></span></span>Loops</h1>
+<ul>
+<li>How about doing it for title <i>and</i> description?
+</li>
+<li>Requires two loops
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">4<span class="subindex"></span></span>Subpipes</h1>
+<ul>
+<li>Combine the two loops above into a single loop
+</li>
+<li>Break the problem up into smaller problems to solve
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">5<span class="subindex"></span></span>BBC news in flickr</h1>
+<ul>
+<li>Fetch a news feed from news.bbc.co.uk
+</li>
+<li>Use the term extractor to get tags from the feed
+</li>
+<li>Pass these terms to the flickr input
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">5<span class="subindex"></span></span>BBC news in flickr</h1>
+<p class="alert"> Can we do this with a subpipe?</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">6<span class="subindex"></span></span>Flickr photos for a user</h1>
+<ul>
+<li>Get the user's NSID
+</li>
+<li>Construct a feed URL from that
+</li>
+<li>Fetch photos from the feed
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">6<span class="subindex"></span></span>Flickr photos for a user</h1>
+<p class="alert"> What if we only know the username and not the nsid?</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">6<span class="subindex"></span></span>Flickr photos for a user</h1>
+<ul>
+<li>Use flickr API to convert username to nsid
+</li>
+<li>Fetch photos by nsid
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">6<span class="subindex"></span></span>Flickr photos for a user</h1>
+<ul>
+<li><a href="http://pipes.yahoo.com/bluesmoon/olsphotosbynsid">OLS: Photos by nsid</a>
+</li>
+<li><a href="http://pipes.yahoo.com/bluesmoon/flickr_user_to_nsid">Username to NSID</a>
+</li>
+<li><a href=" http://pipes.yahoo.com/bluesmoon/photos_by_user">Photos by username</a>
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">7<span class="subindex"></span></span>Museums in Ottawa on a Map</h1>
+<ul>
+<li>Fetch <a href="http://www.ottawamuseums.com/">OttawaMuseums.com</a>
+</li>
+<li>Screen scrape, and split on delimiter "<code>&lt;/table&gt;</code>"
+</li>
+<li>Use location extractor to figure out geo location
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">7<span class="subindex"></span></span>Museums in Ottawa on a Map</h1>
+<p class="alert"> <a href="http://pipes.yahoo.com/bluesmoon/museums_in_ottawa">pipes.yahoo.com/bluesmoon/museums_in_ottawa</a></p>
+
+</div>
+
+
+<div class="slide">
+<h1>Pipes in the wild</h1>
+<ul>
+<li><a href="http://www.readwriteweb.com/archives/the_ultimate_yahoo_pipes_list.php">Read Write Web's best</a>
+</li>
+<li><a href="http://pipes.yahoo.com/amoroso/quakescope">Quakescope</a>
+</li>
+<li><a href="http://www.xefer.com/2008/05/twitter">Twitter stats on a Google Chart</a>
+</li>
+<li><a href="http://www.iowaflood.com/">Iowa Flood</a>
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<p class="alert"> Part II: Reading pipes in PHP</p>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>How do you read in a URL in PHP?</h1>
+<ul>
+<li>I use curl
+</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>How do you read in a URL in PHP?</h1>
+<pre>
+   $url = 'http://pipes.yahoo.com/pipes/pipe.run?'
+        . '_id=vI7LxsJe3BGRHaLP6UjTQA&_render=php';
+
+   function fetchURL($url)
+   {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url );
+    curl_setopt($ch, CURLOPT_POST, 0 );
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    return curl_exec($ch);
+   }
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>How do you read in a URL in PHP?</h1>
+<pre>
+   $url = 'http://pipes.yahoo.com/pipes/pipe.run?'
+        . '_id=vI7LxsJe3BGRHaLP6UjTQA<em style="background-color:#ddd;">&_render=php</em>';
+
+   function fetchURL($url)
+   {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url );
+    curl_setopt($ch, CURLOPT_POST, 0 );
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    return curl_exec($ch);
+   }
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1><span class="index">1<span class="subindex"></span></span>How do you read in a URL in PHP?</h1>
+<pre>
+   $url = 'http://pipes.yahoo.com/pipes/pipe.run?'
+        . '_id=vI7LxsJe3BGRHaLP6UjTQA&_render=php';
+
+   function fetchURL($url)
+   {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url );
+    curl_setopt($ch, CURLOPT_POST, 0 );
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    return curl_exec($ch);
+   }
+
+   $data = unserialize(fetchURL($url));
+</pre>
+
+</div>
+
+
+<div class="slide">
+<h1>Greetz</h1>
+<blockquote>
+  <p>Philip S Tellis</p>
+  
+  <p><a href="mailto:philip@bluesmoon.info?subject=OLS">philip@bluesmoon.info</a></p>
+  
+  <p><a href="http://bluesmoon.info/">http://bluesmoon.info/</a></p>
+</blockquote>
+
+</div>
+
+</div>
+
+<p>Made with Eric A Meyer's S5</p>
+
+</body>
+</html>

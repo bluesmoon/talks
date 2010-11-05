@@ -1,0 +1,607 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{Websites on Overdrive}
+
+\date{\href{http://www.webdu.com.au/}{WebDU 2010} / 6-7 May 2010}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ finger philip}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item yahoo
+  \item geek
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\section{Magic, Illusion and other Peformances}
+% http://www.flickr.com/photos/ktylerconk/3154161850/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{3154161850_fc2dc784bd_b}
+  }
+}
+\begin{frame}{}
+  \begin{block}{}
+  \begin{center}
+  Magic, Illusion and other Performances
+  \end{center}
+  \end{block}
+\end{frame}
+
+\subsection{Seeing is believing}
+
+% http://www.flickr.com/photos/lwr/3631563009/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=.8\paperheight]{3631563009_2d450e51ca}
+  }
+}
+\begin{frame}{User perception}
+  \begin{columns}[t]
+  \column{.7\textwidth}
+  \begin{itemize}
+  \item How fast does the user think it takes your page to load?
+    \begin{itemize}
+    \item<2-> Do you want a really fast page that appears to be slow?
+    \item<3-> or do you want a slow page that appears to be fast?
+    \end{itemize}
+  \end{itemize}
+  \column{.3\textwidth}
+  \end{columns}
+\end{frame}
+
+% http://www.flickr.com/photos/siennaisalive/4436708323/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=.9\paperheight]{4436708323_fd29932e14_o}
+  }
+}
+\begin{frame}{Blink}
+  \begin{columns}[t]
+  \column{.7\textwidth}
+  \begin{itemize}
+  \item How many blinks between click and onload?
+    \begin{itemize}
+    \item<2-> The average human eye takes 300-400ms to blink
+    \item<3-> Web search results (Google \& Yahoo!) load in about 3 blinks
+    \end{itemize}
+  \end{itemize}
+  \column{.3\textwidth}
+  \end{columns}
+\end{frame}
+
+% http://www.flickr.com/photos/jeremybrooks/4104176629/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{4104176629_30175bd242_b}
+  }
+}
+\begin{frame}{Games}
+  \begin{block}{}
+  \begin{center}
+  Double-buffering and the VBLANK
+  \end{center}
+  \end{block}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\subsection{The cost of performance}
+
+\begin{frame}{How expensive is that blink?}
+  \begin{itemize}
+  \item Yahoo! -- 400ms slower $\rightarrow$ 5-9\% drop in full page loads
+  \item Google -- 400ms slower $\rightarrow$ search engagement reduces over time
+  \item Bing -- 1 sec slower $\rightarrow$ 2.8\% revenue drop, \\ 2 sec slower $\rightarrow$ 4.3\% drop
+  \end{itemize}
+  \vfill
+  \tiny{Ref: \href{http://www.slideshare.net/stoyan/the-business-of-performance}{\color{blue}{\underline{The business of performance}}} -- Stoyan Stefanov}
+\end{frame}
+
+\begin{frame}{... and conversely}
+  \begin{itemize}
+  \item Shopzilla -- 6s $\rightarrow$ 1.2s resulted in 7-12\% increase in conversion rate
+  \item Netflix -- 43\% decrease in bandwidth bill after enabling compression
+  \item<2-> What about You?
+  \end{itemize}
+  \vfill
+  \tiny{Ref: \href{http://www.slideshare.net/stoyan/the-business-of-performance}{\color{blue}{\underline{The business of performance}}} -- Stoyan Stefanov}
+\end{frame}
+
+\subsection{Where should we concentrate?}
+
+\begin{frame}{The wheels behind the screen}
+  \begin{itemize}
+  \item Performance improvement boils down to two things
+    \begin{itemize}
+    \item<2-> Bandwidth
+    \item<3-> Latency
+    \end{itemize}
+  \item<4-> Do you need to take the bus or a motorcycle?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Not just the network}
+  \begin{center}
+  Not just the network, but also within the browser process
+  \end{center}
+\end{frame}
+
+\section{Bandwidth}
+
+% http://www.flickr.com/photos/gi/117771718/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=\paperheight]{117771718_975de6d2f2_b} \hfill
+  }
+}
+\begin{frame}{}
+  \begin{block}{}
+  \begin{center}
+  Bandwidth
+  \end{center}
+  \end{block}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\subsection{The easier of the two}
+
+\begin{frame}{How fat is your pipe?}
+  \begin{itemize}
+  \item How much data can you get across at once?
+    \begin{itemize}
+    \item<2-> Telephone system built for p-t-p voice?
+    \item<3-> Optical fibre network?
+    \item<4-> Geoff speeding down the M5 with 50TB of Daemon's backup tapes?
+    \end{itemize}
+  \end{itemize}
+  \vfill
+  \tiny{Ref: \href{http://www.inf.fu-berlin.de/lehre/WS01/19548-U/shannon.html}{\color{blue}{\underline{Shannon's Theorem}}}}
+\end{frame}
+
+% Shannon's theorem
+\begin{frame}{Shannon's Theorem}
+  \begin{center}
+  \[ C = B \times \log_2(1+\frac{S}{N}) \]
+  \end{center}
+  \vfill
+  \small{
+  C -- Channel capacity in bps \\
+  B -- Bandwidth in Hz \\
+  S -- Signal strength \\
+  N -- Noise strength -- S/N measured in dB
+  }
+\end{frame}
+
+\begin{frame}{Bandwidth can be bought}
+  \begin{itemize}
+  \item Bandwidth has increased steadily over time
+  \item Networks, hard drives, memory, CPU, system bus, everything.
+  \item Bandwidth can be parallelised
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Bandwidth sells}
+  \begin{block}{}
+  \begin{center}
+  Marketing loves a fat pipe
+  \end{center}
+  \end{block}
+\end{frame}
+
+\subsection{State of the internet}
+
+% YUI blog test
+% bandwidth-latency.png
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=.6\paperheight]{bandwidth-latency} \hfill
+  }
+}
+\begin{frame}{How fast is the internet?}
+  \begin{center}
+  YUI Blog measured bandwidth at 1Mbps and latency of 262ms
+  \end{center}
+  \parbox[c][0.9\paperheight]{\paperwidth}{ }
+  \hfill \tiny{Ref: \href{http://www.yuiblog.com/blog/2010/04/08/analyzing-bandwidth-and-latency/}{\color{blue}{\underline{Analysing Bandwidth \& Latency}}} -- YUI Blog}
+\end{frame}
+\setbeamertemplate{background}{}
+
+% Akamai state of the internet
+\begin{frame}{How fast is the internet?}
+  \begin{center}
+  Akamai measured average global bandwidth at 1.7Mbps
+  \end{center}
+  \vfill
+  \tiny{Ref: \href{http://www.akamai.com/stateoftheinternet/}{\color{blue}{\underline{State of the Internet}}} -- Akamai}
+\end{frame}
+
+% Breakdown by ISP
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=.6\paperheight]{isp-bw} \hfill
+  }
+}
+\begin{frame}{ISPs}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=.6\paperheight]{au-isp-bandwidth} \hfill
+  }
+}
+\begin{frame}{Australian ISPs}
+  \parbox[c][1.2\paperheight]{\paperwidth} { }
+  \tiny{Keep in mind that the Internet latency from Australia to the US is about 280ms}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\subsection{How do we fix it?}
+
+\begin{frame}{Pay for infrastructure}
+  \begin{itemize}
+  \item South Korea invested in high bandwidth internet
+  \item Google is investing in WiFi and Fibre in the US
+  \item Akamai puts CDNs on high speed networks near the user
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Measure your user's bandwidth}
+  \begin{center}
+  Javascript code to measure your user's bandwidth \& latency \\
+  \href{http://bluesmoon.info/perf-tests/bw/bw-test-1.3.zip}{\color{blue}{\underline{bw-test v1.3}}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Make more efficient use of bandwidth}
+  \begin{itemize}
+  \item \href{http://articles.sitepoint.com/article/web-output-mod_gzip-apache}{\color{blue}{\underline{gzip}}} all text over the network
+  \item \href{http://developer.yahoo.com/yui/compressor/}{\color{blue}{\underline{minify}}} your HTML, Javascript and CSS
+  \item \href{http://www.smushit.com/}{\color{blue}{\underline{smush}}} your images
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Caveat about gzipping}
+  \begin{center}
+  15\% of users still get uncompressed responses
+  \end{center}
+  \vfill
+  \tiny{Ref: \href{http://en.oreilly.com/velocity2009/public/schedule/detail/9072}{\color{blue}{\underline{Beyond Gzipping}}} -- Tony Gentilcore, Google}
+\end{frame}
+
+\begin{frame}{In the DOM}
+  \begin{itemize}
+  \item Use fewer elements and assets
+  \item Use more specific elements
+  \end{itemize}
+\end{frame}
+
+
+\section{Latency}
+
+% http://www.flickr.com/photos/vlastula/300102949/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=.9\paperheight]{300102949_950729607c_o}
+  }
+}
+\begin{frame}{}
+  \begin{columns}[t]
+  \column{.1\textwidth}
+  \column{.6\textwidth}
+  \begin{block}{}
+  \begin{center}
+  Latency
+  \end{center}
+  \end{block}
+  \column{.3\textwidth}
+  \end{columns}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\subsection{What's the problem?}
+
+\begin{frame}{How fast can you drive?}
+  \begin{center}
+  Latency deals with how long it takes to get a response after making a request
+  \end{center}
+\end{frame}
+
+% http://www.flickr.com/photos/electrichamster/3160580687/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=.9\paperheight]{3160580687_01a9efd019}
+  }
+}
+\begin{frame}{Speed Limits}
+  \begin{columns}[t]
+  \column{.6\textwidth}
+  \begin{itemize}
+  \item $ 3 \times 10^8 \,^m/_s $ -- in vacuum
+  \item $ 2 \times 10^8 \,^m/_s $ -- in fibre
+  \item $ \implies 21ms \times 2 $ \\  (roundtrip from Boston to San Francisco)
+  \end{itemize}
+  \column{.4\textwidth}
+  \end{columns}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{42}
+  \begin{itemize}
+  \item It should take a packet around 42ms to go from Boston to SF and back 
+  \item It actually takes around 83ms for a packet to go from Boston to SF and back
+  \item<2-> This hasn't changed in 14 years
+  \end{itemize}
+  \vfill
+  \tiny{Ref: \href{http://www.stuartcheshire.org/rants/Latency.html}{\color{blue}{\underline{It's the latency, stupid}}} -- Stuart Cheshire}
+\end{frame}
+
+\begin{frame}{Latency isn't sexy}
+  \begin{center}
+  When was the last time you saw a TV commercial mention latency?
+  \end{center}
+\end{frame}
+
+\subsection{State of the internet}
+
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=.6\paperheight]{isp-latency} \hfill
+  }
+}
+\begin{frame}{ISPs}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=.6\paperheight]{au-isp-latency} \hfill
+  }
+}
+\begin{frame}{Australian ISPs}
+  \parbox[c][1.2\paperheight]{\paperwidth} { }
+  \tiny{Keep in mind that the Internet latency from Australia to the US is about 280ms}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\subsection{How do we fix it?}
+
+% http://www.flickr.com/photos/docman/36125185/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=.9\paperheight]{2055376852_7be147bfdf_o}
+  }
+}
+\begin{frame}{Getting around latency}
+  \begin{block}{}
+  \begin{itemize}
+  \item Don't add latency -- It's bad enough without us adding to it
+  \item Caching -- Bring the data closer to where it's needed
+  \item Parallelise -- Reduce the number of serial roundtrips
+  \item Predict -- Get data before it's needed
+  \end{itemize}
+  \end{block}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Don't add latency -- Reduce lookups \& Connections}
+  \begin{itemize}
+  \item Limit the number of DNS lookups.  2-4 is okay.
+  \item Limit the number of HTTP connections
+    \begin{itemize}
+    \item Concatenate CSS into a single file.
+    \item Concatenate JS into one or two files.
+    \item Combine images into sprites
+    \item If you can, stuff everything into one call \\
+          \footnotesize{See \href{http://search.yahoo.com/}{\color{blue}{\underline{search.yahoo.com}}}}
+    \end{itemize}
+  \item Structure your page to avoid blocking
+  \item Defer or post-load non-essential components
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Don't add latency -- Be quick on the return}
+  \begin{itemize}
+  \item Keep MaxClients at a reasonable value (30's a good number)
+  \item Flush your headers as soon as they're done
+  \item Flush your page content often
+  \item Offload static content to a separate server
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Caching}
+  \begin{itemize}
+  \item Turn on browser based caching wherever possible \\
+        \footnotesize{max-age, Expires \& Cache-control}
+  \item Use a CDN, and make sure the CDN caches resources
+  \item Use local copies of global references in Javascript
+  \item Cache DOM nodes that you operate on a lot
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Parallelise where possible}
+  \begin{itemize}
+  \item Downloading scripts blocks page load, so do it in the background instead
+  \item Browsers will download 4-8 resources from a host in parallel, take advantage of that
+  \item Use event delegation
+  \end{itemize}
+\end{frame}
+
+% http://www.flickr.com/photos/thomashawk/3162497239/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{3162497239_62e893633e_b}
+  }
+}
+\begin{frame}{Predict what's next and fetch it}
+  \parbox[c][.1\paperheight]{\paperwidth}{}
+  \begin{block}{}
+  \begin{itemize}
+  \item If you know what the user will do next, pre-fetch it
+    \begin{itemize}
+    \item Yahoo! Search page pre-loads sprites and Javascript for the results page
+    \item Log analysis can tell you which pages are most popular, and pre-fetch those
+    \end{itemize}
+  \item Build expected DOM nodes before they're needed
+  \end{itemize}
+  \end{block}
+  \parbox[c][.5\paperheight]{\paperwidth}{}
+  \tiny{\color{white}{Ref:} \href{http://www.phpied.com/preload-cssjavascript-without-execution/}{\color{blue}{\underline{Preload CSS \& JS without execution}}} \color{white}{-- Stoyan Stefanov}}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{One more thing}
+  \begin{itemize}
+  \item Improving latency tends to improve bandwidth
+  \item Increasing bandwidth can potentially worsen latency \\
+        \tiny{Larger packets take more time to assemble}
+  \end{itemize}
+  This is the difference between a 737 and a 747
+\end{frame}
+
+\section{Tools}
+
+% http://www.flickr.com/photos/docman/36125185/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=\paperheight]{36125185_0517a93806_o} \hfill
+  }
+}
+\begin{frame}{}
+  \begin{block}{}
+  \begin{center}
+  Tools
+  \end{center}
+  \end{block}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Useful tools for performance analysis}
+  \begin{itemize}
+  \item \href{http://developer.yahoo.com/yslow/}{\color{blue}{\underline{YSlow}}} -- Firefox/Firebug plugin from Yahoo!
+  \item \href{http://code.google.com/speed/page-speed/}{\color{blue}{\underline{PageSpeed}}} -- Firefox/Firebug plugin from Google
+  \item \href{http://www.webpagetest.org/}{\color{blue}{\underline{PageTest}}} -- Web page testing tool
+  \item \href{http://www.showslow.org/}{\color{blue}{\underline{ShowSlow}}} -- Automated YSlow runs against your URL
+  \item \href{http://www.fiddler2.com/fiddler2/}{\color{blue}{\underline{Fiddler}}} -- Web debugging Proxy
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Further reading}
+  \begin{itemize}
+  \item \href{http://developer.yahoo.com/performance}{developer.yahoo.com/performance} -- Yahoo!
+  \item \href{http://code.google.com/speed/page-speed/docs/rules_intro.html}{code.google.com/speed/page-speed/docs/rules\_intro.html} -- Google
+  \item \href{http://stevesouders.com/blog/}{stevesouders.com/blog/} -- Steve Souders
+  \item \href{http://phpied.com/}{phpied.com} -- Stoyan Stefanov
+  \end{itemize}
+\end{frame}
+
+\section{}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{Contact Me}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item yahoo
+  \item geek
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{}
+  \begin{center}
+  \Large{Thank you}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Photo credits}
+  \begin{itemize}
+  \item \href{http://www.flickr.com/photos/ktylerconk/3154161850/}{flickr.com/photos/ktylerconk/3154161850/}
+  \item \href{http://www.flickr.com/photos/lwr/3631563009/}{flickr.com/photos/lwr/3631563009/}
+  \item \href{http://www.flickr.com/photos/siennaisalive/4436708323/}{flickr.com/photos/siennaisalive/4436708323/}
+  \item \href{http://www.flickr.com/photos/jeremybrooks/4104176629/}{flickr.com/photos/jeremybrooks/4104176629/}
+  \item \href{http://www.flickr.com/photos/aquilaonline/2055376852/}{flickr.com/photos/aquilaonline/2055376852/}
+  \item \href{http://www.flickr.com/photos/gi/117771718/}{flickr.com/photos/gi/117771718/}
+  \item \href{http://www.flickr.com/photos/vlastula/300102949/}{flickr.com/photos/vlastula/300102949/}
+  \item \href{http://www.flickr.com/photos/electrichamster/3160580687/}{flickr.com/photos/electrichamster/3160580687/}
+  \item \href{http://www.flickr.com/photos/docman/36125185/}{flickr.com/photos/docman/36125185/}
+  \item \href{http://www.flickr.com/photos/thomashawk/3162497239/}{flickr.com/photos/thomashawk/3162497239/}
+  \end{itemize}
+\end{frame}
+
+
+\end{document}
+
+

@@ -1,0 +1,217 @@
+TITLE: Developing with Yahoo! Pipes
+SUBTITLE: Linux Symposium 2008
+AUTHOR: Philip S Tellis
+COMPANY: Yahoo! Inc
+CONFERENCE: <a href="http://talks.bluesmoon.info/">talks.bluesmoon.info</a>
+%
+[class="alert"] Do you like Unix Pipes?
+%
+[class="alert"] Do you deal with web services?
+%
+[class="alert"] Have you ever wished that you could pass the output of multiple web services through a unix pipe?
+%
+[class="alert"] Voilà: <a href="http://pipes.yahoo.com/">pipes.yahoo.com</a>
+%
+[class="alert"] Voilà: <a href="http://pipes.yahoo.com/">pipes.yahoo.com</a><br><small>(You need a Yahoo! Id)</small>
+%
+Nomenclature
+------------
+- <code>source</code>: your data source, similar to <code>cat</code> or <code>echo</code>.
+- <code>operator</code>: anything that operates on data.
+- <code>pipe</code>: a pipe of data from an operator or source to an operator or destination, same as <code>|</code>.
+- <code>output</code>: the last element in your pipe, this returns data to the user.
+%
+[class="alert"] Part I: Creating Pipes using the UI
+%
+1. A simple feed aggregator
+---------------------------
+- Create a fetch feed source
+- Give it a couple of feeds (eg: http://rss.slashdot.org/Slashdot/slashdot, http://digg.com/rss/index.xml)
+- Read the output as RSS
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] Let Pipes figure out the feed URL
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] Let Pipes figure out the feed URL<br>(use the Fetch Site Feed source)
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] limit it to 5 items only
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] limit it to 5 items only<br>(use Truncate)
+%
+1. A simple feed aggregator
+---------------------------
+[class="alert"] Limit it to only 2 items per feed
+%
+1. A (not so) simple feed aggregator
+------------------------------------
+[class="alert"] Limit it to items that do not contain FreeBSD
+%
+1. A (not so) simple feed aggregator
+------------------------------------
+[class="alert"] Replace all occurences of Opensource with "One True Source"
+%
+2. Fetch photos from flickr
+---------------------------
+- Create a flickr source
+- Enter a tag
+- Read the output as RSS, or on a map, or as an image list
+%
+2. Fetch photos from flickr - configurable
+---------------------------
+- Make the tag user configurable
+- Add a string input
+- Connect it to the tag entry
+- Run the pipe
+%
+2. Fetch photos from flickr - url configurable
+----------------------------------------------
+- Get the feed URL for the pipe
+- Customise it
+%
+3. Loops
+--------
+[class="alert"] For each item in a feed, do something
+%
+3. Loops
+--------
+[class="alert"] Translate an English feed to French
+%
+3. Loops
+--------
+- Add a loop operator
+- Add a translation operator inside the loop
+- Select item.title for the input and output of the loop
+%
+3. Loops
+--------
+[class="alert"] How about doing it for title <i>and</i> description?
+%
+3. Loops
+--------
+- How about doing it for title <i>and</i> description?
+- Requires two loops
+%
+4. Subpipes
+-----------
+- Combine the two loops above into a single loop
+- Break the problem up into smaller problems to solve
+%
+5. BBC news in flickr
+---------------------
+- Fetch a news feed from news.bbc.co.uk
+- Use the term extractor to get tags from the feed
+- Pass these terms to the flickr input
+%
+5. BBC news in flickr
+---------------------
+[class="alert"] Can we do this with a subpipe?
+%
+6. Flickr photos for a user
+---------------------------
+- Get the user's NSID
+- Construct a feed URL from that
+- Fetch photos from the feed
+%
+6. Flickr photos for a user
+---------------------------
+[class="alert"] What if we only know the username and not the nsid?
+%
+6. Flickr photos for a user
+---------------------------
+- Use flickr API to convert username to nsid
+- Fetch photos by nsid
+%
+6. Flickr photos for a user
+---------------------------
+- <a href="http://pipes.yahoo.com/bluesmoon/olsphotosbynsid">OLS: Photos by nsid</a>
+- <a href="http://pipes.yahoo.com/bluesmoon/flickr_user_to_nsid">Username to NSID</a>
+- <a href=" http://pipes.yahoo.com/bluesmoon/photos_by_user">Photos by username</a>
+%
+7. Museums in Ottawa on a Map
+-----------------------------
+- Fetch <a href="http://www.ottawamuseums.com/">OttawaMuseums.com</a>
+- Screen scrape, and split on delimiter "<code>&lt;/table&gt;</code>"
+- Use location extractor to figure out geo location
+%
+7. Museums in Ottawa on a Map
+-----------------------------
+[class="alert"] <a href="http://pipes.yahoo.com/bluesmoon/museums_in_ottawa">pipes.yahoo.com/bluesmoon/museums\_in\_ottawa</a>
+%
+Pipes in the wild
+-----------------
+- <a href="http://www.readwriteweb.com/archives/the_ultimate_yahoo_pipes_list.php">Read Write Web's best</a>
+- <a href="http://pipes.yahoo.com/amoroso/quakescope">Quakescope</a>
+- <a href="http://www.xefer.com/2008/05/twitter">Twitter stats on a Google Chart</a>
+- <a href="http://www.iowaflood.com/">Iowa Flood</a>
+%
+[class="alert"] Part II: Reading pipes in PHP
+%
+1. How do you read in a URL in PHP?
+-----------------------------------
+- I use curl
+%
+1. How do you read in a URL in PHP?
+-----------------------------------
+<pre>
+   $url = 'http://pipes.yahoo.com/pipes/pipe.run?'
+		. '_id=vI7LxsJe3BGRHaLP6UjTQA&_render=php';
+
+   function fetchURL($url)
+   {
+   	$ch = curl_init();
+   	curl_setopt($ch, CURLOPT_URL, $url );
+   	curl_setopt($ch, CURLOPT_POST, 0 );
+   	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+   	return curl_exec($ch);
+   }
+</pre>
+%
+1. How do you read in a URL in PHP?
+-----------------------------------
+<pre>
+   $url = 'http://pipes.yahoo.com/pipes/pipe.run?'
+		. '_id=vI7LxsJe3BGRHaLP6UjTQA<em style="background-color:#ddd;">&_render=php</em>';
+
+   function fetchURL($url)
+   {
+   	$ch = curl_init();
+   	curl_setopt($ch, CURLOPT_URL, $url );
+   	curl_setopt($ch, CURLOPT_POST, 0 );
+   	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+   	return curl_exec($ch);
+   }
+</pre>
+%
+1. How do you read in a URL in PHP?
+-----------------------------------
+<pre>
+   $url = 'http://pipes.yahoo.com/pipes/pipe.run?'
+		. '_id=vI7LxsJe3BGRHaLP6UjTQA&_render=php';
+
+   function fetchURL($url)
+   {
+   	$ch = curl_init();
+   	curl_setopt($ch, CURLOPT_URL, $url );
+   	curl_setopt($ch, CURLOPT_POST, 0 );
+   	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+   	return curl_exec($ch);
+   }
+
+   $data = unserialize(fetchURL($url));
+</pre>
+%
+Greetz
+-------------------------------
+   > Philip S Tellis
+
+   > <a href="mailto:philip@bluesmoon.info?subject=OLS">philip@bluesmoon.info</a>
+
+   > <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
+%

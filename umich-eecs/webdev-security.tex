@@ -1,0 +1,326 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{Security centered web development}
+
+\date{University of Michigan / 2010-10-28}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ finger philip}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item geek - paranoid - speedfreak
+  \item yahoo
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\begin{frame}{}
+\begin{center}
+Why worry?
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+There are bad people out there
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+Spammers -- want to sell stuff to users
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+Phishers -- want to steal user accounts
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+Crackers -- want to gain access to your systems
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+There are also non-technical people out there
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+Your neighbour who needs facebook to see pictures of her grandkids
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+How do you make it easy enough for the good guys, \\ but really hard for the bad guys?
+\end{center}
+\end{frame}
+
+\begin{frame}{What do the bad guys do?}
+\begin{itemize}
+\item Try to create fake accounts
+\item Try to steal credentials of real accounts
+\item Try to trick real users into doing things that are bad for them
+\item Try to spread malware
+\item What else?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How?}
+\begin{itemize}
+\item Code injection (XSS, Shell, SQL)
+\item CSRF, Click-jacking
+\item Phishing/Scamming
+\item \tiny{\href{http://www.smashingmagazine.com/2010/10/18/common-security-mistakes-in-web-applications/}{http://www.smashingmagazine.com/2010/10/18/common-security-mistakes-in-web-applications/}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+If an attacker can inject javascript into your pages, they can steal other users' credentials
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+Sometimes they might just stop after injecting spam
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+Use a shell exploit to modify your HTML, \\ use SQL injection to change the contents of your database, \\ or use an XSSed link to directly attack another user.
+\end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{0.9\paperwidth}{
+    \hfill \pgfimage[width=0.8\paperwidth]{exploits_of_a_mom}
+  }
+}
+\begin{frame}{}
+\parbox[c][0.6\paperheight]{\paperwidth}{ }
+\parbox[c][0.2\paperheight]{\paperwidth}{ \tiny{\href{http://xkcd.com/327/}{http://xkcd.com/327/}} }
+\end{frame}
+
+\setbeamertemplate{background}{}
+
+\begin{frame}{Question}
+\begin{center}
+If an application only runs on your intranet, behind your firewall, is it okay to not worry about security?
+\end{center}
+\end{frame}
+
+\begin{frame}{Question}
+\begin{center}
+What if the application does not handle any sensitive data?
+\end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[t][\paperheight]{0.8\paperwidth}{
+    \hfill \pgfimage[width=0.55\paperwidth]{password_reuse}
+  }
+}
+\begin{frame}{}
+\parbox[c][0.7\paperheight]{\paperwidth}{ }
+\parbox[c][0.2\paperheight]{\paperwidth}{ \tiny{\href{http://xkcd.com/792/}{http://xkcd.com/792/}} }
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{0.9\paperwidth}{
+    \hfill \pgfimage[width=0.8\paperwidth]{1337_part_1}
+  }
+}
+\begin{frame}{}
+\parbox[c][0.6\paperheight]{\paperwidth}{ }
+\parbox[c][0.2\paperheight]{\paperwidth}{ \tiny{\href{http://xkcd.com/341/}{http://xkcd.com/341/}} }
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{0.9\paperwidth}{
+    \hfill \pgfimage[width=0.8\paperwidth]{road_rage}
+  }
+}
+\begin{frame}{}
+\parbox[c][0.6\paperheight]{\paperwidth}{ }
+\parbox[c][0.2\paperheight]{\paperwidth}{ \tiny{\href{http://xkcd.com/440/}{http://xkcd.com/440/}} }
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Session hijacking}
+\begin{center}
+How much of your site should be protected by SSL? \\
+What are the cons?
+\end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{0.8\paperwidth}{
+    \hfill \pgfimage[width=0.6\paperwidth]{security}
+  }
+}
+\begin{frame}{}
+\parbox[c][0.6\paperheight]{\paperwidth}{ }
+\parbox[c][0.2\paperheight]{\paperwidth}{ \tiny{\href{http://xkcd.com/538/}{http://xkcd.com/538/}} }
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+
+\begin{frame}{How do we protect ourselves?}
+\begin{itemize}
+\item Trust no one
+\item Filter everything based on context
+\item Configure PHP to filter by default to protect against programmer error
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How do we protect ourselves?}
+\begin{center}
+Know which data can be trusted, and filter everything else before echoing it back to the user.
+\end{center}
+\end{frame}
+
+\begin{frame}{Question}
+\begin{center}
+Should you filter on input or on output?
+\end{center}
+\end{frame}
+
+\begin{frame}{Nonces}
+\begin{itemize}
+\item Any action executed on behalf of the user needs a nonce
+\item Ensures that the user initiated the action on your site
+\item Nonce generation \& validation could be baked into your web server
+\item Doesn't protect you from click-jacking
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Question}
+\begin{center}
+How useful is frame-busting?  What about Frame-busting-busting?
+\end{center}
+\end{frame}
+
+\begin{frame}{Scams}
+\begin{itemize}
+\item Friend in need scam
+\item 419 scam
+\item Phishing scams
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Question}
+\begin{center}
+How do you stop spammers/scammers from creating fake accounts in bulk?
+\end{center}
+\end{frame}
+
+\begin{frame}{What else can you do?}
+\begin{itemize}
+\item Security reviews at the architecture design stage
+\item Code scanning at check-in
+\item Vulnerability scanning during development and QA
+\item Regular security reviews of all projects
+\item At least one security concious developer on every project
+\item Log file scanning for suspicious behaviour
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+Developer and user education are the biggest weapons we have
+\end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{Thank you}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item geek - paranoid - speedfreak
+  \item yahoo
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\end{document}
+
+
