@@ -1,0 +1,220 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=blue!10!black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\institute{Yahoo!}
+
+\title{Why Foss in Education makes sense}
+
+\date{FOSS.IN/2005 -- 2005/12/01}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ whoami}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item yahoo
+  \item geek
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{What this talk is not about}
+   \begin{itemize}
+   \item Educational tools under linux
+   \item Free educational tools
+   \item Cost benefits of using foss in schools
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{What this talk is about}
+   \begin{itemize}
+   \item Foss as a means of fostering education
+   \item Foss as a means of validating research
+   \item The \textit{fossification} of education
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{The role of \textit{computers} in education}
+   \begin{itemize}
+   \item Computer Education
+   \item Other Education
+   \item Academic related
+   \item Administrative
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{The role of computers in \textit{education}}
+   \begin{itemize}
+   \item Instruction delivery
+   \item Instruction enabling
+   \item Administration
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{Instruction delivery}
+   \begin{itemize}
+   \item<1-> Throw information at students until they know it all
+   \item<2-> Don't let them go ahead unless they pass all tests
+   \item<3-> Throw data at students and let them process it
+   \item<4-> Let the student derive information
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{Instruction enabling}
+   \begin{itemize}
+   \item The computer as the laboratory
+   \item C programming can only be taught on a computer
+   \item Playing with Math and Science on the computer
+   \end{itemize}
+\end{frame}
+
+\begin{frame}
+   \begin{block}{}
+   \begin{center}
+   Do we want the computer to program the child or the child to program the computer?
+   \end{center}
+   \end{block}
+\end{frame}
+
+\begin{frame}{Language learning is natural}
+   \begin{itemize}
+   \item<1-> Natural languages are learnt through living
+   \item<2-> Learning is inherited from ones surroundings
+   \item<3-> Create virtual lands where the mother tongue is the topic to be learnt
+   \item<4-> Mathland, Physicsland, Poetryland
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{Debugging ones mistakes}
+   \begin{itemize}
+   \item Don't punish children when they make mistakes
+   \item Teach them to debug
+   \item Teach them to read other peoples' problems and debug them too
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{This is where Foss shines}
+   \begin{block}{}
+   \begin{center}
+   FOSS is great for learning because the source code is available. Not just for reading, but for modification, and experimentation.
+   \end{center}
+   \end{block}
+\end{frame}
+
+\begin{frame}{Use FOSS tools instead of proprietary ones}
+   \begin{itemize}
+   \item Should we teach students specific tools or give them the ability to learn any tool?
+   \item Should we NOT teach the current popular tools?
+   \item Throw responsibility into the hands of students
+   \end{itemize}
+\end{frame}
+
+\begin{frame}
+   \begin{block}{}
+   \begin{center}
+   Popularity begets Obsolescence
+   \end{center}
+   \end{block}
+\end{frame}
+
+\begin{frame}{Academics and FOSS}
+   \begin{itemize}
+   \item Academia spreads knowledge by publishing papers, results and findings.
+   \item Foss is a solid implementation of these ideas
+   \item Foss allows one to build on another's knowledge
+   \item Foss allows verifiability -- the basis of all scientific publishings
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{We need to foster this at the school level}
+   \begin{itemize}
+   \item Students of higher classes can build tools for lower classes
+   \item Students work in a virtual world for the topic they study
+   \item Programming expertise is not required, but domain expertise is built
+   \item Students learn by collaborating and studying others' implementations
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{Doing, teaching, collaborating}
+   \begin{itemize}
+   \item Learning is fostered by doing, teaching and collaborating
+   \item This is why Foss makes sense for education
+   \item We have plenty of examples in computer science and bioinformatics
+   \item Let's apply this to other fields too
+   \end{itemize}
+\end{frame}
+
+\begin{frame}
+   \begin{block}{}
+   \begin{center}
+   Education \alt<2->{wants}{needs} to be Free and Open
+   \end{center}
+   \end{block}
+\end{frame}
+
+\begin{frame}{Thanks}
+   \begin{center}
+   \small{\href{http://tech.bluesmoon.info/2005/11/why-foss-in-education-makes-sense.html}{http://tech.bluesmoon.info/2005/11/why-foss-in-education-makes-sense.html}}
+   \end{center}
+\end{frame}
+
+\end{document}

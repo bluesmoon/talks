@@ -1,0 +1,125 @@
+TITLE: Why Foss in Education makes sense
+AUTHOR: Philip S Tellis
+
+%
+What this talk is not about
+- Educational tools under linux
+- Free educational tools
+- Cost benefits of using foss in schools
+%
+What this talk is about
+- Foss as a means of fostering education
+- Foss as a means of validating research
+- The fossification :P of education
+%
+The role of <em>computers</em> in education
+- Computer Education
+- Other Education
+- Academic related
+- Administrative
+%
+The role of computers in <em>education</em>
+- Instruction delivery
+- Instruction enabling
+- Administration
+%
+Instruction delivery
+- Throw information at the student until he knows it all
+- <span class="light">Don't let him go ahead unless he passes all tests</span>
+- <span class="light">Throw data at the student and let him process it</span>
+- <span class="light">Let the student derive information</span>
+%
+Instruction delivery
+- Throw information at the student until he knows it all
+- Don't let him go ahead unless he passes all tests
+- <span class="light">Throw data at the student and let him process it</span>
+- <span class="light">Let the student derive information</span>
+%
+Instruction delivery
+- Throw information at the student until he knows it all
+- Don't let him go ahead unless he passes all tests
+- Throw data at the student and let him process it
+- <span class="light">Let the student derive information</span>
+%
+Instruction delivery
+- Throw information at the student until he knows it all
+- Don't let him go ahead unless he passes all tests
+- Throw data at the student and let him process it
+- Let the student derive information
+%
+Instruction enabling
+- The computer as the laboratory
+- C programming can only be taught on a computer
+- Playing with Math and Science on the computer
+%
+<blockquote>Do we want the computer to program the child or the child to program the computer?</blockquote>
+%
+Language learning is natural
+- Natural languages are learnt through living
+- <span class="light">Learning is inherited from one's surroundings</span>
+- <span class="light">Create virtual lands where the mother tongue is the topic to be learnt</span>
+- <span class="light">Mathland, Physicsland, Poetryland</span>
+%
+Language learning is natural
+- Natural languages are learnt through living
+- Learning is inherited from one's surroundings
+- <span class="light">Create virtual lands where the mother tongue is the topic to be learnt</span>
+- <span class="light">Mathland, Physicsland, Poetryland</span>
+%
+Language learning is natural
+- Natural languages are learnt through living
+- Learning is inherited from one's surroundings
+- Create virtual lands where the mother tongue is the topic to be learnt
+- <span class="light">Mathland, Physicsland, Poetryland</span>
+%
+Language learning is natural
+- Natural languages are learnt through living
+- Learning is inherited from one's surroundings
+- Create virtual lands where the mother tongue is the topic to be learnt
+- Mathland, Physicsland, Poetryland
+%
+Debugging one's mistakes
+- Don't punish a child when he makes mistakes
+- Teach him to debug
+- Teach him to read other people's problems and debug them too
+%
+This is where Foss shines
+<blockquote>FOSS is great for learning because the source code is available. Not just for reading, but for modification, and experimentation.</blockquote>
+%
+Use FOSS tools instead of proprietary ones
+- Should we teach students specific tools or give them the ability to learn any tool?
+- Should we NOT teach the current popular tools?
+- Throw responsibility into the hands of students
+%
+<blockquote>Popularity begets Obsolescence</blockquote>
+%
+Academics and FOSS
+- Academia spreads knowledge by publishing papers, results and findings.
+- Foss is a solid implementation of these ideas
+- Foss allows one to build on another's knowledge
+- Foss allows verifiability - the basis of all scientific publishings
+%
+We need to foster this at the school level
+- Students of higher classes can build tools for lower classes
+- Students work in a virtual world for the topic they study
+- Programming expertise is not required, but domain expertise is built
+- Students learn by collaborating and studying others' implementations
+%
+Doing, teaching, collaborating
+- Learning is fostered by doing, teaching and collaborating
+- This is why Foss makes sense for education
+- We have plenty of examples in computer science and bioinformatics
+- Let's apply this to other fields too
+%
+<blockquote>Education needs to be Free and Open</blockquote>
+<blockquote class="light">Education wants to be Free and Open</blockquote>
+%
+<blockquote>Education needs to be Free and Open</blockquote>
+<blockquote>Education wants to be Free and Open</blockquote>
+%
+Contact:
+- Philip S Tellis<br>
+philip.tellis AT gmail.com<br>
+<small><a href="http://bluesmoon.blogspot.com/2005/11/why-foss-in-education-makes-sense.html">http://bluesmoon.blogspot.com/2005/11/why-foss-in-education-makes-sense.html</a></small>
+- Uses <a href="http://www.meyerweb.com/eric/tools/s5/">Eric A Meyer's S5</a>
+%
