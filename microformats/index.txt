@@ -1,0 +1,104 @@
+TITLE:Microformats
+AUTHOR:Philip Tellis
+CONFERENCE:<a href="http://csibc.org/">CSI (Bang) Web 2.0</a>
+COMPANY:Yahoo!
+DATE:1172206200
+%
+Wayback when
+- Tim Berners-Lee developed the web to be a semantic network of interlinked documents
+- Open standards (HTTP and HTML) helped it grow
+- Couldn't do much
+%
+The loss of semantics
+- Netscape added the image tag
+- FONT, MARQUEE, BLINK
+- OMG
+- Web pages made in photoshop
+%
+Hey, that's not markup
+- Links to non-markup documents (.doc, .xls, .pdf)
+- HTML was meant to do all that in a readable way
+%
+And that isn't semantic either
+- Tables for layout
+- H* tags for font sizing and bolding
+- B tag for headings
+%
+<blockquote>There are still sites that do this!</blockquote>
+%
+The return of semantics
+- HTML 4.x deprecated a whole bunch of non-semantic tags
+- Accessibility standards call for the appropriate use of certain tags and the omission of others
+- <span class="light">Browsers stabilised</span>
+- <span class="light">Many respected web developers pushed for standards and semantics</span>
+%
+The return of semantics
+- HTML 4.x deprecated a whole bunch of non-semantic tags
+- Accessibility standards call for the appropriate use of certain tags and the omission of others
+- Browsers stabilised
+- <span class="light">Many respected web developers pushed for standards and semantics</span>
+%
+The return of semantics
+- HTML 4.x deprecated a whole bunch of non-semantic tags
+- Accessibility standards call for the appropriate use of certain tags and the omission of others
+- Browsers stabilised
+- Many respected web developers pushed for standards and semantics
+%
+<q>But HTML isn't rich enough</q>
+- HTML's tags aren't good enough to describe the semantics of all kinds of data
+- XML can be rich enough, but isn't easily suitable for web frontends
+- CSS classes are used to extend the semantics of HTML
+%
+That's where microformats come in
+<blockquote>Microformats are the HiFi of information on the web</blockquote>
+%
+<a href="http://microformats.org/about/">Microformats are</a>
+- a way of thinking about data
+- design principles for formats
+- adapted to current behaviors and usage patterns
+- highly correlated with semantic XHTML
+- a set of simple open data format standards that many are actively developing and implementing for more/better structured blogging and web microcontent publishing in general.
+- An evolutionary revolution
+%
+<a href="http://microformats.org/about/">Microformats are not</a>
+- a new language
+- infinitely extensible and open-ended
+- an attempt to get everyone to change their behavior and rewrite their tools
+- a whole new approach that throws away what already works today
+- a panacea for all taxonomies, ontologies, and other such abstractions
+- defining the whole world, or even just boiling the ocean
+%
+<a href="http://microformats.org/about/">The microformats principles</a>
+- solve a specific problem
+- start as simple as possible
+- design for humans first, machines second
+- reuse building blocks from widely adopted standards
+- modularity / embeddability
+- enable and encourage decentralized development, content, services
+%
+<a href="http://microformats.org/wiki/Main_Page#Specifications">Common microformats</a>
+- <a href="http://microformats.org/wiki/hcard">hCard</a> - modelled around vCard
+- <a href="http://microformats.org/wiki/hcalendar">hCalendar</a> - for events
+- <a href="http://microformats.org/wiki/adr">adr</a> - for addresses
+- <a href="http://microformats.org/wiki/geo">geo</a> - for geo information
+%
+But how does it help me?
+- Enables easy sharing of data from your webpages
+- Data is semantically marked up which helps human readers and improves accessibility
+- Various tools can do funky things with the data on your page, eg: Firefox toolbars
+%
+Examples
+- <a href="http://dconstruct06.madgex.com/">d.construct backnetwork</a>
+- <a href="http://microformats.org/">Microformats page</a>
+- <a href="http://adactio.com/journal/">Jeremy Keith's journal</a>
+- <a href="http://tantek.com/">Tantek &Ccedil;elik</a>
+%
+Links
+- http://microformats.org/
+- http://microformats.org/mailman/listinfo/microformats-discuss/
+- #microformats on irc.freenode.net
+%
+Licence
+- This presentation is released under a <a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Creative Commons BY-NC-SA</a> licence.
+- The <a href="http://remiprevost.com/images/wallpapers/microformats/mf-vector.png">microformats logo</a> is Copyright <a href="http://microformats.org/wiki/User:Remi">R&eacute;mi Pr&eacute;vost</a> 
+- Sections of this document were taken from the <a href="http://microformats.org/about/">Microformats website</a>

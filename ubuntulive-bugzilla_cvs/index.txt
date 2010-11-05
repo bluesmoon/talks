@@ -1,0 +1,233 @@
+TITLE: Project Management with Bugzilla, CVS and Mailing lists
+SUBTITLE: Ubuntulive &bull; July 22-24, 2007 &bull; Portland, Oregon
+AUTHOR: Philip S Tellis
+COMPANY: Yahoo! Inc
+CONFERENCE: <a href="http://ubuntulive.com/">Ubuntulive</a>
+DATE: 2007-07-22
+%
+[class="alert"] Do you manage a distributed project?
+%
+[class="alert"] Is communication between your developers efficient?
+%
+[class="alert"] What's needed?
+%
+Project management requirements
+-------------------------------
+*   Source control including reviews
+*   Issue tracking linked to code changes
+*   Dependency and progress tracking
+*   Group communication
+*   Generate ChangeLog and Release Notes
+%
+Code reviews
+-------------------------------
+- When? Before checkin or after checkin?
+- How? Via email or using an issue tracker?
+- How do reviewer comments get recorded?
+- How to track changes in a patch before commit?
+%
+Issue tracking
+-------------------------------
+- Traditionally one would use email to report issues
+- Records are not easily locatable
+- Need responsibilities, targets, severity and priorities for issues
+- Need fields to report components and versions where issues occur
+%
+Tracking bug fixes
+-------------------------------
+- Submit patches as attachments to an issue
+- Newer patches obsolete an older patch
+- CVS logs should reference a bug in bugzilla
+- CVS log messages update bug comments and time spent
+%
+Communication
+-------------
+- Face to face meetings - seriously... does anything happen?
+- Teleconferences - often chaotic
+- email, IRC, message boards
+- Can we use bugzilla?
+%
+[class="alert"] We'll get back to that in a bit
+%
+[class="alert"] for now, let's manage code
+%
+The <code>CVSROOT</code> directory
+-------------------------------
+- <code>rcsinfo</code> - template for log messages
+- <code>verifymsg</code> - script to verify log message
+- <code>loginfo</code> - script to run after commit
+- <code>checkoutlist</code> - additional admin files
+%
+[class="alert"] Let's try something
+%
+All commits must be against a bug
+-------------------------------
+1. Prompt the user for a bug id at commit time
+2. [class="light"] Don't commit if a bug id isn't passed
+%
+All commits must be against a bug
+-------------------------------
+1. Prompt the user for a bug id at commit time
+2. Don't commit if a bug id isn't passed
+%
+Create a file <code>tc.template</code>
+---------------------------------------
+    
+    BugId:
+%
+Create a file <code>tc.template</code>
+---------------------------------------
+    
+    BugId:
+
+[class="alert"]Seriously, that's all there is to it!
+%
+Create a file <code>bugid.verify</code>
+----------------------------------------
+<pre>
+<font color="#2080d0">#!/bin/sh</font>
+<font color="#00008b"><b>if</b></font> head <font color="#802020">-1</font> <font color="#00008b"><b>&lt;</b></font> <font color="#8b008b">$1</font> <font color="#00008b"><b>|</b></font> egrep <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*[0-9]+$</font><font color="#00008b"><b>"</b></font> \
+         <font color="#00008b"><b>&gt;</b></font> /dev/null<font color="#00008b"><b>;</b></font> <font color="#00008b"><b>then</b></font>
+   <font color="#00008b"><b>exit</b></font> <font color="#802020">0</font>
+<font color="#00008b"><b>else</b></font>
+   <font color="#00008b"><b>echo</b></font><font color="#802020"> </font><font color="#00008b"><b>&quot;</b></font><font color="#802020">No BugId found.</font><font color="#00008b"><b>&quot;</b></font>
+   <font color="#00008b"><b>exit</b></font> <font color="#802020">1</font>
+<font color="#00008b"><b>fi</b></font>
+
+</pre>
+%
+Add references to <code>verifymsg</code> and <code>rcsinfo</code>
+-------------------------------
+Tell <code>verifymsg</code> how to check commits:
+
+    ^src     /usr/cvssupport/bugid.verify
+
+Tell <code>rcsinfo</code> what to prompt devs for:
+
+    ^src     /usr/cvssupport/tc.template
+
+%
+Add references to <code>verifymsg</code> and <code>rcsinfo</code>
+-------------------------------
+Tell <code>verifymsg</code> how to check commits:
+
+    ^src     /usr/cvssupport/bugid.verify
+
+Tell <code>rcsinfo</code> what to prompt devs for:
+
+    ^src     /usr/cvssupport/tc.template
+
+Maybe tell <code>config</code> to reread commit message:
+
+    RereadLogAfterVerify=always
+%
+You could allow something like <code>BugId: none</code>
+------------------------------------------
+Add this before the <code>else</code>:
+<pre>
+<font color="#00008b"><b>elif</b></font> head <font color="#802020">-1</font> <font color="#00008b"><b>&lt;</b></font> <font color="#8b008b">$1</font> <font color="#00008b"><b>|</b></font> egrep <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*none$</font><font color="#00008b"><b>"</b></font> \
+         <font color="#00008b"><b>&gt;</b></font> /dev/null<font color="#00008b"><b>;</b></font> <font color="#00008b"><b>then</b></font>
+   <font color="#2080d0"># It is okay to allow commits with
+   # "BugId: none", but do not put that
+   # text into the real log message.</font>
+   egrep <font color="#00008b"><b>-v</b></font> <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*none$</font><font color="#00008b"><b>"</b></font> <font color="#00008b"><b>&gt;</b></font> <font color="#8b008b">$1</font>.rewrite
+   mv <font color="#8b008b">$1</font>.rewrite <font color="#8b008b">$1</font>
+   <font color="#00008b"><b>exit</b></font> <font color="#802020">0</font>
+</pre>
+%
+Email all devs when someone commits foocide
+-------------------------------
+Add to <code>loginfo</code>:
+
+    DEFAULT  $CVSROOT/CVSROOT/syncmail -u %{sVv} \
+         devs@foo.com
+
+Use the <code>syncmail</code> script provided in the CVS Book
+%
+WT%F are <code>%s</code>, <code>%V</code>, <code>%v</code> and <code>%{sVv}</code>?
+-------------------------------
+- <code>%s</code> is the filename
+- <code>%V</code> is the old revision number
+- <code>%v</code> is the new revision number
+%
+[class="alert"]Make way for Bugzilla
+%
+CVS talking to bugzilla &mdash; needs a script
+-------------------------------
+- Callable from <code>bugzilla.procmailrc</code> for some alias, eg: <code>cvsbugz@foo.com</code>
+- Processes message body for bug numbers, and commands (eg: Fix, Close, etc.)
+- Use CVS <code>loginfo</code> file to mail log messages to this alias
+%
+Example commit messages
+----------------------
+    Added log messages to get more data
+    [bug 31337 time:1 left:3]
+
+...
+
+    Added defenestration logic
+    Removed redundant log messages
+    [fix bug 31337 time:3 left:0]
+%
+<code>bugzilla.procmailrc</code>
+---------------------------------
+* <code>.procmailrc</code> file calls <code>cvsbugz.pl</code> for matching mails
+<pre>
+    <font color="#2080d0"># Check message body for <em>[bug XXXXXX</em> syntax</font>
+    <font color="#00008b"><b>:0 Bc</b></font>
+    * \[(fix +)?bug +[0-9]+
+    <font color="#8b008b">|$HOME/cvsbugz.pl</font>
+</pre>
+* <code>cvsbugz.pl</code> parses the email for the <code>[bug XXXXX]</code> syntax
+* update bugzilla using the <code>Bugzilla::Bug</code> perl module
+%
+[class="alert"]Now, we'll talk
+%
+Communication 2.0 &mdash; Blogging on Bugzilla
+-------------------------------
+- Announcements and high level communication to dev list
+- CVS log comments to dev list
+- Bug comments to dev list (use default QA field)
+- Tasks and TODO comments on Bugzilla
+- IRC conversations archived as a bug attachment
+%
+Where do we stand now?
+-------------------------------
+- CVS updates bugzilla, freeing up the developer
+- Bugzilla links back to cvs patches
+- <code>cvsweb</code> has links to bugzilla entries
+- Everything is mailed to your dev list
+- Devs review code mailed to the dev list and comment on bugzilla
+%
+Release time
+-------------------------------
+- Use <code>cvs2cl</code> (search for it)
+- Generate ChangeLogs from CVS logs
+- ChangeLogs get links to bugzilla
+- Encourages developers to write meaningful log messages
+%
+Release time
+-------------------------------
+- Use <code>cvs2cl</code> (search for it)
+- Generate ChangeLogs from CVS logs
+- ChangeLogs get links to bugzilla
+- Encourages developers to write meaningful log messages<br>
+  (Yeah, right!)
+%
+Pointers or References?
+-------------------------------
+- <a href="http://www.bugzilla.org/">Bugzilla</a>
+- <a href="https://www.cvshome.org/docs/manual/cvs-1.11.6/cvs_18.html">CVS Administrative files</a>
+- <a href="http://cvsbook.red-bean.com/cvsbook.html#The%20CVSROOT%2f%20Administrative%20Directory">CVS Book: The CVSROOT Administrative Directory</a>
+- <a href="http://sourceforge.net/docman/display_doc.php?docid=772&group_id=1">Sourceforge: Enhancing Project CVS Services using scripts</a>
+%
+Greetz
+-------------------------------
+   > Philip S Tellis
+
+   > <a href="mailto:philip@bluesmoon.info?subject=Ubuntulive">philip@bluesmoon.info</a>
+
+   > <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
+
+   > <a href="ubuntulive-bugzilla_cvs.tar.bz2">Download</a>
+%
