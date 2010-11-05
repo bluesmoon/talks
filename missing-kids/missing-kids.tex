@@ -1,0 +1,352 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{YQL: Find more than just data}
+
+\date{\href{http://upcoming.yahoo.com/event/5648461/}{Yahoo!7 Open Session} -- 11 May 2010 -- \#y7os}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ finger philip}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item yahoo
+  \item geek
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{.7\paperwidth}{
+    \hfill \pgfimage[height=180pt]{404}
+  }
+}
+\begin{frame}{}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{.8\paperwidth}{
+    \hfill \pgfimage[width=220pt]{kids}
+  }
+}
+\begin{frame}{missingkids.com}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{missingkidsmap.com}
+  \begin{center}
+  \href{http://www.missingkidsmap.com/read.php?state=CA}{http://www.missingkidsmap.com/read.php?state=CA}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{semiverbatim}
+\tiny{
+<locations>
+   <maplocation zoom="5"
+                state_long="-119.838867"
+                state_lat="37.370157"/>
+   <location id="1"
+             firstname="Anastasia"
+             lastname=" Shearer "
+             picture="img width=160 target=_new src=http://www.missingkids.com/photographs/NCMC1140669c1.jpg"
+             picture2="img width=160 target=_new src=http://www.missingkids.com/photographs/NCMC1140669e1.jpg"
+             medpic = "img width=60 border=0 target=_new src=http://www.missingkids.com/photographs/NCMC1140669c1.jpg"
+             smallpic="img width=30 border=0 target=_new src=http://www.missingkids.com/photographs/NCMC1140669c1.jpg"
+             policenum="1-661-861-3110"
+             policeadd="Kern County Sheriff\'s Office (California)"
+             policenum2=""
+             policeadd2=""
+             st=" CA"
+             city="BAKERSFIELD"
+             missing="12/26/2009"
+             status="Endangered Runaway"
+             age="16"
+             url="1140669"
+             lat="35.3733333333333"
+             lng="-119.017777777778"/>
+   ...
+</locations>
+}
+\end{semiverbatim}
+\end{frame}
+
+% http://lolcats.com/view/11439/
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[width=220pt]{lolcatsdotcomik7ozh81ax1797ce}
+  }
+}
+\begin{frame}{Death by 404}
+  \begin{columns}[t]
+  \column{.7\textwidth}
+  \begin{center}
+  API call on every 404 page $\implies$
+  \end{center}
+  \parbox[c][.8\paperheight]{\paperwidth}{}
+  \column{.3\textwidth}
+  \end{columns}
+\end{frame}
+
+% http://lolcats.com/view/13347/
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[width=220pt]{lolcatsdotcom8pp72k4q7hzw06vy}
+  }
+}
+\begin{frame}{This looks like a job for...}
+  \LARGE{\textbf{\color{violet}{YQLCAT}}}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{SELECT}
+\href{http://developer.yahoo.com/yql/console/\#h=SELECT\%20*\%20From\%20xml\%20Where\%20url\%3D\%27http\%3A//www.missingkidsmap.com/read.php\%3Fstate\%3DZZ\%27}{\textcolor{blue}{SELECT} * \textcolor{blue}{From} xml \textcolor{blue}{Where} url='\textcolor{brown}{http://www.missingkidsmap.com/read.php?state=ZZ}'}
+\end{frame}
+
+% http://www.flickr.com/photos/wwworks/440672445/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{440672445_69ed634b34_d}
+  }
+}
+\begin{frame}{Geo}
+More useful if we find local kids
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{YQL can do it}
+  \begin{center}
+  \textcolor{blue}{SELECT} * \textcolor{blue}{From} ip.location \textcolor{blue}{Where} ip=@ip
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{verbatim}
+{
+ "query":{
+  ...
+  "results":{
+   "Response":{
+    "Ip":"209.117.47.253",
+    "Status":"OK",
+    "CountryCode":"US",
+    "CountryName":"United States",
+    "RegionCode":null,
+    "RegionName":null,
+    "City":null,
+    "ZipPostalCode":null,
+    "Latitude":"38",
+    "Longitude":"-97",
+    "Timezone":"-6",
+    "Gmtoffset":"-6",
+    "Dstoffset":"-5"
+   }
+  }
+ }
+}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{WoEID}
+  \textcolor{blue}{SELECT} place.woeid \textcolor{blue}{From} flickr.places \\ \textcolor{blue}{Where} lat=@lat \textcolor{blue}{And} lon=@lon
+\end{frame}
+
+\begin{frame}{WoEID}
+  \textcolor{blue}{SELECT} place.woeid \textcolor{blue}{From} flickr.places \\ \textcolor{blue}{Where} (lat, lon) \textcolor{blue}{IN} \\ ( \\ 
+  \textcolor{blue}{SELECT} Latitude, Longitude \textcolor{blue}{From} ip.location \\ \textcolor{blue}{Where} ip=@ip \\ )
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{verbatim}
+{
+ "query":{
+  "count":"1",
+  ...
+  "results":{
+   "places":{
+    "place":{
+     "woeid":"12588378"
+    }
+   }
+  }
+ }
+}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Country/State}
+\textcolor{blue}{SELECT} country.code, admin1.code \\
+  \textcolor{blue}{From} geo.places \\
+ \textcolor{blue}{Where} woeid=@woeid
+\end{frame}
+
+\begin{frame}[fragile]{All together}
+\begin{verbatim}
+SELECT country.code, admin1.code From geo.places
+ Where woeid IN
+   (
+      SELECT place.woeid From flickr.places
+       Where (lat, lon) IN
+         (
+            SELECT Latitude, Longitude
+              From ip.location
+             Where ip=@ip
+         )
+   )
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{verbatim}
+{
+ "query":{
+  "count":"1",
+  ...
+  "results":{
+   "place":{
+    "country":{
+     "code":"US"
+    },
+    "admin1":{
+     "code":"US-KS"
+    }
+   }
+  }
+ }
+}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{And that's it}
+  \begin{itemize}
+  \item Throw in a bit of PHP to turn the JSON into HTML
+  \item CSS to style it
+  \item Wrap it in your page template
+  \item eg: \href{http://bluesmoon.info/foobar}{http://bluesmoon.info/foobar}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{PHP}
+\begin{verbatim}
+$json = http_get($missing_kids_url);
+$o = json_decode($json, 1);
+$children = $o['query']['results']
+                   ['locations']['location'];
+
+$child = array_rand($children);
+
+print_404($child);
+
+...
+
+header('HTTP/1.0 404 Not Found');
+
+\end{verbatim}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{.9\paperwidth}{
+    \vfill \hfill \pgfimage[height=.8\paperheight]{new-404}
+  }
+}
+\begin{frame}{ErrorDocument 404 /404.php}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Links}
+  \begin{itemize}
+  \item \href{http://tech.bluesmoon.info/2010/02/convert-ip-to-geo-info-using-yql.html}{http://tech.bluesmoon.info/2010/02/convert-ip-to-geo-info-using-yql.html}
+  \item \href{http://tech.bluesmoon.info/2010/02/missing-kids-on-your-404-page.html}{http://tech.bluesmoon.info/2010/02/missing-kids-on-your-404-page.html}
+  \item \href{http://developer.yahoo.com/yql/}{http://developer.yahoo.com/yql/}
+  \item \href{http://www.missingkidsmap.com/}{http://www.missingkidsmap.com/}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Photo credits}
+  \begin{itemize}
+  \item \href{http://lolcats.com/view/11439/}{http://lolcats.com/view/11439/}
+  \item \href{http://lolcats.com/view/13347/}{http://lolcats.com/view/13347/}
+  \item \href{http://www.flickr.com/photos/wwworks/440672445/}{http://www.flickr.com/photos/wwworks/440672445/}
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{Thank you}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\end{document}
+
+
