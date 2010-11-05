@@ -1,0 +1,199 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=blue!10!black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\institute{Yahoo!}
+
+\title{Fallback Messaging}
+
+\date{Linux Bangalore 2004 / 2004-12-02}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ whoami}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item yahoo
+  \item geek
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\begin{frame}{How do you chat?}
+   \begin{itemize}
+   \item Which IM programs do you use?
+   \item How many accounts on each?
+   \item Do you communicate with the same people over multiple services?
+   \item How often do you use email/SMS to communicate with these people?
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Does the server decide whether you can chat or not?}
+   \begin{itemize}
+   \item How often has a service gone down for maintenance while you're in a conversation?
+   \item What happens to your conversation?
+   \item What happens to your train of thought?
+   \item What happens to logs of the conversation -- if any?
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \begin{block}{}
+  \begin{center}
+  Do you know your friends by their names or their handles?
+  \end{center}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}{Act 1, Scene 1, Take 1}
+   \begin{itemize}
+   \item<1-> Philip and Manish are chatting on MSN about their project
+   \item<2-> MSN server goes down
+   \item<3-> Start Y!M, continue conversation
+   \item<4-> Net goes down, only email working
+   \item<5-> Send email/SMS saying that we can't chat anymore
+   \item<6-> Philip combines all the logs to post to the website
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{The idea behind fallback messaging }
+   \begin{itemize}
+   \item People care about people, not protocols
+   \item Conversations should not be service dependent
+   \item Conversation should be continuous even if the service changes
+   \item Person-person messaging approaches pc-pc messaging
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{So what does fallback messaging do?}
+   \begin{itemize}
+   \item Automatically pick a protocol to use for messaging
+   \item Automatically switch protocols if one goes down without worrying the user
+   \item A single log file irrespective of protocol
+   \item Represent a person as a single entity rather than a bunch of different handles
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{What's needed?}
+   \begin{itemize}
+   \item A single client that talks multiple protocols
+   \item The client should group different accounts of a contact into a single entity
+   \item The client should be able to switch between accounts
+   \item Perhaps an ability to prioritise the order of fallback
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Act 1, Scene 1, Take 2}
+   \begin{itemize}
+   \item<1-> Philip and Manish are chatting on MSN about their project
+   \item<2-> MSN server goes down
+   \item<3-> The client switches to Y!M
+   \item<4-> Net goes down, only email working
+   \item<5-> Client switches to email/sms
+   \item<6-> User is notified that he's now in async mode
+   \item<7-> The client has a combined log of everything communicated
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Can we do this today?}
+   \begin{itemize}
+   \item FOSS clients like gaim and ayttm can do it
+   \item Still needs some work
+   \item FOSS clients have the edge
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Do we really need it?}
+   \begin{itemize}
+   \item Probably in very few situations, but we sure want it :P
+   \item Data transfer over IM is an application
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{The future of IM}
+   \begin{itemize}
+   \item Everyone's talking about IM interoperability
+   \item Sending structured data and not just human readable conversations over IM
+   \item IM transports as a commodity with value added services above it
+   \end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+Thank you
+
+\href{http://tech.bluesmoon.info/2004/09/fallback-messaging.html}{\color{blue}{\underline{http://tech.bluesmoon.info/2004/09/fallback-messaging.html}}}
+\end{center}
+\end{frame}
+
+
+\end{document}

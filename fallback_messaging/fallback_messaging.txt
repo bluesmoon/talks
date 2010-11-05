@@ -1,0 +1,73 @@
+TITLE: Fallback Messaging
+AUTHOR: Philip S Tellis
+COMPANY: I'm a geek
+
+%
+How do you chat?
+- Which IM programs do you use?
+- How many accounts on each?
+- Do you communicate with the same people over multiple services?
+- How often do you use email/SMS to communicate with these people?
+%
+Does the server decide whether you can chat or not?
+- How often has a service gone down for maintenance while you're in a conversation?
+- What happens to your conversation?
+- What happens to your train of thought?
+- What happens to logs of the conversation - if any?
+%
+- Do you know your friends by their names or their handles?
+%
+Act 1, Scene 1, Take 1
+- Philip and Manish are chatting on MSN about their project
+- MSN server goes down
+- Start Y!M, continue conversation
+- Net goes down, only email working
+- Send email/SMS saying that we can't chat anymore
+- Philip combines all the logs to post to the website
+%
+The idea behind fallback messaging 
+- People care about people, not protocols
+- Conversations should not be service dependent
+- Conversation should be continuous even if the service changes
+- Person-person messaging approaches pc-pc messaging
+%
+So what does fallback messaging do?
+- Automatically pick a protocol to use for messaging
+- Automatically switch protocols if one goes down without worrying the user
+- A single log file irrespective of protocol
+- Represent a person as a single entity rather than a bunch of different handles
+%
+What's needed?
+- A single client that talks multiple protocols
+- The client should group different accounts of a contact into a single entity
+- The client should be able to switch between accounts
+- Perhaps an ability to prioritise the order of fallback
+%
+Act 1, Scene 1, Take 2
+- Philip and Manish are chatting on MSN about their project
+- MSN server goes down
+- The client switches to Y!M
+- Net goes down, only email working
+- Client switches to email/sms
+- User is notified that he's now in async mode
+- The client has a combined log of everything communicated
+%
+Can we do this today?
+- FOSS clients like gaim and ayttm can do it, though they might still need some work
+- FOSS clients have the edge
+%
+Do we really need it?
+- Probably in very few situations, but we sure want it :P
+- Data transfer over IM is an application
+%
+The future of IM
+- Everyone's talking about IM interoperability
+- Sending structured data and not just human readable conversations over IM
+- IM transports as a commodity with value added services above it
+%
+Contact:
+- Philip S Tellis<br>
+philip.tellis AT gmail.com<br>
+http://bluesmoon.blogspot.com/
+- Uses <a href="http://www.meyerweb.com/eric/tools/s5/">Eric A Meyer's S5</a>
+%

@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Fallback Messaging</title>
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.0" />
+<meta name="presdate" content="2004-10-29" />
+<meta name="author" content="Philip S Tellis" />
+<meta name="company" content="I'm a geek" />
+<link rel="stylesheet" href="../ui/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="../ui/opera.css" type="text/css" media="projection" id="operaFix" />
+<link rel="stylesheet" href="../ui/print.css" type="text/css" media="print" id="slidePrint" />
+<script src="../ui/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+
+<div id="currentSlide"></div>
+<div id="header"></div>
+<div id="footer">
+<h1>LB04 &#8226; 2004-10-29</h1>
+<h2>Fallback Messaging</h2>
+<div id="controls"></div>
+</div>
+
+</div>
+<div class="presentation">
+
+<div class="slide">
+<h1>Fallback Messaging</h1>
+<h3>Philip S Tellis</h3>
+<h4>I'm a geek</h4>
+</div>
+
+
+
+
+<div class="slide">
+<h1>How do you chat?</h1>
+<ul>
+<li>Which IM programs do you use?</li>
+<li>How many accounts on each?</li>
+<li>Do you communicate with the same people over multiple services?</li>
+<li>How often do you use email/SMS to communicate with these people?</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>Does the server decide whether you can chat or not?</h1>
+<ul>
+<li>How often has a service gone down for maintenance while you're in a conversation?</li>
+<li>What happens to your conversation?</li>
+<li>What happens to your train of thought?</li>
+<li>What happens to logs of the conversation - if any?</li></ul>
+</div>
+
+
+<div class="slide">
+<h1></h1>
+<ul><li>Do you know your friends by their names or their handles?</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>Act 1, Scene 1, Take 1</h1>
+<ul>
+<li>Philip and Manish are chatting on MSN about their project</li>
+<li>MSN server goes down</li>
+<li>Start Y!M, continue conversation</li>
+<li>Net goes down, only email working</li>
+<li>Send email/SMS saying that we can't chat anymore</li>
+<li>Philip combines all the logs to post to the website</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>The idea behind fallback messaging </h1>
+<ul>
+<li>People care about people, not protocols</li>
+<li>Conversations should not be service dependent</li>
+<li>Conversation should be continuous even if the service changes</li>
+<li>Person-person messaging approaches pc-pc messaging</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>So what does fallback messaging do?</h1>
+<ul>
+<li>Automatically pick a protocol to use for messaging</li>
+<li>Automatically switch protocols if one goes down without worrying the user</li>
+<li>A single log file irrespective of protocol</li>
+<li>Represent a person as a single entity rather than a bunch of different handles</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>What's needed?</h1>
+<ul>
+<li>A single client that talks multiple protocols</li>
+<li>The client should group different accounts of a contact into a single entity</li>
+<li>The client should be able to switch between accounts</li>
+<li>Perhaps an ability to prioritise the order of fallback</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>Act 1, Scene 1, Take 2</h1>
+<ul>
+<li>Philip and Manish are chatting on MSN about their project</li>
+<li>MSN server goes down</li>
+<li>The client switches to Y!M</li>
+<li>Net goes down, only email working</li>
+<li>Client switches to email/sms</li>
+<li>User is notified that he's now in async mode</li>
+<li>The client has a combined log of everything communicated</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>Can we do this today?</h1>
+<ul>
+<li>FOSS clients like gaim and ayttm can do it, though they might still need some work</li>
+<li>FOSS clients have the edge</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>Do we really need it?</h1>
+<ul>
+<li>Probably in very few situations, but we sure want it :P</li>
+<li>Data transfer over IM is an application</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>The future of IM</h1>
+<ul>
+<li>Everyone's talking about IM interoperability</li>
+<li>Sending structured data and not just human readable conversations over IM</li>
+<li>IM transports as a commodity with value added services above it</li></ul>
+</div>
+
+
+<div class="slide">
+<h1>Contact:</h1>
+<ul>
+<li>Philip S Tellis<br></li>
+philip.tellis AT gmail.com<br>
+http://bluesmoon.blogspot.com/
+<li>Uses <a href="http://www.meyerweb.com/eric/tools/s5/">Eric A Meyer's S5</a></li></ul>
+</div>
+
+</div>
+
+<p>Made with Eric A Meyer's S5</p>
+
+</body>
+</html>
