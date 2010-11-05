@@ -1,0 +1,606 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{The Statistics of Web Performance}
+
+\date{\href{http://confoo.ca/}{ConFoo} / 2010-03-12}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ finger philip}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item @bluesmoon
+  \item yahoo
+  \item geek
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\section{Introduction}
+\begin{frame}{}
+  \begin{center} \LARGE{Introduction} \end{center}
+\end{frame}
+
+\subsection{The goal}
+\begin{frame}{}
+  \begin{itemize}
+  \item Accurately measure page performance
+    \begin{itemize}
+    \item<2-> At least, as accurately as possible
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Be unintrusive}
+If you try to measure something accurately, you will change something related
+
+\hfill \tiny{-- Heisenberg's uncertainty principle}
+\end{frame}
+
+\begin{frame}{}
+  \begin{center}
+  And one number to rule them all
+  \end{center}
+\end{frame}
+
+\subsection{Performance Measurement}
+\begin{frame}{Bandwidth}
+  \begin{itemize}
+  \item Real bandwidth v/s advertised bandwidth
+  \item Bandwidth to your server, not to the ISP
+  \item Bandwidth during \textit{normal} internet usage
+    \begin{itemize}
+    \item<2-> If the user's always watching movies, you're not winning
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Latency}
+  \begin{itemize}
+  \item How long does it take a byte to get to the user?
+    \begin{itemize}
+    \item<2-> Wired, wireless, mobile, satellite?
+    \item<2-> How many hops in between?
+    \item<2-> Speed of light is constant
+    \end{itemize}
+  \item<3-> This is not a battle we will soon win.
+    \begin{itemize}
+    \item When was the last time you heard \textit{latency} mentioned in a TV ad?
+    \end{itemize}
+  \end{itemize}
+  \href{http://www.stuartcheshire.org/rants/Latency.html}{\scriptsize{http://www.stuartcheshire.org/rants/Latency.html}}
+\end{frame}
+
+\begin{frame}{User perceived page load time}
+  \begin{itemize}
+  \item Time from ``click on a link'' to ``spinner stops spinning''
+  \item This is what users notice
+    \begin{itemize}
+    \item Depends on how long your page takes to build
+    \item Depends on what's in your page
+    \item Depends on how long components take to load
+    \item Depends on how long the browser takes to execute and render
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+We need to measure real user data
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+The statistics apply to any kind of performance data though
+\end{center}
+\end{frame}
+
+\section{Statistics - I}
+
+\begin{frame}{}
+  \begin{center} \LARGE{Statistics - I} \end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{statistician}
+  }
+}
+\begin{frame}{Disclaimer}
+  \begin{columns}[t]
+  \column{.5\textwidth}
+  \begin{center}
+  \Large{I am not a statistician}
+  \end{center}
+  \column{.5\textwidth}
+  \end{columns}  
+\end{frame}
+
+\subsection{Random Sampling}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{population} \hfill
+  }
+}
+\begin{frame}{Population}
+  \begin{block}{}
+  \begin{center}
+  All possible users of your system
+  \end{center}
+  \end{block}
+  \parbox[c][0.4\paperheight]{\paperwidth}{ }
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{sample} \hfill
+  }
+}
+\begin{frame}{Sample}
+  \begin{block}{}
+  \begin{center}
+  Representative subset of the population
+  \end{center}
+  \end{block}
+  \parbox[c][0.4\paperheight]{\paperwidth}{ }
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{confounding} \hfill
+  }
+}
+\begin{frame}{Bad sample}
+  \begin{block}{}
+  \begin{center}
+  Sometimes it's not
+  \end{center}
+  \end{block}
+  \parbox[c][0.4\paperheight]{\paperwidth}{ }
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{How to randomize?}
+  \begin{itemize}
+  \item Pick 10\% of users at random and always test them
+  \end{itemize}
+  \begin{center} \large{OR} \end{center}
+  \begin{itemize}
+  \item For each user, decide at random if they should be tested
+  \end{itemize}
+  \href{http://tech.bluesmoon.info/2010/01/statistics-of-performance-measurement.html}{\scriptsize{http://tech.bluesmoon.info/2010/01/statistics-of-performance-measurement.html}}
+\end{frame}
+
+\begin{frame}[fragile]{Select 10\% of users - I}
+\begin{verbatim}
+   if($sessionid % 10 === 0) {
+      // instrument code for measurement
+   }
+\end{verbatim}
+  \begin{itemize}
+  \item Once a user enters the measurement bucket, they stay there until they log out
+  \item Fixed set of users, so tests may be more consistent
+  \item Error in the sample results in positive feedback
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Select 10\% of users - II}
+\begin{verbatim}
+   if(rand() < 0.1 * getrandmax()) {
+      // instrument code for measurement
+   }
+\end{verbatim}
+  \begin{itemize}
+  \item For every request, a user has a 10\% chance of being tested
+  \item Gets rid of positive feedback errors, but sample size \texttt{!=} 10\% of population
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{How big a sample is representative?}
+  \begin{center}
+  Select \(n\) such that \\
+  \medskip
+  \Large{\( \left| 1.96\frac{\sigma}{\sqrt{n}} \right| \le 5\% \mu \)}
+  \end{center}
+\end{frame}
+
+\subsection{Margin of Error}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{Standard_deviation_diagram} \hfill
+  }
+}
+\begin{frame}{Standard Deviation}
+  \begin{itemize}
+  \item Standard deviation tells you the spread of the curve
+  \item The narrower the curve, the more confident you can be
+  \end{itemize}
+  \parbox[c][0.58\paperheight]{\paperwidth}{ }
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\begin{frame}{MoE at 95\% confidence}
+  \begin{center}
+  \Large{\( \pm 1.96\frac{\sigma}{\sqrt{n}} \)}
+  \end{center}
+\end{frame}
+
+\begin{frame}{MoE \& Sample size}
+  \begin{center}
+  There is an inverse square root correlation between sample size and margin of error
+  \end{center}
+\end{frame}
+
+\begin{frame}{}
+  \begin{itemize}
+  \item But wait... it's not complicated enough.
+    \begin{itemize}
+    \item<2-> We have different types of margins of error
+    \item<3-> ...more about that later
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Central Tendency}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{Normal_Distribution_PDF} \hfill
+  }
+}
+\begin{frame}{Ding dong}
+% Bell curve from wikipedia
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{One number}
+  \begin{itemize}
+  \item Mean (Arithmetic)
+    \begin{itemize}
+    \item Good for symmetric curves
+    \item Affected by outliers
+    \end{itemize}
+  \end{itemize}
+  \begin{center}
+  \Large{ Mean(10, 11, 12, 11, 109) = 30 }
+  \end{center}
+\end{frame}
+
+\begin{frame}{One number}
+  \begin{itemize}
+  \item Median
+    \begin{itemize}
+    \item Middle value measures central tendency well
+    \item Not trivial to pull out of a DB
+    \end{itemize}
+  \end{itemize}
+  \begin{center}
+  \Large{ Median(10, 11, 12, 11, 109) = 11 }
+  \end{center}
+\end{frame}
+
+\begin{frame}{One number}
+  \begin{itemize}
+  \item Mode
+    \begin{itemize}
+    \item Not often used
+    \item Multi-modal distributions suggest problems
+    \end{itemize}
+  \end{itemize}
+  \begin{center}
+  \Large{ Mode(10, 11, 12, 11, 109) = 11 }
+  \end{center}
+\end{frame}
+
+\begin{frame}{Other numbers}
+  \begin{itemize}
+  \item A percentile point in the distribution: 95\textsuperscript{th}, 98.5\textsuperscript{th} or 99\textsuperscript{th}
+    \begin{itemize}
+    \item Used to find out the worst user experience
+    \item Makes more sense if you filter data first
+    \end{itemize}
+  \end{itemize}
+  \begin{center}
+  \Large{ P95\textsuperscript{th}(10, 11, 12, 11, 109) = 12 }
+  \end{center}
+\end{frame}
+
+\begin{frame}{Other means}
+  \begin{itemize}
+  \item Geometric mean
+    \begin{itemize}
+    \item Good if your data is exponential in nature \\ (with the tail on the right)
+    \end{itemize}
+  \end{itemize}
+  \begin{center}
+  \Large{ GMean(10, 11, 12, 11, 109) = 16.68 }
+  \end{center}
+\end{frame}
+
+\begin{frame}{Wait... how did I get that?}
+  \pause
+
+  \begin{center}
+  \Large{\( \sqrt[N]{\Pi^N_{i=1}x_i} \)}
+  \pause
+  --- could lead to overflow \\
+  \medskip
+  \pause
+  \medskip
+  \Large{ \( e^{ \left(\frac{\Sigma^N_{i=1} log_e(x_i)}{N}\right) } \)} 
+  --- computationally simpler
+  \end{center}
+\end{frame}
+
+\begin{frame}{Other means}
+  \begin{center}
+  And there is also the Harmonic mean, but forget about that
+  \end{center}
+\end{frame}
+
+\begin{frame}{...though consequently}
+We have other margins of error
+  \begin{itemize}
+  \item Geometric margin of error
+    \begin{itemize}
+    \item Uses geometric standard deviation
+    \end{itemize}
+  \item Median margin of error
+    \begin{itemize}
+    \item Uses ranges of actual values from data set
+    \end{itemize}
+  \item<2-> Stick to the arithmetic MoE \\ -- simpler to calculate, simpler to read and not incorrect
+  \end{itemize}
+\end{frame}
+
+\section{Statistics - II}
+
+\begin{frame}{}
+  \begin{center} \LARGE{Statistics - II} \end{center}
+\end{frame}
+
+\subsection{Filtering}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{outlier} \hfill
+  }
+}
+\begin{frame}{Outliers}
+  \begin{columns}[t]
+  \column{.5\textwidth}
+  \column{.5\textwidth}
+  \begin{itemize}
+  \item<2-> Out of range data points
+  \item<3-> Nothing you can fix here
+  \item<4-> There's even a book about them
+  \end{itemize}
+  \end{columns}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{DNS problems can cause outliers}
+  \begin{itemize}
+  \item 2 or 3 DNS servers for an ISP
+  \item 30 second timeout if first fails
+  \item ... 30 second increase in page load time
+  \item Maybe measure both and fix what you can
+  \item \href{http://nms.lcs.mit.edu/papers/dns-ton2002.pdf}{\scriptsize{\texttt{http://nms.lcs.mit.edu/papers/dns-ton2002.pdf}}}
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{bandpass} \hfill
+  }
+}
+\begin{frame}{Band-pass filtering}
+  \only<2->{
+  \begin{block}{}
+  \begin{itemize}
+  \item Strip everything outside a reasonable range
+    \begin{itemize}
+    \item Bandwidth range: 4kbps - 4Gbps
+    \item Page load time: 50ms - 120s
+    \end{itemize}
+  \item You may need to relook at the ranges all the time
+  \end{itemize}
+  \end{block}
+  }
+\end{frame} 
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{Boxplot_vs_PDF} \hfill
+  }
+}
+\begin{frame}{IQR filtering}
+  \only<2->{
+  \begin{block}{}
+  \begin{center}
+  Here, we derive the range from the data
+  \end{center}
+  \end{block}
+  }
+\end{frame}
+\setbeamertemplate{background}{}
+
+\subsection{The Log-Normal distribution}
+
+\begin{frame}{}
+\begin{block}{}
+\begin{center}
+Let's look at some real charts
+\end{center}
+\end{block}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill
+    \pgfimage[width=\paperwidth]{linear_distribution}
+    \vfill
+  }
+}
+\begin{frame}{Bandwidth distribution for web devs}
+  \parbox[c][0.55\paperheight]{\paperwidth}{ }
+  \begin{center} x-axis is linear \end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{connection_x_overall} \hfill
+  }
+}
+\begin{frame}{Now let's use log(kbps) instead of kbps}
+  \parbox[c][0.55\paperheight]{\paperwidth}{ }
+  \begin{center} x-axis is exponential \end{center}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Exponential == Geometric}
+  \begin{itemize}
+  \item Categories/Buckets grow exponentially
+  \item Data is related geometrically
+  \item<2-> Use the geometric mean and geometric margin of error
+    \begin{itemize}
+    \item \(Error\_range = \left[^{gmean}/_{gmoe}, gmean*gmoe\right]\)
+    \end{itemize}
+  \item<3-> Non-linear ranges are hard for humans to grok
+  \end{itemize}
+\end{frame}
+
+\section{}
+
+\begin{frame}{}
+  \begin{center} \LARGE{So...} \end{center}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Further reading}
+  \small{
+  \begin{itemize}
+  \item Web Performance - Not a Simple Number \\ \href{http://www.netforecast.com/Articles/BCR+C25+Web+Performance+-+Not+A+Simple+Number.pdf}{\tiny{http://www.netforecast.com/Articles/BCR+C25+Web+Performance+-+Not+A+Simple+Number.pdf}}
+  \item Revisiting statistics for web performance (introduction to Log-Normal) \\ \href{http://home.pacbell.net/ciemo/statistics/WhatDoYouMean.pdf}{\tiny{http://home.pacbell.net/ciemo/statistics/WhatDoYouMean.pdf}}
+  \item Random Sampling \\ \href{http://tech.bluesmoon.info/2010/01/statistics-of-performance-measurement.html}{\tiny{http://tech.bluesmoon.info/2010/01/statistics-of-performance-measurement.html}}
+  \item Khan Academy's tutorials on statistics \\ \href{http://khanacademy.com/}{\tiny{http://khanacademy.com/}}
+  \item Learning about Statistical Learning \\ \href{http://measuringmeasures.blogspot.com/2010/01/learning-about-statistical-learning.html}{\tiny{http://measuringmeasures.blogspot.com/2010/01/learning-about-statistical-learning.html}}
+  \item Wikipedia articles on \href{http://en.wikipedia.org/wiki/Random_sample}{\color{blue}{\underline{Random Sampling}}}, \href{http://en.wikipedia.org/wiki/Central_tendency}{\color{blue}{\underline{Central Tendency}}}, \href{http://en.wikipedia.org/wiki/Standard_error_\%28statistics\%29}{\color{blue}{\underline{Standard Error}}}, \href{http://en.wikipedia.org/wiki/Confounding}{\color{blue}{\underline{Confounding}}}, \href{http://en.wikipedia.org/wiki/Mean}{\color{blue}{\underline{Means}}} and \href{http://en.wikipedia.org/wiki/IQR}{\color{blue}{\underline{IQR}}}
+  \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}{Summary}
+  \begin{itemize}
+  \item Choose a reasonable sample size and sampling factor
+  \item Tune sample size for minimal margin of error
+  \item Decide based on your data whether to use mode, median or one of the means
+  \item Figure out whether your data is Normal, Log-Normal or something else
+  \item Filter out anomalous outliers
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{contact me}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://bluesmoon.info/}{bluesmoon.info}
+  \item @bluesmoon
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Photo credits}
+  \small{
+  \begin{itemize}
+  \item \href{http://www.flickr.com/photos/leoffreitas/332360959/}{http://www.flickr.com/photos/leoffreitas/332360959/} by leoffreitas
+  \item \href{http://www.flickr.com/photos/cobalt/56500295/}{http://www.flickr.com/photos/cobalt/56500295/} by cobalt123
+  \item \href{http://www.flickr.com/photos/sophistechate/4264466015/}{http://www.flickr.com/photos/sophistechate/4264466015/} by Lisa Brewster
+  \item \href{http://www.flickr.com/photos/nchoz/243216008/}{http://www.flickr.com/photos/nchoz/243216008/} by nchoz
+  \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}{List of figures}
+  \small{
+  \begin{itemize}
+  \item \href{http://en.wikipedia.org/wiki/File:Standard_deviation_diagram.svg}{http://en.wikipedia.org/wiki/File:Standard\_deviation\_diagram.svg}
+  \item \href{http://en.wikipedia.org/wiki/File:Normal_Distribution_PDF.svg}{http://en.wikipedia.org/wiki/File:Normal\_Distribution\_PDF.svg}
+  \item \href{http://en.wikipedia.org/wiki/File:KilroySchematic.svg}{http://en.wikipedia.org/wiki/File:KilroySchematic.svg}
+  \item \href{http://en.wikipedia.org/wiki/File:Boxplot_vs_PDF.png}{http://en.wikipedia.org/wiki/File:Boxplot\_vs\_PDF.png}
+  \end{itemize}
+  }
+\end{frame}
+
+\end{document}
+
+

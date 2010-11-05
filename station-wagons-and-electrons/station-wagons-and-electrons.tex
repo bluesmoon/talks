@@ -1,0 +1,485 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{Station wagons and Electrons}
+
+\date{Yahoo! London Pub Night -- May 27, 2010 -- Wallacespace}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}[fragile]{}
+  \begin{semiverbatim}
+  \Large{
+     cd /pub
+     cat beer > /dev/bluesmoon
+   }
+  \end{semiverbatim}
+\end{frame}
+
+% http://www.flickr.com/photos/sully_aka__wstera2/4538240734/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{4538240734_db502424cf_o_d}
+  }
+}
+\begin{frame}{Not stuck in a cloud of volcanic ash}
+\end{frame}
+
+% http://www.flickr.com/photos/gertcha/4168724489/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{4168724489_9454b50e49_b_d}
+  }
+}
+\begin{frame}{Didn't get sidetracked on my way here}
+\end{frame}
+
+% http://www.flickr.com/photos/30720140@N08/4290289036/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{4290289036_9c460b421b_b_d}
+  }
+}
+\begin{frame}{Didn't go on an extended vacation}
+\end{frame}
+
+% http://www.flickr.com/photos/dharmasphere/253277654/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{253277654_664e3a164e_b_d}
+  }
+}
+\begin{frame}{Almost not allowed in}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{}
+  \begin{itemize}
+  \item Philip Tellis
+  \item geek
+  \item yahoo
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+Never underestimate the bandwidth of a station wagon speeding down the motorway \\
+\tiny{-- Andrew S Tanenbaum?}
+\end{center}
+\end{frame}
+
+\begin{frame}{Should you fly a 747 or a 737?}
+  \begin{itemize}
+  \item A 747 seats 400+ passengers
+  \item A 737 seats about 150
+  \item Both take about the same time to fly from FRA to LHR
+  \item A 747 takes longer to load and unload
+  \end{itemize}
+  \vfill
+  \tiny{The best selling aircraft to date is the 737 \\ This analogy would have been much cooler if the Concorde still flew}
+\end{frame}
+
+\begin{frame}{Bandwidth and Latency}
+  \begin{center}
+  How much data can you transfer at once \\ v/s \\ How quickly can you get your data across
+  \end{center}
+\end{frame}
+
+% http://www.flickr.com/photos/gi/117771718/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=\paperheight]{117771718_975de6d2f2_b} \hfill
+  }
+}
+\begin{frame}{}
+  \begin{block}{}
+  \begin{center}
+  But bandwidth is easy
+  \end{center}
+  \end{block}
+\end{frame}
+\setbeamertemplate{background}{}
+
+% Shannon's theorem
+\begin{frame}{Shannon's Theorem}
+  \begin{center}
+  \[ C = B \times \log_2(1+\frac{S}{N}) \]
+  \end{center}
+  \vfill
+  \small{
+  C -- Channel capacity in bps \\
+  B -- Bandwidth in Hz \\
+  S -- Signal strength \\
+  N -- Noise strength -- S/N measured in dB
+  }
+\end{frame}
+
+\begin{frame}{Bandwidth can be bought}
+  \begin{itemize}
+  \item Bandwidth has increased steadily over time
+  \item Networks, hard drives, memory, CPU, system bus, everything.
+  \item Bandwidth can be parallelised
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][.7\paperheight]{.8\paperwidth}{
+    \vfill \hfill \pgfimage[height=.5\paperheight]{belshe-diminishing-returns}
+  }
+}
+\begin{frame}{Diminishing returns}
+  \begin{center}
+  The benefits of increased bandwidth diminish as you get fatter
+  \end{center}
+  \parbox[c][1.2\paperheight]{\paperwidth}{}
+  \tiny{Ref: \href{http://www.belshe.com/2010/05/24/more-bandwidth-doesnt-matter-much/}{\textcolor{blue}{\underline{More bandwidth doesn't matter (much)}} -- Mike Belshe}}
+\end{frame}
+
+% YUI blog test
+% bandwidth-latency.png
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=.6\paperheight]{bandwidth-latency} \hfill
+  }
+}
+\begin{frame}{How fast is the internet?}
+  \begin{center}
+  YUI Blog measured bandwidth at 1Mbps and latency of 262ms
+  \end{center}
+  \parbox[c][\paperheight]{\paperwidth}{ }
+  \hfill \tiny{Ref: \href{http://www.yuiblog.com/blog/2010/04/08/analyzing-bandwidth-and-latency/}{\textcolor{blue}{\underline{Analysing Bandwidth \& Latency}}} -- YUI Blog}
+\end{frame}
+\setbeamertemplate{background}{}
+
+% http://www.flickr.com/photos/siennaisalive/4436708323/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=.9\paperheight]{4436708323_fd29932e14_o}
+  }
+}
+\begin{frame}{Blink}
+  \begin{columns}[t]
+  \column{.7\textwidth}
+    \begin{center}
+    The average human eye takes 300-400ms to blink
+    \end{center}
+  \column{.3\textwidth}
+  \end{columns}
+\end{frame}
+\setbeamertemplate{background}{}
+
+% Akamai state of the internet
+\begin{frame}{How fast is the internet?}
+  \begin{center}
+  Akamai measured average global bandwidth at 1.7Mbps
+  \end{center}
+  \vfill
+  \tiny{Ref: \href{http://www.akamai.com/stateoftheinternet/}{\textcolor{blue}{\underline{State of the Internet}}} -- Akamai}
+\end{frame}
+
+% Breakdown by ISP
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=.6\paperheight]{isp-bw} \hfill
+  }
+}
+\begin{frame}{ISPs}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{.7\paperwidth}{
+    \vfill \hfill \pgfimage[height=.6\paperheight]{uk-isp-bandwidth}
+  }
+}
+\begin{frame}{UK ISPs}
+  \parbox[c][1.5\paperheight]{\paperwidth} { }
+  \tiny{Keep in mind that the Internet latency from the UK to the US is 90-100ms}
+\end{frame}
+\setbeamertemplate{background}{}
+
+% http://www.flickr.com/photos/vlastula/300102949/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=.9\paperheight]{300102949_950729607c_o}
+  }
+}
+\begin{frame}{}
+  \begin{columns}[t]
+  \column{.1\textwidth}
+  \column{.6\textwidth}
+  \begin{block}{}
+  \begin{center}
+  Latency -- not so easy to sell
+  \end{center}
+  \end{block}
+  \column{.3\textwidth}
+  \end{columns}
+\end{frame}
+\setbeamertemplate{background}{}
+
+% http://www.flickr.com/photos/electrichamster/3160580687/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=.9\paperheight]{3160580687_01a9efd019}
+  }
+}
+\begin{frame}{Speed Limits}
+  \begin{columns}[t]
+  \column{.6\textwidth}
+  \begin{itemize}
+  \item $ 3 \times 10^8 \,^m/_s $ -- in vacuum
+  \item $ 2 \times 10^8 \,^m/_s $ -- in fibre
+  \item $ \implies 26.42ms \times 2 $ \\  (roundtrip from BOS to LON)
+  \end{itemize}
+  \column{.4\textwidth}
+  \end{columns}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Round-trip}
+  \begin{itemize}
+  \item It should take a packet around 53ms to go from Boston to London and back 
+  \item It actually takes around 90ms for a packet to go from Boston to London and back
+  \item<2-> This is pretty good as far as approaching theoretical limits goes
+  \end{itemize}
+  \vfill
+  \tiny{Ref: \href{http://www.stuartcheshire.org/rants/Latency.html}{\textcolor{blue}{\underline{It's the latency, stupid}}} -- Stuart Cheshire}
+\end{frame}
+
+\begin{frame}{But then again...}
+\begin{center}
+Never underestimate the data-transfer capabilities of a \\ Galaxy class starship travelling at Warp 9.875 and \\ fitted with a computer that sounds like Majel Barett
+\end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=.4\paperheight]{more_latency}
+  }
+}
+\begin{frame}{Latency isn't sexy}
+  \begin{center}
+  When was the last time you saw a TV commercial mention latency?
+  \end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{\paperwidth}{
+    \vfill \pgfimage[height=.6\paperheight]{isp-latency} \hfill
+  }
+}
+\begin{frame}{ISPs}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{.7\paperwidth}{
+    \vfill \hfill \pgfimage[height=.6\paperheight]{uk-isp-latency}
+  }
+}
+\begin{frame}{UK ISPs}
+  \parbox[c][1.5\paperheight]{\paperwidth} { }
+  \tiny{Keep in mind that the Internet latency from the UK to the US is 90-100ms}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Latency v/s Bandwidth}
+  \begin{itemize}
+  \item Improving latency tends to improve perceived bandwidth
+  \item Improving bandwidth utilisation can potentially worsen latency \\
+        \tiny{Larger/complex packets take more time to assemble}
+  \end{itemize}
+  This is the difference between a 737 and a 747
+\end{frame}
+
+\begin{frame}{Getting around latency problems}
+  \begin{itemize}
+  \item Don't add latency -- It's bad enough without us adding to it
+  \item Caching -- Bring the data closer to where it's needed
+  \item Parallelise -- Reduce the number of serial roundtrips
+  \item Predict -- Get data before it's needed
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{}
+  \begin{center}
+    If you can, stuff everything into one call \\
+    \footnotesize{Have a look at \href{http://search.yahoo.com/}{\textcolor{blue}{\underline{search.yahoo.com}}} load up in firebug}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Parallelise where possible}
+  \begin{itemize}
+  \item Downloading a script blocks page load, so do it in the background instead
+  \item Browsers will download 4-8 resources from a host in parallel, take advantage of that
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Predict what's next and fetch it}
+  \begin{itemize}
+  \item If you know what the user will do next, pre-fetch it
+    \begin{itemize}
+    \item Yahoo! Search page pre-loads sprites and Javascript for the results page
+    \item Log analysis can tell you which pages are most popular, and pre-fetch those
+    \end{itemize}
+  \end{itemize}
+  \vfill
+  \tiny{Ref: \href{http://www.phpied.com/preload-cssjavascript-without-execution/}{\textcolor{blue}{\underline{Preload CSS \& JS without execution}}} -- Stoyan Stefanov}
+\end{frame}
+
+\begin{frame}{Measure your user's bandwidth \& latency}
+  Javascript code to measure your user's bandwidth \& latency \\
+  \href{http://bluesmoon.info/perf-tests/bw/bw-test-1.3.zip}{\textcolor{blue}{http://bluesmoon.info/perf-tests/bw/bw-test-1.3.zip}} \\
+  \href{http://github.com/bluesmoon/netperf-js}{\textcolor{blue}{http://github.com/bluesmoon/netperf-js}}
+  \vfill
+  \tiny{It's what we used on the YUIBlog test}
+\end{frame}
+
+\begin{frame}{Useful tools for performance analysis}
+  \begin{itemize}
+  \item \href{http://developer.yahoo.com/yslow/}{\color{blue}{\underline{YSlow}}} -- Firefox/Firebug plugin from Yahoo!
+  \item \href{http://code.google.com/speed/page-speed/}{\color{blue}{\underline{PageSpeed}}} -- Firefox/Firebug plugin from Google
+  \item \href{http://www.webpagetest.org/}{\color{blue}{\underline{PageTest}}} -- Web page testing tool
+  \item \href{http://www.showslow.org/}{\color{blue}{\underline{ShowSlow}}} -- Automated YSlow runs against your URL
+  \item \href{http://www.fiddler2.com/fiddler2/}{\color{blue}{\underline{Fiddler}}} -- Web debugging Proxy
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Further reading}
+  \begin{itemize}
+  \item \href{http://developer.yahoo.com/performance}{developer.yahoo.com/performance} -- Yahoo!
+  \item \href{http://code.google.com/speed/page-speed/docs/rules_intro.html}{code.google.com/speed/page-speed/docs/rules\_intro.html} -- Google
+  \item \href{http://www.slideshare.net/stoyan/the-business-of-performance}{slideshare.net/stoyan/the-business-of-performance} -- Stoyan Stefanov
+  \item \href{http://stevesouders.com/blog/}{stevesouders.com/blog/} -- Steve Souders
+  \item \href{http://phpied.com/}{phpied.com} -- Stoyan Stefanov
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Stay tuned...}
+  \begin{center}
+  Coming this summer... \\ to an interweb near you
+  \end{center}
+\end{frame}
+
+\begin{frame}{Stay tuned...}
+  \begin{center}
+  \LARGE{\textbf{BOOMERANG}} \\
+  \parbox[c][1em]{1em}{}
+  \tiny{
+  2010 06 24 \\
+  STARRING: JAVASCRIPT, APACHE, YAHOO \\
+  SCRIPT: BLUESMOON, PRODUCTION: TOM CROUCHER, CHOREOGRAPHY: CROCKFORD \\
+  \href{http://developer.yahoo.net/blog/}{http://developer.yahoo.net/blog}
+  }
+  \end{center}
+\end{frame}
+
+\begin{frame}{Photo credits}
+  \begin{itemize}
+  \item \href{http://www.flickr.com/photos/sully_aka__wstera2/4538240734/}{flickr.com/photos/sully\_aka\_\_wstera2/4538240734/}
+  \item \href{http://www.flickr.com/photos/gertcha/4168724489/}{flickr.com/photos/gertcha/4168724489/}
+  \item \href{http://www.flickr.com/photos/30720140@N08/4290289036/}{flickr.com/photos/30720140@N08/4290289036/}
+  \item \href{http://www.flickr.com/photos/dharmasphere/253277654/}{flickr.com/photos/dharmasphere/253277654/}
+  \item \href{http://www.flickr.com/photos/gi/117771718/}{flickr.com/photos/gi/117771718/}
+  \item \href{http://www.flickr.com/photos/siennaisalive/4436708323/}{flickr.com/photos/siennaisalive/4436708323/}
+  \item \href{http://www.flickr.com/photos/vlastula/300102949/}{flickr.com/photos/vlastula/300102949/}
+  \item \href{http://www.flickr.com/photos/electrichamster/3160580687/}{flickr.com/photos/electrichamster/3160580687/}
+  \item \href{http://www.flickr.com/photos/burnblue/308441464/}{flickr.com/photos/burnblue/308441464/}
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{Contact me}
+  \begin{itemize}
+  \item Philip Tellis
+  \item yahoo
+  \item geek
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \end{itemize}
+\end{frame}
+
+% http://www.flickr.com/photos/burnblue/308441464/
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{308441464_c5d9def328_o}
+  }
+}
+\begin{frame}{}
+  \begin{center}
+  Thank you
+  \end{center}
+  \parbox[c][.5\paperheight]{\paperwidth}{}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\end{document}
+
+

@@ -1,0 +1,141 @@
+Slides 1-4
+If I'm not here today, it's not because I was caught in a cloud of volcanic ash or because I got sidetracked by thornton's controversial 3rd amendment, and no, I didn't go on an extended vacation to save a mystical island either.
+I just didn't get my visa in time.
+
+Slide 5
+I'm Philip Tellis and I'm a geek at Yahoo!
+
+Slide 6
+And this talk is about station wagons and electrons... but we'll probably be too drunk to care :)
+
+Slide 7
+That's a line from Andrew Tanenbaum's Network Programming 3rd Edition, although some people attribute it to Dennis Ritchie.  It doesn't matter who said it really, but if you think back to the days when 300baud was the norm, it was probably faster to transfer large amounts of data by road than over the wire, which brings us to the modern day equivalent...
+
+Slide 8
+Should you fly a 747 or a 737?  While they both take about the same time to get from point A to point B -- a 747 cruises at Mach 0.85 while a 737 does Mach 0.74 -- the 747 takes a little longer to load up, refuel and unload.  The added overhead of a 747 only makes sense when you either have a very large payload, or need to transport it over a large distance.
+
+It's the same with network data.  If you have large amounts of data to send across, a high bandwidth connection is useful.  If your data is small and bursty, then many smaller packets are better.  The web is made up of a lot of small bursty packets and the 737 is the best selling aircraft to date.
+
+Slide 9
+The two things we worry about are how much data we can get across at once and how fast we can get it across to our users.  They depend on a lot of things, most importantly how far your user is from your server, both geographically and on the network.
+
+Slide 10
+Bandwidth is an easy beast to tame.  ISPs try to outdo each other selling higher bandwidth networks (on paper at least).  Users are used to seeing Megabytes in advertisements even if they have no clue what's so mega about a byte.  Bigger is better, right?
+
+Slide 11
+Shannon's theorem specifies a theoretical limit on bandwidth - or channel capacity as stated in the theorem.  This depends on the frequency of the carrier, the signal strength and the noise on the connection.  For a standard copper wire telephone cable, the frequency is limited to sounds that humans can create and discern, so we're stuck with something of the order of 3.5KHz.  The carrier frequency for cable internet is much higher, and optical fibre even higher.
+
+Signal strength depends on how far away your next repeater is, and noise depends on a whole bunch of things between the two endpoints so don't put your wireless modem on top of your microwave oven.
+
+Note that we could add more repeaters to get a better signal to noise ratio.  Unfortunately each repeater adds latency, which bites harder.
+
+Slide 12
+The nice thing about bandwidth though is that it can be bought easily.  You can have as much bandwidth as you can pay for.  If you get two 56Kbps modems and run them on two phone lines, you'll end up with somewhere neare 112Kbps.  Shannon's theorem applies separately to each line and not to your entire set up as a whole.
+
+When this kind of investment happens on the internet backbone, everyone wins.  Over the last 20-30 years, we've seen bandwidth improvements at all levels of a computer system.  Networks, hard disks, CPUs, the system bus, video cards, and more.
+
+Since bandwidth is so popular with users, it's easy to sell more bandwidth, which translates into more funding to research bandwidth improvements.
+
+Slide 13
+
+Unfortunately there's a limit.  Mike Belshe from Google studied the effects of bandwidth on roundtrip time a few months ago and found that as bandwidth increases, the benefits from that increase diminish, so increasing bandwidth indefinitely won't help with today's web.
+
+Slide 14
+So how fast is the internet?
+
+We ran an experiment on the YUI blog a few months ago, and the results show that the average bandwidth of YUI Blog readers is 1 Mbps (megabits) while their HTTP latency was 262ms.  YUIBlog readers are mostly web developers, so that's the bandwidth and latency of the average web developer.
+
+Slide 15
+Contrast that with the time it takes for the average human to blink.  Chances are that most users end up blinking a few times before they see anything on the web.
+
+Slide 16
+Akamai also does a study every quarter of the state of the internet.  It's quite an interesting report to read, and I've linked to it at the bottom of this slide.  They measure the bandwidth from the user to their nearest Akamai server, and Akamai has servers everywhere.  At 1.7Mbps, it appears that the average internet user has a faster internet connection than the average web developer.
+
+It's a little more likely that our data is skewed by the fact that we used just one test server on the US East coast.
+
+Slide 17
+We also broke down data by ISP.  We looked primarily at US and Canadian ISPs because it wouldn't be fair to measure international ISPs based on their throughput to the US.
+However, we do have some data for international ISPs
+
+Slide 18
+Here we see the top 7 Brit ISPs in terms of number of data points from each ISP.  The number of data points roughly translates to popularity (at least among YUIBlog readers), so we see popularity reducing from left to right.  Interestingly the Joint Academic Network, which is the fastest, isn't the most popular.
+
+There were about 30 more ISPs, but there weren't enough samples from them to get a statistically sound result.
+
+Slide 19
+Now Latency... that's a different beast.
+
+
+Slide 20
+We're limited by the fundamental laws of nature.  The speed of light in vacuum is 3x10^8 m/s.  Stick it into fibre and it slows to about 2x10^8.  The same goes for electrons through copper.  So, theoretically, given a long enough cable, a light signal should get from London to Boston a little faster than a 747 would.
+
+Slide 21 & 22  (22 is the last bullet point on 21)
+So 53ms roundtrip is the theoretical limit.  In reality we see ping times of 90ms between London and Boston.  That's not too bad considering that there are a bunch of switches and routers in between and it's not pure fibre.
+
+There aren't many systems that we have today that actually approach 50-60% of their theoretical maximum.
+
+Slide 23
+No comment
+
+Slide 24
+The problem with latency is that it isn't sexy.  It's never advertised, users have no idea what a millisecond is, and bigger is not better.
+
+Slide 25
+So what's the state with ISPs?  Nicht so gut.
+
+Slide 26
+Looking at UK ISPs again, we see that it's way more than what the ping time tells us it should be.
+
+What's really coming in to play here is the last mile.  The ping test I did was between two machines in data centres.  Both were directly connected to the ethernet.  No modems or phone lines in between.
+
+Home users typically have some kind of DSL connection.  Modulation and Demodulation of the signal takes up a fair amount of time.
+
+Try an experiment... run mtr or traceroute from your home network to a well known external box.  You can do this over wifi as well.  For me, it takes just about 1ms to get across to my wifi router and another to get across the ethernet cable to the DSL modem.  The signal spends 14-20ms inside the modem, ie, between the two interfaces of the modem.
+
+Mobile networks are also pretty bad.  We've seen 430ms latency on mobile, most of this connecting from within the US to a server in the US.
+
+Slide 27
+So simply improving latency improves the perceived bandwidth of a connection because it now takes less time to get data across.
+
+Improving bandwidth utilisation, however may make latency worse.  Remember the load time of the 747.  What we really need to do right now is reduce world-wide network latency.
+
+Slide 28
+For as long as there have been latency problems in computer engineering, there have been three ways to mitigate the effects of latency -- cache, parallelise and predict.  As a web developer, there's a bunch of things you can do.
+
+For starters, don't add any latency.  Get your pages out onto the network as soon as possible.  Flush often.
+
+Edge caching and browser based caching are obvious tricks.  Use them well.  Did you know that 85% of the transistors in an Itanium II chip are used for cache?
+
+Loading resources in parallel is a good way to use your bandwidth to spread out the effects of latency.
+
+Pulling in data before it's actually needed is also a good way to hide the effect of latency by paying the price when the user doesn't notice it.
+
+
+Slide 29
+Look at search.yahoo.com loading in firebug.  Only 1 HTTP request to pull everything in, and then two more requests to load in parallel resources that will be needed for the next page.
+
+Slide 30
+Use 2 different domains to increase parallel downloads of resources.  If you're image heavy like google/yahoo maps, then use 4 domains.  Probably not more than that, but profile it.
+
+Scripts by default won't load in parallel, but you can load scripts asynchronously.  The YUI Get utility does this for you, or you can just create a dynamic script node.
+
+Slide 31
+On many pages, you may be able to tell with quite a high degree of certainty which page will come next... either because it's the only possibility, or because your log files tell you that it's the most popular destination.  To improve user experience on that next page, preload its images, CSS and Javascript after the current page has finished loading.  Your users will thank you by visiting your site more often.
+
+Slide 32
+You should also measure what your users experience.  My bandwidth & latency measuring script can be put onto any web page.  Pass it out to a sample of your users to find out how fast their connections are.
+
+Slide 33
+Finally, a bunch of tools that you can use for your performance improvements
+
+Slide 34
+and a bunch of links for further reading
+
+Slide 35
+And that's it from me.  I've used a bunch of CC licensed pics from flickr in this presentation.  If you liked them, go tell the photographers.
+
+Slide 36
+And of course, there are various ways to get in touch with me if you have any questions.
+
+Slide 37
+Thank you, now go get what you really came here for
