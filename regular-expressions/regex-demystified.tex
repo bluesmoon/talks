@@ -1,0 +1,549 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=blue!10!black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\title{/regular expressions/demystified}
+
+\subtitle{From deckhand to pirate in 30 minutes}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\institute{Yahoo!}
+
+\date{}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+
+\section{Introduction}
+
+\subsection{Who's playing?}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\$ whoami?}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item @bluesmoon
+  \item yahoo
+  \item geek
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Who are you?}
+  \begin{itemize}
+  \item Developer
+  \item Curious
+  \item Interested in regular expressions
+  \item You may or may not have used them before
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What is a regular expression?}
+  \begin{itemize}
+  \item A pattern that can match multiple strings
+  \item A pattern matching language
+  \item A Finite Automaton
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What is a regular expression?}
+  \begin{center}
+  But this is a hacker session, so let's forget the theory.
+  \pause
+
+  (You can read the book later.)
+  \end{center}
+\end{frame}
+
+\subsection{Conventions}
+
+\begin{frame}{Conventions used in this talk}
+
+  \begin{itemize}
+  \item Text in \texttt{'single quotes'} denotes a literal string
+  \item Text in \texttt{/forward slashes/} denotes a regular expression
+  \item The operator \texttt{=$\sim$} indicates that the string on the left matches the pattern on the right
+  \item The operator \texttt{!$\sim$} indicates that the string on the left does not match the pattern on the right
+  \item \texttt{\$string} denotes a variable containing a string
+  \end{itemize}
+
+\end{frame}
+
+\section{Diving In}
+
+\subsection{Starting Small}
+
+\begin{frame}[fragile]{Match a single character}
+  \begin{verbatim}
+      'a' =~ /a/
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Let's try a different character}
+  \begin{verbatim}
+      't' =~ /t/
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Building up}
+  Combine the previous two into a single regular expression
+  \begin{verbatim}
+     'at' =~ /at/
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}{You now know regular expressions}
+  \begin{center}
+  To build a regular expression, break the pattern into small manageable pieces and incrementally combine them.
+  \end{center}
+\end{frame}
+
+\subsection{Getting meta}
+
+\begin{frame}{Metacharacters}
+  \begin{itemize}
+  \item<1->The regex language has its own syntax characters to do funky things
+  \item<2->Some of these act as wild cards
+  \item<2->Others act as modifiers to whatever comes before them
+  \item<2->And some of them make your brain explode
+  \item<3->We won't be blowing up brains today
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{The \texttt{.} metacharacter}
+  \begin{itemize}
+  \item<1->Matches ONE and ONLY ONE character
+    \begin{verbatim}
+       'a'   =~ /./
+       'b'   =~ /./
+       'c'   =~ /./
+       ''    !~ /./
+    \end{verbatim}
+  \item<2->The empty string has less than ONE character
+  \item<3->\texttt{'abc'} has ONE character\ldots three times
+    \begin{verbatim}
+       'abc' =~ /./
+    \end{verbatim}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{The fate of gate hate date}
+  \begin{verbatim}
+       /.ate/
+  \end{verbatim}
+  \begin{columns}[t]
+    \column{.5\textwidth}
+      \begin{block}{Matches}
+        \begin{itemize}
+        \item aate bate cate date \ldots
+        \item crates abates dates elated \ldots
+        \item<2-> @ate 9ate ' ate'
+        \end{itemize}
+      \end{block}
+    \column{.5\textwidth}
+      \begin{block}{Does not match}
+        \begin{itemize}
+        \item ate
+        \item ates ated
+        \end{itemize}
+      \end{block}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[fragile]{Character classes}
+  \begin{verbatim}
+       /[a-z]ate/
+  \end{verbatim}
+  \begin{columns}[t]
+    \column{.5\textwidth}
+      \begin{block}{Matches}
+        \begin{itemize}
+        \item aate bate cate date \ldots
+        \item crates abates dates elated \ldots
+        \end{itemize}
+      \end{block}
+    \column{.5\textwidth}
+      \begin{block}{Does not match}
+        \begin{itemize}
+        \item ate
+        \item ates ated
+        \item @ate 9ate ' ate'
+        \end{itemize}
+      \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Character classes}
+  To match a literal \texttt{'-'} it should be the first or last character in the class:
+  \begin{verbatim}
+     /[+-*/]/         # Incorrect
+
+
+     /[+*/-]/         # Correct
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Negated character classes}
+  \begin{verbatim}
+       /[^a-z]ate/
+  \end{verbatim}
+  \begin{columns}[t]
+    \column{.5\textwidth}
+      \begin{block}{Matches}
+        \begin{itemize}
+        \item @ate 9ate ' ate'
+        \item g@ate e9ated
+        \end{itemize}
+      \end{block}
+    \column{.5\textwidth}
+      \begin{block}{Does not match}
+        \begin{itemize}
+        \item ate ates ated
+        \item aate bate cate date \ldots
+        \item crates abates dates elated \ldots
+        \end{itemize}
+      \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{The late fate of gate hate date rate}
+  \begin{verbatim}
+       /[df-hlr]ate/
+  \end{verbatim}
+  \begin{columns}[t]
+    \column{.5\textwidth}
+      \begin{block}{Matches}
+        \begin{itemize}
+        \item date fate gate hate late rate
+        \item<2-> dates fated billgates hated \ldots
+        \end{itemize}
+      \end{block}
+    \column{.5\textwidth}
+      \begin{block}{Does not match}
+        \begin{itemize}
+        \item ate aate bate cate eate iate jate kate \ldots
+        \end{itemize}
+      \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Anchors}
+  \begin{verbatim}
+       /^[df-hlr]ate$/
+  \end{verbatim}
+  \begin{columns}[t]
+    \column{.5\textwidth}
+      \begin{block}{Matches}
+        \begin{itemize}
+        \item date fate gate hate late rate
+        \end{itemize}
+      \end{block}
+    \column{.5\textwidth}
+      \begin{block}{Does not match}
+        \begin{itemize}
+        \item ate aate bate \ldots
+        \item dates gated berate elated \ldots
+        \end{itemize}
+      \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Anchors}
+  \begin{itemize}
+  \item \texttt{\^} matches the start of the string
+  \item \texttt{\$} matches the end of the string
+  \item Both are 0 byte matches, ie, they do not match any character
+  \end{itemize}
+\end{frame}
+
+\section{Building up}
+
+\subsection{More or less}
+
+\begin{frame}{Matching more than one of something}
+  \begin{itemize}
+  \item \texttt{?} -- matches 0 or 1 of what comes before it
+  \item \texttt{*} -- matches 0 or more of what comes before it
+  \item \texttt{+} -- matches 1 or more of what comes before it
+  \item \texttt{\{n,m\}} -- matches between \texttt{n} and \texttt{m} of what comes before it
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{./pirate} \hfill 
+  }
+}
+\setbeamertemplate{blocks}[shadow=false]
+\begin{frame}{Aaargh!}
+  \begin{columns}[c]
+    \column{.5\textwidth}
+    \column{.5\textwidth}
+      \begin{block}{}
+      Everyone shout ``Aaarrrgh!''
+      \end{block}
+  \end{columns}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{How many ways can you say Aargh!?}
+  \begin{itemize}
+  \item argh
+  \item aaaaaargh
+  \item aaaarrrrghhh
+  \item aaaaarrrrrggggghhhh
+  \item aaarrrrggggg
+  \item aaaaarrrrrhhhh
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Match 'em all}
+  \begin{semiverbatim}
+  \uncover<1->{  /a+r+g+h+/     # aarrrrgggghhhh}
+  \uncover<2->{  /a+r+g+h*/     # aarrgghh & aarrgg}
+  \uncover<3->{  /a+r+g*h+/     # aarrgghh & aarrhh}
+  \uncover<4->{  \alt<5->{\textcolor{red}{\sout{/a+r+g*h*/}}}{/a+r+g*h*/}     # argh & arg & arh}
+  \end{semiverbatim}
+  \uncover<5->{That last one also matches \texttt{'ar'} which we don't want}
+\end{frame}
+
+\subsection{Alternation}
+
+\begin{frame}[fragile]{Alternation: Match all this or all that}
+  \begin{verbatim}
+     /ab|cd/
+  \end{verbatim}
+  Matches either \texttt{'ab'} or \texttt{'cd'}
+\end{frame}
+
+\begin{frame}[t]{From here to eternity}
+  \begin{block}{}
+  \begin{center}
+  \texttt{|} matches either everything on its left or everything on its right
+
+  (That's a pipe character, not the letter I)
+  \end{center}
+  \end{block}
+  \begin{center}
+  \pgfimage[height=.5\paperheight]{./left-right}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Back to aaargh}
+  \begin{verbatim}
+    /g*h+|g+h*/
+  \end{verbatim}
+  This matches all the endings we want:
+  \begin{itemize}
+  \item ggggghhhhhh
+  \item ggggg
+  \item hhhhh
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Back to aaargh}
+  \begin{verbatim}
+    /a+r+g*h+|g+h*/
+  \end{verbatim}
+  \uncover<2->{
+  This doesn't quite work
+  \begin{columns}[t]
+    \column{.5\textwidth}
+      \begin{block}{Matches}
+        \begin{itemize}
+        \item aaarrrhhh
+        \item aaarrrrggghhh
+        \item gggg
+        \item gggghhhh
+        \end{itemize}
+      \end{block}
+    \column{.5\textwidth}
+      \begin{block}{Does not match}
+        \begin{itemize}
+        \item aaarrrggg
+        \end{itemize}
+      \end{block}
+  \end{columns}
+  }
+\end{frame}
+
+\subsection{Groups}
+
+\begin{frame}[fragile]{Group the subexpression}
+  \begin{verbatim}
+    /a+r+(g*h+|g+h*)/
+  \end{verbatim}
+  \begin{block}{Matches}
+    \begin{itemize}
+    \item aaarrrhhh
+    \item aaarrrggg
+    \item aaarrrrggghhh
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Grouping parentheses}
+  \begin{itemize}
+  \item \texttt{(} and \texttt{)} mark a group 
+  \item \texttt{|} alternates within a group
+  \item Groups may be nested - it's like a new regex inside
+  \item \texttt{+}, \texttt{*}, \texttt{?} and \texttt{\{n,m\}} may apply to an entire group
+  \end{itemize}
+\end{frame}
+
+\section*{}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{./stop} \hfill 
+  }
+}
+\begin{frame}{Stop}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{./lego} \hfill 
+  }
+}
+\begin{frame}{Summary}
+
+  \begin{itemize}
+  \item \textcolor{white}{Start small, match the parts you understand}
+  \item \textcolor{white}{Build up to more complex patterns}
+  \item \textcolor{white}{Not all problems should be solved by regular expressions}
+  \end{itemize}
+  
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{More Info\ldots}
+  \begin{itemize}
+  \item \href{http://regex.info/}{``Mastering Regular Expressions''} -- Jeffrey Friedl
+  \item \small{\url{http://tech.bluesmoon.info/search/label/regex}}
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[t][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{Contact me}
+  Philip Tellis \\
+  \texttt{philip@bluesmoon.info}\\
+  \href{http://twitter.com/bluesmoon}{@bluesmoon} \\
+  \href{http://bluesmoon.info/}{bluesmoon.info}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Image credits}
+  \begin{itemize}
+  \item \small{\href{http://www.flickr.com/photos/practicalowl/3933514241/}{http://flickr.com/photos/practicalowl/3933514241/}}
+  \item \small{\href{http://www.flickr.com/photos/loozrboy/3908830690/}{http://flickr.com/photos/loozrboy/3908830690/}}
+  \item \small{\href{http://www.flickr.com/photos/thetruthabout/2680546103/}{http://flickr.com/photos/thetruthabout/2680546103/}}
+  \item \small{\href{http://www.flickr.com/photos/donsolo/2136923757/}{http://flickr.com/photos/donsolo/2136923757/}}
+  \end{itemize}
+\end{frame}
+
+\section*{}
+
+\subsection*{}
+
+\begin{frame}{}
+  \begin{center}
+  Thank You
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Aargh with class}
+  \begin{verbatim}
+    /a+r+g*[gh]h*/
+  \end{verbatim}
+  \begin{block}{Matches}
+    \begin{itemize}
+    \item aaarrrhhh
+    \item aaarrrggg
+    \item aaarrrrggghhh
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Matching meta characters in a character class}
+  \begin{verbatim}
+      /[a-zA-Z0-9_-]/
+      /[a-z^]/
+      /[][]/
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Alternating multiple items}
+  \begin{verbatim}
+     /apples|oranges|bananas/
+
+     /buy some (apples|oranges|ba(na){2}s)/
+  \end{verbatim}
+\end{frame}
+
+\end{document}
+
+
