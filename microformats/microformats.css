@@ -1,0 +1,14 @@
+body {background: #fafaff; font-size: 2em;}
+.slide h1 a {color: #a0e033; }
+div#footer h1 a {color: #a0e033; }
+
+div#header {color: #a0e033;background: #000 url(logo.png) 10px 10px no-repeat; line-height: 1px;}
+div#footer { border-top-color: #480; }
+
+.slide h1 {top: 1em; left: 120px; padding: 0.3em 0 0 30px; font: bold 110%/1em Verdana, Helvetica, sans-serif; text-transform: capitalize; color: #a0e033; }
+
+#slide0 h1 {font-size: 1.5em; }
+#slide0 h3 {margin-top: 0.5em; font-size: 1.5em;}
+
+#currentSlide {color: #a0e033;}
+
