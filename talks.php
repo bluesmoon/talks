@@ -101,9 +101,9 @@ $talks = array(
 		),
 		array(
 			'name' => 'Measuring the web with boomerang',
-			'slideshare' => array('id' => '__ss_4951943', 'file' => 'boomerang-100812041053-phpapp01', 'title' => 'measuring-the-web-with-boomerang'),
-			'source' => 'http://talks.bluesmoon.info/sf-web-perf-boomerang/boomerang.tex',
-			'date' => '2010-08-11 19:00'
+			'slideshare' => array('id' => '__ss_5216973', 'file' => 'bos-meetup-100916135655-phpapp01', 'title' => 'measuring-the-web-with-boomerang'),
+			'source' => 'http://talks.bluesmoon.info/web-perf-boomerang/bos-meetup.tex',
+			'date' => '2010-09-16 19:00'
 		)
 	);
 ?>
