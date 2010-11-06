@@ -113,7 +113,7 @@ if(isset($_GET['talk']) && array_key_exists(strtolower($_GET['talk']), $talks)) 
 	}
 	else {
 ?>
-<a href="<?php echo $selected_talk['url'] ?>" target="_blank">Open in new window</a>
+<a href="<?php echo $selected_talk['url'] ?>" target="_blank">Open in new window</a><br>
 <iframe src="<?php echo $selected_talk['url'] ?>" style="height:600px; width:800px;"></iframe>
 <?php
 	}
