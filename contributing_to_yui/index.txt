@@ -2,6 +2,7 @@ TITLE: Contributing to YUI
 AUTHOR: Philip S Tellis
 COMPANY: Yahoo! Inc
 CONFERENCE: <a href="http://foss.in/">FOSS.IN/2008</a>
+DATE: 2008-12
 %
 Whoami?
 -------

@@ -18,6 +18,11 @@ $talks = array(
 			'date' => '2004-12-03 12:00'
 		),
 		array(
+			'name' => 'Contributing to YUI',
+			'url' => 'http://talks.bluesmoon.info/contributing_to_yui/',
+			'date' => '2008-12'
+		),
+		array(
 			'name' => 'Fallback Messaging',
 			'slideshare' => array('id' => '__ss_2706240', 'title' => 'fallback-messaging', 'file'=> 'fallbackmessaging-091212145838-phpapp01'),
 			'url' => 'http://talks.bluesmoon.info/fallback_messaging/',
@@ -72,6 +77,11 @@ $talks = array(
 			'date' => '2010-05-11 19:00'
 		),
 		array(
+			'name' => 'Programming patters in SED',
+			'url' => 'http://talks.bluesmoon.info/programming-patterns-in-sed/',
+			'date' => '2009-06-18 15:50'
+		),
+		array(
 			'name' => 'Station-wagons and electrons',
 			'slideshare' => array('id' => '__ss_4333433', 'title' => 'stationwagons-and-electrons', 'file' => 'station-wagons-and-electrons-100527162453-phpapp01'),
 			'source' => 'http://talks.bluesmoon.info/station-wagons-and-electrons/station-wagons-and-electrons.tex',
@@ -86,7 +96,7 @@ $talks = array(
 		array(
 			'name' => 'Latency: Why you should worry, what you can do about it',
 			'slideshare' => array('id' => '__ss_4609886', 'title' => 'latency-why-you-should-worry-what-you-can-do-about-it', 'file' => 'latency-100625024834-phpapp01'),
-			'source' => 'http://talks.bluesmoon.info/velocity2010/latency.tex',
+			'source' => 'http://talks.bluesmoon.info/velocity2010/latency.comicdoc',
 			'date' => '2010-06-24 16:48'
 		),
 		array(
