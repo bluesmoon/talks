@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 =doc
 Usage:
 	./slide-parser directory/textfile.txt
@@ -16,7 +16,7 @@ Usage:
 
 use strict;
 use warnings;
-use Text::Markdown;
+use Text::Markdown 'markdown';
 
 my $ROOT = $1 if $0 =~ m{^(.*/)[^/]+$};
 $ROOT = "" unless $ROOT;
@@ -60,7 +60,7 @@ sub parse_slides($$$$)
 	open OUTPUT, ">$output";
 
 	local $/="\n";
-	my ($title, $subtitle, $author, $company, $conference) = ("", "", "", "", "");
+	my ($title, $subtitle, $author, $company, $conference, $css) = ("", "", "", "", "", "");
 	my $date = sprintf "%4d-%02d-%02d", (localtime)[5]+1900, (localtime)[4]+1, (localtime)[3];
 	open BODY, "$name";
 	while(<BODY>)
@@ -73,6 +73,7 @@ sub parse_slides($$$$)
 		$author = $1 if /^AUTHOR:\s*(.*)$/;
 		$company = $1 if /^COMPANY:\s*(.*)$/;
 		$conference = $1 if /^CONFERENCE:\s*(.*)$/;
+		$css = qq{<link rel="stylesheet" type="text/css" href="$1" media="screen,projection" id="local">} if /^STYLESHEET:\s*(.*)$/;
 	}
 	
 	my $head_author = $author;
@@ -84,6 +85,7 @@ sub parse_slides($$$$)
 	$head =~ s/\%COMPANY\%/$company/g;
 	$head =~ s/\%DATE\%/$date/g;
 	$head =~ s/\%CONFERENCE\%/$conference/g;
+	$head =~ s/\%LOCALCSS\%/$css/g;
 
 	print OUTPUT $head;
 
@@ -110,7 +112,7 @@ sub parse_slides($$$$)
 		}
 		s!\[bg ([\@\w]+)/(http://farm\d\.[^/]+/\d+/)(\w+?)_(\w+)\.(jpg|png)\]!<p class="bgimage"><a href="http://flickr.com/photos/$1/$3/" style="background-image: url('$2$3_$4.$5');">flickr:$1/$3</a></p>!ig;
  
-		my $slidebody = `/usr/bin/markdown <<EOF\n$_\nEOF`;
+		my $slidebody = markdown($_);
 		$slidebody =~ s/<(li|p|div)> *\[([^\]]+)\]/<$1 $2>/g;
 		my $slide2 = $slide;
 		$slide2 =~ s/\%SLIDETITLE\%/$slidetitle/g;
