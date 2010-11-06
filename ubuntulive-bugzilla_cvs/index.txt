@@ -228,6 +228,4 @@ Greetz
    > <a href="mailto:philip@bluesmoon.info?subject=Ubuntulive">philip@bluesmoon.info</a>
 
    > <a href="http://bluesmoon.info/">http://bluesmoon.info/</a>
-
-   > <a href="ubuntulive-bugzilla_cvs.tar.bz2">Download</a>
 %
