@@ -1,0 +1,12 @@
+body {background: #f3f4f5; }
+:link, :visited {color: #952;}
+
+div#header {background: #000 url(ubuntulogo.png) 5px 9px no-repeat; color: #fd6;}
+#footer a { color: #f99503; }
+
+.slide h1 {padding: 0.5em 0 0 0; color: #f99503; }
+
+.slide h1 code {font-weight: bold; color: #f35805; text-transform: none; font-size: 28pt;}
+
+#currentSlide {color: #f35805; }
+

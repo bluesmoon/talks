@@ -4,6 +4,7 @@ AUTHOR: Philip S Tellis
 COMPANY: Yahoo! Inc
 CONFERENCE: <a href="http://ubuntulive.com/">Ubuntulive</a>
 DATE: 2007-07-22
+STYLESHEET:ubuntulive.css
 %
 [class="alert"] Do you manage a distributed project?
 %
@@ -84,7 +85,7 @@ Create a file <code>tc.template</code>
 %
 Create a file <code>bugid.verify</code>
 ----------------------------------------
-<pre>
+<pre><code>
 <font color="#2080d0">#!/bin/sh</font>
 <font color="#00008b"><b>if</b></font> head <font color="#802020">-1</font> <font color="#00008b"><b>&lt;</b></font> <font color="#8b008b">$1</font> <font color="#00008b"><b>|</b></font> egrep <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*[0-9]+$</font><font color="#00008b"><b>"</b></font> \
          <font color="#00008b"><b>&gt;</b></font> /dev/null<font color="#00008b"><b>;</b></font> <font color="#00008b"><b>then</b></font>
@@ -93,8 +94,7 @@ Create a file <code>bugid.verify</code>
    <font color="#00008b"><b>echo</b></font><font color="#802020"> </font><font color="#00008b"><b>&quot;</b></font><font color="#802020">No BugId found.</font><font color="#00008b"><b>&quot;</b></font>
    <font color="#00008b"><b>exit</b></font> <font color="#802020">1</font>
 <font color="#00008b"><b>fi</b></font>
-
-</pre>
+</code></pre>
 %
 Add references to <code>verifymsg</code> and <code>rcsinfo</code>
 -------------------------------
@@ -124,7 +124,7 @@ Maybe tell <code>config</code> to reread commit message:
 You could allow something like <code>BugId: none</code>
 ------------------------------------------
 Add this before the <code>else</code>:
-<pre>
+<pre><code>
 <font color="#00008b"><b>elif</b></font> head <font color="#802020">-1</font> <font color="#00008b"><b>&lt;</b></font> <font color="#8b008b">$1</font> <font color="#00008b"><b>|</b></font> egrep <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*none$</font><font color="#00008b"><b>"</b></font> \
          <font color="#00008b"><b>&gt;</b></font> /dev/null<font color="#00008b"><b>;</b></font> <font color="#00008b"><b>then</b></font>
    <font color="#2080d0"># It is okay to allow commits with
@@ -133,7 +133,7 @@ Add this before the <code>else</code>:
    egrep <font color="#00008b"><b>-v</b></font> <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*none$</font><font color="#00008b"><b>"</b></font> <font color="#00008b"><b>&gt;</b></font> <font color="#8b008b">$1</font>.rewrite
    mv <font color="#8b008b">$1</font>.rewrite <font color="#8b008b">$1</font>
    <font color="#00008b"><b>exit</b></font> <font color="#802020">0</font>
-</pre>
+</code></pre>
 %
 Email all devs when someone commits foocide
 -------------------------------
@@ -172,12 +172,12 @@ Example commit messages
 <code>bugzilla.procmailrc</code>
 ---------------------------------
 * <code>.procmailrc</code> file calls <code>cvsbugz.pl</code> for matching mails
-<pre>
+<pre><code>
     <font color="#2080d0"># Check message body for <em>[bug XXXXXX</em> syntax</font>
     <font color="#00008b"><b>:0 Bc</b></font>
     * \[(fix +)?bug +[0-9]+
     <font color="#8b008b">|$HOME/cvsbugz.pl</font>
-</pre>
+</code></pre>
 * <code>cvsbugz.pl</code> parses the email for the <code>[bug XXXXX]</code> syntax
 * update bugzilla using the <code>Bugzilla::Bug</code> perl module
 %

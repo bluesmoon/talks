@@ -15,12 +15,18 @@
 <meta name="defaultView" content="slideshow">
 <meta name="controlVis" content="hidden"><!-- style sheet links -->
 
-<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj">
-<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle">
-<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint">
-<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix"><!-- S5 JS -->
+<link rel="stylesheet" href="../ui/default/slides.css" type="text/css" media="projection" id="slideProj">
+<link rel="stylesheet" href="../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle">
+<link rel="stylesheet" href="../ui/default/print.css" type="text/css" media="print" id="slidePrint">
+<link rel="stylesheet" href="../ui/default/opera.css" type="text/css" media="projection" id="operaFix">
+<link rel="stylesheet" type="text/css" href="ubuntulive.css" media="screen,projection" id="local">
 
-<script src="ui/default/slides.js" type="text/javascript"></script></head><body>
+<script src="../ui/default/slides.js" type="text/javascript"></script>
+
+
+</head>
+
+<body>
 
 <div class="layout">
 <div id="controls"><!-- DO NOT EDIT --></div>
@@ -42,7 +48,7 @@
 <h4>Yahoo! Inc</h4>
 <h2>Ubuntulive &bull; July 22-24, 2007 &bull; Portland, Oregon</h2>
 </div>
-</div></body></html>
+
 
 <div class="slide">
 <h1></h1>
@@ -226,7 +232,7 @@
 
 <div class="slide">
 <h1>Create a file <code>bugid.verify</code></h1>
-<pre>
+<pre><code>
 <font color="#2080d0">#!/bin/sh</font>
 <font color="#00008b"><b>if</b></font> head <font color="#802020">-1</font> <font color="#00008b"><b>&lt;</b></font> <font color="#8b008b">$1</font> <font color="#00008b"><b>|</b></font> egrep <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*[0-9]+$</font><font color="#00008b"><b>"</b></font> \
          <font color="#00008b"><b>&gt;</b></font> /dev/null<font color="#00008b"><b>;</b></font> <font color="#00008b"><b>then</b></font>
@@ -235,8 +241,7 @@
    <font color="#00008b"><b>echo</b></font><font color="#802020"> </font><font color="#00008b"><b>&quot;</b></font><font color="#802020">No BugId found.</font><font color="#00008b"><b>&quot;</b></font>
    <font color="#00008b"><b>exit</b></font> <font color="#802020">1</font>
 <font color="#00008b"><b>fi</b></font>
-
-</pre>
+</code></pre>
 
 </div>
 
@@ -280,7 +285,7 @@
 <h1>You could allow something like <code>BugId: none</code></h1>
 <p>Add this before the <code>else</code>:</p>
 
-<pre>
+<pre><code>
 <font color="#00008b"><b>elif</b></font> head <font color="#802020">-1</font> <font color="#00008b"><b>&lt;</b></font> <font color="#8b008b">$1</font> <font color="#00008b"><b>|</b></font> egrep <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*none$</font><font color="#00008b"><b>"</b></font> \
          <font color="#00008b"><b>&gt;</b></font> /dev/null<font color="#00008b"><b>;</b></font> <font color="#00008b"><b>then</b></font>
    <font color="#2080d0"># It is okay to allow commits with
@@ -289,7 +294,7 @@
    egrep <font color="#00008b"><b>-v</b></font> <font color="#00008b"><b>"</b></font><font color="#802020">^BugId:[ ]*none$</font><font color="#00008b"><b>"</b></font> <font color="#00008b"><b>&gt;</b></font> <font color="#8b008b">$1</font>.rewrite
    mv <font color="#8b008b">$1</font>.rewrite <font color="#8b008b">$1</font>
    <font color="#00008b"><b>exit</b></font> <font color="#802020">0</font>
-</pre>
+</code></pre>
 
 </div>
 
@@ -365,12 +370,12 @@ Removed redundant log messages
 </li>
 </ul>
 
-<pre>
+<pre><code>
     <font color="#2080d0"># Check message body for <em>[bug XXXXXX</em> syntax</font>
     <font color="#00008b"><b>:0 Bc</b></font>
     * \[(fix +)?bug +[0-9]+
     <font color="#8b008b">|$HOME/cvsbugz.pl</font>
-</pre>
+</code></pre>
 
 <ul>
 <li><code>cvsbugz.pl</code> parses the email for the <code>[bug XXXXX]</code> syntax
