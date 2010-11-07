@@ -221,8 +221,8 @@ YUI.use('gallery-boomr', function(Y) {
 \begin{frame}{Let's fork this talk}
   Do you want to:
   \begin{itemize}
-  \item \href{sec:internals}{Lean how boomerang works internally?}
-  \item \href{sec:use}{Learn how to use boomerang?}
+  \item Lean how boomerang works internally?
+  \item Learn how to use boomerang?
   \end{itemize}
 \end{frame}
 
@@ -241,6 +241,7 @@ YUI.use('gallery-boomr', function(Y) {
   \end{center}
 \end{frame}
 
+\subsection{Latency}
 \begin{frame}{Measuring latency}
   \begin{itemize}
   \item Download a 32 byte gif 10 times in sequence
@@ -257,6 +258,7 @@ YUI.use('gallery-boomr', function(Y) {
   \end{itemize}
 \end{frame}
 
+\subsection{Bandwidth}
 \begin{frame}{Measuring bandwidth}
   \begin{itemize}
   \item After the latency test is done, we download progressively larger images
@@ -274,6 +276,7 @@ YUI.use('gallery-boomr', function(Y) {
   \end{itemize}
 \end{frame}
 
+\subsection{Load time}
 \begin{frame}{How do we measure page load time?}
   \begin{itemize}
   \item In the \texttt{onbeforeunload} event, measure the time and store it in a cookie
@@ -288,6 +291,7 @@ YUI.use('gallery-boomr', function(Y) {
   \end{center}
 \end{frame}
 
+\subsection{Accuracy}
 \begin{frame}{How accurate is it?}
   \begin{itemize}
   \item Latency measurements are very accurate (\(\pm 1\%\))
@@ -299,6 +303,8 @@ YUI.use('gallery-boomr', function(Y) {
 
 \section{Using boomerang}
 \label{sec:use}
+
+\subsection{Basic}
 
 \begin{frame}[fragile]{Include it on your page}
   \begin{verbatim}
@@ -325,6 +331,7 @@ BOOMR.init({
   \end{center}
 \end{frame}
 
+\subsection{Multi-domain}
 \begin{frame}[fragile]{Handle subdomains}
 Set the \texttt{site\_domain} parameter:
 \begin{verbatim}
@@ -336,16 +343,23 @@ BOOMR.init({
 \end{verbatim}
 \end{frame}
 
+\begin{frame}{}
+\begin{center}
+This lets you measure transitions across *.mysite.com
+\end{center}
+\end{frame}
+
+\subsection{In-page timers}
 \begin{frame}[fragile]{Measure more than just load time}
 \begin{verbatim}
 <html><head>
 <script>var t_pagestart=new Date().getTime();</script>
 ...
-<script>var thd=new Date().getTime();</script>
+<script>var th=new Date().getTime();</script>
 </head>
 <body>
 ...
-<script>var tjs=new Date().getTime();</script>
+<script>var tj=new Date().getTime();</script>
 ...
 \end{verbatim}
 \end{frame}
@@ -356,13 +370,20 @@ BOOMR.init({
 <script src="boomerang.js"></script>
 ...
 var te=new Date().getTime();
-BOOMR.plugins.RT.setTimer("t_head", thd-t_pagestart).
-                 setTimer("t_body", te-thd).
-                 setTimer("t_js", te-tjs);
+BOOMR.plugins.RT.setTimer("t_head", th-t_pagestart).
+                 setTimer("t_body", te-th).
+                 setTimer("t_js", te-tj);
 </script></body></html>
 \end{verbatim}
 \end{frame}
 
+\begin{frame}{}
+  \begin{center}
+  This adds the \texttt{t\_head}, \texttt{t\_body} and \texttt{t\_js} fields to the beacon
+  \end{center}
+\end{frame}
+
+\subsection{AJAX}
 \begin{frame}[fragile]{Loading dynamic content}
 \begin{verbatim}
 BOOMR.init({
@@ -387,6 +408,8 @@ BOOMR.plugins.RT.done();
 \end{verbatim}
 \end{frame}
 
+\subsection{}
+
 \begin{frame}{Much more}
   \begin{center}
   \href{http://yahoo.github.com/boomerang/doc/howtos/}{\textcolor{blue}{http://yahoo.github.com/boomerang/doc/howtos/}}
@@ -397,6 +420,15 @@ BOOMR.plugins.RT.done();
 \label{sec:data}
 
 \subsection{shoulda}
+
+\begin{frame}{The beacon}
+  \begin{itemize}
+  \item GET request to the beacon URL (response ignored)
+  \item All parameters passed in the query string
+  \item Extra timers are passed in as a comma separated list in \texttt{t\_other}
+  \item \texttt{before\_beacon} JavaScript event fired just before the beacon is sent
+  \end{itemize}
+\end{frame}
 
 \begin{frame}{What should we do with the data?}
   \begin{itemize}
@@ -467,6 +499,8 @@ BOOMR.plugins.RT.done();
   Once you have the data, you can do anything with it
   \end{center}
 \end{frame}
+
+\section{}
 
 \begin{frame}{}
   \begin{center}
