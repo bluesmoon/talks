@@ -69,7 +69,7 @@
   \item Philip Tellis
   \item \small{\texttt{philip@bluesmoon.info}}
   \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
-  \item geek \bullet paranoid \bullet speedfreak
+  \item geek - paranoid - speedfreak
   \item yahoo
   \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
   \end{itemize}
@@ -160,7 +160,7 @@
     \vfill \hfill \pgfimage[height=.9\paperheight]{ask-the-user}
   }
 }
-\begin{frame}{Ask the user?}
+\begin{frame}{}
   \begin{center}
   \end{center}
 \end{frame}
@@ -201,19 +201,19 @@ BOOMR.init({
 
 \begin{frame}[fragile]{And soon...}
   \begin{verbatim}
-  YUI.use('gallery-boomr', function(Y) {
-      Y.BOOMR.init({
-          user_ip: "<user's ip address>",
-          beacon_url: "http://mysite.com/beacon.php"
-      });
-  });
+YUI.use('gallery-boomr', function(Y) {
+    Y.BOOMR.init({
+        user_ip: "<user's ip address>",
+        beacon_url: "http://mysite.com/beacon.php"
+    });
+});
   \end{verbatim}
 \end{frame}
 
 \begin{frame}{What does it do?}
   \begin{itemize}
-  \item About once a week, measures user's bandwidth and latency to your server
-  \item On (almost) every request, measures the time it took to load the current page
+  \item Measures user's bandwidth and latency to your server
+  \item Measures the current page's load time
   \item Beacons these results back to your server
   \end{itemize}
 \end{frame}
@@ -221,8 +221,8 @@ BOOMR.init({
 \begin{frame}{Let's fork this talk}
   Do you want to:
   \begin{itemize}
-  \item Lean how boomerang works internally? \ref{sec:internals}
-  \item Learn how to use boomerang? \ref{sec:use}
+  \item \href{sec:internals}{Lean how boomerang works internally?}
+  \item \href{sec:use}{Learn how to use boomerang?}
   \end{itemize}
 \end{frame}
 
@@ -494,7 +494,7 @@ BOOMR.plugins.RT.done();
   \item Philip Tellis
   \item \small{\texttt{philip@bluesmoon.info}}
   \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
-  \item geek \bullet paranoid \bullet speedfreak
+  \item geek - paranoid - speedfreak
   \item yahoo
   \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
   \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
