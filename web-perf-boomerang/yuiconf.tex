@@ -77,6 +77,11 @@
 \setbeamertemplate{background}{}
 
 
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Time}
+
 \setbeamertemplate{background}{
   \parbox[c][\paperheight]{\paperwidth}{
     \hfill \vfill \pgfimage[height=.8\paperheight]{waterfall}
@@ -114,6 +119,8 @@
   \end{center}
 \end{frame}
 
+\subsection{The adversary}
+
 \begin{frame}{Too many variations}
   \begin{center}
   \LARGE{
@@ -132,6 +139,8 @@
   \only<12>{Try simulating all that in the lab!}
   \end{center}
 \end{frame}
+
+\subsection{Measure twice}
 
 \begin{frame}{}
   \begin{center}
@@ -165,27 +174,11 @@
 
 \begin{frame}{}
   \begin{center}
-  Why not just use javascript in each page that you want to measure? 
+  What about JavaScript?
   \end{center}
 \end{frame}
 
-\begin{frame}{}
-  \begin{center}
-  But javascript can't measure everything... we get as close as we can
-  \end{center}
-\end{frame}
-
-\begin{frame}{}
-  \begin{center}
-  It also adds page weight
-  \end{center}
-\end{frame}
-
-\begin{frame}{}
-  \begin{center}
-  However, it is available everywhere and gives us flexibility
-  \end{center}
-\end{frame}
+\subsection{boomerang}
 
 \begin{frame}
   \begin{block}{boomerang is...}
@@ -200,9 +193,20 @@ A piece of javascript that you add to your web page where it measures and beacon
 <script type="text/javascript">
 BOOMR.init({
     user_ip: "<user's ip address>",
-    beacon_url: "http://yoursite.com/beacon.php"
+    beacon_url: "http://mysite.com/beacon.php"
 });
 </script>
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{And soon...}
+  \begin{verbatim}
+  YUI.use('gallery-boomr', function(Y) {
+      Y.BOOMR.init({
+          user_ip: "<user's ip address>",
+          beacon_url: "http://mysite.com/beacon.php"
+      });
+  });
   \end{verbatim}
 \end{frame}
 
@@ -214,7 +218,24 @@ BOOMR.init({
   \end{itemize}
 \end{frame}
 
-\begin{frame}{How does it do it?}
+\begin{frame}{Let's fork this talk}
+  Do you want to:
+  \begin{itemize}
+  \item Lean how boomerang works internally? \ref{sec:internals}
+  \item Learn how to use boomerang? \ref{sec:use}
+  \end{itemize}
+\end{frame}
+
+\section{How does it work?}
+\label{sec:internals}
+
+\begin{frame}{}
+  \begin{center}
+  How does boomerang work?
+  \end{center}
+\end{frame}
+
+\begin{frame}{}
   \begin{center}
   Let's take that one at a time
   \end{center}
@@ -276,7 +297,108 @@ BOOMR.init({
   \end{itemize}
 \end{frame}
 
-\begin{frame}{What do we do with the data?}
+\section{Using boomerang}
+\label{sec:use}
+
+\begin{frame}[fragile]{Include it on your page}
+  \begin{verbatim}
+<script src="boomerang.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+BOOMR.init({
+    user_ip: "<user's ip address>",
+    beacon_url: "http://mysite.com/beacon.php"
+});
+</script>
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}{}
+  \begin{center}
+  For most sites, that's about it
+  \end{center}
+\end{frame}
+
+\begin{frame}{}
+  \begin{center}
+  You probably want to do more
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Handle subdomains}
+Set the \texttt{site\_domain} parameter:
+\begin{verbatim}
+BOOMR.init({
+    user_ip: "<user's ip address>",
+    beacon_url: "http://mysite.com/beacon.php",
+    site_domain: "mysite.com"
+});
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Measure more than just load time}
+\begin{verbatim}
+<html><head>
+<script>var t_pagestart=new Date().getTime();</script>
+...
+<script>var thd=new Date().getTime();</script>
+</head>
+<body>
+...
+<script>var tjs=new Date().getTime();</script>
+...
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{verbatim}
+...
+<script src="boomerang.js"></script>
+...
+var te=new Date().getTime();
+BOOMR.plugins.RT.setTimer("t_head", thd-t_pagestart).
+                 setTimer("t_body", te-thd).
+                 setTimer("t_js", te-tjs);
+</script></body></html>
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Loading dynamic content}
+\begin{verbatim}
+BOOMR.init({
+    user_ip: "<user's ip address>",
+    beacon_url: "http://mysite.com/beacon.php",
+    auto_run: false
+});
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Loading dynamic content}
+\begin{verbatim}
+// Just before download starts
+BOOMR.plugins.RT.startTimer("t_done");
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Loading dynamic content}
+\begin{verbatim}
+// Just after download finishes
+BOOMR.plugins.RT.done();
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Much more}
+  \begin{center}
+  \href{http://yahoo.github.com/boomerang/doc/howtos/}{\textcolor{blue}{http://yahoo.github.com/boomerang/doc/howtos/}}
+  \end{center}
+\end{frame}
+
+\section{Data}
+\label{sec:data}
+
+\subsection{shoulda}
+
+\begin{frame}{What should we do with the data?}
   \begin{itemize}
   \item Sanity checking to:
     \begin{itemize}
@@ -287,7 +409,8 @@ BOOMR.init({
   \end{itemize}
 \end{frame}
 
-\begin{frame}{What do we do with the data?}
+\subsection{coulda}
+\begin{frame}{What can we do with the data?}
   \begin{itemize}
   \item Statistical analysis to:
     \begin{itemize}
@@ -296,22 +419,6 @@ BOOMR.init({
     \item Measure trends over time and correlate them with code changes
     \end{itemize}
   \end{itemize}
-\end{frame}
-
-\begin{frame}{Bandwidth blocks}
-  \begin{itemize}
-  \item 0-100 kbps
-  \item 100-300 kbps
-  \item 300-2000 kbps
-  \item 2-6 Mbps
-  \item 6+ Mbps
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Bandwidth blocks}
-  \begin{center}
-  Group page load times based on bandwidth block
-  \end{center}
 \end{frame}
 
 \setbeamertemplate{background}{
@@ -332,9 +439,10 @@ BOOMR.init({
   \end{center}
 \end{frame}
 
+\subsection{woulda}
 \begin{frame}{Geographic data}
   \begin{center}
-  Looking at latency from different geographic locations can tell you where to put your next CDN
+  Looking at latency from different geographic locations can tell you where your next mirror should be
   \end{center}
 \end{frame}
 
@@ -342,15 +450,6 @@ BOOMR.init({
   \begin{center}
   Grouping data by ISP can tell you who's behaving badly
   \end{center}
-\end{frame}
-
-\begin{frame}{Storing the data}
-  \begin{itemize}
-  \item We log all beacon requests to apache's log access file
-  \item Low traffic sites could write directly to a DB
-  \item Others have suggested using CouchDB as the beacon server
-  \item Daily summaries can be sent across to ShowSlow
-  \end{itemize}
 \end{frame}
 
 \begin{frame}{More data}
