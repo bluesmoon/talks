@@ -41,7 +41,7 @@
 
 \title{Measuring the web with boomerang}
 
-\date{\href{http://foss.in/2010/}{FOSS.IN/2010} -- 2010.12.15-17}
+\date{\href{http://foss.in/2010/}{FOSS.IN/2010} -- 2010.12.15}
 
 
 \pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
@@ -291,8 +291,8 @@ BOOMR.init({
 \end{frame}
 
 \setbeamertemplate{background}{
-  \parbox[c][\paperheight]{\paperwidth}{
-    \vfill \hfill \pgfimage[height=.9\paperheight]{fork-project}
+  \parbox[c][.5\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[width=\paperwidth]{fork-project}
   }
 }
 \begin{frame}{Get the code}
@@ -306,8 +306,8 @@ BOOMR.init({
 \end{frame}
 
 \setbeamertemplate{background}{
-  \parbox[c][\paperheight]{\paperwidth}{
-    \vfill \hfill \pgfimage[height=.9\paperheight]{pull-request}
+  \parbox[c][.5\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[width=\paperwidth]{pull-request}
   }
 }
 \begin{frame}{Submit code}
@@ -318,9 +318,17 @@ BOOMR.init({
 \end{frame}
 
 \begin{frame}{plugins}
+  \begin{center}
+  \texttt{cp plugin.js yourplugin.js}
+  \end{center}
 \end{frame}
 
-\begin{frame}{The Makefile}
+\begin{frame}[fragile]{The Makefile}
+  \begin{verbatim}
+make PLUGINS="plugin list" MINIFIER="/minifier/path"
+
+make usage
+  \end{verbatim}
 \end{frame}
 
 \section{Using boomerang}
