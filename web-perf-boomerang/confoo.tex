@@ -205,7 +205,7 @@ A piece of javascript that you add to your web page where it measures and beacon
 </script>
 <script type="text/javascript">
 BOOMR.init({
-    user_ip: "<user's ip address>",
+    user_ip: "<network ident>",
     beacon_url: "http://mysite.com/beacon.php"
 });
 </script>
@@ -273,7 +273,7 @@ BOOMR.init({
 
 \begin{frame}{What? Two pages?}
   \begin{center}
-  Yes, this needs two pages and cookies.  If those aren't supported, we try to use the WebTiming API.
+  Yes, this needs two pages and cookies.  If those aren't supported, we try to use the WebTiming API\textsuperscript{\ref{note:webtiming}}.
   \end{center}
 \end{frame}
 
@@ -297,7 +297,7 @@ BOOMR.init({
 </script>
 <script type="text/javascript">
 BOOMR.init({
-    user_ip: "<user's ip address>",
+    user_ip: "<network ident>",
     beacon_url: "http://mysite.com/beacon.php"
 });
 </script>
@@ -360,7 +360,7 @@ BOOMR.plugins.RT.setTimer("t_head", th-t_pagestart).
 \begin{frame}[fragile]{Loading dynamic content}
 \begin{verbatim}
 BOOMR.init({
-    user_ip: "<user's ip address>",
+    user_ip: "<network ident>",
     beacon_url: "http://mysite.com/beacon.php",
     auto_run: false
 });
@@ -471,7 +471,7 @@ BOOMR.plugins.RT.done();
   \begin{itemize}
   \item Write plugins to get more performance data
   \item We already have a DNS plugin
-  \item I'm currently working on a plugin to measure IPv6 support and latency
+  \item I've just completed a plugin to measure IPv6 support and latency
   \item What about a full WebTiming plugin?
   \item I'm also looking at measuring connection setup time
   \end{itemize}
@@ -487,7 +487,8 @@ BOOMR.plugins.RT.done();
 
 \begin{frame}{}
   \begin{center}
-  Thank you \\
+  Boomerang: It (almost) always comes back \\
+  \parbox[c][1cm]{\paperwidth}{ }
   \tiny{
   \href{http://www.github.com/yahoo/boomerang/}{http://github.com/yahoo/boomerang} \\
   \href{http://yahoo.github.com/boomerang/doc/}{http://yahoo.github.com/boomerang/doc/}
@@ -535,6 +536,16 @@ BOOMR.plugins.RT.done();
   \begin{itemize}
   \item The first image might require a DNS lookup and TCP handshake
   \item Slow start is not an issue since 32 bytes fit in 1 packet
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{WebTiming API}
+\label{note:webtiming}
+  JavaScript interface to network timing information including DNS, TCP connect, download, etc.  Supported by:
+  \begin{itemize}
+  \item Microsoft Internet Explorer 9
+  \item Google Chrome (WebKit)
+  \item W3C specification
   \end{itemize}
 \end{frame}
 
