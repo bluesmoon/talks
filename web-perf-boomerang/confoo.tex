@@ -39,9 +39,9 @@
 
 \author{Philip Tellis / \texttt{philip@bluesmoon.info}}
 
-\title{Measuring the web with boomerang}
+\title{Boomerang: How fast do users think your site is?}
 
-\date{\href{http://foss.in/2010/}{FOSS.IN/2010} -- 2010.12.15}
+\date{\href{http://confoo.ca/}{ConFoo.ca/2011} -- 2011.03.09-11}
 
 
 \pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
@@ -78,13 +78,12 @@
 
 
 \section{Introduction}
-\label{sec:intro}
 
 \subsection{Time}
 
 \setbeamertemplate{background}{
   \parbox[c][\paperheight]{\paperwidth}{
-    \hfill \vfill \pgfimage[height=.8\paperheight]{waterfall}
+    \vfill \pgfimage[width=\paperwidth]{waterfall}
   }
 }
 \begin{frame}{}
@@ -92,7 +91,7 @@
 
 \setbeamertemplate{background}{
   \parbox[c][\paperheight]{\paperwidth}{
-    \hfill \vfill \pgfimage[height=.8\paperheight]{waterfall-server}
+    \vfill \pgfimage[width=\paperwidth]{waterfall-server}
   }
 }
 \begin{frame}{}
@@ -100,7 +99,7 @@
 
 \setbeamertemplate{background}{
   \parbox[c][\paperheight]{\paperwidth}{
-    \hfill \vfill \pgfimage[height=.8\paperheight]{waterfall-all}
+    \vfill \pgfimage[width=\paperwidth]{waterfall-all}
   }
 }
 \begin{frame}{}
@@ -109,19 +108,24 @@
 
 \begin{frame}{}
   \begin{center}
-  Less than 20\% of page load time is something we can measure and fix during development
+  Only 10--20\% of page load time is spent on systems we control
   \end{center}
 \end{frame}
 
-\begin{frame}{}
-  \begin{center}
-  It's what we can't control that bites us
-  \end{center}
+\setbeamertemplate{background}{
+  \parbox[c][0.8\paperheight]{0.9\paperwidth}{
+    \vfill \hfill \pgfimage[width=0.8\paperwidth]{stoyan-daughter-wpo}
+  }
+}
+\begin{frame}{It's what we can't control that users notice}
+  \parbox[c][1.2\paperheight]{\paperwidth}{ }
+  \hfill \tiny{\href{http://twitter.com/stoyanstefanov/status/43747252317077504}{\textcolor{blue}{http://twitter.com/stoyanstefanov/status/43747252317077504}}}
 \end{frame}
+\setbeamertemplate{background}{}
 
 \subsection{The adversary}
 
-\begin{frame}{Too many variations}
+\begin{frame}{We can't control}
   \begin{center}
   \LARGE{
   \only<1>{browsers}
@@ -150,7 +154,7 @@
 
 \begin{frame}{}
   \begin{center}
-  We need to measure real end-user performance from the real end-user's box
+  We need to measure real end-user performance from the real end-user's perspective
   \end{center}
 \end{frame}
 
@@ -161,8 +165,6 @@
   }
 }
 \begin{frame}{}
-  \begin{center}
-  \end{center}
 \end{frame}
 \setbeamertemplate{background}{}
 
@@ -180,6 +182,17 @@
 
 \subsection{boomerang}
 
+% http://xkcd.com/445/
+
+\setbeamertemplate{background}{
+  \parbox[c][0.6\paperheight]{0.9\paperwidth}{
+    \vfill \hfill \pgfimage[width=0.8\paperwidth]{xkcd-boomerang}
+  }
+}
+\begin{frame}{}
+\end{frame}
+\setbeamertemplate{background}{}
+
 \begin{frame}
   \begin{block}{boomerang is...}
 A piece of javascript that you add to your web page where it measures and beacons back to you, the end user's perceived performance of your page
@@ -192,7 +205,7 @@ A piece of javascript that you add to your web page where it measures and beacon
 </script>
 <script type="text/javascript">
 BOOMR.init({
-    user_ip: "<user's ip address>",
+    user_ip: "<network ident>",
     beacon_url: "http://mysite.com/beacon.php"
 });
 </script>
@@ -208,7 +221,6 @@ BOOMR.init({
 \end{frame}
 
 \section{How does it work?}
-\label{sec:internals}
 
 \begin{frame}{}
   \begin{center}
@@ -227,15 +239,8 @@ BOOMR.init({
   \begin{itemize}
   \item Download a 32 byte gif 10 times in sequence
   \item Measure the time to download each
-  \item Discard the first measurement because it's overpriced
+  \item Discard the first measurement because it's overpriced\textsuperscript{\ref{note:oversized}}
   \item Calculate the arithmetic mean, standard deviation and margin of error of the rest
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Wait, did you say overpriced?}
-  \begin{itemize}
-  \item The first image might require a DNS lookup and TCP handshake
-  \item Slow start is not an issue since 32 bytes fit in 1 packet
   \end{itemize}
 \end{frame}
 
@@ -245,7 +250,7 @@ BOOMR.init({
   \item After the latency test is done, we download progressively larger images
   \item Stop at the first image that times out
   \item Redownload that image a few more times
-  \item Calculate the median, standard deviation and margin of error of the largest images
+  \item Calculate the median, standard deviation and margin of error of the largest image
   \end{itemize}
 \end{frame}
 
@@ -253,7 +258,7 @@ BOOMR.init({
   \begin{itemize}
   \item Those 10 latency images do a lot to widen the TCP window size
   \item The bandwidth images make much better use of available bandwidth
-  \item The image we end with uses the most bandwidth
+  \item The image we end with makes the best use of bandwidth
   \end{itemize}
 \end{frame}
 
@@ -268,7 +273,7 @@ BOOMR.init({
 
 \begin{frame}{What? Two pages?}
   \begin{center}
-  Yes, this needs two pages and cookies.  If those aren't supported, we try to use the WebTiming API.
+  Yes, this needs two pages and cookies.  If those aren't supported, we try to use the WebTiming API\textsuperscript{\ref{note:webtiming}}.
   \end{center}
 \end{frame}
 
@@ -282,57 +287,7 @@ BOOMR.init({
   \end{itemize}
 \end{frame}
 
-\section{Contributing to boomerang}
-
-\begin{frame}{Github}
-\begin{center}
-\href{https://github.com/yahoo/boomerang/}{https://github.com/yahoo/boomerang/}
-\end{center}
-\end{frame}
-
-\setbeamertemplate{background}{
-  \parbox[c][.5\paperheight]{\paperwidth}{
-    \vfill \hfill \pgfimage[width=\paperwidth]{fork-project}
-  }
-}
-\begin{frame}{Get the code}
-\end{frame}
-\setbeamertemplate{background}{}
-
-\begin{frame}{Get the code}
-  \begin{center}
-  \texttt{git clone git@github.com:yourname/boomerang.git}
-  \end{center}
-\end{frame}
-
-\setbeamertemplate{background}{
-  \parbox[c][.5\paperheight]{\paperwidth}{
-    \vfill \hfill \pgfimage[width=\paperwidth]{pull-request}
-  }
-}
-\begin{frame}{Submit code}
-\end{frame}
-\setbeamertemplate{background}{}
-
-\begin{frame}{boomerang.js}
-\end{frame}
-
-\begin{frame}{plugins}
-  \begin{center}
-  \texttt{cp plugin.js yourplugin.js}
-  \end{center}
-\end{frame}
-
-\begin{frame}[fragile]{The Makefile}
-  \begin{verbatim}
-make PLUGINS="plugin list" MINIFIER="/minifier/path"
-
-make usage
-  \end{verbatim}
-\end{frame}
-
 \section{Using boomerang}
-\label{sec:use}
 
 \subsection{Basic}
 
@@ -342,7 +297,7 @@ make usage
 </script>
 <script type="text/javascript">
 BOOMR.init({
-    user_ip: "<user's ip address>",
+    user_ip: "<network ident>",
     beacon_url: "http://mysite.com/beacon.php"
 });
 </script>
@@ -361,35 +316,23 @@ BOOMR.init({
   \end{center}
 \end{frame}
 
-\subsection{Multi-domain}
-\begin{frame}[fragile]{Handle subdomains}
-Set the \texttt{site\_domain} parameter:
-\begin{verbatim}
-BOOMR.init({
-    user_ip: "<user's ip address>",
-    beacon_url: "http://mysite.com/beacon.php",
-    site_domain: "mysite.com"
-});
-\end{verbatim}
-\end{frame}
-
-\begin{frame}{}
-\begin{center}
-This lets you measure transitions across *.mysite.com
-\end{center}
-\end{frame}
-
 \subsection{In-page timers}
 \begin{frame}[fragile]{Measure more than just load time}
 \begin{verbatim}
 <html><head>
-<script>var t_pagestart=new Date().getTime();</script>
+<script>
+var t_pagestart=new Date().getTime();
+</script>
 ...
-<script>var th=new Date().getTime();</script>
+<script>
+var th=new Date().getTime();
+</script>
 </head>
 <body>
 ...
-<script>var tj=new Date().getTime();</script>
+<script>
+var tj=new Date().getTime();
+</script>
 ...
 \end{verbatim}
 \end{frame}
@@ -417,7 +360,7 @@ BOOMR.plugins.RT.setTimer("t_head", th-t_pagestart).
 \begin{frame}[fragile]{Loading dynamic content}
 \begin{verbatim}
 BOOMR.init({
-    user_ip: "<user's ip address>",
+    user_ip: "<network ident>",
     beacon_url: "http://mysite.com/beacon.php",
     auto_run: false
 });
@@ -447,7 +390,6 @@ BOOMR.plugins.RT.done();
 \end{frame}
 
 \section{Data}
-\label{sec:data}
 
 \subsection{shoulda}
 
@@ -484,16 +426,27 @@ BOOMR.plugins.RT.done();
 \end{frame}
 
 \setbeamertemplate{background}{
-  \parbox[c][.8\paperheight]{\paperwidth}{
-    \vfill \pgfimage[height=.6\paperheight]{bandwidth-latency} \hfill
+  \parbox[c][0.9\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{canadian-bandwidth-blocks}
   }
 }
 \begin{frame}{Bandwidth blocks}
-  \parbox[c][\paperheight]{\paperwidth}{ }
-  \hfill \tiny{Ref: \href{http://www.yuiblog.com/blog/2010/04/08/analyzing-bandwidth-and-latency/}{\textcolor{blue}{\underline{Analysing Bandwidth \& Latency}}} -- YUI Blog}
+\end{frame}
+\setbeamertemplate{background}{
+  \parbox[c][0.9\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{canadian-bandwidth-blocks-mode}
+  }
+}
+\begin{frame}{Bandwidth blocks}
+\end{frame}
+\setbeamertemplate{background}{
+  \parbox[c][0.9\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{canadian-bandwidth-blocks-groups}
+  }
+}
+\begin{frame}{Bandwidth blocks}
 \end{frame}
 \setbeamertemplate{background}{}
-
 
 \begin{frame}{Bandwidth blocks}
   \begin{center}
@@ -518,9 +471,9 @@ BOOMR.plugins.RT.done();
   \begin{itemize}
   \item Write plugins to get more performance data
   \item We already have a DNS plugin
-  \item I'm thinking of an IPv6 v/s IPv4 plugin
+  \item I've just completed a plugin to measure IPv6 support and latency
   \item What about a full WebTiming plugin?
-  \item Can we measure connection setup time?
+  \item I'm also looking at measuring connection setup time
   \end{itemize}
 \end{frame}
 
@@ -534,7 +487,8 @@ BOOMR.plugins.RT.done();
 
 \begin{frame}{}
   \begin{center}
-  Thank you \\
+  Boomerang: It (almost) always comes back \\
+  \parbox[c][1cm]{\paperwidth}{ }
   \tiny{
   \href{http://www.github.com/yahoo/boomerang/}{http://github.com/yahoo/boomerang} \\
   \href{http://yahoo.github.com/boomerang/doc/}{http://yahoo.github.com/boomerang/doc/}
@@ -545,6 +499,7 @@ BOOMR.plugins.RT.done();
 \begin{frame}{Photo credits}
   \begin{itemize}
   \item \href{http://www.flickr.com/photos/21233184@N02/4389412851/}{flickr.com/photos/21233184@N02/4389412851}
+  \item \href{http://xkcd.com/445/}{http://xkcd.com/445/}
   \end{itemize}
 \end{frame}
 
@@ -562,6 +517,7 @@ BOOMR.plugins.RT.done();
   \item yahoo
   \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
   \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
+  \item \href{http://joind.in/talk/view/2913}{joind.in/talk/view/2913}
   \end{itemize}
 \end{frame}
 \setbeamertemplate{background}{}
@@ -573,6 +529,24 @@ BOOMR.plugins.RT.done();
   \item \href{http://www.yuiblog.com/blog/2010/04/08/analyzing-bandwidth-and-latency/}{\textcolor{blue}{\underline{Analysing Bandwidth \& Latency}}} -- YUI Blog
   \item \href{http://www.stuartcheshire.org/rants/Latency.html}{\textcolor{blue}{\underline{It's the latency, stupid}}} -- Stuart Cheshire
   \item \href{http://www.slideshare.net/bluesmoon/index-3441823}{\textcolor{blue}{\underline{The statistics of web performance}}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Overpriced images}
+\label{note:oversized}
+  \begin{itemize}
+  \item The first image might require a DNS lookup and TCP handshake
+  \item Slow start is not an issue since 32 bytes fit in 1 packet
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{WebTiming API}
+\label{note:webtiming}
+  JavaScript interface to network timing information including DNS, TCP connect, download, etc.  Supported by:
+  \begin{itemize}
+  \item Microsoft Internet Explorer 9
+  \item Google Chrome (WebKit)
+  \item W3C specification
   \end{itemize}
 \end{frame}
 
