@@ -173,14 +173,14 @@ foreach($talks as $n => $talk) {
 <script type="text/javascript" src="http://p.bluesmoon.info/boomerang/boomerang.js"></script>
 <script type="text/javascript">
 BOOMR.init({
-		beacon_url: "http://bluesmoon.org/analytics/boomerang/b.php",
+		beacon_url: "http://204st.us/",
 		site_domain: "bluesmoon.info",
 		log: null,
 		user_ip: "<?php echo $_SERVER['REMOTE_ADDR'] ?>",
 		BW: {
 			base_url: "http://p.bluesmoon.info/boomerang/images/"
 		}
-}).addVar({ pg: 1});
+}).addVar({ "pg":1, "h.key":"bluesmoon.info", "h.cr": 1});
 </script>
 </body>
 </html>
