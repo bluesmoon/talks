@@ -1,0 +1,459 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Copenhagen}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{f2elblue}{RGB}{97,97,97}%{49,72,87}
+\definecolor{dark-green}{RGB}{40,150,21}
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{med-gray}{gray}{0.75}
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{author in head/foot}{bg=black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape,size={\fontsize{14}{12}}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{items}[circle]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertdate%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.51\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}}%
+    \begin{beamercolorbox}[wd=.04\paperwidth,ht=2.9ex,dp=1.125ex,center,leftskip=3pt plus1fill,rightskip=4pt]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertframenumber%
+    \end{beamercolorbox}%
+  \vskip0pt%
+}%
+
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{Messing with JS \& the DOM to analyse the Network}
+
+\date{\href{http://jsconf.eu/2011/}{JSConf.eu} / 2011-10-01}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+%%%% Begin defining new commands for this template
+
+% Serial number in slide title
+\newcommand{\sn}[1]{\textrm{\textit{\Huge{\raisebox{-3pt}[4pt][8pt]{\textcolor{f2elblue}{#1}}}}}\hspace{4pt}}
+% large Centered Italic Roman text within a slide (building block for the following)
+\newcommand{\innersplash}[1]{
+  \begin{center}
+    \large \textrm{\textit{ #1 } }
+  \end{center}
+}
+% Slide that has just one large centered thing to say
+\newcommand{\splashslide}[2][{}]{
+  \begin{frame}
+  \frametitle{#1}
+  \innersplash{#2}
+  \end{frame}
+}
+% Leadin slide at the start of an exploit
+\newcommand{\leadinslide}[2]{
+  \splashslide{
+     {\fontsize{150}{20}\selectfont{\raisebox{0pt}[90pt][0pt]{\textcolor{light-gray}{#1}}}} \\ \huge \textcolor{gray}{#2}
+  }
+}
+% Suggested fix at the end of an exploit
+\newcommand{\suggestedfix}[2]{
+  \splashslide[\sn{#1} Suggested fix]{{#2}}
+}
+% Syntax highlighting
+\def\brown<#1>#2{\textcolor<#1>{brown}{\textbf<#1>{#2}}}
+\def\green<#1>#2{\textcolor<#1>{dark-green}{\textbf<#1>{#2}}}
+\def\blue<#1>#2{\textcolor<#1>{blue}{\textbf<#1>{#2}}}
+\def\purple<#1>#2{\textcolor<#1>{purple}{\textbf<#1>{#2}}}
+\def\red<#1>#2{\textcolor<#1>{red}{\textbf<#1>{#2}}}
+
+%%%% End of new commands
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{www-invention}
+  }
+}
+\begin{frame}{HTTP/TCP/IP}
+\vspace{-4cm}
+Developed by three guys with one beard between them
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{discovery-of-json}
+  }
+}
+\begin{frame}{JavaScript: The good parts}
+\vspace{-4cm}
+Discovered by one guy with one beard on him
+\end{frame}
+\setbeamertemplate{background}{}
+
+\setbeamertemplate{background}{
+  \parbox[c][0.9\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+Let's play with the nasty parts
+\end{frame}
+\setbeamertemplate{background}{}
+
+\leadinslide{1}{Latency}
+
+\setbeamertemplate{background}{
+  \parbox[c][.6\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{AC1}
+  }
+}
+\begin{frame}
+\frametitle{\sn{1}Blinkenlichten}
+\vspace{4cm}
+\begin{center}
+It takes about 23ms for light to get from Berlin to NY \\
+(35ms through fibre)
+\end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][.905\paperheight]{.93\paperwidth}{
+    \vfill \hfill \pgfimage[height=.762\paperheight]{http-get}
+  }
+}
+\begin{frame}{\sn{1}HTTP}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{So to measure latency, we need to send 1 packet each way, and time it}
+
+\begin{frame}[fragile]
+\frametitle{\sn{1} Network latency in JavaScript}
+\begin{semiverbatim}
+  \green<1>{var} ts, rtt, img = \green<1>{new} \blue<1>{Image};
+  img.onload=\green<1>{function}() \{ rtt=(+\green<1>{new} \blue<1>{Date} - ts) \};
+  ts = +\green<1>{new} \blue<1>{Date};
+  img.src="/1x1.gif";
+\end{semiverbatim}
+\end{frame}
+
+\leadinslide{2}{TCP handshake}
+
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{.8\paperwidth}{
+    \vfill \hfill \pgfimage[height=.8\paperheight]{tcp-handshake}
+  }
+}
+\begin{frame}{\sn{2}ACK-ACK-ACK}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][.905\paperheight]{.93\paperwidth}{
+    \vfill \hfill \pgfimage[height=.762\paperheight]{http-keepalive}
+  }
+}
+\begin{frame}{\sn{2}Connection: keep-alive}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}[fragile]
+\frametitle{\sn{2} Network latency \& TCP handshake in JavaScript}
+\vspace{-.3cm}
+\begin{semiverbatim}
+\green<1>{var} t=[], n=2, tcp, rtt;
+\green<1>{var} ld = \green<1>{function}() \{
+   t.push(+\green<1>{new} \blue<1>{Date});
+   \green<1>{if}(t.length > n) 
+     done();
+   \green<1>{else} \{
+     \green<1>{var} img = \green<1>{new} \blue<1>{Image};
+     img.onload = ld;
+     img.src="/1x1.gif?" + \blue<1>{Math}.random()
+                         + '=' + \green<1>{new} \blue<1>{Date};
+   \}
+\};
+\green<1>{var} done = \green<1>{function}() \{
+  rtt=t[2]-t[1];
+  tcp=t[1]-t[0]-rtt;
+\};
+ld();
+\end{semiverbatim}
+\end{frame}
+
+\splashslide{The astute reader will notice that we've ignored DNS lookup time here... how would you measure it?}
+
+\begin{frame}{\sn{1}Notes}
+\begin{itemize}
+  \item 1x1 gif is 35 bytes
+  \item including HTTP headers, is smaller than a TCP packet
+  \item Fires onload on all browsers
+  \item 0 byte image fires onerror
+  \item which is indistinguishable from network error
+\end{itemize}
+\end{frame}
+
+\leadinslide{3}{Network Throughput}
+
+\splashslide[\sn{3}Measuring Network Throughput]{\Large{\( \frac{size}{download\_time} \)}}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript}
+\begin{semiverbatim}
+\brown<1>{// Assume global object
+// image=\{ url: ..., size: ... \}}
+\green<1>{var} ts, rtt, bw, img = \green<1>{new} \blue<1>{Image};
+img.onload=\green<1>{function}() \{
+   rtt=(+\green<1>{new} \blue<1>{Date} - ts);
+   bw = image.size*1000/rtt;    \brown<1>{// rtt is in ms}
+\};
+ts = +\green<1>{new} \blue<1>{Date};
+img.src=image.url;
+\end{semiverbatim}
+\end{frame}
+
+\splashslide[\sn{3}Measuring Network Throughput]{If it were that simple, I wouldn't be doing a talk at @jsconfeu}
+
+\setbeamertemplate{background}{
+  \parbox[c][.905\paperheight]{.85\paperwidth}{
+    \vfill \hfill \pgfimage[height=.762\paperheight]{tcp-windows}
+  }
+}
+\begin{frame}{\sn{3}TCP Slow Start}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide[\sn{3}Measuring Network Throughput]{So to make the best use of bandwidth, we need resources that fit in a TCP window}
+
+\setbeamertemplate{background}{
+  \parbox[c][.8\paperheight]{.85\paperwidth}{
+    \vfill \hfill \pgfimage[height=.6\paperheight]{bandwidth-latency}
+  }
+}
+\begin{frame}{\sn{3}There is no single size that will tax all available networks }
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript -- Take 2}
+\begin{semiverbatim}
+\brown<1>{// image object is now an array of multiple images}
+\green<1>{var} i=0;
+\green<1>{var} ld = \green<1>{function}() \{
+   \green<1>{if}(i>0)
+      image[i-1].end = +\green<1>{new} \blue<1>{Date};
+   \green<1>{if}(i >= image.length)
+      done();
+   \green<1>{else} \{
+      \green<1>{var} img = \green<1>{new} \blue<1>{Image};
+      img.onload = ld;
+      image[i].start = +\green<1>{new} \blue<1>{Date};
+      img.src=image[i].url;
+   \}
+   i++;
+\};
+\end{semiverbatim}
+\end{frame}
+
+\splashslide[\sn{3}Measuring Network Throughput]{Slow network connection, meet really huge image}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript -- Take 3}
+\begin{semiverbatim}
+   \green<1>{var} img = \green<1>{new} \blue<1>{Image};
+   img.onload = ld;
+   image[i].start = +\green<1>{new} \blue<1>{Date};
+   image[i].timer =
+         setTimeout(\green<1>{function}() \{
+                       image[i].expired=true
+                    \},
+                    image[i].timeout);
+   img.src=image[i].url;
+\end{semiverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript -- Take 3}
+\begin{semiverbatim}
+\green<1>{if}(i>0) \{
+   image[i-1].end = +\green<1>{new} \blue<1>{Date};
+   clearTimeout(image[i-1].timer);
+\}
+\end{semiverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript -- Take 3}
+\begin{semiverbatim}
+\green<1>{if}(i >= image.length
+      || (i > 0 \&\& image[i-1].expired)) \{
+   done();
+\}
+\end{semiverbatim}
+\end{frame}
+
+\splashslide[\sn{3}Measuring Network Throughput]{Are we done yet?\\ \only<2->{sure...}}
+
+\splashslide[\sn{3}Measuring Network Throughput]{Except network throughput is different every time you test it}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{.8\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{statistician}
+  }
+}
+\begin{frame}{Statistics to the Rescue}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide[\sn{3}Measuring Network Throughput]{The code for that is NOT gonna fit on a slide}
+
+\leadinslide{4}{DNS}
+
+\splashslide[\sn{4}Measuring DNS]{ \( time\_with\_dns - time\_without\_dns \) }
+
+\begin{frame}[fragile]
+\frametitle{\sn{4} Measuring DNS in JavaScript}
+\vspace{-.3cm}
+\begin{semiverbatim}
+\green<1>{var} t=[], dns, ip, hosts=['http://hostname.com/',
+                          'http://ip.ad.dr.ess/'];
+\green<1>{var} ld = \green<1>{function}() \{
+   t.push(+\green<1>{new} \blue<1>{Date});
+   \green<1>{if}(t.length > hosts.length) 
+     done();
+   \green<1>{else} \{
+     \green<1>{var} img = \green<1>{new} \blue<1>{Image};
+     img.onload = ld;
+     img.src=hosts[t.length-1] + "/1x1.gif";
+   \}
+\};
+\green<1>{var} done = \green<1>{function}() \{
+  ip=t[2]-t[1];
+  dns=t[1]-t[0]-ip;
+\};
+ld();
+\end{semiverbatim}
+\end{frame}
+
+\splashslide[\sn{4}Measuring DNS]{ What if DNS were already cached? \\ \only<2->{Use a wildcard DNS entry} }
+
+\splashslide[\sn{4}Measuring DNS]{ What if you map DNS based on geo location? \\ \only<2->{A little more complicated, but doable} }
+
+\splashslide[\sn{4}Measuring DNS]{ Full code in boomerang's DNS plugin }
+
+\leadinslide{5}{IPv6}
+
+\begin{frame}{\sn{5}Measuring IPv6 support and latency}
+\begin{enumerate}
+  \item Try to load image from IPv6 host
+  \begin{itemize}
+    \item If timeout or error, then no IPv6 support
+    \item If successful, then calculate latency and proceed
+  \end{itemize}
+  \item Try to load image from hostname that resolves only to IPv6 host
+  \begin{itemize}
+    \item If timeout or error, then DNS server doesn't support IPv6
+    \item If successful, calculate latency
+  \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\splashslide[\sn{5}Measuring IPv6 support and latency]{ Full code in boomerang's IPv6 plugin }
+
+\leadinslide{6}{Private Network Scanning}
+
+\splashslide[\sn{6}Private Network Scanning]{JavaScript in the browser runs with the User's Security Privileges}
+
+\splashslide[\sn{6}Private Network Scanning]{This means you can see the user's private LAN}
+
+\begin{frame}{\sn{6}Private Network Scanning -- Gateways}
+  \begin{enumerate}
+    \item Look at common gateway IPs: 192.168.1.1, 10.0.0.1, etc.
+    \item When found, look for common image URLs assuming various routers/DSL modems
+    \item When found, try to log in with default username/password \\ if you're lucky, the user is already logged in
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{\sn{6}Private Network Scanning -- Services}
+  \begin{enumerate}
+    \item Scan host range on private network for common ports (80, 22, 3306, etc.)
+    \item Measure how long it takes to \texttt{onerror}
+    \begin{itemize}
+      \item Short timeout: connection refused
+      \item Long timeout: something listening, but it isn't HTTP
+      \item Longer timeout: probably HTTP, but not an image
+    \end{itemize}
+    \item Try an iframe instead of an image
+  \end{enumerate}
+\end{frame}
+
+\leadinslide{--}{.done()}
+
+\begin{frame}{Code/References}
+  \begin{itemize}
+    \item \texttt{http://github.com/bluesmoon/boomerang}
+    \item \texttt{http://samy.pl/mapxss/}
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://lognormal.com/}{LogNormal.com}
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item geek paranoid speedfreak
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{\Huge Thank you }
+
+\end{document}
+
+
