@@ -170,17 +170,21 @@ foreach($talks as $n => $talk) {
 </div> <!-- end content -->
 
 <script type="text/javascript" src="http://a1.bluesmoon.info/piwik.js"></script><script type="text/javascript">try { var piwikTracker = Piwik.getTracker("http://bluesmoon.org/analytics/piwik/piwik.php", 1); piwikTracker.trackPageView(); piwikTracker.enableLinkTracking(); } catch( err ) {}</script><noscript><p><img src="http://bluesmoon.org/analytics/piwik/piwik.php?idsite=1" style="border:0;position:absolute;left:-9999em;" alt=""></p></noscript>
-<script type="text/javascript" src="http://p.bluesmoon.info/boomerang/boomerang.js"></script>
-<script type="text/javascript">
+<script src="//lognormal.net/boomerang/boomerang-0.9.1319219312.js"></script>
+<script>
 BOOMR.init({
-		beacon_url: "http://bluesmoon.org/analytics/boomerang/b.php",
 		site_domain: "bluesmoon.info",
 		log: null,
 		user_ip: "<?php echo $_SERVER['REMOTE_ADDR'] ?>",
 		BW: {
 			base_url: "http://p.bluesmoon.info/boomerang/images/"
+		},
+		LOGN: {
+			key: "bluesmoon.info",
+			sig: 1,
+			grp: 1
 		}
-}).addVar({ pg: 1});
+});
 </script>
 </body>
 </html>
