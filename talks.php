@@ -44,7 +44,7 @@ $talks = array(
 		array(
 			'name' => 'Regular Expressions Demystified',
 			'slideshare' => array('id' => '__ss_2535771', 'title' => 'regular-expressions-demystified', 'file' => 'regex-demystified-091119061907-phpapp01'),
-			'source' => 'http://talks.bluesmoon.info/regex-demystified/regex-demystified.tex'
+			'source' => 'http://talks.bluesmoon.info/regular-expressions/regex-demystified.tex'
 		),
 		array(
 			'name' => 'Javascript charting with YUI Flot',
