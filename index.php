@@ -169,22 +169,10 @@ foreach($talks as $n => $talk) {
 
 </div> <!-- end content -->
 
-<script type="text/javascript" src="http://a1.bluesmoon.info/piwik.js"></script><script type="text/javascript">try { var piwikTracker = Piwik.getTracker("http://bluesmoon.org/analytics/piwik/piwik.php", 1); piwikTracker.trackPageView(); piwikTracker.enableLinkTracking(); } catch( err ) {}</script><noscript><p><img src="http://bluesmoon.org/analytics/piwik/piwik.php?idsite=1" style="border:0;position:absolute;left:-9999em;" alt=""></p></noscript>
-<script src="//lognormal.net/boomerang/boomerang-0.9.1319219313.js"></script>
-<script>
-BOOMR.init({
-		site_domain: "bluesmoon.info",
-		log: null,
-		user_ip: "<?php echo $_SERVER['REMOTE_ADDR'] ?>",
-		BW: {
-			base_url: "http://p.bluesmoon.info/boomerang/images/"
-		},
-		LOGN: {
-			key: "bluesmoon.info",
-			sig: 1,
-			grp: 1
-		}
-});
-</script>
+<script type="text/javascript" src="http://a1.bluesmoon.info/piwik.js"></script>
+<script type="text/javascript">
+var pg=1;
+try { var piwikTracker = Piwik.getTracker("http://bluesmoon.org/analytics/piwik/piwik.php", pg); piwikTracker.trackPageView(); piwikTracker.enableLinkTracking(); } catch( err ) {}</script><noscript><p><img src="http://bluesmoon.org/analytics/piwik/piwik.php?idsite=1" style="border:0;position:absolute;left:-9999em;" alt=""></p></noscript>
+<script src="//lognormal.net/boomerang/37d0b5b1fbc200f53c0ffd9e680bb3fd8bc9e5c60b308b31087bf07f"></script>
 </body>
 </html>
