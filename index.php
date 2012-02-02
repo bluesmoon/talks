@@ -162,7 +162,7 @@ foreach($talks as $n => $talk) {
    <li class="feed"><a title="Flickr photostream" href="http://api.flickr.com/services/feeds/photos_public.gne?id=57155801@N00&amp;lang=en-us&amp;format=rss_200">PHOTO FEED</a></li>
    <li><a title="Validate this page's markup" href="http://validator.w3.org/check?uri=referer">HTML 4.01</a></li>
    <li><a title="Validate this page's CSS" href="http://jigsaw.w3.org/css-validator/check/referrer">CSS 2.1</a></li>
-   <li>&copy; PHILIP TELLIS 2009</li>
+   <li>&copy; PHILIP TELLIS 2012</li>
   </ul>
 
  </div> <!-- end footer -->
@@ -171,8 +171,8 @@ foreach($talks as $n => $talk) {
 
 <script type="text/javascript" src="http://a1.bluesmoon.info/piwik.js"></script>
 <script type="text/javascript">
-var pg=1;
-try { var piwikTracker = Piwik.getTracker("http://bluesmoon.org/analytics/piwik/piwik.php", pg); piwikTracker.trackPageView(); piwikTracker.enableLinkTracking(); } catch( err ) {}</script><noscript><p><img src="http://bluesmoon.org/analytics/piwik/piwik.php?idsite=1" style="border:0;position:absolute;left:-9999em;" alt=""></p></noscript>
+var pg="1 main_talks";
+try { var piwikTracker = Piwik.getTracker("http://bluesmoon.org/analytics/piwik/piwik.php", parseInt(pg)); piwikTracker.trackPageView(); piwikTracker.enableLinkTracking(); } catch( err ) {}</script><noscript><p><img src="http://bluesmoon.org/analytics/piwik/piwik.php?idsite=1" style="border:0;position:absolute;left:-9999em;" alt=""></p></noscript>
 <script src="//lognormal.net/boomerang/37d0b5b1fbc200f53c0ffd9e680bb3fd8bc9e5c60b308b31087bf07f"></script>
 </body>
 </html>
