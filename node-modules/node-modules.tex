@@ -1,0 +1,326 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertdate%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}%
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{A NodeJS Bag of Goodies for Analysing Web Traffic}
+
+\date{\href{http://confoo.ca/}{ConFoo} / 2012-02-29}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{\textit{\$ finger philip}}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@lognormal.com}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item geek - paranoid - speedfreak
+  \item co-founder @ \href{http://www.lognormal.com/}{Log-Normal}
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\section{NodeJS \& npm}
+\subsection{NodeJS}
+
+\begin{frame}[fragile]{The 2 minute NodeJS Tutorial}
+\begin{verbatim}
+  node
+  > m = require('module')
+  > console.log(m.foo)
+\end{verbatim}
+We'll be using node v0.6.x
+\end{frame}
+
+\begin{frame}[fragile]{The 2 minute NodeJS Tutorial}
+\begin{verbatim}
+  node script.js
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{The 2 minute NodeJS Tutorial}
+\begin{verbatim}
+  echo "console.log('hello, world!')" | node
+\end{verbatim}
+Notice that in JavaScript, semicolons are optional
+\end{frame}
+
+\subsection{npm}
+\begin{frame}[fragile]{Installing modules}
+\begin{verbatim}
+  npm install module
+\end{verbatim}
+Installs into a local \texttt{node\_modules} directory
+\end{frame}
+
+
+\begin{frame}[fragile]{Installing modules globally}
+\begin{verbatim}
+  sudo npm install -g module
+\end{verbatim}
+Installs into the \texttt{/usr/lib/node\_modules} directory
+\end{frame}
+
+\begin{frame}[fragile]{help}
+\begin{verbatim}
+  npm help npm
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{npmjs.org}
+\begin{center}
+   http://search.npmjs.org/
+\end{center}
+\end{frame}
+
+\begin{frame}{What's the time?}
+\begin{center}
+\LARGE 10:52
+\end{center}
+\end{frame}
+
+\section{HTTP Logs}
+\subsection{User Details}
+\begin{frame}[fragile]{UserAgent Parsing}
+\begin{verbatim}
+  npm install ua-parser
+
+  var parser=require('ua-parser');
+  var ua = parser.parse(ua_string);
+
+  // family, major, minor, patch, os
+\end{verbatim}
+Extracted from Google's BrowserScope Project
+\end{frame}
+
+\begin{frame}[fragile]{IP Addresses}
+\begin{verbatim}
+  var net = require('net');
+
+  net.isIP(ip);  // returns 0, 4 or 6
+\end{verbatim}
+The \texttt{net} module is part of node
+\end{frame}
+
+\begin{frame}[fragile]{GeoLocation}
+\begin{verbatim}
+  npm install geoip-lite
+
+  var geo = require('geip-lite');
+  var loc = geo.lookup(ip);
+
+  // country, region, city, ll
+\end{verbatim}
+Uses MaxMind's GeoIP database.  Very fast lookups, IPv4 \& v6
+\end{frame}
+
+\begin{frame}[fragile]{geoip-lite's hidden function}
+\begin{verbatim}
+  var geo = require('geip-lite');
+  geo.cmp(ip1, ip2);
+
+  // -1, 0 or 1
+\end{verbatim}
+Used internally to do a binary search on the IP database
+\end{frame}
+
+\subsection{Request Details}
+\begin{frame}[fragile]{Date formatting}
+\begin{verbatim}
+  npm install prettydate
+
+  var strftime = require('prettydate').strftime;
+
+  var dstr = strftime(new Date, "%c");
+\end{verbatim}
+Also accepts a locale as a third parameter.
+\end{frame}
+
+\begin{frame}[fragile]{Querystring Parsing}
+\begin{verbatim}
+  var qs = require('querystring');
+
+  qs.parse('name=Larry&name=Moe&name=Curly');
+  // { name: [ 'Larry', 'Moe', 'Curly' ] }
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Creating Hashes}
+\begin{verbatim}
+  var crypto = require('crypto');
+
+  var hash = crypto.createHash('sha1');
+  hash.update(data);
+
+  var digest = hash.digest('hex');
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Creating HMACs}
+\begin{verbatim}
+  var crypto = require('crypto');
+
+  var hmac = crypto.createHmac('sha1', key);
+  hmac.update(data);
+
+  var digest = hmac.digest('base64');
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{What's the time?}
+\begin{center}
+\LARGE 11:20
+
+\tiny I hope ;)
+\end{center}
+\end{frame}
+
+\section{Statistical Analysis}
+\subsection{in-process}
+
+\begin{frame}[fragile]{faststats}
+\begin{verbatim}
+  npm install fast-stats
+
+  var Stats = require('fast-stats').Stats;
+  var s = new Stats().push(1, 2, 3, 10, 8, 4, 3);
+  console.log(s.amean().toFixed(2));
+\end{verbatim}
+Caveat: I haven't pushed out a new version in a while
+\end{frame}
+
+\begin{frame}[fragile]{gauss}
+\begin{verbatim}
+  npm install gauss
+
+  var gauss = require('gauss');
+  var set = new gauss.Vector(5, 1, 3, 2, 21);
+  console.log(set.mean());
+\end{verbatim}
+\end{frame}
+
+\subsection{Separate Processes}
+
+\begin{frame}[fragile]{statsd}
+\begin{verbatim}
+  npm install statsd node-statsd
+\end{verbatim}
+\begin{itemize}
+  \item \href{https://github.com/etsy/statsd}{github.com/etsy/statsd}
+  \item Easy to set up
+  \item Requires graphite to plot charts
+  \item Brought to you by Etsy
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{statsd}
+\begin{verbatim}
+  var StatsD = require('node-statsd').StatsD
+  c = new StatsD('example.org',8125)
+  c.timing('node_test.some_service.task.time', 500)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{cube}
+Disclaimer: I've never used this one before
+\begin{verbatim}
+  npm install cube
+\end{verbatim}
+\begin{itemize}
+  \item \href{http://square.github.com/cube/}{square.github.com/cube/}
+  \item \href{https://github.com/square/cube/wiki}{github.com/square/cube/wiki}
+\end{itemize}
+\end{frame}
+
+\section{}
+
+\begin{frame}{Help me out}
+\begin{center}
+Still trying to figure out the best way to debug Node.JS memory usage. Ideas? Let me know.
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+  \begin{center}
+  \LARGE Questions?
+  \end{center}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{Contact me}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \small{\texttt{philip@bluesmoon.info}}
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item geek - paranoid - speedfreak
+  \item co-founder @ \href{http://www.lognormal.com/}{Log-Normal}
+  \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
+  \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\end{document}
+
+
