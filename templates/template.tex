@@ -2,7 +2,7 @@
 
 \mode<presentation>
 {
-  \usetheme{Warsaw}
+  \usetheme{Copenhagen}
 
   \setbeamercovered{transparent}
 
@@ -10,21 +10,33 @@
 
 \beamertemplatenavigationsymbolsempty
 
+\definecolor{f2elblue}{RGB}{97,97,97}%{49,72,87}
+\definecolor{dark-green}{RGB}{40,150,21}
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{med-gray}{gray}{0.75}
+
 \setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{author in head/foot}{bg=black,fg=white}
 \setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
 \setbeamercolor{structure}{fg=black}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape,size={\fontsize{14}{12}}}
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
 \setbeamertemplate{footline}%
 {%
   \leavevmode%
-  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertdate%
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle%
-  \end{beamercolorbox}}%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertdate%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.51\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}}%
+    \begin{beamercolorbox}[wd=.04\paperwidth,ht=2.9ex,dp=1.125ex,center,leftskip=3pt plus1fill,rightskip=4pt]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertframenumber%
+    \end{beamercolorbox}%
   \vskip0pt%
 }%
 
@@ -49,6 +61,42 @@
 \logo{\pgfuseimage{cc-licence}}
 
 
+%%%% Begin defining new commands for this template
+
+% Serial number in slide title
+\newcommand{\sn}[1]{\textrm{\textit{\Huge{\raisebox{-3pt}[4pt][8pt]{\textcolor{f2elblue}{#1}}}}}\hspace{4pt}}
+% large Centered Italic Roman text within a slide (building block for the following)
+\newcommand{\innersplash}[1]{
+  \begin{center}
+    \large \textrm{\textit{ #1 } }
+  \end{center}
+}
+% Slide that has just one large centered thing to say
+\newcommand{\splashslide}[2][{}]{
+  \begin{frame}
+  \frametitle{#1}
+  \innersplash{#2}
+  \end{frame}
+}
+% Leadin slide at the start of a problem/section
+\newcommand{\leadinslide}[2]{
+  \splashslide{
+     {\fontsize{150}{20}\selectfont{\raisebox{0pt}[90pt][0pt]{\textcolor{light-gray}{#1}}}} \\ \huge \textcolor{gray}{#2}
+  }
+}
+% Suggested fix at the end of a problem
+\newcommand{\suggestedfix}[2]{
+  \splashslide[\sn{#1} Suggested fix]{{#2}}
+}
+% Syntax highlighting
+\def\brown<#1>#2{\textcolor<#1>{brown}{\textbf<#1>{#2}}}
+\def\green<#1>#2{\textcolor<#1>{dark-green}{\textbf<#1>{#2}}}
+\def\blue<#1>#2{\textcolor<#1>{blue}{\textbf<#1>{#2}}}
+\def\purple<#1>#2{\textcolor<#1>{purple}{\textbf<#1>{#2}}}
+\def\red<#1>#2{\textcolor<#1>{red}{\textbf<#1>{#2}}}
+
+%%%% End of new commands
+
 
 
 
@@ -70,7 +118,7 @@
   \item \small{\texttt{philip@bluesmoon.info}}
   \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
   \item geek - paranoid - speedfreak
-  \item yahoo
+  \item co-founder \href{http://www.lognormal.com/}{Log-Normal}
   \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
   \end{itemize}
 \end{frame}
@@ -105,7 +153,7 @@
   \item \small{\texttt{philip@bluesmoon.info}}
   \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
   \item geek - paranoid - speedfreak
-  \item yahoo
+  \item co-founder \href{http://www.lognormal.com/}{Log-Normal}
   \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
   \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
   \end{itemize}
