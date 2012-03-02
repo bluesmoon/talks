@@ -52,9 +52,9 @@
 
 \author{Philip Tellis / \texttt{philip@lognormal.com}}
 
-\title{A NodeJS Bag of Goodies for Analysing Web Traffic}
+\title{A Node.JS Bag of Goodies for Analysing Web Traffic}
 
-\date{\href{http://confoo.ca/}{ConFoo} / 2012-02-29}
+\date{\href{http://confoo.ca/}{ConFoo} / 2012-03-02}
 
 
 \pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
@@ -108,6 +108,14 @@
 \end{frame}
 
 
+\begin{frame}
+\begin{center}
+  \pgfimage[height=.8\paperheight]{joind-in-qr}
+
+  Leave feeback on this talk at \href{https://joind.in/5967}{\blue<1>{joind.in/5967}}
+\end{center}
+\end{frame}
+
 \setbeamertemplate{background}{
   \parbox[c][\paperheight]{\paperwidth}{
     \hfill \pgfimage[height=\paperheight]{../bluesmoon}
@@ -125,31 +133,31 @@
 \end{frame}
 \setbeamertemplate{background}{}
 
-\splashslide[Log-Normal]{We do real user web performance analysis using Node.JS}
+\splashslide[Log-Normal]{We do real user web performance analysis}
 
 \splashslide[Log-Normal]{This talk covers some of the Node.JS modules we use to do this analysis}
 
-\leadinslide{--}{NodeJS \& npm}
+\leadinslide{--}{Node.JS \& npm}
 
-\begin{frame}[fragile]{\sn{0.1}The 2 minute NodeJS Tutorial}
-\begin{verbatim}
+\begin{frame}[fragile]{\sn{0.1}The 2 minute Node.JS Tutorial}
+\begin{semiverbatim}
   node
-  > m = require('module')
-  > console.log(m.foo)
-\end{verbatim}
+  > m = \brown<1>{require}('module')
+  > \green<1>{console}.log(m.foo)
+\end{semiverbatim}
 We'll be using node v0.6.x
 \end{frame}
 
-\begin{frame}[fragile]{\sn{0.1}The 2 minute NodeJS Tutorial}
+\begin{frame}[fragile]{\sn{0.1}The 2 minute Node.JS Tutorial}
 \begin{verbatim}
   node script.js
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[fragile]{\sn{0.1}The 2 minute NodeJS Tutorial}
-\begin{verbatim}
-  echo "console.log('hello, world!')" | node
-\end{verbatim}
+\begin{frame}[fragile]{\sn{0.1}The 2 minute Node.JS Tutorial}
+\begin{semiverbatim}
+  echo "\green<1>{console}.log('hello, world!')" | node
+\end{semiverbatim}
 Notice that in JavaScript, semicolons are optional
 \end{frame}
 
@@ -176,117 +184,117 @@ Installs into the \texttt{/usr/lib/node\_modules} directory
 
 \splashslide[\sn{0.3}npmjs.org]{\LARGE \href{http://search.npmjs.org/}{search.npmjs.org}}
 
-\splashslide[What's the time?]{\LARGE 14:37?}
+\splashslide[What's the time?]{\LARGE 13:37?}
 
 \leadinslide{1}{HTTP Logs}
 \begin{frame}[fragile]{\sn{1.1}UserAgent Parsing}
-\begin{verbatim}
+\begin{semiverbatim}
   npm install ua-parser
 
-  var parser=require('ua-parser');
-  var ua = parser.parse(ua_string);
+  \blue<1>{var} parser=\brown<1>{require}('ua-parser');
+  \blue<1>{var} ua = parser.parse(ua\_string);
 
   // family, major, minor, patch, os
-\end{verbatim}
+\end{semiverbatim}
 Extracted from Google's BrowserScope Project
 \end{frame}
 
 \begin{frame}[fragile]{\sn{1.2}IP Addresses}
-\begin{verbatim}
-  var net = require('net');
+\begin{semiverbatim}
+  \blue<1>{var} net = \brown<1>{require}('net');
 
   net.isIP(ip);  // returns 0, 4 or 6
-\end{verbatim}
+\end{semiverbatim}
 The \texttt{net} module is part of node
 \end{frame}
 
 \begin{frame}[fragile]{\sn{1.3}GeoLocation}
-\begin{verbatim}
+\begin{semiverbatim}
   npm install geoip-lite
 
-  var geo = require('geip-lite');
-  var loc = geo.lookup(ip);
+  \blue<1>{var} geo = \brown<1>{require}('geip-lite');
+  \blue<1>{var} loc = geo.lookup(ip);
 
   // country, region, city, ll
-\end{verbatim}
+\end{semiverbatim}
 Uses MaxMind's GeoIP database.  Very fast lookups, IPv4 \& v6
 \end{frame}
 
 \begin{frame}[fragile]{\sn{1.3}geoip-lite's hidden function}
-\begin{verbatim}
-  var geo = require('geip-lite');
+\begin{semiverbatim}
+  \blue<1>{var} geo = \brown<1>{require}('geip-lite');
   geo.cmp(ip1, ip2);
 
   // -1, 0 or 1
-\end{verbatim}
+\end{semiverbatim}
 Used internally to do a binary search on the IP database
 \end{frame}
 
 \begin{frame}[fragile]{\sn{1.4}Date formatting}
-\begin{verbatim}
+\begin{semiverbatim}
   npm install prettydate
 
-  var strftime = require('prettydate').strftime;
+  \blue<1>{var} strftime = \brown<1>{require}('prettydate').strftime;
 
-  var dstr = strftime(new Date, "%c");
-\end{verbatim}
+  \blue<1>{var} dstr = strftime(\blue<1>{new} \green<1>{Date}, "\%c");
+\end{semiverbatim}
 Also accepts a locale as a third parameter.
 \end{frame}
 
 \begin{frame}[fragile]{\sn{1.5}Querystring Parsing}
-\begin{verbatim}
-  var qs = require('querystring');
+\begin{semiverbatim}
+  \blue<1>{var} qs = \brown<1>{require}('querystring');
 
-  qs.parse('name=Larry&name=Moe&name=Curly');
-  // { name: [ 'Larry', 'Moe', 'Curly' ] }
-\end{verbatim}
+  qs.parse('name=Larry\&name=Moe\&name=Curly');
+  // \{ name: [ 'Larry', 'Moe', 'Curly' ] \}
+\end{semiverbatim}
 \end{frame}
 
 \begin{frame}[fragile]{\sn{1.6}Creating Hashes}
-\begin{verbatim}
-  var crypto = require('crypto');
+\begin{semiverbatim}
+  \blue<1>{var} crypto = \brown<1>{require}('crypto');
 
-  var hash = crypto.createHash('sha1');
+  \blue<1>{var} hash = crypto.createHash('sha1');
   hash.update(data);
 
-  var digest = hash.digest('hex');
-\end{verbatim}
+  \blue<1>{var} digest = hash.digest('hex');
+\end{semiverbatim}
 \end{frame}
 
 \begin{frame}[fragile]{\sn{1.6}Creating HMACs}
-\begin{verbatim}
-  var crypto = require('crypto');
+\begin{semiverbatim}
+  \blue<1>{var} crypto = \brown<1>{require}('crypto');
 
-  var hmac = crypto.createHmac('sha1', key);
+  \blue<1>{var} hmac = crypto.createHmac('sha1', key);
   hmac.update(data);
 
-  var digest = hmac.digest('base64');
-\end{verbatim}
+  \blue<1>{var} digest = hmac.digest('base64');
+\end{semiverbatim}
 \end{frame}
 
-\splashslide[What's the time?]{\LARGE It should be \\ 15:05 \\ \small I hope ;) }
+\splashslide[What's the time?]{\LARGE It should be \\ 14:05 \\ \small I hope ;) }
 
 \leadinslide{2}{Statistical Analysis}
 
 \begin{frame}[fragile]{\sn{2.1}faststats}
-\begin{verbatim}
+\begin{semiverbatim}
   npm install fast-stats
 
-  var Stats = require('fast-stats').Stats;
-  var s = new Stats().push(1, 2, 3, 10, 8, 4, 3);
-  console.log(s.amean().toFixed(2));
-\end{verbatim}
+  \blue<1>{var} Stats = \brown<1>{require}('fast-stats').Stats;
+  \blue<1>{var} s = \blue<1>{new} Stats().push(1, 2, 3, 10, 8, 4, 3);
+  \green<1>{console}.log(s.amean().toFixed(2));
+\end{semiverbatim}
 Caveat: I haven't pushed out a new version in a while
 \end{frame}
 
 \begin{frame}[fragile]{\sn{2.2}gauss}
-\begin{verbatim}
+\begin{semiverbatim}
   npm install gauss
 
-  var gauss = require('gauss');
-  var set = new gauss.Vector(5, 1, 3, 2, 21);
-  console.log(set.mean());
-\end{verbatim}
+  \blue<1>{var} gauss = \brown<1>{require}('gauss');
+  \blue<1>{var} set = \blue<1>{new} gauss.Vector(5, 1, 3, 2, 21);
+  \green<1>{console}.log(set.mean());
+\end{semiverbatim}
 \end{frame}
 
 
@@ -303,11 +311,11 @@ Caveat: I haven't pushed out a new version in a while
 \end{frame}
 
 \begin{frame}[fragile]{\sn{2.3}statsd}
-\begin{verbatim}
-var StatsD = require('node-statsd').StatsD
-c = new StatsD('example.org',8125)
-c.timing('node_test.some_service.task.time', 500)
-\end{verbatim}
+\begin{semiverbatim}
+\blue<1>{var} StatsD = \brown<1>{require}('node-statsd').StatsD
+c = \blue<1>{new} StatsD('example.org',8125)
+c.timing('node\_test.some\_service.task.time', 500)
+\end{semiverbatim}
 \end{frame}
 
 \begin{frame}[fragile]{\sn{2.4}cube}
@@ -321,11 +329,19 @@ Disclaimer: I've never used this one before
 \end{itemize}
 \end{frame}
 
-\splashslide[What's the time?]{\LARGE 15:20?}
+\splashslide[What's the time?]{\LARGE 14:20?}
 
 \splashslide[Help me out]{Still trying to figure out the best way to debug Node.JS memory usage. Ideas? Let me know.}
 
 \splashslide{\LARGE Questions?}
+
+\begin{frame}
+\begin{center}
+  \pgfimage[height=.8\paperheight]{joind-in-qr}
+
+  Leave feeback on this talk at \href{https://joind.in/5967}{\blue<1>{joind.in/5967}}
+\end{center}
+\end{frame}
 
 \setbeamertemplate{background}{
   \parbox[c][\paperheight]{\paperwidth}{
@@ -341,6 +357,7 @@ Disclaimer: I've never used this one before
   \item co-founder @ \href{http://www.lognormal.com/}{Log-Normal}
   \item \href{http://bluesmoon.info/}{http://bluesmoon.info/}
   \item \href{http://www.slideshare.net/bluesmoon}{slideshare.net/bluesmoon}
+  \item \href{https://joind.in/5967}{\blue<1>{joind.in/5967}}
   \end{itemize}
 \end{frame}
 \setbeamertemplate{background}{}
