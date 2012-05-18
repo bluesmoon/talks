@@ -12,7 +12,6 @@ body {
 .content {
 	background-color: white;
 	border: solid 3px #27a;
-	padding-left: 15%;
 }
 .column {
 	width: 44%; margin: 3%; float: left;
@@ -39,18 +38,8 @@ tr > td:nth-child(3) {
 }
 @media screen and (max-width: 750px) {
 	body { text-align: left; }
-	tr > *:nth-child(n) {
-		display: block;
-	}
-	tr > td:first-child {
-		border-top: solid 2px black;
-	}
-	tr:nth-child(2n) td {
-		background-color: #ccc;
-	}
-	tr:nth-child(2n+1) td {
-		background-color: #fafafa;
-	}
+	table tr { display: none;}
+	table::after { content: url('Pizza.png'); }
 }
 @media screen and (max-width: 480px) {
 	body { margin: 0; }
