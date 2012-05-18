@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="preso.css">
+</head>
+<body>
+<style>
+body {
+	margin: 5%;
+	text-align: justify;
+	background-color: #024;
+}
+
+.content {
+	background-color: white;
+	border: solid 3px #27a;
+}
+
+.column {
+	width: 44%;
+	margin: 3%;
+	float: left;
+}
+
+@media screen and (max-width: 800px) {
+	body { margin: 1%; }
+}
+@media screen and (max-width: 750px) {
+	body { text-align: left; }
+}
+@media screen and (max-width: 480px) {
+	body { margin: 0; }
+	.column { float: none; width: 90%; }
+}
+</style>
+
+<div class="content">
+<div class="slide">
+<p>
+Enter Responsive Design with Server Side Components<br>-- Luke W
+</p>
+<ul>
+<li>User Agent detection to figure out what device you're talking to</li>
+<li>Modify part of your template, but use sparingly</li>
+<li>Maybe identify based on IP what kind of network the user is on.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
