@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="preso.css">
+</head>
+<body>
+<style>
+body {
+	margin: 5%;
+	text-align: justify;
+	background-color: #024;
+}
+
+.content {
+	background-color: white;
+	border: solid 3px #27a;
+}
+
+.column {
+	width: 44%;
+	margin: 3%;
+	float: left;
+}
+
+@media screen and (max-width: 800px) {
+	body { margin: 1%; }
+}
+@media screen and (max-width: 750px) {
+	body { text-align: left; }
+}
+@media screen and (max-width: 480px) {
+	body { margin: 0; }
+	.column { float: none; width: 90%; }
+}
+</style>
+
+<div class="content">
+<div class="column col1">
+<h2>Device Widths</h2>
+<ul>
+<li>iPad: 1024 &amp; 768</li>
+<li>iPhone/iPod: 480 &amp; 320</li>
+<li>Retina displays double that</li>
+<li>Android devices are sometimes the same and sometimes different</li>
+<li>My phone is 160px wide</li>
+<li>The big graph dashboard screen is way bigger</li>
+</ul>
+</div>
+<div class="column col2">
+<h2>What can you target</h2>
+<ul>
+<li>min/max-width / device-width</li>
+<li>orientation (but don't bother)</li>
+<li>pixel density, aspect-ratio</li>
+<li>media type (print, screen, projection, braille, tv, etc.)</li>
+<li>and more...</li>
+</ul>
+</div>
+<br style="clear:left;">
+<p>
+Best to always look at specific widths, since pages scroll vertically.  Test.
+</p>
+</div>
+</body>
+</html>
