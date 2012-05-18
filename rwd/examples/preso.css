@@ -26,4 +26,9 @@ div.slide p { text-align: center; font-size: 1.2em; margin-bottom: 4%; }
 
 body:after {
 	content: url('toc.html');
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	font-size: 8pt;
+	font-family: sans-serif;
 }
