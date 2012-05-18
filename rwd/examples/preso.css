@@ -5,7 +5,7 @@ style {
 	font-size: 6pt;
 	position: fixed;
 	bottom: 0px;
-	right: 2%;
+	left: 2%;
 	background-color: rgba(0,0,0,0.8);
 	color: #fafafa;
 	padding: 15px;
@@ -15,7 +15,7 @@ style {
 
 style:hover {
 	font-size: 18pt;
-	left: 5%;
+	right: 5%;
 	top: 5%;
 	padding: 1% 5%;
 	background-color: rgba(0,0,0,0.9);
