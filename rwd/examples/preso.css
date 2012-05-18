@@ -21,3 +21,9 @@ style:hover {
 	background-color: rgba(0,0,0,0.9);
 	overflow: auto;
 }
+div.slide { margin: 4%; font-size: 1.5em; clear: both; line-height: 2.4em; }
+div.slide p { text-align: center; font-size: 1.2em; margin-bottom: 4%; }
+
+body:after {
+	content: url('toc.html');
+}
