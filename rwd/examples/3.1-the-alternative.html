@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="preso.css">
+</head>
+<body>
+<style>
+body {
+	margin: 5%;
+	text-align: justify;
+	background-color: #024;
+}
+
+.content {
+	background-color: white;
+	border: solid 3px #27a;
+}
+
+.column {
+	width: 44%;
+	margin: 3%;
+	float: left;
+}
+
+@media screen and (max-width: 800px) {
+	body { margin: 1%; }
+}
+@media screen and (max-width: 750px) {
+	body { text-align: left; }
+}
+@media screen and (max-width: 480px) {
+	body { margin: 0; }
+	.column { float: none; width: 90%; }
+}
+</style>
+
+<div class="content">
+<br style="clear:left;">
+<p style="text-align:center; font-size: 2em; margin-bottom: 4%;">
+The alternative is to make a separate page for every device
+</p>
+</div>
+</body>
+</html>
