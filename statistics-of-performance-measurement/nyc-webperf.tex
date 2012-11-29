@@ -514,6 +514,41 @@ We have other margins of error
 \end{frame}
 \setbeamertemplate{background}{}
 
+\leadinslide{2-3}{Smoothing}
+
+\splashslide{How does your site compare with yesterday, last week and last month?}
+
+\splashslide{Are certain spikes normal or anomalous?}
+
+\begin{frame}{Simple Moving Average}
+  \begin{center}
+  \Large \textrm{\textit{Each point is the average of the last k points}}
+
+  \vspace{18pt}
+
+  \LARGE
+  \( s_t = \frac{1}{k} \Sigma^{k-1}_{n=0}x_{t-n} \)
+
+  \vspace{12pt}
+
+  \(     = s_{t-1} + \frac{x_t - x_{t-k}}{k} \)
+
+  \vspace{18pt}
+  \Large \textrm{\textit{Average lags behind any trend}}
+  \end{center}
+\end{frame}
+
+\splashslide{\href{http://en.wikipedia.org/wiki/Exponential\_smoothing\#Double\_exponential\_smoothing}{Holt-Winters Double Exponential Smoothing \\ \tiny wikipedia.org/wiki/Exponential\_smoothing\#Double\_exponential\_smoothing}}
+
+\begin{frame}{Holt-Winters Smoothing in Graphite}
+  \pgfimage[width=0.85\paperwidth]{lonely-planet-holt-winters}
+  \vspace{12pt}
+  Thanks to the smart folks at Lonely Planet for this chart: \\
+  \href{http://velocityconf.com/velocityeu2012/public/schedule/detail/26634}{velocityconf.com/velocityeu2012/public/schedule/detail/26634}
+\end{frame}
+
+\leadinslide{--}{OK Stop}
+
 \splashslide[Further Reading]{\href{http://www.lognormal.com/blog/2012/08/13/analysing-performance-data/}{lognormal.com/blog/2012/08/13/analysing-performance-data/}}
 
 \begin{frame}{Summary}
@@ -523,6 +558,7 @@ We have other margins of error
   \item Decide based on your data whether to use mode, median or one of the means
   \item Figure out whether your data is Normal, Log-Normal or something else
   \item Filter out anomalous outliers
+  \item Use Holt-Winters smoothing to scan for anomalous behaviour
   \end{itemize}
 \end{frame}
 
