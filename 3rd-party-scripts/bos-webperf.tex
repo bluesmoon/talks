@@ -1,0 +1,474 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Copenhagen}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{f2elblue}{RGB}{97,97,97}%{49,72,87}
+\definecolor{dark-red}{RGB}{128,0,0}
+\definecolor{dark-green}{RGB}{40,150,21}
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{med-gray}{gray}{0.75}
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{author in head/foot}{bg=black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape,size={\fontsize{14}{12}}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{items}[circle]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertdate%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.51\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}}%
+    \begin{beamercolorbox}[wd=.04\paperwidth,ht=2.9ex,dp=1.125ex,center,leftskip=3pt plus1fill,rightskip=4pt]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertframenumber%
+    \end{beamercolorbox}%
+  \vskip0pt%
+}%
+
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\usepackage{mathtools}
+
+\author{Philip Tellis / \texttt{ptellis@soasta.com}}
+
+\title{Improving 3rd Party Script Performance with <IFRAME>s}
+
+\date{\href{http://www.meetup.com/Web-Performance-Boston/events/143640602/}{Boston Web Perf} / 2013-10-22}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+%%%% Begin defining new commands for this template
+
+% Serial number in slide title
+\newcommand{\sn}[1]{\textrm{\textit{\Huge{\raisebox{-3pt}[4pt][8pt]{\textcolor{f2elblue}{#1}}}}}\hspace{4pt}}
+% large Centered Italic Roman text within a slide (building block for the following)
+\newcommand{\innersplash}[1]{
+  \begin{center}
+    \Large \textrm{\textit{ #1 } }
+  \end{center}
+}
+% Slide that has just one large centered thing to say
+\newcommand{\splashslide}[2][{}]{
+  \begin{frame}
+  \frametitle{#1}
+  \innersplash{#2}
+  \end{frame}
+}
+% Leadin slide at the start of an exploit
+\newcommand{\leadinslide}[2]{
+  \splashslide{
+     {\fontsize{150}{20}\selectfont{\raisebox{0pt}[90pt][0pt]{\textcolor{light-gray}{#1}}}} \\ \huge \textcolor{gray}{#2}
+  }
+}
+% Suggested fix at the end of an exploit
+\newcommand{\suggestedfix}[2]{
+  \splashslide[\sn{#1} Suggested fix]{{#2}}
+}
+% Syntax highlighting
+\def\gray<#1>#2{\textcolor<#1>{gray}{\textbf<#1>{#2}}}
+\def\brown<#1>#2{\textcolor<#1>{brown}{\textbf<#1>{#2}}}
+\def\green<#1>#2{\textcolor<#1>{dark-green}{\textbf<#1>{#2}}}
+\def\blue<#1>#2{\textcolor<#1>{blue}{\textbf<#1>{#2}}}
+\def\purple<#1>#2{\textcolor<#1>{purple}{\textbf<#1>{#2}}}
+\def\red<#1>#2{\textcolor<#1>{red}{\textbf<#1>{#2}}}
+
+\newcommand{\textsubscript}[1]{\ensuremath{_{\textrm{#1}}}}
+%%%% End of new commands
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item \href{http://www.soasta.com/}{SOASTA}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\leadinslide{1}{Loading JavaScript}
+
+\splashslide{Do you use JavaScript?}
+
+\splashslide{\texttt{<\green<1>{script} src="..."></\green<1>{script}>}}
+% The traditional way to load scripts onto a page
+% Do this if you control everything about this script and your page completely depends on it for functionality
+
+\begin{frame}{<script src>}
+\begin{itemize}
+  \item Works well with browser lookahead
+  \item But blocks everything
+  \item Yes, you can use async or defer
+\end{itemize}
+\end{frame}
+
+% http://www.flickr.com/photos/deapeajay/3913282801/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{block}
+  }
+}
+\begin{frame}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{\texttt{document.createElement("script");}}
+
+\begin{frame}{dynamic script node}
+\begin{enumerate}
+  \item Loads in parallel with the rest of the page
+  \item Still blocks the \texttt{onload} event
+  \item No telling when it will load up
+\end{enumerate}
+\end{frame}
+
+\splashslide{No telling when!}
+
+\splashslide{The Method Queue Pattern}
+
+\begin{frame}[fragile]{MQP}
+\begin{semiverbatim}
+\green<1>{var} \_mq = \_mq || [];
+
+\green<1>{var} s = \blue<1>{document}.createElement(\brown<1>{"script"}),
+    t = \blue<1>{document}.getElementsByTagName(\brown<1>{"script"})[0];
+
+s.src=\brown<1>{"http://some.site.com/script.js"};
+t.parentNode.insertBefore(s, t);
+
+\gray<1>{// script.js will be available some time in the}
+\gray<1>{// future, but we can call its methods}
+
+\_mq.push([\brown<1>{"method1"}, list, of, params]);
+\_mq.push([\brown<1>{"method2"}, other, params]);
+\end{semiverbatim}
+\end{frame}
+
+\begin{frame}[fragile]{MQP}
+\begin{semiverbatim}
+\green<1>{var} self = \blue<1>{this};
+\_mq = \_mq || [];
+\green<1>{while}(\_mq.length) \{
+    \gray<1>{// remove the first item from the queue}
+    \green<1>{var} params = \_mq.shift();
+    \gray<1>{// remove the method from the first item}
+    \green<1>{var} method = params.shift();
+
+    self[method].apply(self, params);
+\}
+
+\_mq.push = function(params) \{
+    \gray<1>{// remove the method from the first item}
+    \green<1>{var} method = params.shift();
+
+    self[method].apply(self, params);
+\}
+\end{semiverbatim}
+\end{frame}
+
+\splashslide{That takes care of \#3}
+
+% http://www.flickr.com/photos/memestate/54408373/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{stop-hammertime}
+  }
+}
+\begin{frame}{But we still block \texttt{onload}}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{IFRAMEs to the rescue}
+
+\splashslide{But IFRAMEs block onload until the subpage has loaded}
+
+% http://www.flickr.com/photos/hynkle/4535749633/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{blank-page}
+  }
+}
+\begin{frame}{(This sub-page intentionally left blank)}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}[fragile]{So here's the code -- Section I}
+\begin{semiverbatim}
+\gray<1>{// Section 1 -- Create the iframe}
+\green<1>{var} dom,doc,where,
+    iframe = \blue<1>{document}.createElement(\brown<1>{"iframe"});
+
+iframe.src = \brown<1>{"javascript:false"};
+iframe.title = \brown<1>{""}; iframe.role = \brown<1>{"presentation"};
+(iframe.frameElement || iframe).style.cssText =
+    \brown<1>{"width: 0; height: 0; border: 0"};
+
+where = \blue<1>{document}.getElementsByTagName(\brown<1>{"script"});
+where = where[where.length - 1];
+where.parentNode.insertBefore(iframe, where);
+\end{semiverbatim}
+\begin{center} \textrm{\textit{\small (Note that we set \texttt{iframe.title} and \texttt{iframe.role} to avoid hurting screenreaders)}} \end{center}
+\end{frame}
+
+
+\splashslide{\texttt{javascript:false} is key to solving most cross-domain issues \\ \vspace{2 cm} \tiny \texttt{about:blank} is problematic on IE6 with SSL}
+
+\splashslide{Except if the page developer sets \texttt{document.domain}}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{allspaw-wtf}
+  }
+}
+\begin{frame}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\begin{frame}[fragile]{The code -- Section II}
+\begin{semiverbatim}
+\gray<1>{// Section 2 -- handle document.domain}
+\green<1>{try} \{
+    \gray<1>{// sec exception if document.domain was set}
+    doc = iframe.contentWindow.document;
+\}
+\green<1>{catch}(e) \{
+    dom = \blue<1>{document}.domain;
+    iframe.src = 
+        \brown<1>{"javascript:\green<1>{var} d=\blue<1>{document}.open();"} +
+        \brown<1>{"d.domain='"} + dom + \brown<1>{"';"} + 
+        \brown<1>{"\blue<1>{void}(0);"};
+    doc = iframe.contentWindow.document;
+\}
+\end{semiverbatim}
+\end{frame}
+
+\splashslide{Only set \texttt{document.domain} if it has already been set!}
+
+\begin{frame}[fragile]{The code -- Section III}
+\begin{semiverbatim}
+\gray<1>{// Section 3 -- tell the iframe to load our script}
+
+doc.open().\_l = function() \{
+    \green<1>{var} js = \blue<1>{this}.createElement(\brown<1>{"script"});
+    \green<1>{if}(dom)
+        \blue<1>{this}.domain = dom;
+    js.id = \brown<1>{"js-iframe-async"};
+    js.src = \textbf{script\_url};
+    \blue<1>{this}.body.appendChild(js);
+\};
+
+doc.write(\brown<1>{'<body onload="document.\_l();">'});
+doc.close();
+\end{semiverbatim}
+\end{frame}
+
+\splashslide{Notice that we've set \texttt{document.domain} again}
+
+\splashslide{This doesn't work if \texttt{document.domain} is set after our JavaScript loads}
+
+\splashslide{Inside this function, \blue<1>{\texttt{document}} is the parent document and \blue<1>{\texttt{this}} is the iframe!}
+
+\splashslide{Also, global variables inside \texttt{\_l()} are global to the parent window}
+
+\begin{frame}[fragile]{Modify the MQP for IFRAME support}
+\begin{semiverbatim}
+GLOBAL = \blue<1>{window};
+
+\gray<1>{// Running in an iframe, and our script node's
+// id is js-iframe-async}
+\green<1>{if}(\blue<1>{window}.parent != \blue<1>{window} &&
+   \blue<1>{document}.getElementById(\brown<1>{"js-iframe-async"})) \{
+
+    GLOBAL = \blue<1>{window}.parent;
+\}
+
+GLOBAL.\_mq = GLOBAL.\_mq || [];
+\_mq = GLOBAL.\_mq;
+\end{semiverbatim}
+\end{frame}
+
+\splashslide{\texttt{GLOBAL} refers to the parent window and \texttt{window} refers to the iframe}
+
+\splashslide{So attach events to \texttt{GLOBAL}}
+
+\begin{frame}{Summary (part 1)}
+\begin{itemize}
+  \item Create an iframe with src set to \texttt{javascript:false}
+  \item Set \texttt{\blue<1>{document}.domain} if needed (twice)
+  \item Write dynamic script node into iframe on iframe's \texttt{onload} event
+  \item Alias parent window into iframe
+\end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=\paperheight]{klein-happy}
+  }
+}
+\begin{frame}{Result: Happy Customers}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Read all about it}
+\begin{itemize}
+  \item \href{http://www.lognormal.com/blog/2012/12/12/the-script-loader-pattern/}{http://lognormal.com/blog/2012/12/12/the-script-loader-pattern/}
+  \item \href{https://www.w3.org/Bugs/Public/show_bug.cgi?id=21074}{https://www.w3.org/Bugs/Public/show\_bug.cgi?id=21074}
+\end{itemize}
+\end{frame}
+
+\leadinslide{2}{Cache Behaviour}
+
+\splashslide{We have boomerang set to be cached for 7 days \\ \small \texttt{Cache-Control: max-age=604800, stale-while-revalidate=60, stale-if-error=3600}}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{boomerang-caching}
+  }
+}
+\begin{frame}{how soon does a new version get to everyone?}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{boomerang-cache-by-hour-weekend}
+  }
+}
+\begin{frame}{hourly on weekends}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{boomerang-cache-by-hour-weekday}
+  }
+}
+\begin{frame}{hourly on weekdays}
+\end{frame}
+
+\setbeamertemplate{background}{}
+
+\splashslide{This is a problem if we have emergency fixes}
+
+\splashslide{Cache busting with a far-future expires header}
+
+\splashslide{Some more code...}
+
+\splashslide{\texttt{\blue<1>{location}.reload(\brown<1>{true});}}
+
+\begin{frame}[fragile]{More completely}
+\begin{semiverbatim}
+<script src="SCRIPT.js"></script>
+<script>
+\green<1>{var} reqd\_ver = \blue<1>{location}.search;
+
+\blue<1>{window}.onload = \green<1>{function}() \{
+    \green<1>{var} ver = SCRIPT.version;
+    \green<1>{if} (ver < reqd\_ver) \{ \gray<1>{// or use semver}
+        \blue<1>{location}.reload(\brown<1>{true});
+    \}
+\};
+</script>
+\end{semiverbatim}
+
+The condition protects us from an infinite loop with bad proxies and Firefox 3.5.11
+
+\small Note: Don't use \texttt{\blue<1>{location}.hash} -- it messes with history on IE8.
+\end{frame}
+
+\splashslide{Add this in an iframe after onload using \\ \small \texttt{//url.to/reloader.html?1.2.3}}
+
+\splashslide{\texttt{reloader.html} can be cached forever}
+
+\begin{frame}{Other caching quirks}
+  \begin{itemize}
+  \item Some proxies will ignore all cache control headers and never clear their cache
+  \item Some user agents have broken clocks, so expiry dates either never occur or always occur
+  \item Some versions of Chrome have a cache corruption bug so they might start up with an empty cache
+  \item Cache-control headers are honoured by pre-browsing
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{old-boomerang-cache}
+  }
+}
+\begin{frame}{Old but active versions of boomerang}
+\end{frame}
+
+\setbeamertemplate{background}{}
+
+
+\splashslide[And the blog post...]{\href{http://www.lognormal.com/blog/2012/06/17/more-on-updating-boomerang/}{http://www.lognormal.com/blog/2012/06/17/more-on-updating-boomerang/}}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}{Thank You -- Questions?}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item \href{http://www.soasta.com/}{www.SOASTA.com}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \item \href{http://www.lognormal.com/blog/}{LogNormal Blog}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Image Credits}
+\begin{itemize}
+  \item Neutraface Blocks! by David Joyce \\ \small \href{http://www.flickr.com/photos/deapeajay/3913282801/}{http://www.flickr.com/photos/deapeajay/3913282801/}
+  \item Stop Hammertime by Rich Anderson \\ \small \href{http://www.flickr.com/photos/memestate/54408373/}{http://www.flickr.com/photos/memestate/54408373/}
+  \item This Title Intentionally Left Blank by Jonathan Hinkle \\ \small \href{http://www.flickr.com/photos/hynkle/4535749633/}{http://www.flickr.com/photos/hynkle/4535749633/}
+  \item All other images taken at Velocity 2013 by Philip Tellis and shared under a Creative Commons Attribution-Share Alike License.
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

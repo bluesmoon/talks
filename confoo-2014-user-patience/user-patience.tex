@@ -1,0 +1,342 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Copenhagen}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{f2elblue}{RGB}{97,97,97}%{49,72,87}
+\definecolor{dark-red}{RGB}{128,0,0}
+\definecolor{dark-green}{RGB}{40,150,21}
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{med-gray}{gray}{0.75}
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{author in head/foot}{bg=black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape,size={\fontsize{14}{12}}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{items}[circle]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertdate%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.51\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}}%
+    \begin{beamercolorbox}[wd=.04\paperwidth,ht=2.9ex,dp=1.125ex,center,leftskip=3pt plus1fill,rightskip=4pt]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertframenumber%
+    \end{beamercolorbox}%
+  \vskip0pt%
+}%
+
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\usepackage{mathtools}
+
+\author{Philip Tellis / \texttt{ptellis@soasta.com}}
+
+\title{How patient are your users?}
+
+\date{\href{http://confoo.ca/en/2014/session/do-you-know-how-patient-your-users-are}{Confoo 2014} / 2014-02-26}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+%%%% Begin defining new commands for this template
+
+% Serial number in slide title
+\newcommand{\sn}[1]{\textrm{\textit{\Huge{\raisebox{-3pt}[4pt][8pt]{\textcolor{f2elblue}{#1}}}}}\hspace{4pt}}
+% large Centered Italic Roman text within a slide (building block for the following)
+\newcommand{\innersplash}[1]{
+  \begin{center}
+    \Large \textrm{\textit{ #1 } }
+  \end{center}
+}
+% Slide that has just one large centered thing to say
+\newcommand{\splashslide}[2][{}]{
+  \begin{frame}
+  \frametitle{#1}
+  \innersplash{#2}
+  \end{frame}
+}
+% Leadin slide at the start of an exploit
+\newcommand{\leadinslide}[2]{
+  \splashslide{
+     {\fontsize{150}{20}\selectfont{\raisebox{0pt}[90pt][0pt]{\textcolor{light-gray}{#1}}}} \\ \huge \textcolor{gray}{#2}
+  }
+}
+% Suggested fix at the end of an exploit
+\newcommand{\suggestedfix}[2]{
+  \splashslide[\sn{#1} Suggested fix]{{#2}}
+}
+%Splashslide with Background Image
+\newcommand{\splashimage}[2]{
+  \setbeamertemplate{background}{
+    \parbox[c][\paperheight]{\paperwidth}{
+      \vfill \hfill \pgfimage[width=\paperwidth]{#1}
+    }
+  }
+  \begin{frame}{#2}
+  \end{frame}
+  \setbeamertemplate{background}{}
+}
+
+\newcommand{\splashimagelink}[3]{
+  \setbeamertemplate{background}{
+    \parbox[c][\paperheight]{\paperwidth}{
+      \vfill \hfill \pgfimage[height=\paperheight]{#1}
+    }
+  }
+  \begin{frame}{#2}
+    \begin{block}\innersplash{#3}\end{block} 
+  \end{frame}
+  \setbeamertemplate{background}{}
+}
+
+
+% Syntax highlighting
+\def\gray<#1>#2{\textcolor<#1>{gray}{\textbf<#1>{#2}}}
+\def\brown<#1>#2{\textcolor<#1>{brown}{\textbf<#1>{#2}}}
+\def\green<#1>#2{\textcolor<#1>{dark-green}{\textbf<#1>{#2}}}
+\def\blue<#1>#2{\textcolor<#1>{blue}{\textbf<#1>{#2}}}
+\def\purple<#1>#2{\textcolor<#1>{purple}{\textbf<#1>{#2}}}
+\def\red<#1>#2{\textcolor<#1>{red}{\textbf<#1>{#2}}}
+
+\newcommand{\textsubscript}[1]{\ensuremath{_{\textrm{#1}}}}
+%%%% End of new commands
+
+
+
+
+\begin{document}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{ptellis@soasta.com}
+  \item \href{http://www.soasta.com/}{SOASTA}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\splashslide{How long would you mind waiting?}
+
+\splashslide{No internet in my room last night}
+
+\begin{frame}
+\begin{itemize}
+\item 11:30pm -- called tech support
+\item 11:50pm -- got fed up of refreshing every 5 minutes
+\end{itemize}
+\end{frame}
+
+\splashslide{\texttt{while true; do \\curl -v www.google.com \&\& \\say "Connected" \&\& break; \\sleep 60; \\done}}
+
+% http://www.flickr.com/photos/johnragai/9958782434/
+\splashimage{9958782434-c6975db45c}{Does what you're waiting for affect your answer?}
+% http://www.flickr.com/photos/soldiersmediacenter/6032825082/
+\splashimage{6032825082-ed9aa4010e}{Does what you're waiting for affect your answer?}
+% http://www.flickr.com/photos/quinnanya/2657709413/
+\splashimage{2657709413-31f919f322}{What if you're paying for it?}
+% http://www.flickr.com/photos/bitchcakes/4573033716/
+\splashimage{4573033716-9ab8ee59b6}{Would you wait longer for a more expensive/exclusive item?}
+
+% http://streetpong.info/
+\splashimage{street-pong}{Can the whole waiting process be made more interesting?}
+
+\splashslide{How do you ask your users these questions and get honest answers?}
+
+\splashimage{warehouse}{Try some RUM}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \begin{center}
+    \pgfimage[height=.92\paperheight]{Jean-Antoine-Nollet}
+    \end{center}
+  }
+}
+\begin{frame}{Jean-Antoine Nollet -- 1746}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{260 years later, we packaged his methods into a JavaScript library and started measuring real users \\ boomerang.js}
+
+% http://www.flickr.com/photos/ifindkarma/12728433773/
+\splashimage{12728433773-49bd31feff}{So let's look at a very important recent event in world politics}
+
+% https://twitter.com/Molson_Canadian/status/432553007285145600/photo/1
+\splashimage{beer-fridge}{It's been good for Canada}
+
+% Canada v/s US Women's Hockey finals
+\setbeamertemplate{background}{
+  \parbox[c][0.93\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[width=\paperwidth]{can-usa}
+  }
+}
+\begin{frame}{And there was this...}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{This game went into overtime \\ (did anyone mind?)}
+
+\splashslide{which web users had a better experience?}
+
+\splashslide{Well, overall, Canada probably, but what does the data say?}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \textit{\textrm{Canada: 4.7-5.5-3.9s}} \\
+    \hfill \pgfimage[width=\paperwidth]{ca-usage} \\
+    \textit{\textrm{USA: 3.9-4.1-3.7s}} \\
+    \hfill \pgfimage[width=\paperwidth]{us-usage}
+  }
+}
+\begin{frame}{US load time v/s CA load time for different periods}
+\end{frame}
+\setbeamertemplate{background}{}
+
+% US bounce rate v/s CA bounce rate for different periods of the game
+% US LD25 v/s CA LD25 for different periods of the game
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \textit{\textrm{Canada: low tolerance for errors}} \\
+    \hfill \pgfimage[width=\paperwidth]{ca-br-2100-2140} \\
+    \textit{\textrm{USA: 50\% tolerance for errors}} \\
+    \hfill \pgfimage[width=\paperwidth]{us-br-2100-2140}
+  }
+}
+\begin{frame}{Score: 0-0}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \textit{\textrm{Canada: LD25 == 4.5s}} \\
+    \hfill \pgfimage[width=\paperwidth]{ca-br-2140-2215} \\
+    \textit{\textrm{USA: LD25 == 5.7s}} \\
+    \hfill \pgfimage[width=\paperwidth]{us-br-2140-2215}
+  }
+}
+\begin{frame}{USA scores twice -- 0-2}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \textit{\textrm{Canada: LD25 == 5.5s}} \\
+    \hfill \pgfimage[width=\paperwidth]{ca-br-2225-2250} \\
+    \textit{\textrm{USA: LD25 == 4.7s}} \\
+    \hfill \pgfimage[width=\paperwidth]{us-br-2225-2250}
+  }
+}
+\begin{frame}{Canada comes back -- 2-2}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \textit{\textrm{Canada: LD25 == 5s}} \\
+    \hfill \pgfimage[width=\paperwidth]{ca-br-2250-2315} \\
+    \textit{\textrm{USA: LD25 == 3.5s, 84\% likely to leave on error}} \\
+    \hfill \pgfimage[width=\paperwidth]{us-br-2250-2315}
+  }
+}
+\begin{frame}{Sudden Death -- 3-2}
+\end{frame}
+
+\setbeamertemplate{background}{}
+
+
+\splashslide{\href{http://www.youtube.com/watch?v=WNkK0EX4DFE}{Real User Experiences \\ \small{youtube.com/watch?v=WNkK0EX4DFE}}}
+
+\setbeamertemplate{background}{
+  \parbox[c][0.8\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{bounce-rate-vs-sessions}
+  }
+}
+\begin{frame}{what a user is doing affects how patient they are}
+\parbox[l][0.7\paperheight]{\paperwidth}{
+  \vfill
+  \textrm{\textit{One of these is an e-commerce site, the other is a gaming site}}
+}
+\end{frame}
+
+\splashimage{bounces-by-geo}{We've also found that patience is a fairly cultural thing}
+
+\splashimage{bounces-by-ua}{Is choice of browser part of modern culture?}
+
+\splashimage{bounce-rate-by-day}{Weekdays v/s Weekends}
+
+\splashslide{Happy users are more patient, so keep your users engaged while they wait}
+
+\splashslide{For similar data for your own site, sign up for \blue<1>{\texttt{mPulse}} at \\ \href{http://www.soasta.com/free}{http://www.soasta.com/free} \\ or get in touch}
+
+\splashslide{Thank You! \\ Questions?}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item \href{http://www.soasta.com/}{www.SOASTA.com}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \item \href{http://www.lognormal.com/blog/}{LogNormal Blog}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Image Credits}
+\begin{itemize}
+  \item Waiting {\tiny \href{http://www.flickr.com/photos/johnragai/9958782434/}{http://www.flickr.com/photos/johnragai/9958782434/}}
+  \item Waiting for Dad {\tiny \href{http://www.flickr.com/photos/soldiersmediacenter/6032825082/}{http://www.flickr.com/photos/soldiersmediacenter/6032825082/}}
+  \item Soggy in front of the Apple Store {\tiny \href{http://www.flickr.com/photos/quinnanya/2657709413/}{http://www.flickr.com/photos/quinnanya/2657709413/}}
+  \item Cyclists wait in line @ Starbucks for the bathroom {\tiny \href{http://www.flickr.com/photos/bitchcakes/4573033716/}{http://www.flickr.com/photos/bitchcakes/4573033716/}}
+  \item Streetpong {\tiny \href{http://streetpong.info/}{http://streetpong.info/}}
+  \item RUM Warehouse {\tiny \href{http://www.flickr.com/photos/razmataz/5000536661/}{http://www.flickr.com/photos/razmataz/5000536661/}}
+  \item Jean-Antoine Nollet {\tiny \href{http://en.wikipedia.org/wiki/Jean-Antoine_Nollet}{http://en.wikipedia.org/wiki/Jean-Antoine\_Nollet}}
+  \item Russia Olympic Rings closing ceremonies Sochi 2014 {\tiny \href{http://www.flickr.com/photos/ifindkarma/12728433773/}{http://www.flickr.com/photos/ifindkarma/12728433773/}}
+  \item Beer Fridge {\tiny \href{https://twitter.com/Molson_Canadian/status/432553007285145600/photo/1}{https://twitter.com/Molson\_Canadian/status/432553007285145600/photo/1}}
+  \item Canada-USA {\tiny \href{http://www.sochi2014.com/en/ice-hockey-women-s-gold-medal-game-01}{http://www.sochi2014.com/en/ice-hockey-women-s-gold-medal-game-01}}
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

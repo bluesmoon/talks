@@ -1,0 +1,311 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Copenhagen}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{f2elblue}{RGB}{97,97,97}%{49,72,87}
+\definecolor{dark-red}{RGB}{128,0,0}
+\definecolor{dark-green}{RGB}{40,150,21}
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{med-gray}{gray}{0.75}
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{author in head/foot}{bg=black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape,size={\fontsize{14}{12}}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{items}[circle]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertdate%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.51\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}}%
+    \begin{beamercolorbox}[wd=.04\paperwidth,ht=2.9ex,dp=1.125ex,center,leftskip=3pt plus1fill,rightskip=4pt]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertframenumber%
+    \end{beamercolorbox}%
+  \vskip0pt%
+}%
+
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\usepackage{mathtools}
+
+\author{Philip Tellis / \texttt{ptellis@soasta.com}}
+
+\title{FE Performance: Beginner to Expert to Crazy Person}
+
+\date{\href{http://www.meetup.com/Web-Performance-Boston/events/175333442/}{Boston WebPerf Meetup} / 2014-04-22}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+%%%% Begin defining new commands for this template
+
+% Serial number in slide title
+\newcommand{\sn}[1]{\textrm{\textit{\Huge{\raisebox{-3pt}[4pt][8pt]{\textcolor{f2elblue}{#1}}}}}\hspace{4pt}}
+
+% large Centered Italic Roman text within a slide (building block for the following)
+\newcommand{\innersplash}[1]{
+  \begin{center}
+    \Large \textrm{\textit{ #1 } }
+  \end{center}
+}
+
+% Slide that has just one large centered thing to say
+\newcommand{\splashslide}[2][{}]{
+  \begin{frame}
+  \frametitle{#1}
+  \innersplash{#2}
+  \end{frame}
+}
+
+% Leadin slide at the start of an exploit
+\newcommand{\leadinslide}[2]{
+  \splashslide{
+     {\fontsize{150}{20}\selectfont{\raisebox{0pt}[90pt][0pt]{\textcolor{light-gray}{#1}}}} \\ \huge \textcolor{gray}{#2}
+  }
+}
+
+% Suggested fix at the end of an exploit
+\newcommand{\suggestedfix}[2]{
+  \splashslide[\sn{#1} Suggested fix]{{#2}}
+}
+
+%Splashslide with Background Image
+\newcommand{\splashimage}[4][1]{
+  \setbeamertemplate{background}{
+    \parbox[c][{#1}\paperheight]{\paperwidth}{
+      \vfill \hfill \pgfimage[width=\paperwidth]{#2}
+    }
+  }
+  \begin{frame}{#3}
+    \parbox[r][0.75\paperheight]{0.9\paperwidth}{
+      \vfill {#4}
+    }
+  \end{frame}
+  \setbeamertemplate{background}{}
+}
+
+%Splashslide with Vertical Background Image
+\newcommand{\splashimagev}[4][1]{
+  \setbeamertemplate{background}{
+    \parbox[c][0.95\paperheight]{{#1}\paperwidth}{
+      \vfill \hfill \pgfimage[height=0.86\paperheight]{#2}
+    }
+  }
+  \begin{frame}{#3}
+    \parbox[r][0.75\paperheight]{0.9\paperwidth}{
+      \vfill {#4}
+    }
+  \end{frame}
+  \setbeamertemplate{background}{}
+}
+
+% Syntax highlighting
+\def\gray<#1>#2{\textcolor<#1>{gray}{\textbf<#1>{#2}}}
+\def\brown<#1>#2{\textcolor<#1>{brown}{\textbf<#1>{#2}}}
+\def\green<#1>#2{\textcolor<#1>{dark-green}{\textbf<#1>{#2}}}
+\def\blue<#1>#2{\textcolor<#1>{blue}{\textbf<#1>{#2}}}
+\def\purple<#1>#2{\textcolor<#1>{purple}{\textbf<#1>{#2}}}
+\def\red<#1>#2{\textcolor<#1>{red}{\textbf<#1>{#2}}}
+
+\newcommand{\textsubscript}[1]{\ensuremath{_{\textrm{#1}}}}
+%%%% End of new commands
+
+
+
+
+\begin{document}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{ptellis@soasta.com}
+  \item \href{http://www.soasta.com/}{SOASTA}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\splashslide{Get the most benefit with the least effort}
+
+\leadinslide{0}{Beginning Web Performance}
+
+\splashslide{\LARGE Start with a really slow site}
+
+\splashimage[0.95]{meetup-wpt}{\sn{0.1} Start Measuring}
+
+\splashimage[0.75]{wpt-mpulse}{Or use RUM for real user data (boomerang/mPulse)}
+
+% http://www.slideshare.net/billwscott/improving-netflix-performance-experience
+\splashimage[0.7]{netflix-fs8}{\sn{0.2} enable gzip}{\href{http://www.slideshare.net/billwscott/improving-netflix-performance-experience}{\small http://slideshare.net/billwscott/improving-netflix-performance-experience}}
+
+\splashslide[You can pre-gzip]{\texttt{gzip\_static} in nginx}
+
+\splashimage[0.87]{image-optim}{\sn{0.3} ImageOptim}
+
+\splashslide[\sn{0.4} Cache]{Cache-control: public, max-age=31415926 \\ \vfill \href{http://www.mnot.net/cache_docs/}{\small http://www.mnot.net/cache\_docs/}}
+
+% http://www.flickr.com/photos/24609729@N00/3353226142/
+\splashimage[0.96]{3353226142-4f79362c2d}{Yes, that was 10 million pies}
+
+\splashslide[\sn{0} Congratulations]{You've just been promoted}
+
+\leadinslide{1}{What the Experts Do}
+
+\splashslide[\sn{1.1} CDN]{Serve your root domain through a CDN}
+
+\splashslide[\sn{1.1} CDN]{And make sure your CSS is on the same domain \\ \vfill \href{http://www.jonathanklein.net/2014/02/revisiting-cookieless-domain.html}{\small http://www.jonathanklein.net/2014/02/revisiting-cookieless-domain.html}}
+
+\splashslide[\sn{1.2} Split JavaScript]{"critical": in the HEAD, \\ "enhancements": loaded async}
+
+\splashimage[0.8]{meetup-audits}{\sn{1.3} Audit your CSS}{\textrm{\textit{Chrome WebDev tools}}}
+
+\splashimage[0.7]{meetup-wpt-waterfall}{\sn{1.4} Parallelise downloads}{\textrm{\textit{You can have higher bandwidth, you cannot have lower latency.}}}
+
+\splashslide[\sn{1.5} Flush Early and Often]{Get bytes to the client ASAP to avoid TCP Slow Start, and speed up CSS}
+
+\splashslide[\sn{1.6} Increase \texttt{initcwnd}]{Initial Congestion Window: Number of packets to send before waiting for an ACK \\ \vfill \href{http://www.cdnplanet.com/blog/tune-tcp-initcwnd-for-optimum-performance/}{\small http://www.cdnplanet.com/blog/tune-tcp-initcwnd-for-optimum-performance/}}
+
+\splashimagev[0.85]{TCP1}{\sn{1.6} Increase \texttt{initcwnd}}
+
+\splashslide[\sn{1.6b} Also...]{\texttt{net.ipv4.tcp\_slow\_start\_after\_idle=0} \\ \vfill \href{http://www.lognormal.com/blog/2012/09/27/linux-tcpip-tuning/}{\small http://www.lognormal.com/blog/2012/09/27/linux-tcpip-tuning/}}
+
+\splashslide[\sn{1.7} PageSpeed]{\texttt{mod\_pagespeed} and \texttt{ngx\_pagespeed}}
+
+% http://www.flickr.com/photos/43525343@N08/6417971383/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{0.7\paperwidth}{
+    \vfill \hfill \pgfimage[height=0.93\paperheight]{6417971383-f22dbb13c5}
+  }
+}
+\begin{frame}{Relax}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\leadinslide{2}{You've reached crazyland}
+
+\begin{frame}{Sort in ascending order of signal latency}
+\begin{itemize}
+  \item Electrons through copper
+  \item Light through fibre
+  \item Pulsars
+  \item Station Wagons
+  \item Smoke Signals
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sort in ascending order of signal latency}
+\begin{enumerate}
+  \item Pulsars (light through vacuum)
+  \item Smoke Signals (light through air)
+  \item Electrons through copper / Light through fibre
+  \item Station Wagons (possibly highest bandwidth)
+\end{enumerate}
+\end{frame}
+
+\splashslide[Study real user data]{Look for potential places to parallelise, predict or cache}
+
+\splashslide[\sn{2.1}Pre-load]{Pre-fetch assets required for the next page in a process flow}
+
+\splashslide[\sn{2.1b}pre-render]{\texttt{<link rel="prerender" href="url">} \\ \vfill \texttt{<link rel="subresource" href="">} \\ \vfill \texttt{<link rel="dns-prefetch" href="">} }
+
+\splashslide[\sn{2.2}Post-load]{Fetch optional assets after onload}
+
+\splashslide[\sn{2.3}Detect broken accept-encoding]{Many Windows anti-viruses and firewalls disable gzip by munging the Accept-Encoding header \\ \vfill \href{http://www.lognormal.com/blog/2012/08/17/accept-encoding-stats/}{\small http://www.lognormal.com/blog/2012/08/17/accept-encoding-stats/}}
+
+\splashslide[\sn{2.4}Prepare for HTTP/2.0]{Multiple assets on the same connection and TLS by default. \\ Breaks many of our rules.}
+
+\splashslide[\sn{2.5}Understand 3PoFs]{Use \texttt{blackhole.webpagetest.org} \\ \vfill \href{http://blog.patrickmeenan.com/2011/10/testing-for-frontend-spof.html}{\small http://blog.patrickmeenan.com/2011/10/testing-for-frontend-spof.html}}
+
+\splashslide[\sn{2.6}Understand the IFrame Loader Technique]{Take required but non-critical assets out of the critical path \\ \vfill \href{http://www.lognormal.com/blog/2012/12/12/the-script-loader-pattern/}{\small http://www.lognormal.com/blog/2012/12/12/the-script-loader-pattern/}}
+
+\splashimagev[0.9]{rtt-formula}{Can you predict round-trip-time?}
+
+\splashimagev[0.9]{rtt-formula-jk}{Can you predict round-trip-time?}
+
+\begin{frame}{References}
+\begin{itemize}
+  \item \tiny \href{http://webpagetest.org}{WebPageTest -- http://webpagetest.org}
+  \item \tiny \href{http://lognormal.github.io/boomerang/doc/}{Boomerang -- http://lognormal.github.io/boomerang/doc/}
+  \item \tiny \href{http://www.soasta.com/free}{SOASTA mPulse -- http://www.soasta.com/free}
+  \item \tiny \href{http://www.slideshare.net/billwscott/improving-netflix-performance-experience}{Netflix gzip study -- http://www.slideshare.net/billwscott/improving-netflix-performance-experience}
+  \item \tiny \href{http://wiki.nginx.org/HttpGzipStaticModule}{Nginx gzip\_static -- http://wiki.nginx.org/HttpGzipStaticModule}
+  \item \tiny \href{http://imageoptim.com/}{ImageOptim -- http://imageoptim.com/}
+  \item \tiny \href{http://www.mnot.net/cache_docs/}{Caching -- http://www.mnot.net/cache\_docs/}
+  \item \tiny \href{http://www.jonathanklein.net/2014/02/revisiting-cookieless-domain.html}{Same domain CSS -- http://www.jonathanklein.net/2014/02/revisiting-cookieless-domain.html}
+  \item \tiny \href{http://www.cdnplanet.com/blog/tune-tcp-initcwnd-for-optimum-performance/}{initcwnd -- http://www.cdnplanet.com/blog/tune-tcp-initcwnd-for-optimum-performance/}
+  \item \tiny \href{http://www.lognormal.com/blog/2012/09/27/linux-tcpip-tuning/}{Linux TCP Tuning -- http://www.lognormal.com/blog/2012/09/27/linux-tcpip-tuning/}
+  \item \tiny \href{https://developers.google.com/chrome/whitepapers/prerender}{Prerender -- https://developers.google.com/chrome/whitepapers/prerender}
+  \item \tiny \href{https://developer.mozilla.org/en-US/docs/Controlling_DNS_prefetching}{DNS prefetching -- https://developer.mozilla.org/en-US/docs/Controlling\_DNS\_prefetching}
+  \item \tiny \href{http://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource}{Subresource -- http://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource}
+  \item \tiny \href{http://blog.patrickmeenan.com/2011/10/testing-for-frontend-spof.html}{FE SPoF -- http://blog.patrickmeenan.com/2011/10/testing-for-frontend-spof.html}
+\end{itemize}
+\end{frame}
+
+\splashslide{Thank You! \\ Questions?}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item \href{http://www.soasta.com/}{www.SOASTA.com}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \item \href{http://www.lognormal.com/blog/}{LogNormal Blog}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Image Credits}
+\begin{itemize}
+  \item \href{http://www.flickr.com/photos/24609729@N00/3353226142/}{Apple Pie  \\ \small http://www.flickr.com/photos/24609729@N00/3353226142/}
+  \item \href{http://www.flickr.com/photos/43525343@N08/6417971383/}{Kittens in a PC  \\ \small http://www.flickr.com/photos/43525343@N08/6417971383/}
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

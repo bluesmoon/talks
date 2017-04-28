@@ -1,0 +1,336 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Copenhagen}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{f2elblue}{RGB}{97,97,97}%{49,72,87}
+\definecolor{dark-red}{RGB}{128,0,0}
+\definecolor{dark-green}{RGB}{40,150,21}
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{med-gray}{gray}{0.75}
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{author in head/foot}{bg=black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape,size={\fontsize{14}{12}}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{items}[circle]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertdate%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.51\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}}%
+    \begin{beamercolorbox}[wd=.04\paperwidth,ht=2.9ex,dp=1.125ex,center,leftskip=3pt plus1fill,rightskip=4pt]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertframenumber%
+    \end{beamercolorbox}%
+  \vskip0pt%
+}%
+
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\usepackage{mathtools}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{Extending Boomerang}
+
+\date{\href{http://html5devconf.com/}{HTML5 Dev Conf} / 2013-04-02}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+%%%% Begin defining new commands for this template
+
+% Serial number in slide title
+\newcommand{\sn}[1]{\textrm{\textit{\Huge{\raisebox{-3pt}[4pt][8pt]{\textcolor{f2elblue}{#1}}}}}\hspace{4pt}}
+% large Centered Italic Roman text within a slide (building block for the following)
+\newcommand{\innersplash}[1]{
+  \begin{center}
+    \Large \textrm{\textit{ #1 } }
+  \end{center}
+}
+% Slide that has just one large centered thing to say
+\newcommand{\splashslide}[2][{}]{
+  \begin{frame}
+  \frametitle{#1}
+  \innersplash{#2}
+  \end{frame}
+}
+% Leadin slide at the start of an exploit
+\newcommand{\leadinslide}[2]{
+  \splashslide{
+     {\fontsize{150}{20}\selectfont{\raisebox{0pt}[90pt][0pt]{\textcolor{light-gray}{#1}}}} \\ \huge \textcolor{gray}{#2}
+  }
+}
+% Suggested fix at the end of an exploit
+\newcommand{\suggestedfix}[2]{
+  \splashslide[\sn{#1} Suggested fix]{{#2}}
+}
+% Syntax highlighting
+\def\gray<#1>#2{\textcolor<#1>{gray}{\textbf<#1>{#2}}}
+\def\brown<#1>#2{\textcolor<#1>{brown}{\textbf<#1>{#2}}}
+\def\green<#1>#2{\textcolor<#1>{dark-green}{\textbf<#1>{#2}}}
+\def\blue<#1>#2{\textcolor<#1>{blue}{\textbf<#1>{#2}}}
+\def\purple<#1>#2{\textcolor<#1>{purple}{\textbf<#1>{#2}}}
+\def\red<#1>#2{\textcolor<#1>{red}{\textbf<#1>{#2}}}
+
+\newcommand{\textsubscript}[1]{\ensuremath{_{\textrm{#1}}}}
+%%%% End of new commands
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item performance / security
+  \item javascript
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{I really like to study performance on the web}
+
+\leadinslide{0}{History}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \begin{center}
+    \pgfimage[height=.92\paperheight]{Jean-Antoine_Nollet}
+    \end{center}
+  }
+}
+\begin{frame}{Jean-Antoine Nollet -- 1746}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{260 years later\ldots}
+
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[height=.92\paperheight]{souders}
+  }
+}
+\begin{frame}{Measure real user to get the real picture}
+%http://www.flickr.com/photos/weboo/2539831515/
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Real Users}
+    \begin{block}{}
+      \begin{itemize}
+        \item Get delighted
+        \item<2-> Get frustrated
+        \item<3-> Have credit cards
+        \item<4-> ... that they are attached to
+        \item<5-> Form an impression from experience
+      \end{itemize}
+    \end{block}
+\end{frame}
+
+\leadinslide{1}{boomerang}
+
+\splashslide{Real User Measurement \\ -- \\ \href{https://github.com/lognormal/boomerang/}{github.com/lognormal/boomerang}}
+
+\splashslide{What can we measure?}
+
+\splashslide{Anything that the user does!}
+
+\setbeamertemplate{background}{
+  \parbox[c][0.9\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[width=\paperwidth]{"timing-overview"}
+  }
+}
+\begin{frame}{NavTiming -- W3C Candidate Recommendation}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][0.74\paperheight]{\paperwidth}{
+    \begin{center}
+    \vfill \pgfimage[width=\paperwidth]{"navtiming-support"}
+    \end{center}
+  }
+}
+\begin{frame}{Browser Support for NavTiming -- April 2013}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{Real Users don't always use ideal browsers}
+
+\splashslide{So there's a lot of magic to support the other 33.2\%}
+
+\begin{frame}{boomerang}
+  \begin{itemize}
+    \item BSD licensed
+    \item Measure load time, bandwidth, latency
+    \item DNS lookup time, NavTiming, Connection Type
+    \item Page Parameters
+    \item And anything else you can write a plugin for
+  \end{itemize}
+\end{frame}
+
+\splashslide{And it beacons all of this back to a predefined URL}
+
+\splashslide{boomerang is only a beaconing system, functionality is added with plugins}
+
+\leadinslide{2}{Let's get hacking}
+
+\begin{frame}{Get the code from github}
+\begin{center}
+https://github.com/bluesmoon/boomerang-sample-plugin
+\end{center}
+
+\begin{itemize}
+\item branches are steps
+\item commit logs are explanations
+\end{itemize}
+\end{frame}
+
+\leadinslide{3}{Fun stuff}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{latency-east-west}
+  }
+}
+\begin{frame}{Spot the datacenter}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{latency-world}
+  }
+}
+\begin{frame}{It's actually in Nederland}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{world-bandwidth}
+  }
+}
+\begin{frame}{How does bandwidth change around the world?}
+\end{frame}
+\setbeamertemplate{background}{}
+
+
+\splashslide{What does a website's performance distribution look like?}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill
+    \pgfimage[width=\paperwidth]{sparse-distribution}
+    \vfill
+  }
+}
+\begin{frame}{That's my Blog (please visit)}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{lognormal-distribution} \hfill
+  }
+}
+\begin{frame}{Log-normal distribution}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{bimodal-distribution} \hfill
+  }
+}
+\begin{frame}{Bimodal distribution}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{Did you know that IE7 seems to be faster than IE8?}
+\splashslide{But that's mostly IE9 users browsing in IE7 compatibility mode.}
+
+\splashslide{Did you know that users bounce if a page is too fast?}
+\splashslide{But that's mostly because error pages are the fastest.}
+
+\splashslide{Did you know that user patience wrt performance is a cultural thing?}
+\splashslide{It's tied both to where a user is from, and also the type of service.}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{ld50-geo} \hfill
+  }
+}
+\begin{frame}{User Engagement: LD\textsubscript{50}}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide[Summary]{$ Measure \rightarrow Hypothesize \rightarrow Test \rightarrow Fix $ \\ $ \leftarrow Repeat \hookleftarrow $}
+
+\splashslide{Thank You! \\ Questions?}
+
+\begin{frame}{Sources}
+  \begin{itemize}
+  \item \href{http://commons.wikimedia.org/wiki/File\%3AJean-Antoine_Nollet.jpg}{Jean-Antoine Nollet from Wikimedia Commons \\ \tiny http://commons.wikimedia.org/wiki/File\%3AJean-Antoine\_Nollet.jpg}
+  \item \href{http://www.flickr.com/photos/weboo/2539831515/}{Steve Souders by weboo on flickr \\ \tiny http://www.flickr.com/photos/weboo/2539831515/}
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item \href{http://www.soasta.com/}{www.SOASTA.com}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \item \href{http://www.lognormal.com/blog/}{LogNormal Blog}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\end{document}
+
+

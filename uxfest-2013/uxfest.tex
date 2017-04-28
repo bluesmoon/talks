@@ -1,0 +1,372 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Copenhagen}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{f2elblue}{RGB}{97,97,97}%{49,72,87}
+\definecolor{dark-red}{RGB}{128,0,0}
+\definecolor{dark-green}{RGB}{40,150,21}
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{med-gray}{gray}{0.75}
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{author in head/foot}{bg=black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape,size={\fontsize{14}{12}}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{items}[circle]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertdate%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.51\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}}%
+    \begin{beamercolorbox}[wd=.04\paperwidth,ht=2.9ex,dp=1.125ex,center,leftskip=3pt plus1fill,rightskip=4pt]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertframenumber%
+    \end{beamercolorbox}%
+  \vskip0pt%
+}%
+
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\usepackage{mathtools}
+
+\author{Philip Tellis / \texttt{philip@bluesmoon.info}}
+
+\title{RUM Distillation 101}
+
+\date{\href{http://www.freshtilledsoil.com/uxfest/}{UX Fest 2013} / 2013-10-01}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+%%%% Begin defining new commands for this template
+
+% Serial number in slide title
+\newcommand{\sn}[1]{\textrm{\textit{\Huge{\raisebox{-3pt}[4pt][8pt]{\textcolor{f2elblue}{#1}}}}}\hspace{4pt}}
+% large Centered Italic Roman text within a slide (building block for the following)
+\newcommand{\innersplash}[1]{
+  \begin{center}
+    \Large \textrm{\textit{ #1 } }
+  \end{center}
+}
+% Slide that has just one large centered thing to say
+\newcommand{\splashslide}[2][{}]{
+  \begin{frame}
+  \frametitle{#1}
+  \innersplash{#2}
+  \end{frame}
+}
+% Leadin slide at the start of an exploit
+\newcommand{\leadinslide}[2]{
+  \splashslide{
+     {\fontsize{150}{20}\selectfont{\raisebox{0pt}[90pt][0pt]{\textcolor{light-gray}{#1}}}} \\ \huge \textcolor{gray}{#2}
+  }
+}
+% Suggested fix at the end of an exploit
+\newcommand{\suggestedfix}[2]{
+  \splashslide[\sn{#1} Suggested fix]{{#2}}
+}
+% Syntax highlighting
+\def\gray<#1>#2{\textcolor<#1>{gray}{\textbf<#1>{#2}}}
+\def\brown<#1>#2{\textcolor<#1>{brown}{\textbf<#1>{#2}}}
+\def\green<#1>#2{\textcolor<#1>{dark-green}{\textbf<#1>{#2}}}
+\def\blue<#1>#2{\textcolor<#1>{blue}{\textbf<#1>{#2}}}
+\def\purple<#1>#2{\textcolor<#1>{purple}{\textbf<#1>{#2}}}
+\def\red<#1>#2{\textcolor<#1>{red}{\textbf<#1>{#2}}}
+
+\newcommand{\textsubscript}[1]{\ensuremath{_{\textrm{#1}}}}
+%%%% End of new commands
+
+
+
+
+\begin{document}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item \href{http://www.soasta.com/}{SOASTA}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\splashslide{Did you know that most Rum comes from the Caribbean?}
+
+\splashslide{But the largest selling Dark Rum in the world is \\ Old Monk}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \begin{center}
+    \pgfimage[height=.92\paperheight]{Jean-Antoine_Nollet}
+    \end{center}
+  }
+}
+\begin{frame}{Jean-Antoine Nollet -- 1746}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{Today Measuring the experience of Real Users is not quite as shocking.}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{"real-users"}
+  }
+}
+\begin{frame}{Real Users}
+  \only<2-> {
+    \begin{block}{}
+      \begin{itemize}
+        \item Get delighted
+        \item<3-> Get frustrated
+        \item<4-> Have credit cards
+        \item<5-> ... that they are attached to
+        \item<6-> Form an impression from experience
+      \end{itemize}
+    \end{block}
+  }
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{What can we measure?}
+
+\splashslide{Anything that the user does! \\ \only<2->{(in the browser)}}
+
+\splashslide{But we really care about performance here\ldots}
+
+\splashslide{So let's talk about How}
+
+\setbeamertemplate{background}{
+  \parbox[c][0.9\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[width=\paperwidth]{"timing-overview"}
+  }
+}
+\begin{frame}{Modern Browsers -- no problem}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][0.74\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{"navtiming-support"}
+  }
+}
+\begin{frame}{Modern Browsers -- no problem}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{Real Users don't always use the latest browsers.}
+
+\splashslide{So there's a lot of magic to support the other 31.38\%}
+
+\begin{frame}{The other 31.38\%...}
+  \begin{enumerate}
+  \item Get a timestamp before they leave a page
+  \item Save it in a cookie
+  \item Compare with timestamp when the page loads
+  \end{enumerate}
+\only<2->{Then there's some magic to handle edge-cases}
+\end{frame}
+
+\begin{frame}{...magic}
+  \begin{itemize}
+    \item What if the user goes off-site between pages?
+    \item What if there's SSL involved?
+    \item What about new tab?
+    \item What about those strange cases where they leave a page after they load a new one?
+    \item What about those common cases where they open multiple pages from a search engine but don't actually look at them?
+  \end{itemize}
+\end{frame}
+
+\splashslide[But it doesn't need to be\ldots]{\href{http://lognormal.github.com/boomerang/doc/}{We put all this magic into boomerang \\ \small http://lognormal.github.com/boomerang/doc/}}
+
+\begin{frame}{boomerang}
+  \begin{itemize}
+    \item BSD licensed JavaScript library
+    \item Measure load time, bandwidth, latency
+    \item DNS lookup time, NavTiming, Connection Type
+    \item Page Parameters
+    \item And anything else you can write a plugin for
+  \end{itemize}
+\end{frame}
+
+\splashslide{And it beacons all of this back to a predefined URL}
+
+\splashslide{So what then?}
+
+\splashslide{Are you Ops, F2E or Product?}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{latency-east-west}
+  }
+}
+\begin{frame}{Spot the datacenter}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{latency-world}
+  }
+}
+\begin{frame}{It's actually in Nederland}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{world-bandwidth}
+  }
+}
+\begin{frame}{How does bandwidth change around the world?}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{Did you know that IE7 seems to be faster than IE8?}
+\splashslide{But that's mostly IE9 users browsing in IE7 compatibility mode.}
+
+\splashslide{What does a website's performance distribution look like?}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill
+    \pgfimage[width=\paperwidth]{sparse-distribution}
+    \vfill
+  }
+}
+\begin{frame}{That's my Blog (please visit)}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{lognormal-distribution} \hfill
+  }
+}
+\begin{frame}{Log-normal distribution}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{bimodal-distribution} \hfill
+  }
+}
+\begin{frame}{Bimodal distribution}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Distributions}
+\begin{itemize}
+  \item Sparse distribution suggests that you don't have enough data points
+  \item Log-normal distribution is typical
+  \item Bi-modal distribution suggests two (or more) distributions combined
+\end{itemize}
+\end{frame}
+
+\splashslide{Distributions are interesting, but how does it affect engagement?}
+
+\splashslide{Did you know that user patience wrt performance is a cultural thing?}
+\splashslide{It's tied both to where a user is from, and also the type of service.}
+
+\setbeamertemplate{background}{
+  \parbox[c][0.8\paperheight]{\paperwidth}{
+    \vfill \pgfimage[width=\paperwidth]{bounce-rate-vs-sessions}
+  }
+}
+\begin{frame}{different types of sites}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{We borrowed a biological term called LD\textsubscript{50} and applied it to Load Time v/s Bounce Rate}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{ld50-geo} \hfill
+  }
+}
+\begin{frame}{LD\textsubscript{50}}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{This helps you fix only the stuff that's hurting you.}
+
+\splashslide{Did you know that users bounce if a page is too fast?}
+\splashslide{But that's mostly because error pages are the fastest.}
+
+\splashslide{$ Measure \rightarrow Hypothesize \rightarrow Test \rightarrow Fix $ \\ $ \leftarrow Repeat \hookleftarrow $}
+
+\splashslide{What delighted users a few years ago is now an expected baseline, the absence of which will frustrate them.}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{0.9\paperwidth}{
+    \hfill \pgfimage[height=0.8\paperheight]{olympic-medals}
+  }
+}
+\begin{frame}{Changing Expectations}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{Thank You! \\ Questions?}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item \href{http://www.soasta.com/}{www.SOASTA.com}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \item \href{http://www.lognormal.com/blog/}{LogNormal Blog}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Image Credits}
+\begin{itemize}
+  \item Jean-Antoine Nollet \\ \small \href{http://en.wikipedia.org/wiki/Jean-Antoine_Nollet}{http://en.wikipedia.org/wiki/Jean-Antoine\_Nollet}
+  \item New York Times Olympic Medal Winners \\ \small \href{http://www.nytimes.com/interactive/2012/08/05/sports/olympics/the-100-meter-dash-one-race-every-medalist-ever.html}{http://www.nytimes.com/interactive/2012/08/05/sports/olympics/the-100-meter-dash-one-race-every-medalist-ever.html}
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

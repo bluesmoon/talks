@@ -1,0 +1,55 @@
+GMT == mean solar time in Greenwich (now called UT1)
+UTC == based on atomic clocks
+
+UTC != GMT
+
+| UTC - GMT | <= 900ms
+
+1 second == 1000 ms
+1 minute ~ 60 seconds (note leap seconds: June 30, 2012 at 23:59:60 UTC) (not handled by unix timestamps)
+1 hour == 60 minutes
+1 day == 24 hours 2ms == 86,400,002 ms == 86400.002s and increases by 1.7 ms per century
+
+All this as long as you don't have DST
+with DST 1 day is between 23 and 25 hours (and of course the 2ms)
+
+1 week == 7 days, != 7 * 24 hours
+
+1 month == 28, 29, 30 or 31 days
+
+1 year == 365 or 366 days
+
+TimeZones:
+Most timezones are at hourly offsets from UTC.
+
+Newfoundland, India, Iran, Afghanistan, Venezuela, Burma (Myanmar), Sri Lanka, Norfolk Island, the Marquesas, and parts of Australia use 30 minute offsets.
+
+Nepal pop 26,494,504, Eucla (Australia) pop 86, Chatham Islands pop 650 are at a 15 minute boundary
+
+Standard time in the Netherlands was exactly 19 minutes and 32.13 seconds ahead of UTC by law from 1909-05-01 through 1937-06-30. This time zone cannot be represented exactly using the HH:MM format, it was simplified to UTC +00:20 when Germany occupied the Netherlands.
+
+Some of them have DST, and the rules for DST are different.
+
+And they change over time.
+In 2007, US DST changed from 1st Sunday in April to 2nd Sunday of March, and switchback changed from last Sunday in October to 1st Sunday in November.
+
+Java has its own TimeZone database, which needs to be updated if rules change anywhere in the world (Oracle publishes updates).
+
+JavaScript does not handle timezones.  You have to do the math yourself, and it gets more complicated when you handle time ranges that cross one or more DST boundaries.
+
+
+So, what do we do?
+
+In Java, always use Calendar.getInstance(TimeZone)... which basically gets you a GregorianCalendar.  This covers both Gregorian and Julian calendars, and will get you the right date/time starting
+from 44BC and going on all the way into the future.
+
+We can only add/subtract the unit we care about, which means:
+- if we're looking at days, then you use calendar.add(Calendar.DATE, units)
+- if we're looking at months, then use calendar.add(Calendar.MONTH, units)
+- if we're looking at years, then use calendar.add(Calendar.YEAR, units)
+- if we're looking at something smaller than a day, we use the relevant unit.
+We cannot just add or subtract unit * 86400 seconds.
+
+
+In JavaScript, we need to handle all times in UTC, and then add/subtract an offset when rendering the date.
+This means that for a timeseries chart, we need to send across a list of offsets and the timestamp when those offsets become active.

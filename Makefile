@@ -1,10 +1,10 @@
 .DEFAULT:
 	if [ ! -d $@ ]; then \
 		mkdir $@; \
-		touch $@/index.txt; \
+		touch $@/$@.tex; \
 	fi; \
 	if [ ! -e $@/Makefile ]; then \
-		echo "all: index.html\n\n%.html: %.txt\n\t../slide-parser.pl $$<\n" > $@/Makefile; \
+		echo "all: $@.pdf\n\n%.pdf: %.tex\n\tpdflatex $$<\n" > $@/Makefile; \
 	fi; \
 	cd $@; \
 	make; \

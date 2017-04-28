@@ -1,0 +1,280 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Copenhagen}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{f2elblue}{RGB}{97,97,97}%{49,72,87}
+\definecolor{dark-red}{RGB}{128,0,0}
+\definecolor{dark-green}{RGB}{40,150,21}
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{med-gray}{gray}{0.75}
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{author in head/foot}{bg=black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape,size={\fontsize{14}{12}}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{items}[circle]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertdate%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.51\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}}%
+    \begin{beamercolorbox}[wd=.04\paperwidth,ht=2.9ex,dp=1.125ex,center,leftskip=3pt plus1fill,rightskip=4pt]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertframenumber%
+    \end{beamercolorbox}%
+  \vskip0pt%
+}%
+
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+
+\usepackage{mathtools}
+
+\author{Philip Tellis / \texttt{ptellis@soasta.com}}
+
+\title{mmm... beacons!}
+
+\date{\href{http://velocityconf.com/velocityny2013/public/schedule/detail/32748}{Velocity NY 2013} / 2013-10-15}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+%%%% Begin defining new commands for this template
+
+% Serial number in slide title
+\newcommand{\sn}[1]{\textrm{\textit{\Huge{\raisebox{-3pt}[4pt][8pt]{\textcolor{f2elblue}{#1}}}}}\hspace{4pt}}
+% large Centered Italic Roman text within a slide (building block for the following)
+\newcommand{\innersplash}[1]{
+  \begin{center}
+    \Large \textrm{\textit{ #1 } }
+  \end{center}
+}
+% Slide that has just one large centered thing to say
+\newcommand{\splashslide}[2][{}]{
+  \begin{frame}
+  \frametitle{#1}
+  \innersplash{#2}
+  \end{frame}
+}
+% Leadin slide at the start of an exploit
+\newcommand{\leadinslide}[2]{
+  \splashslide{
+     {\fontsize{150}{20}\selectfont{\raisebox{0pt}[90pt][0pt]{\textcolor{light-gray}{#1}}}} \\ \huge \textcolor{gray}{#2}
+  }
+}
+% Suggested fix at the end of an exploit
+\newcommand{\suggestedfix}[2]{
+  \splashslide[\sn{#1} Suggested fix]{{#2}}
+}
+% Syntax highlighting
+\def\gray<#1>#2{\textcolor<#1>{gray}{\textbf<#1>{#2}}}
+\def\brown<#1>#2{\textcolor<#1>{brown}{\textbf<#1>{#2}}}
+\def\green<#1>#2{\textcolor<#1>{dark-green}{\textbf<#1>{#2}}}
+\def\blue<#1>#2{\textcolor<#1>{blue}{\textbf<#1>{#2}}}
+\def\purple<#1>#2{\textcolor<#1>{purple}{\textbf<#1>{#2}}}
+\def\red<#1>#2{\textcolor<#1>{red}{\textbf<#1>{#2}}}
+
+\newcommand{\textsubscript}[1]{\ensuremath{_{\textrm{#1}}}}
+%%%% End of new commands
+
+
+
+
+\begin{document}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{ptellis@soasta.com}
+  \item \href{http://www.soasta.com/}{SOASTA}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% http://www.flickr.com/photos/zottestef/533647132/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{show-me-the-money}
+  }
+}
+\begin{frame}{}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{Optimize for more engaged consumers}
+
+\leadinslide{1}{Measure Real User Experiences}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \begin{center}
+    \pgfimage[height=.92\paperheight]{Jean-Antoine_Nollet}
+    \end{center}
+  }
+}
+\begin{frame}{Jean-Antoine Nollet -- 1746}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{one-way}
+  }
+}
+\begin{frame}{There's more than one way to do it}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{Today Measuring the experience of Real Users is not quite as shocking.}
+
+\splashslide{RUM \\ \only<2>{\& bacon}}
+
+\splashslide{boomerang}
+
+\leadinslide{2}{Distill \& Analyze}
+
+% http://www.flickr.com/photos/razmataz/5000536661/
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{warehouse}
+  }
+}
+\begin{frame}{In Realtime}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{Some types of users never bought anything}
+
+\splashslide{\texttt{...|Slurp|BingPreview|Googlebot| PTST|...}}
+
+\leadinslide{2.1}{Patience}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{bounces-by-geo}
+  }
+}
+\begin{frame}{Americans v/s les Franglais}
+\end{frame}
+%\splashslide{is cultural (country, CA v/s NY)}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{bounces-by-ua}
+  }
+}
+\begin{frame}{Chrome users are more patient than IE users}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{bounce-rate-by-day}
+  }
+}
+\begin{frame}{users are slightly more patient on weekends}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\leadinslide{2.2}{Cache Behaviour}
+
+\splashslide{We have boomerang set to be cached for 7 days \\ \small \texttt{Cache-Control: max-age=604800, stale-while-revalidate=60, stale-if-error=3600}}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{boomerang-caching}
+  }
+}
+\begin{frame}{how soon does a new version get to everyone?}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{boomerang-cache-by-hour-weekend}
+  }
+}
+\begin{frame}{hourly on weekends}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \pgfimage[width=\paperwidth]{boomerang-cache-by-hour-weekday}
+  }
+}
+\begin{frame}{hourly on weekdays}
+\end{frame}
+
+\setbeamertemplate{background}{}
+
+\splashslide{What else would you like to see?}
+
+\splashslide{Thank You! \\ Questions?}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item \href{http://www.soasta.com/}{www.SOASTA.com}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \item \href{http://www.lognormal.com/blog/}{LogNormal Blog}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}{Image Credits}
+\begin{itemize}
+  \item Jean-Antoine Nollet \\ \small \href{http://en.wikipedia.org/wiki/Jean-Antoine_Nollet}{http://en.wikipedia.org/wiki/Jean-Antoine\_Nollet}
+  \item Show Me The Money \\ \small \href{http://www.flickr.com/photos/zottestef/533647132/}{http://www.flickr.com/photos/zottestef/533647132/}
+  \item RUM Warehouse \\ \small \href{http://www.flickr.com/photos/razmataz/5000536661/}{http://www.flickr.com/photos/razmataz/5000536661/}
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+
+Edward Tufte
+Break down by Mobile v/s Desktop
+Look at usage on specific events for a site, like sports event on a sports site or black friday for e-commerce
+

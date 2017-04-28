@@ -1,0 +1,498 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Copenhagen}
+
+  \setbeamercovered{transparent}
+
+}
+
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{f2elblue}{RGB}{97,97,97}%{49,72,87}
+\definecolor{dark-red}{RGB}{128,0,0}
+\definecolor{dark-green}{RGB}{40,150,21}
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{med-gray}{gray}{0.75}
+
+\setbeamercolor{title in head/foot}{bg=orange!90!black,fg=white}
+\setbeamercolor{author in head/foot}{bg=black,fg=white}
+\setbeamercolor{subsection in head/foot}{bg=black!95,fg=white}
+\setbeamercolor{structure}{fg=black}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape,size={\fontsize{14}{12}}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{items}[circle]
+
+\setbeamertemplate{footline}%
+{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertdate%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.51\paperwidth,ht=2.9ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}}%
+    \begin{beamercolorbox}[wd=.04\paperwidth,ht=2.9ex,dp=1.125ex,center,leftskip=3pt plus1fill,rightskip=4pt]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertframenumber%
+    \end{beamercolorbox}%
+  \vskip0pt%
+}%
+
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\usepackage{ulem}
+\usepackage{mathtools}
+
+\author{Philip Tellis / \texttt{ptellis@soasta.com}}
+
+\title{Boomerang: Measuring Web Performance with JavaScript}
+
+\date{\href{http://www.meetup.com/Stockholm-Web-Performance-Group/events/213557192/}{Stockholm \#WebPerf Meetup} / 2014-10-30}
+
+
+\pgfdeclareimage[height=0.5cm]{bluesmoon-logo}{../ui/default/bodybg}
+\pgfdeclareimage[height=11pt]{cc-licence}{../by-nc-sa-3.0-88x31}
+\logo{\pgfuseimage{cc-licence}}
+
+
+%%%% Begin defining new commands for this template
+
+% Serial number in slide title
+\newcommand{\sn}[1]{\textrm{\textit{\Huge{\raisebox{-3pt}[4pt][8pt]{\textcolor{f2elblue}{#1}}}}}\hspace{4pt}}
+
+% large Centered Italic Roman text within a slide (building block for the following)
+\newcommand{\innersplash}[1]{
+  \begin{center}
+    \large \textrm{\textit{ #1 } }
+  \end{center}
+}
+
+% Slide that has just one large centered thing to say
+\newcommand{\splashslide}[2][{}]{
+  \begin{frame}
+  \frametitle{#1}
+  \innersplash{#2}
+  \end{frame}
+}
+
+% Leadin slide at the start of an exploit
+\newcommand{\leadinslide}[2]{
+  \splashslide{
+     {\fontsize{150}{20}\selectfont{\raisebox{0pt}[90pt][0pt]{\textcolor{light-gray}{#1}}}} \\ \huge \textcolor{gray}{#2}
+  }
+}
+
+% Suggested fix at the end of an exploit
+\newcommand{\suggestedfix}[2]{
+  \splashslide[\sn{#1} Suggested fix]{{#2}}
+}
+
+%Splashslide with Background Image
+\newcommand{\splashimage}[4][1]{
+  \setbeamertemplate{background}{
+    \parbox[c][{#1}\paperheight]{\paperwidth}{
+      \vfill \hfill \pgfimage[width=\paperwidth]{#2}
+    }
+  }
+  \begin{frame}{#3}
+    \parbox[r][0.75\paperheight]{0.9\paperwidth}{
+      \vfill {#4}
+    }
+  \end{frame}
+  \setbeamertemplate{background}{}
+}
+
+%Splashslide with Vertical Background Image
+\newcommand{\splashimagev}[4][1]{
+  \setbeamertemplate{background}{
+    \parbox[c][0.95\paperheight]{{#1}\paperwidth}{
+      \vfill \hfill \pgfimage[height=0.86\paperheight]{#2}
+    }
+  }
+  \begin{frame}{#3}
+    \parbox[r][0.75\paperheight]{0.9\paperwidth}{
+      \vfill {#4}
+    }
+  \end{frame}
+  \setbeamertemplate{background}{}
+}
+
+% Syntax highlighting
+\def\gray<#1>#2{\textcolor<#1>{gray}{\textbf<#1>{#2}}}
+\def\brown<#1>#2{\textcolor<#1>{brown}{\textbf<#1>{#2}}}
+\def\green<#1>#2{\textcolor<#1>{dark-green}{\textbf<#1>{#2}}}
+\def\blue<#1>#2{\textcolor<#1>{blue}{\textbf<#1>{#2}}}
+\def\purple<#1>#2{\textcolor<#1>{purple}{\textbf<#1>{#2}}}
+\def\red<#1>#2{\textcolor<#1>{red}{\textbf<#1>{#2}}}
+
+\newcommand{\textsubscript}[1]{\ensuremath{_{\textrm{#1}}}}
+%%%% End of new commands
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{ptellis@soasta.com}
+  \item \href{http://www.soasta.com/}{SOASTA}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{I \texttt{<3} JavaScript}
+
+\splashslide{I'm a Speedfreak (the network kind)}
+
+\splashimage[0.82]{wpt-mpulse}{SOASTA mPulse \& boomerang}{We measure real user website performance}
+
+\splashslide{This talk is (mostly) about how we abuse JavaScript to do it}
+
+\begin{frame}[fragile]
+\frametitle{First, a note about the code}
+\begin{center}
+Note that in the code that follows,
+
+\vspace{1.5em}
+\texttt{+ \green<1>{new} \blue<1>{Date}}
+
+\vspace{1.5em}
+is equivalent to
+
+\vspace{1.5em}
+\texttt{\green<1>{new} \blue<1>{Date}().getTime()}
+\end{center}
+\end{frame}
+
+\leadinslide{1}{Latency}
+
+\begin{frame}{Sort in ascending order of signal latency}
+\begin{itemize}
+  \item Electrons through copper
+  \item Light through fibre
+  \item Pulsars
+  \item Station Wagons
+  \item Smoke Signals
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sort in ascending order of signal latency}
+\begin{enumerate}
+  \item Pulsars (light through vacuum)
+  \item Smoke Signals (light through air)
+  \item Electrons through copper / Light through fibre
+  \item Station Wagons (possibly highest bandwidth)
+\end{enumerate}
+\end{frame}
+
+\splashslide[\sn{1}Blinking Lights]{ It takes about 16ms for light to get from SF to NYC \\ (24ms through fibre) \\ \vspace{1em} \only<1>{ \ldots } \only<2>{Though it takes about 100ms to ping... why?} }
+
+\setbeamertemplate{background}{
+  \parbox[c][.905\paperheight]{.93\paperwidth}{
+    \vfill \hfill \pgfimage[height=.762\paperheight]{http-get}
+  }
+}
+\begin{frame}{\sn{1}HTTP}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\splashslide{So to measure latency, we need to send 1 packet each way, and time it}
+
+\begin{frame}[fragile]
+\frametitle{\sn{1} Network latency in JavaScript}
+\begin{semiverbatim}
+  \green<1>{var} ts, rtt, img = \green<1>{new} \blue<1>{Image};
+  img.onload=\green<1>{function}() \{ rtt=(+\green<1>{new} \blue<1>{Date} - ts) \};
+  ts = +\green<1>{new} \blue<1>{Date};
+  img.src="/1x1.gif";
+\end{semiverbatim}
+\end{frame}
+
+\begin{frame}{\sn{1}Notes}
+\begin{itemize}
+  \item 1x1 gif is 35 bytes
+  \item including HTTP headers, this is smaller than a TCP packet
+  \item Fires onload on all browsers
+  \item 0 byte image fires onerror
+  \item which is indistinguishable from network error
+\end{itemize}
+\end{frame}
+
+\leadinslide{2}{TCP handshake}
+
+\setbeamertemplate{background}{
+  \parbox[c][.9\paperheight]{.8\paperwidth}{
+    \vfill \hfill \pgfimage[height=.8\paperheight]{tcp-handshake}
+  }
+}
+\begin{frame}{\sn{2}ACK-ACK-ACK}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][.905\paperheight]{.93\paperwidth}{
+    \vfill \hfill \pgfimage[height=.762\paperheight]{http-keepalive}
+  }
+}
+\begin{frame}{\sn{2}Connection: keep-alive}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\begin{frame}[fragile]
+\frametitle{\sn{2} Network latency \& TCP handshake in JavaScript}
+\vspace{-.3cm}
+\begin{semiverbatim}
+\green<1>{var} t=[], tcp, rtt;
+\green<1>{var} ld = \green<1>{function}() \{
+   t.push(+\green<1>{new} \blue<1>{Date});
+   \green<1>{if}(t.length > 2)  \brown<1>{// run 2 times}
+     done();
+   \green<1>{else} \{
+     \green<1>{var} img = \green<1>{new} \blue<1>{Image};
+     img.onload = ld;
+     img.src="/1x1.gif?" + \blue<1>{Math}.random()
+                         + '=' + \green<1>{new} \blue<1>{Date};
+   \}
+\};
+\green<1>{var} done = \green<1>{function}() \{
+  rtt=t[2]-t[1];
+  tcp=t[1]-t[0]-rtt;
+\};
+ld();
+\end{semiverbatim}
+\end{frame}
+
+\splashslide{Notice that we've ignored DNS lookup time here... how would you measure it?}
+
+\leadinslide{3}{Network Throughput}
+
+\splashslide[\sn{3}Measuring Network Throughput]{\LARGE{\( \frac{data\_length}{download\_time} \)}}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript}
+\begin{semiverbatim}
+\brown<1>{// Assume global object
+// image=\{ url: ..., size: ... \}}
+\green<1>{var} ts, rtt, bw, img = \green<1>{new} \blue<1>{Image};
+img.onload=\green<1>{function}() \{
+   rtt=(+\green<1>{new} \blue<1>{Date} - ts);
+   bw = image.size*1000/rtt;    \brown<1>{// rtt is in ms}
+\};
+ts = +\green<1>{new} \blue<1>{Date};
+img.src=image.url;
+\end{semiverbatim}
+\end{frame}
+
+\splashslide[\sn{3}Measuring Network Throughput]{If it were that simple, I wouldn't be doing this talk.}
+
+\splashimagev[0.85]{TCP1}{\sn{3}TCP Slow Start}
+
+\splashslide[\sn{3}Measuring Network Throughput]{So to make the best use of bandwidth, we need resources that fit in a TCP window}
+
+\splashimage[0.87]{bandwidth-latency}{\sn{3}There is no single size that will tax all available networks}{\tiny \href{http://www.yuiblog.com/blog/2010/04/08/analyzing-bandwidth-and-latency/}{http://www.yuiblog.com/blog/2010/04/08/analyzing-bandwidth-and-latency/}}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript -- Take 2}
+\begin{semiverbatim}
+\brown<1>{// image object is now an array of multiple images}
+\green<1>{var} i=0;
+\green<1>{var} ld = \green<1>{function}() \{
+   \green<1>{if}(i>0)
+      image[i-1].end = +\green<1>{new} \blue<1>{Date};
+   \green<1>{if}(i >= image.length)
+      done();
+   \green<1>{else} \{
+      \green<1>{var} img = \green<1>{new} \blue<1>{Image};
+      img.onload = ld;
+      image[i].start = +\green<1>{new} \blue<1>{Date};
+      img.src=image[i].url;
+   \}
+   i++;
+\};
+\end{semiverbatim}
+\end{frame}
+
+\splashslide[\sn{3}Measuring Network Throughput]{Slow network connection, meet really huge image}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript -- Take 3}
+\begin{semiverbatim}
+   \green<1>{var} img = \green<1>{new} \blue<1>{Image};
+   img.onload = ld;
+   image[i].start = +\green<1>{new} \blue<1>{Date};
+   image[i].timer =
+         setTimeout(\green<1>{function}() \{
+                       image[i].expired=true
+                    \},
+                    image[i].timeout);
+   img.src=image[i].url;
+\end{semiverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript -- Take 3}
+\begin{semiverbatim}
+\green<1>{if}(i>0) \{
+   image[i-1].end = +\green<1>{new} \blue<1>{Date};
+   clearTimeout(image[i-1].timer);
+\}
+\end{semiverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\sn{3} Network Throughput in JavaScript -- Take 3}
+\begin{semiverbatim}
+\green<1>{if}(i >= image.length
+      || (i > 0 \&\& image[i-1].expired)) \{
+   done();
+\}
+\end{semiverbatim}
+\end{frame}
+
+\splashslide[\sn{3}Measuring Network Throughput]{Are we done yet?\\ \only<2->{sure...}}
+
+\splashslide[\sn{3}Measuring Network Throughput]{Except network throughput is different every time you test it}
+
+\splashslide[\sn{3}Measuring Network Throughput]{The code for that is NOT gonna fit on a slide}
+
+\splashimage[0.85]{world-bandwidth}{\sn{3} Bandwidth is different around the world}
+
+\leadinslide{4}{Page Load Time}
+
+\begin{frame}
+\frametitle{\sn{4} Page Load Time is Simple}
+\begin{enumerate}
+\item Get a timestamp when user initiates page request
+\item Get a timestamp when page completes loading
+\item Pass it through advanced Mathematics engine: $$t\_done = t\_end - t\_start$$
+\end{enumerate}
+\end{frame}
+
+\splashslide[\sn{4}Page Load Time]{This is easy with Navigation Timing enabled browsers \\ \small (Except for all the versions with bugs)}
+
+\splashslide[\sn{4}Page Load Time]{But what about legacy browsers?}
+
+\splashslide[\sn{4}Page Load Time]{End time is measured in the \texttt{onload} or \texttt{pageshow} events}
+
+\splashslide[\sn{4}Page Load Time]{Start time is measured in the \texttt{onbeforeunload} event}
+
+\splashslide{But what if the user opens a link in a new tab?}
+
+\splashslide[\sn{4}Page Load Time]{Start time is measured in the \texttt{onbeforeunload} or \texttt{onclick} or \texttt{onsubmit} events}
+
+\splashslide{But not if the click happened on a FLASH object}
+
+\splashslide[\sn{4}Page Load Time]{We also measure the \texttt{onunload} or \texttt{pagehide} events... \\ This gives us first byte time}
+
+\splashslide[\sn{4}Page Load Time]{We cannot attach events for first page loads, but with enough data we can estimate using statistical analysis}
+
+\splashslide{But... it's not over yet \\ \texttt{<link rel="prerender">}}
+
+\splashslide[\sn{4}Page Load Time]{A pre-rendered page's \texttt{onload} event can fire before the user even clicks on the link}
+
+\splashslide{boomerang takes care of this by measuring "click to visible", "request to load", "request to visible", and "load to visible"}
+
+\leadinslide{5}{Resource Timing}
+
+\splashslide{Using the Resource Timing API, get timing information for all resources on the page}
+
+\splashslide{Yes, this results in very large beacons, so we use POST, and we will soon merge in a patch to compress the data}
+
+\splashslide[And some hackery to capture XHR requests]{Create a wrapper around \texttt{window.XMLHttpRequest} and set timers on all its events}
+
+\splashslide{Full code is at \href{https://github.com/lognormal/beyond-page-metrics/blob/gh-pages/src/instrument-xhr.js}{github.com/lognormal/beyond-page-metrics/}}
+
+\leadinslide{6}{Other Stuff}
+
+\begin{frame}{\sn{6} Other Stuff We Measure}
+\begin{itemize}
+  \item NavTiming, SPDY, FirstPaint -- \texttt{navtiming.js}
+  \item \texttt{navigation.connection.*} -- \texttt{mobile.js}
+  \item \texttt{window.performance.memory}  -- \texttt{memory.js} -- Chrome 22+ reporting now.
+  \item Number of DOM nodes, images, scripts and byte size of HTML -- \texttt{memory.js}
+\end{itemize}
+\end{frame}
+
+\splashslide{And we try to do it fast}
+
+\leadinslide{7}{Keep it Clean}
+
+\splashslide{We recently started capturing all JavaScript errors that happen inside boomerang, and beaconing them back}
+
+\splashslide{So now we can find bugs as soon as it affects an end user}
+
+\splashslide{We found that Firefox 31 started throwing exceptions on direct dereferences of \texttt{\green<1>{window}.\blue<1>{performance}} inside anonymous iframes \\ \tiny \href{https://bugzilla.mozilla.org/show_bug.cgi?id=1045096}{https://bugzilla.mozilla.org/show\_bug.cgi?id=1045096}}
+
+\splashslide{We tried to use \\ \texttt{\blue<1>{if} (\green<1>{window}.hasOwnProperty("\gray<1>{performance}"))} but that doesn't work in IE10 because \texttt{\green<1>{window}} is a host object}
+
+\splashslide{You have to use \\ \texttt{\blue<1->{if} ("\gray<1->{performance}" \blue<1->{in} \green<1->{window})} \\ which JSLint doesn't like...\\ \only<2->{But no one likes JSLint so it's okay}}
+
+\splashslide{And speaking of IE, did you know that \\ \brown<1>{"TypeError: Permission Denied"} \\ is localized, so you have to capture every single language to detect it?}
+
+\splashslide{On a more interesting note, IE11 running in compatibility mode can make it seem like IE7 has magically received Navigation Timing support}
+
+\splashslide{We found that Chrome 38 started reporting 0 for \texttt{\blue<1->{firstPaintTime}}, and that helped the Chrome team realise, \\ "\gray<1->{This code (in Chrome)... we don't know how it ever worked}" \\ \tiny \href{https://code.google.com/p/chromium/issues/detail?id=422913}{https://code.google.com/p/chromium/issues/detail?id=422913}}
+
+\splashslide{We also found a much older Chrome bug where cached content was reported as having a negative load time in Resource Timing}
+
+\splashslide{We found that Mobile Safari's NavigationTiming implementation had weird bugs, but could not find a good pattern}
+
+\splashslide{And Android 2.3's browser has a \texttt{\green<1>{document}.\blue<1>{createEvent}} method that exists, but always throws, so capability detection doesn't work nicely}
+
+\splashimage[0.90]{ld50-geo}{As we found that users have different bugs too ;)}
+
+\leadinslide{ni!}{din tur nu}
+
+\leadinslide{--}{.done()}
+
+\splashslide{Tack! \\ Fr\aa{}gor?}
+
+\begin{frame}{Code/References}
+  \begin{itemize}
+    \item \texttt{http://lognormal.github.com/boomerang/doc/} (BSD Licensed)
+    \item \href{http://www.lognormal.com}{www.lognormal.com}
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background}{
+  \parbox[c][\paperheight]{\paperwidth}{
+    \vfill \hfill \pgfimage[height=\paperheight]{../bluesmoon}
+  }
+}
+\begin{frame}
+  \begin{itemize}
+  \item Philip Tellis
+  \item \href{http://twitter.com/bluesmoon}{@bluesmoon}
+  \item \href{http://bluesmoon.info/}{philip@bluesmoon.info}
+  \item \href{http://www.soasta.com/}{www.SOASTA.com}
+  \item \href{http://lognormal.github.com/boomerang/doc/}{boomerang}
+  \item \href{http://www.lognormal.com/blog/}{LogNormal Blog}
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{background}{}
+
+\end{document}
+
+
